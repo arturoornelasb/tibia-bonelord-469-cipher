@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:tibia.fandom.com)",
+      "WebFetch(domain:tibiasecrets.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:article.talesoftibia.com)",
+      "WebFetch(domain:www.tibiasecrets.com)",
+      "WebFetch(domain:www.tibiaqa.com)",
+      "WebFetch(domain:forumarchive.xenobot.net)",
+      "WebFetch(domain:linguagem469.wordpress.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(gh api:*)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/s2ward/469/main/books.json\" -o /c/tibia-research/books.json)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/s2ward/469/main/01-books.md\" -o /c/tibia-research/01-books.md)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/s2ward/469/main/README.md\" -o /c/tibia-research/README-469.md)",
+      "Bash(python:*)",
+      "Bash(taskkill //F //IM python.exe)",
+      "Bash(pkill -f \"crib_constrained\")",
+      "WebFetch(domain:tibia.wiki.gg)",
+      "Read(//c//**)",
+      "Bash(mv tibia-research:*)",
+      "Bash(gh repo:*)",
+      "Bash(cd:*)"
+    ]
+  }
+}
