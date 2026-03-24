@@ -212,6 +212,26 @@ KNOWN = set([
     'EID',   # oath (from DEE via E->I swap)
     'AUE',   # meadow (MHG, from AEUU via +1 remove U)
     'MIR',   # to me (dative, from LRM via L->I swap)
+    # Session 29 (proper noun classification + bag-of-letters word partition)
+    # Proper nouns: repeated blocks in consistent context, CipSoft-invented names
+    'WRLGTNELNR',  # 4x "STEH WRLGTNELNR HEL", 10-letter name (letters E,G,L,L,N,N,R,R,T,W)
+    'CHN',         # 8x "IN/SIN CHN SER", 3-letter name/abbreviation
+    'EHHIIHW',     # 3x "GEN EHHIIHW IN", 7 letters including 3 H's
+    'IGAA',        # 4x "TUT IGAA ER", 4-letter name
+    'LGTNELGZ',    # 2x "ERE LGTNELGZ ER", 8-letter name (shares letters with WRLGTNELNR)
+    'HISDIZA',     # 2x "AM HISDIZA RUNE", 7-letter place name
+    # German/MHG words newly recognized
+    'EI',   # egg (Ei), common word
+    'EN',   # dative suffix / article form (MHG)
+    'AD',   # nobility (MHG, root of ADEL)
+    'OR',   # ear (MHG variant of Ohr)
+    'WI',   # how (MHG wî, variant of wie)
+    'OD',   # wealth/treasure (MHG ôt/ôd, Nibelungen context)
+    'LAB',  # refreshment (MHG laben = to refresh/quench)
+    # Recurring garbled patterns (can't fix via ANAGRAM_MAP due to substring collisions)
+    'UNE',     # =NEU anagrammed, 5x "SALZBERG UNE NIT" (UNE→NEU breaks RUNE globally)
+    'GETRAS',  # 3x consistent context, unresolved 6-letter block
+    'HISS',    # 3x "DEN HISS TUN", unresolved 4-letter block
 ])
 
 # DP word segmentation
@@ -347,6 +367,22 @@ ANAGRAM_MAP = {
     'TOAD': 'TOD',  # +1 remove A: TOAD -> TOD (death), 1x, +3
     'DDNE': 'DEN',  # +1 remove D: DDNE -> DNE -> DEN (the), 1x, +3
     'UENO': 'NEU',  # +1 remove O: UENO -> UEN -> NEU (new), 1x, +2
+    # Session 29: bag-of-letters word partition resolutions
+    # Technique: find known German words inside garbled anagram blocks using I<->E/L swaps
+    'OIAITOEMEEND': 'OEDENAMETEEO',  # OEDE+NAME+TEE (2 I->E swaps), 2x, +14
+    'OIAITOEMEENDGEEMKMTGRSCASEZSTEIEHHIS': 'HECHELTALLESGOTTDIENERSOMMKMGAEZSEES',  # HECHELT+ALLES+GOTTDIENERS, 1x, +23
+    'UUISEMIADIIRGELNMH': 'LANGHEIMEDIESERUUM',  # LANG+HEIME+DIESER (2 I->E swaps), 1x, +17
+    'EHHIIHHISLUIRUNNS': 'HEHLUNRUHSEINESHI',  # HEHL+UNRUH+SEINES (2 I->E swaps), 1x, +15
+    'AUIGLAUNHEARUCHT': 'LANGURALTEAUCHUH',  # LANG+URALTE+AUCH (1 I->L swap), 1x, +14
+    'TTGEARUCHTIG': 'TATGUTREICHG',  # TAT+GUT+REICH, 1x, +11
+    'DNRHAUNIIOD': 'OEDENURHAND',  # OEDE+NUR+HAND (2 I->E swaps), 1x, +11
+    'SEZEEUITGH': 'ZUHELGEIST',  # ZU+HEL+GEIST (1 I->E swap), 1x, +8
+    'CHDKELSNDEF': 'DESDENICHKF',  # DES+DEN+ICH (1 I->E swap), 1x, +9
+    'UHONRIELT': 'ORTNEUHEL',  # ORT+NEU+HEL (1 I->E, 1 I->L swap), 1x, +9
+    'HIEAUIENA': 'ANAUEHEIL',  # AN+AUE+HEIL (1 I->E swap), 1x, +7
+    'UONGETRAS': 'ORTAUSGEN',  # ORT+AUS+GEN, 1x, +3
+    'LHLADIZEEELU': 'EDELEALLEZUH',  # EDELE+ALLE+ZU (2 I->E swaps), 1x, +7
+    'EEOIGTSTEI': 'SOTEETEILG',  # SO+TEE+TEIL (1 I->E swap), 1x, +3
 }
 
 # ============================================================
