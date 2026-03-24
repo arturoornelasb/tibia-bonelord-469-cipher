@@ -17,10 +17,10 @@ Example book:
 |---------|--------|
 | Cipher type: **homophonic substitution** (2-digit codes -> letters) | Confirmed |
 | Plaintext language: **German** (IC = 1.73, matches German 1.72) | Confirmed |
-| **97 of 100 codes mapped** to 21 letters (mapping v4) | Confirmed |
+| **98 of 100 codes mapped** to 21 letters (mapping v7) | Confirmed |
 | 70 books = overlapping fragments of **ONE continuous narrative** | Proven |
 | 37/70 books have odd digit counts — last digit is artifact | **Critical** |
-| **67.2%** of decoded text parses as German words (DP segmentation) | Current |
+| **71.9%** of decoded text parses as German words (DP segmentation) | Current |
 | 25/70 books assembled into raw-code superstring | Current |
 | Consensus narrative: **549 chars** (voting across aligned books) | Current |
 | Narrative about King LABGZERAS, ancient stones, runes | Partial |
@@ -108,7 +108,7 @@ WIR UND...                        => "we and..."
 ```
 .
 ├── README.md              # This file
-├── FINDINGS.md            # Complete research log (12+ sessions, 4800+ lines)
+├── FINDINGS.md            # Complete research log (23+ sessions, 7000+ lines)
 ├── data/
 │   ├── books.json         # Source data: all 70 books as digit strings
 │   ├── final_mapping_v4.json  # Best 97-code mapping (current)
@@ -155,7 +155,7 @@ Comprehensive wiki research (4 parallel agents, 300+ searches) confirmed:
 
 ## How to Contribute
 
-The cipher text is in `data/books.json`. The mapping is in `data/final_mapping_v4.json`. The complete research log is in `FINDINGS.md` (4800+ lines, 12 sessions).
+The cipher text is in `data/books.json`. The mapping is in `data/mapping_v7.json`. The complete research log is in `FINDINGS.md` (7000+ lines, 23 sessions).
 
 Key areas where help is needed:
 - **Book alignment**: 45/70 books don't align at code level due to homophonic substitution. A multi-sequence alignment or voting approach could recover the full narrative
