@@ -220,6 +220,7 @@ KNOWN = set([
     'IGAA',        # 4x "TUT IGAA ER", 4-letter name
     'LGTNELGZ',    # 2x "ERE LGTNELGZ ER", 8-letter name (shares letters with WRLGTNELNR)
     'HISDIZA',     # 2x "AM HISDIZA RUNE", 7-letter place name
+    'WRLGTN',      # truncated WRLGTNELNR, appears solo in book 4
     # German/MHG words newly recognized
     'EI',   # egg (Ei), common word
     'EN',   # dative suffix / article form (MHG)
@@ -232,9 +233,13 @@ KNOWN = set([
     'UNE',     # =NEU anagrammed, 5x "SALZBERG UNE NIT" (UNE→NEU breaks RUNE globally)
     'GETRAS',  # 3x consistent context, unresolved 6-letter block
     'HISS',    # 3x "DEN HISS TUN", unresolved 4-letter block
-    # Session 30: boundary artifact patterns
+    # Session 30: boundary artifact patterns + MHG short words
     'ND',   # =UND abbreviated, MHG manuscript convention, 6x "ORT ND TER"
     'DE',   # Low German/dialectal article (der/die/das), 5x "NEU DE DIENST"
+    'IH',   # MHG first person pronoun (= modern ICH), 3x "HEHL IH WI"
+    'HI',   # MHG "hie" (here), truncated HIN/HIER, various contexts
+    'EHH',  # truncated proper noun EHHIIHW, 2x "GEN EHH EI"
+    'NNR',  # recurring garbled pattern, 2x "SIE NNR TAG"
 ])
 
 # DP word segmentation
