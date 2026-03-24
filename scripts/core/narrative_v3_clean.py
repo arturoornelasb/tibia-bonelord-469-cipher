@@ -208,6 +208,10 @@ KNOWN = set([
     'GAB',  # gave (past tense of geben)
     'GIGE',  # fiddle, viola (MHG, modern Geige)
     'NDCE',  # proper noun (fixed codes 60,42,18,30), always "DIE NDCE FACH"
+    # Session 28 (letter-swap tolerant attack, +123 chars)
+    'EID',   # oath (from DEE via E->I swap)
+    'AUE',   # meadow (MHG, from AEUU via +1 remove U)
+    'MIR',   # to me (dative, from LRM via L->I swap)
 ])
 
 # DP word segmentation
@@ -321,6 +325,28 @@ ANAGRAM_MAP = {
     'ABG': 'GAB',  # cross-boundary: AB{G} -> GAB (gave), +1
     'UER': 'URE',  # cross-boundary: {U}ER -> URE (MHG), +1
     'ENG': 'GEN',  # anagram: ENG -> GEN (toward), 2x, +6 (fires after DENGE->DEGEN)
+    # Session 28: letter-swap tolerant resolutions (+123 chars total)
+    # I<->E swaps (confirmed cipher obfuscation pattern)
+    'DEE': 'EID',  # E->I swap: DEE -> EID (oath), 1x unique but 28 context chars, +28
+    'URIT': 'TREU',  # I->E swap: URIT -> URET -> TREU (faithful), 2x, +12
+    'RUIT': 'TREU',  # I->E swap: RUIT -> RUET -> TREU (faithful), 1x, +4
+    'NTEIG': 'NEIGT',  # exact anagram: NTEIG -> NEIGT (inclines), 1x, +5
+    # I<->L swaps (confirmed cipher obfuscation pattern)
+    'EHI': 'HEL',  # I->L swap: EHI -> EHL -> HEL (bright, MHG), 1x, +3
+    'LRM': 'MIR',  # L->I swap: LRM -> IRM -> MIR (to me), 1x, +3
+    # Block splits
+    'ADTHA': 'DAHAT',  # split: ADTHA -> DA+HAT (there has), 2x, +10
+    'MISE': 'IMES',  # split: MISE -> IM+ES (in it), 1x, +5
+    # +1 pattern (extra letter removed)
+    'UNRN': 'NUN',  # +1 remove R: UNRN -> NUN (now), 2x, +14
+    'NDMI': 'MIN',  # +1 remove D: NDMI -> NMI -> MIN (my, MHG), 1x, +9
+    'NSCHA': 'NACH',  # +1 remove S: NSCHA -> NCHA -> NACH (after), 2x, +8
+    'AEUU': 'AUE',  # +1 remove U: AEUU -> AEU -> AUE (meadow), 1x, +7
+    'ENDNO': 'DENN',  # +1 remove O: ENDNO -> ENDN -> DENN (because), 1x, +4
+    'ENDR': 'DER',  # +1 remove N: ENDR -> EDR -> DER (the), 1x, +3
+    'TOAD': 'TOD',  # +1 remove A: TOAD -> TOD (death), 1x, +3
+    'DDNE': 'DEN',  # +1 remove D: DDNE -> DNE -> DEN (the), 1x, +3
+    'UENO': 'NEU',  # +1 remove O: UENO -> UEN -> NEU (new), 1x, +2
 }
 
 # ============================================================
