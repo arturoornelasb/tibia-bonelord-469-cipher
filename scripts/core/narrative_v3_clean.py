@@ -172,6 +172,8 @@ KNOWN = set([
     'RICHTER',  # judge
     'DUNKEL',  # dark
     'EHRE',  # honor
+    'EHRT',  # honors (3rd person sg. of ehren)
+    'WAGE',  # dare, scales/balance
     'EDELE',  # MHG: noble
     'SCHULD',  # guilt, debt
     'SEGEN',  # blessing
@@ -240,6 +242,8 @@ KNOWN = set([
     'HI',   # MHG "hie" (here), truncated HIN/HIER, various contexts
     'EHH',  # truncated proper noun EHHIIHW, 2x "GEN EHH EI"
     'NNR',  # recurring garbled pattern, 2x "SIE NNR TAG"
+    'CHTIG',     # tail of BERUCHTIG (notorious) after cross-boundary split, 1x
+    'MMKMGAEZS', # unresolved 9-letter sequence from long anagram, 1x "SO MMKMGAEZS SEE"
 ])
 
 # DP word segmentation
@@ -417,6 +421,8 @@ ANAGRAM_MAP = {
     'RUNR': 'RNUR',  # cross-boundary: SCHAUN+R+UNR -> SCHAUN+R+NUR, 11x in decoded, +6
     # Session 30: bag-of-letters round 2
     'EHHI': 'HEHL',  # HEHL (concealment), 1 L->I swap, 1x, +4
+    'ETHR': 'EHRT',  # EHRT (honors, 3rd person of ehren), exact anagram, 1x, +4
+    'WEGA': 'WAGE',  # WAGE (dare/scales), exact anagram, 1x, +4
     'MSEU': 'UMES',  # UM+ES, exact anagram, 1x, +4
     'OIL': 'OEL',    # OEL (oil), 1 E->I swap, 1x, +3
 }
