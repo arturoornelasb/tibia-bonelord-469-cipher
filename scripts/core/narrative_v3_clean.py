@@ -383,6 +383,28 @@ ANAGRAM_MAP = {
     'UONGETRAS': 'ORTAUSGEN',  # ORT+AUS+GEN, 1x, +3
     'LHLADIZEEELU': 'EDELEALLEZUH',  # EDELE+ALLE+ZU (2 I->E swaps), 1x, +7
     'EEOIGTSTEI': 'SOTEETEILG',  # SO+TEE+TEIL (1 I->E swap), 1x, +3
+    # Session 29 round 2: extended bag-of-letters (100% coverage blocks)
+    'HIIHULNR': 'HERNUHEL',  # HER+NU+HEL (8/8, 2 I->E), 1x, +8
+    'IEETIGN': 'EINEIGT',  # EI+NEIGT (7/7, exact), 1x, +7
+    'DHEAUNR': 'ADHERNU',  # AD+HER+NU (7/7, exact), 1x, +7
+    'HECHLLNR': 'HERINICH',  # HER+IN+ICH (8/8, 2 L->I), 1x, +8
+    'AUUIIR': 'AUEURE',  # AUE+URE (6/6, 2 I->E), 1x, +6
+    'HECHLN': 'ICHHIN',  # ICH+HIN (6/6, 1 E->I + 1 L->I), 1x, +6
+    'RUIIIH': 'UREHEL',  # URE+HEL (6/6, 2 I->E + 1 I->L), 1x, +6
+    'EMNET': 'IMNIT',  # IM+NIT (5/5, 2 E->I), 1x, +5
+    # Session 29 round 2: good coverage blocks (>=70%)
+    'ISCHASDR': 'SEHRDASC',  # SEHR+DAS (7/8, 1 I->E), 1x, +7
+    'IDNELGZ': 'DIGEINZ',  # DIGE+IN (6/7, 1 L->I), 1x, +6
+    'GEAOIAS': 'SAGOELA',  # SAG+OEL (6/7, 1 I->L), 1x, +6
+    'TUIARSC': 'AUSTERC',  # AUS+TER (6/7, 1 I->E), 1x, +6
+    'NRNNDIA': 'ANDENNR',  # AN+DENN (6/7, 1 I->E), 1x, +6
+    'TECTCHMN': 'NICHTTCM',  # NICHT (5/8, 1 E->I), 1x, +5
+    'ETAEDE': 'ADTEEE',  # AD+TEE (5/6, exact), 1x, +5
+    'HECHLS': 'ESICHH',  # ES+ICH (5/6, 1 L->I), 1x, +5
+    'DNRHA': 'HANDR',  # HAND (4/5, exact), 2x, +8
+    'DHNEE': 'NEIDH',  # NEID (4/5, 1 E->I), 1x, +4
+    'AUUOTZN': 'ZUNOTAU',  # ZU+NOT (5/7, exact), 1x, +5
+    'CHDKEL': 'HELDCK',  # HELD (4/6, exact), 1x, +4
 }
 
 # ============================================================
