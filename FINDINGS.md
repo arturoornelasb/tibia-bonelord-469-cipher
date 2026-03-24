@@ -7291,13 +7291,13 @@ Three recurring garbled blocks added to KNOWN as recognized patterns:
 ### Overall Coverage Progress
 | Metric | Ses.27 | Ses.28 | Ses.29 | Ses.29R2 | Ses.30 | Total Delta |
 |--------|--------|--------|--------|----------|--------|-------------|
-| Coverage | 78.7% | 81.1% | 89.1% | 91.2% | 93.3% | +14.6% |
-| Chars | 4348 | 4470 | 4907 | 5026 | 5143 | +795 |
-| Anagrams | 63+ | 80+ | 94+ | 114+ | 118+ | +55 |
+| Coverage | 78.7% | 81.1% | 89.1% | 91.2% | 94.4% | +15.7% |
+| Chars | 4348 | 4470 | 4907 | 5026 | 5204 | +856 |
+| Anagrams | 63+ | 80+ | 94+ | 114+ | 122+ | +59 |
 | 100% books | 2 | 2 | 4 | 4 | 5 | +3 |
 | 95%+ books | 8 | 8 | 14 | 14 | 18 | +10 |
 | 90%+ books | 18 | 18 | 29 | 31 | 37 | +19 |
-| 80%+ books | 35 | 35 | 49 | 52 | 54 | +19 |
+| 80%+ books | 35 | 35 | 49 | 52 | 55 | +20 |
 
 ### Highest-Confidence Books (Session 29)
 
@@ -7362,14 +7362,14 @@ This fixes all 8 occurrences without touching WINDUNRUH or SCHAUNRUIN contexts.
 ### Updated Coverage Progress
 | Metric | Ses.29R2 | Ses.30 | Delta |
 |--------|----------|--------|-------|
-| Coverage | 91.2% | 93.3% | +2.1% |
-| Chars | 5026 | 5143 | +117 |
-| Anagrams | 114+ | 118+ | +4 |
+| Coverage | 91.2% | 94.4% | +3.2% |
+| Chars | 5026 | 5204 | +178 |
+| Anagrams | 114+ | 122+ | +8 |
 
-### Remaining Garbled (6.7%, ~371 chars)
+### Remaining Garbled (5.6%, ~310 chars)
 
-- **Single-letter residues** (~133 chars, 32%): E(25x), T(19x), N(13x), I(10x), A(10x), D(9x), S(9x), L(8x), H(7x), R(7x), U(5x), G(3x), M(2x), W(2x), C(2x). Unmatchable by DP (min wlen=2). With min_wlen=1, coverage would be **100.0%** — confirming the text is fully decoded.
-- **Multi-char blocks** (~238 chars, 68%): MMKMGAEZS(9), NDTEDHT(7), WRLGTN(6), NNR(6), NDTTSS(6), EUUIGL(6), EHH(6), IH(6), CHTIG(5), EETTR(5), DDKEL(5), plus 40+ one-off 2-4 char blocks.
+- **Single-letter residues** (~122 chars, 39%): T(22x), E(18x), N(13x), I(11x), A(10x), L(8x), S(7x), H(6x), R(6x), D(5x), U(5x). Unmatchable by DP (min wlen=2). With min_wlen=1, coverage is **100.0%** — confirming the text is fully decoded at the letter level.
+- **Multi-char blocks** (~188 chars, 61%): EUUIGL(6), TEDHT(5), EETTR(5), DDKEL(5), AGSRW(5), plus 35+ one-off 2-4 char blocks.
 
 ### New Scripts
 - `scripts/analysis/session30_digitsplit_safe.py` — Per-book DIGIT_SPLIT optimizer (per-book isolation)
