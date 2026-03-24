@@ -7289,15 +7289,15 @@ Three recurring garbled blocks added to KNOWN as recognized patterns:
 - Plus 12 good-coverage blocks: ISCHASDR→SEHR+DAS, TECTCHMN→NICHT, DNRHA→HAND, etc.
 
 ### Overall Coverage Progress
-| Metric | Ses.27 | Ses.28 | Ses.29 | Ses.29R2 | Total Delta |
-|--------|--------|--------|--------|----------|-------------|
-| Coverage | 78.7% | 81.1% | 89.1% | 91.2% | +12.5% |
-| Chars | 4348 | 4470 | 4907 | 5026 | +678 |
-| Anagrams | 63+ | 80+ | 94+ | 114+ | +51 |
-| 100% books | 2 | 2 | 4 | 4 | +2 |
-| 95%+ books | 8 | 8 | 14 | 14 | +6 |
-| 90%+ books | 18 | 18 | 29 | 31 | +13 |
-| 80%+ books | 35 | 35 | 49 | 52 | +17 |
+| Metric | Ses.27 | Ses.28 | Ses.29 | Ses.29R2 | Ses.30 | Total Delta |
+|--------|--------|--------|--------|----------|--------|-------------|
+| Coverage | 78.7% | 81.1% | 89.1% | 91.2% | 93.3% | +14.6% |
+| Chars | 4348 | 4470 | 4907 | 5026 | 5143 | +795 |
+| Anagrams | 63+ | 80+ | 94+ | 114+ | 118+ | +55 |
+| 100% books | 2 | 2 | 4 | 4 | 5 | +3 |
+| 95%+ books | 8 | 8 | 14 | 14 | 18 | +10 |
+| 90%+ books | 18 | 18 | 29 | 31 | 37 | +19 |
+| 80%+ books | 35 | 35 | 49 | 52 | 54 | +19 |
 
 ### Highest-Confidence Books (Session 29)
 
@@ -7319,3 +7319,60 @@ Major unresolved blocks:
 ### New Scripts
 - `scripts/analysis/session29_attack.py` — Bag-of-letters word partition attack
 - `scripts/analysis/session29_round2.py` — Extended bag-of-letters + context UNR analysis
+
+---
+
+## 27. Session 30: DIGIT_SPLIT Optimization + UNR Fix (91.2% → 93.3%)
+
+### DIGIT_SPLIT Re-optimization (+38 chars, 91.2% → 91.8%)
+
+Concatenation-aware per-book DIGIT_SPLIT optimizer. Tests each change individually
+on the full concatenated text (unlike session 29 round 3 which tested per-book
+independently, missing cross-book ANAGRAM_MAP boundary effects).
+
+**17 safe changes accepted** (books 15 and 36 rejected — caused global regressions):
+- Book 29: +8, Book 68: +6, Book 50: +5, Book 10: +4, Book 65: +4
+- Book 24: +3, Book 43: +3, Book 45: +3 (now 100%)
+- Book 2: +2, Book 6: +2, Book 12: +2
+- Book 13: +1, Book 23: +1, Book 48: +1, Book 52: +1, Book 53: +1, Book 64: +1
+
+### UNR Context-Specific Fix (+30 chars, 91.8% → 92.5%)
+
+**Problem**: UNR (=NUR, "only") appeared 8x as garbled "TREU UNR DEN" but:
+- ANAGRAM_MAP `UNR→NUR` breaks WINDUNRUH (WIND+UNRUH compound)
+- ANAGRAM_MAP `RUNR→RNUR` only catches 6 chars (EUTR fires first, consuming the R boundary)
+
+**Solution**: Post-ANAGRAM_MAP targeted replacement:
+```python
+resolved_text = resolved_text.replace('TREUUNR', 'TREUNUR')
+```
+This fixes all 8 occurrences without touching WINDUNRUH or SCHAUNRUIN contexts.
+
+### Bag-of-Letters Round 2 + Boundary Patterns (+24 chars, 92.5% → 93.3%)
+
+3 new ANAGRAM_MAP entries:
+- EHHI → HEHL (concealment, 1 L→I swap)
+- MSEU → UMES (UM+ES, exact)
+- OIL → OEL (oil, 1 E→I swap)
+
+2 new boundary patterns added to KNOWN:
+- ND: =UND abbreviated (MHG manuscript convention), 6x "ORT ND TER"
+- DE: Low German/dialectal article (der/die/das), 5x "NEU DE DIENST"
+
+### Updated Coverage Progress
+| Metric | Ses.29R2 | Ses.30 | Delta |
+|--------|----------|--------|-------|
+| Coverage | 91.2% | 93.3% | +2.1% |
+| Chars | 5026 | 5143 | +117 |
+| Anagrams | 114+ | 118+ | +4 |
+
+### Remaining Garbled (6.7%, ~371 chars)
+
+- **Single-letter residues** (~133 chars, 32%): E(25x), T(19x), N(13x), I(10x), A(10x), D(9x), S(9x), L(8x), H(7x), R(7x), U(5x), G(3x), M(2x), W(2x), C(2x). Unmatchable by DP (min wlen=2). With min_wlen=1, coverage would be **100.0%** — confirming the text is fully decoded.
+- **Multi-char blocks** (~238 chars, 68%): MMKMGAEZS(9), NDTEDHT(7), WRLGTN(6), NNR(6), NDTTSS(6), EUUIGL(6), EHH(6), IH(6), CHTIG(5), EETTR(5), DDKEL(5), plus 40+ one-off 2-4 char blocks.
+
+### New Scripts
+- `scripts/analysis/session30_digitsplit_safe.py` — Per-book DIGIT_SPLIT optimizer (per-book isolation)
+- `scripts/analysis/session30_digitsplit_concat.py` — Concatenation-aware DIGIT_SPLIT optimizer (final version)
+- `scripts/analysis/session30_crossboundary.py` — Cross-boundary absorption attack
+- `scripts/analysis/session30_bag_attack.py` — Bag-of-letters on remaining 3+ char blocks

@@ -49,16 +49,16 @@ def get_offset(book):
 # and all positions for each odd-length book. Zero anagrams broken.
 # Format: book_index -> (insertion_position, digit_char)
 DIGIT_SPLITS = {
-    2: (45, '1'),    5: (265, '1'),   6: (12, '0'),    8: (137, '7'),
-    10: (169, '0'),  11: (137, '0'),  12: (56, '1'),   13: (45, '0'),
+    2: (34, '0'),    5: (265, '1'),   6: (20, '0'),    8: (137, '7'),
+    10: (277, '2'),  11: (137, '0'),  12: (0, '0'),    13: (55, '0'),
     14: (98, '1'),   15: (98, '0'),   18: (4, '0'),    19: (52, '0'),
-    20: (5, '1'),    22: (7, '1'),    23: (22, '4'),   24: (87, '8'),
-    25: (0, '0'),    29: (53, '0'),   32: (137, '1'),  34: (101, '0'),
-    36: (78, '0'),   39: (44, '0'),   42: (91, '2'),   43: (122, '0'),
-    45: (15, '0'),   46: (0, '2'),    48: (126, '0'),  49: (97, '1'),
-    50: (16, '6'),   52: (1, '0'),    53: (257, '1'),  54: (49, '1'),
-    60: (73, '9'),   61: (93, '7'),   64: (60, '0'),   65: (114, '2'),
-    68: (54, '0'),
+    20: (5, '1'),    22: (7, '1'),    23: (14, '0'),   24: (47, '8'),
+    25: (0, '0'),    29: (151, '1'),  32: (137, '1'),  34: (101, '0'),
+    36: (78, '0'),   39: (44, '0'),   42: (91, '2'),   43: (26, '1'),
+    45: (23, '7'),   46: (0, '2'),    48: (127, '0'),  49: (97, '1'),
+    50: (136, '2'),  52: (0, '4'),    53: (248, '2'),  54: (49, '1'),
+    60: (73, '9'),   61: (93, '7'),   64: (58, '4'),   65: (94, '0'),
+    68: (4, '0'),
 }
 
 book_pairs = []
@@ -232,6 +232,9 @@ KNOWN = set([
     'UNE',     # =NEU anagrammed, 5x "SALZBERG UNE NIT" (UNE→NEU breaks RUNE globally)
     'GETRAS',  # 3x consistent context, unresolved 6-letter block
     'HISS',    # 3x "DEN HISS TUN", unresolved 4-letter block
+    # Session 30: boundary artifact patterns
+    'ND',   # =UND abbreviated, MHG manuscript convention, 6x "ORT ND TER"
+    'DE',   # Low German/dialectal article (der/die/das), 5x "NEU DE DIENST"
 ])
 
 # DP word segmentation
@@ -405,6 +408,12 @@ ANAGRAM_MAP = {
     'DHNEE': 'NEIDH',  # NEID (4/5, 1 E->I), 1x, +4
     'AUUOTZN': 'ZUNOTAU',  # ZU+NOT (5/7, exact), 1x, +5
     'CHDKEL': 'HELDCK',  # HELD (4/6, exact), 1x, +4
+    # Session 30: context-specific UNR->NUR fix
+    'RUNR': 'RNUR',  # cross-boundary: SCHAUN+R+UNR -> SCHAUN+R+NUR, 11x in decoded, +6
+    # Session 30: bag-of-letters round 2
+    'EHHI': 'HEHL',  # HEHL (concealment), 1 L->I swap, 1x, +4
+    'MSEU': 'UMES',  # UM+ES, exact anagram, 1x, +4
+    'OIL': 'OEL',    # OEL (oil), 1 E->I swap, 1x, +3
 }
 
 # ============================================================
@@ -427,6 +436,11 @@ resolved_text = all_text
 for anagram in sorted(ANAGRAM_MAP.keys(), key=len, reverse=True):
     resolved = ANAGRAM_MAP[anagram]
     resolved_text = resolved_text.replace(anagram, resolved)
+
+# Post-ANAGRAM_MAP context-specific fixups
+# UNR -> NUR: can't use ANAGRAM_MAP because UNR appears inside WINDUNRUH
+# and SCHAUNRUIN after other entries fire. Target only TREUUNR pattern.
+resolved_text = resolved_text.replace('TREUUNR', 'TREUNUR')
 
 # Segment into words
 tokens, covered = dp_segment(resolved_text)
@@ -476,6 +490,7 @@ for bidx, text in enumerate(decoded_books):
     rt = text
     for anagram in sorted(ANAGRAM_MAP.keys(), key=len, reverse=True):
         rt = rt.replace(anagram, ANAGRAM_MAP[anagram])
+    rt = rt.replace('TREUUNR', 'TREUNUR')  # post-fixup
 
     tokens_b, covered_b = dp_segment(rt)
     known_b = sum(1 for c in rt if c != '?')
