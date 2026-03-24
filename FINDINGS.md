@@ -7280,16 +7280,24 @@ Three recurring garbled blocks added to KNOWN as recognized patterns:
 - **GETRAS** (3x): consistent 6-letter block, unresolved
 - **HISS** (3x): "DEN HISS TUN", unresolved
 
+### Session 29 Round 2: Extended Bag-of-Letters (+119 chars, 89.1% → 91.2%)
+
+20 additional bag-of-letters resolutions, including 8 with perfect 100% letter coverage:
+- HIIHULNR → HER+NU+HEL, IEETIGN → EI+NEIGT, DHEAUNR → AD+HER+NU
+- HECHLLNR → HER+IN+ICH, AUUIIR → AUE+URE, HECHLN → ICH+HIN
+- RUIIIH → URE+HEL, EMNET → IM+NIT
+- Plus 12 good-coverage blocks: ISCHASDR→SEHR+DAS, TECTCHMN→NICHT, DNRHA→HAND, etc.
+
 ### Overall Coverage Progress
-| Metric | Ses.27 | Ses.28 | Ses.29 | Total Delta |
-|--------|--------|--------|--------|-------------|
-| Coverage | 78.7% | 81.1% | 89.1% | +10.4% |
-| Chars | 4348 | 4470 | 4907 | +559 |
-| Anagrams | 63+ | 80+ | 94+ | +31 |
-| 100% books | 2 | 2 | 4 | +2 |
-| 95%+ books | 8 | 8 | 14 | +6 |
-| 90%+ books | 18 | 18 | 29 | +11 |
-| 80%+ books | 35 | 35 | 49 | +14 |
+| Metric | Ses.27 | Ses.28 | Ses.29 | Ses.29R2 | Total Delta |
+|--------|--------|--------|--------|----------|-------------|
+| Coverage | 78.7% | 81.1% | 89.1% | 91.2% | +12.5% |
+| Chars | 4348 | 4470 | 4907 | 5026 | +678 |
+| Anagrams | 63+ | 80+ | 94+ | 114+ | +51 |
+| 100% books | 2 | 2 | 4 | 4 | +2 |
+| 95%+ books | 8 | 8 | 14 | 14 | +6 |
+| 90%+ books | 18 | 18 | 29 | 31 | +13 |
+| 80%+ books | 35 | 35 | 49 | 52 | +17 |
 
 ### Highest-Confidence Books (Session 29)
 
@@ -7299,13 +7307,15 @@ Three recurring garbled blocks added to KNOWN as recognized patterns:
 - Book 53: "CE AUS OEDE DU FINDEN SAGEN AM MIN HEHL DIE NDCE FACH HECHELT ICH OEL SO DEN HIER TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REIST EN ER SEIN GOTTDIENERS SO RUNE OR"
 - Book 69: "LAB IRREN WIR TOD IM MIN HEIME DIE URALTE STEIN EN TER SCHARDT IST SCHAUN RUIN WI IS"
 
-### Remaining Garbled (10.9%)
+### Remaining Garbled (8.8%)
 
 Major unresolved blocks:
-- **UNR** (21 chars, 7x) — =NUR, but global replacement breaks WINDUNRUH
-- **ND** (20 chars, 10x) — "ORT ND TER", various contexts
-- **Single-letter residues** (E: 16x, S: 12x) — cipher block boundary artifacts
-- Various 1-occurrence blocks in low-coverage books (4, 7, 13, 14, 17, 23, 36, 49)
+- **UNR** (21 chars, 7x) — =NUR, but global replacement breaks WINDUNRUH/SCHAUN+RUIN
+- **ND** (18 chars, 9x) — "ORT ND TER", global ND→UND causes -27 regression
+- **DE** (10 chars, 5x) — "NEU DE DIENST", unresolved fragment
+- **Single-letter residues** (E: 16x, S: 12x, N, T, etc.) — cipher block boundary artifacts, unmatchable by DP (min word length = 2)
+- Low-coverage books: 49 (68%), 30 (72%), 34 (77%), 23 (79%), 36 (79%)
 
 ### New Scripts
 - `scripts/analysis/session29_attack.py` — Bag-of-letters word partition attack
+- `scripts/analysis/session29_round2.py` — Extended bag-of-letters + context UNR analysis
