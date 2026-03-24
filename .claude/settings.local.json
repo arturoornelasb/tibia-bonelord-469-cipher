@@ -22,7 +22,24 @@
       "Read(//c//**)",
       "Bash(mv tibia-research:*)",
       "Bash(gh repo:*)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(grep -r \"frequency\\\\|freq\\\\|letter\\\\|count\\\\|chi\" C:/Github/dualidad_emergente/scripts/*.py)",
+      "Bash(ls -la C:/Github/reptimeline/reptimeline/*.py)",
+      "Bash(grep -o \"LEICH.\\\\{0,30\\\\}\")",
+      "Bash(git add:*)",
+      "Bash(git reset:*)",
+      "WebFetch(domain:strategywiki.org)",
+      "Bash(PYTHONIOENCODING=utf-8 python scripts/analysis/garbled_analysis.py)",
+      "Bash(PYTHONIOENCODING=utf-8 python scripts/analysis/code_suspicion.py 2>&1)",
+      "Bash(ls -1 *.py)",
+      "Bash(head -3 scripts/core/*.py)",
+      "Bash(PYTHONIOENCODING=utf-8 python scripts/core/narrative_v3_clean.py)",
+      "Bash(PYTHONIOENCODING=utf-8 python scripts/analysis/garbled_context_trace.py 2>&1)",
+      "Bash(PYTHONIOENCODING=utf-8 python scripts/analysis/session18_deep_analysis.py 2>&1)",
+      "Bash(PYTHONIOENCODING=utf-8 python scripts/analysis/session18_code20_investigation.py 2>&1)",
+      "Bash(PYTHONIOENCODING=utf-8 python scripts/analysis/parse_bookcases.py 2>&1)",
+      "Bash(PYTHONIOENCODING=utf-8 python scripts/analysis/bookcase_narrative.py 2>&1)",
+      "Bash(PYTHONIOENCODING=utf-8 python scripts/analysis/session18_mhg_deep.py 2>&1)"
     ]
   }
 }
