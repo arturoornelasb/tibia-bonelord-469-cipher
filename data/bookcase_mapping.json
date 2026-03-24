@@ -1,0 +1,570 @@
+[
+  {
+    "library_number": 1,
+    "books_json_index": 12,
+    "bookcase": "First Bookcase",
+    "label_10digit": "5611457278",
+    "exact_match": true,
+    "content_length": 137
+  },
+  {
+    "library_number": 2,
+    "books_json_index": 13,
+    "bookcase": "First Bookcase",
+    "label_10digit": "1800364688",
+    "exact_match": true,
+    "content_length": 141
+  },
+  {
+    "library_number": 3,
+    "books_json_index": 14,
+    "bookcase": "First Bookcase",
+    "label_10digit": "7830203118",
+    "exact_match": true,
+    "content_length": 133
+  },
+  {
+    "library_number": 4,
+    "books_json_index": 15,
+    "bookcase": "Second Bookcase",
+    "label_10digit": "7278943151",
+    "exact_match": true,
+    "content_length": 143
+  },
+  {
+    "library_number": 5,
+    "books_json_index": 16,
+    "bookcase": "Second Bookcase",
+    "label_10digit": "3834350812",
+    "exact_match": true,
+    "content_length": 174
+  },
+  {
+    "library_number": 6,
+    "books_json_index": 20,
+    "bookcase": "Third Bookcase",
+    "label_10digit": "0174648349",
+    "exact_match": true,
+    "content_length": 63
+  },
+  {
+    "library_number": 7,
+    "books_json_index": 21,
+    "bookcase": "Third Bookcase",
+    "label_10digit": "5084348561",
+    "exact_match": true,
+    "content_length": 176
+  },
+  {
+    "library_number": 8,
+    "books_json_index": 24,
+    "bookcase": "Fourth Bookcase",
+    "label_10digit": "5727857261",
+    "exact_match": true,
+    "content_length": 119
+  },
+  {
+    "library_number": 9,
+    "books_json_index": 25,
+    "bookcase": "Fourth Bookcase",
+    "label_10digit": "2197278943",
+    "exact_match": true,
+    "content_length": 35
+  },
+  {
+    "library_number": 10,
+    "books_json_index": 26,
+    "bookcase": "Fourth Bookcase",
+    "label_10digit": "4042158576",
+    "exact_match": true,
+    "content_length": 170
+  },
+  {
+    "library_number": 11,
+    "books_json_index": 30,
+    "bookcase": "Fifth Bookcase",
+    "label_10digit": "0943435084",
+    "exact_match": true,
+    "content_length": 150
+  },
+  {
+    "library_number": 12,
+    "books_json_index": 38,
+    "bookcase": "Sixth Bookcase",
+    "label_10digit": "2364672119",
+    "exact_match": true,
+    "content_length": 134
+  },
+  {
+    "library_number": 13,
+    "books_json_index": 39,
+    "bookcase": "Sixth Bookcase",
+    "label_10digit": "5765219727",
+    "exact_match": true,
+    "content_length": 59
+  },
+  {
+    "library_number": 14,
+    "books_json_index": 54,
+    "bookcase": "Seventh Bookcase",
+    "label_10digit": "4352821778",
+    "exact_match": true,
+    "content_length": 57
+  },
+  {
+    "library_number": 15,
+    "books_json_index": 55,
+    "bookcase": "Seventh Bookcase",
+    "label_10digit": "9457651288",
+    "exact_match": true,
+    "content_length": 116
+  },
+  {
+    "library_number": 16,
+    "books_json_index": 56,
+    "bookcase": "Seventh Bookcase",
+    "label_10digit": "6512889523",
+    "exact_match": true,
+    "content_length": 266
+  },
+  {
+    "library_number": 17,
+    "books_json_index": 68,
+    "bookcase": "Eighth Bookcase",
+    "label_10digit": "6114312889",
+    "exact_match": true,
+    "content_length": 143
+  },
+  {
+    "library_number": 18,
+    "books_json_index": 69,
+    "bookcase": "Eighth Bookcase",
+    "label_10digit": "3485625108",
+    "exact_match": true,
+    "content_length": 140
+  },
+  {
+    "library_number": 19,
+    "books_json_index": 57,
+    "bookcase": "Ninth Bookcase",
+    "label_10digit": "18003646889",
+    "exact_match": true,
+    "content_length": 230
+  },
+  {
+    "library_number": 20,
+    "books_json_index": 0,
+    "bookcase": "Tenth Bookcase",
+    "label_10digit": "9561513534",
+    "exact_match": true,
+    "content_length": 144
+  },
+  {
+    "library_number": 21,
+    "books_json_index": 1,
+    "bookcase": "Tenth Bookcase",
+    "label_10digit": "2295345274",
+    "exact_match": true,
+    "content_length": 92
+  },
+  {
+    "library_number": 22,
+    "books_json_index": 2,
+    "bookcase": "Tenth Bookcase",
+    "label_10digit": "8675635611",
+    "exact_match": true,
+    "content_length": 177
+  },
+  {
+    "library_number": 23,
+    "books_json_index": 58,
+    "bookcase": "Eleventh Bookcase",
+    "label_10digit": "8576594344",
+    "exact_match": true,
+    "content_length": 272
+  },
+  {
+    "library_number": 24,
+    "books_json_index": 59,
+    "bookcase": "Eleventh Bookcase",
+    "label_10digit": "8195372434",
+    "exact_match": true,
+    "content_length": 272
+  },
+  {
+    "library_number": 25,
+    "books_json_index": 3,
+    "bookcase": "Twelfth Bookcase",
+    "label_10digit": "7816705121",
+    "exact_match": true,
+    "content_length": 140
+  },
+  {
+    "library_number": 26,
+    "books_json_index": 4,
+    "bookcase": "Twelfth Bookcase",
+    "label_10digit": "9457655996",
+    "exact_match": true,
+    "content_length": 140
+  },
+  {
+    "library_number": 27,
+    "books_json_index": 40,
+    "bookcase": "Thirteenth Bookcase",
+    "label_10digit": "8577445451",
+    "exact_match": true,
+    "content_length": 168
+  },
+  {
+    "library_number": 28,
+    "books_json_index": 41,
+    "bookcase": "Thirteenth Bookcase",
+    "label_10digit": "0152551751",
+    "exact_match": true,
+    "content_length": 136
+  },
+  {
+    "library_number": 29,
+    "books_json_index": 42,
+    "bookcase": "Thirteenth Bookcase",
+    "label_10digit": "5197292197",
+    "exact_match": true,
+    "content_length": 187
+  },
+  {
+    "library_number": 30,
+    "books_json_index": 60,
+    "bookcase": "Fourteenth Bookcase",
+    "label_10digit": "9746483494",
+    "exact_match": true,
+    "content_length": 151
+  },
+  {
+    "library_number": 31,
+    "books_json_index": 22,
+    "bookcase": "Fifteenth Bookcase",
+    "label_10digit": "6512889672",
+    "exact_match": true,
+    "content_length": 137
+  },
+  {
+    "library_number": 32,
+    "books_json_index": 27,
+    "bookcase": "Sixteenth Bookcase",
+    "label_10digit": "5345274464",
+    "exact_match": true,
+    "content_length": 124
+  },
+  {
+    "library_number": 33,
+    "books_json_index": 31,
+    "bookcase": "Seventeenth Bookcase",
+    "label_10digit": "5345274461",
+    "exact_match": true,
+    "content_length": 248
+  },
+  {
+    "library_number": 34,
+    "books_json_index": 43,
+    "bookcase": "Eighteenth Bookcase",
+    "label_10digit": "81953724348",
+    "exact_match": true,
+    "content_length": 141
+  },
+  {
+    "library_number": 35,
+    "books_json_index": 61,
+    "bookcase": "Nineteenth Bookcase",
+    "label_10digit": "8550649967",
+    "exact_match": true,
+    "content_length": 145
+  },
+  {
+    "library_number": 36,
+    "books_json_index": 44,
+    "bookcase": "Twentieth Bookcase",
+    "label_10digit": "2197278167",
+    "exact_match": true,
+    "content_length": 126
+  },
+  {
+    "library_number": 37,
+    "books_json_index": 45,
+    "bookcase": "Twentieth Bookcase",
+    "label_10digit": "2119118003",
+    "exact_match": true,
+    "content_length": 149
+  },
+  {
+    "library_number": 38,
+    "books_json_index": 62,
+    "bookcase": "Twenty-First Bookcase",
+    "label_10digit": "4800658611",
+    "exact_match": true,
+    "content_length": 126
+  },
+  {
+    "library_number": 39,
+    "books_json_index": 63,
+    "bookcase": "Twenty-First Bookcase",
+    "label_10digit": "4600364671",
+    "exact_match": true,
+    "content_length": 126
+  },
+  {
+    "library_number": 40,
+    "books_json_index": 64,
+    "bookcase": "Twenty-First Bookcase",
+    "label_10digit": "9521991184",
+    "exact_match": true,
+    "content_length": 151
+  },
+  {
+    "library_number": 41,
+    "books_json_index": 5,
+    "bookcase": "Twenty-Second Bookcase",
+    "label_10digit": "2758576519",
+    "exact_match": true,
+    "content_length": 273
+  },
+  {
+    "library_number": 42,
+    "books_json_index": 6,
+    "bookcase": "Twenty-Second Bookcase",
+    "label_10digit": "3046484353",
+    "exact_match": true,
+    "content_length": 175
+  },
+  {
+    "library_number": 43,
+    "books_json_index": 7,
+    "bookcase": "Twenty-Second Bookcase",
+    "label_10digit": "8435345158",
+    "exact_match": true,
+    "content_length": 106
+  },
+  {
+    "library_number": 44,
+    "books_json_index": 28,
+    "bookcase": "Twenty-Third Bookcase",
+    "label_10digit": "1185764219",
+    "exact_match": true,
+    "content_length": 146
+  },
+  {
+    "library_number": 45,
+    "books_json_index": 29,
+    "bookcase": "Twenty-Third Bookcase",
+    "label_10digit": "1143128895",
+    "exact_match": true,
+    "content_length": 151
+  },
+  {
+    "library_number": 46,
+    "books_json_index": 36,
+    "bookcase": "Twenty-Fourth Bookcase",
+    "label_10digit": "8435081921",
+    "exact_match": true,
+    "content_length": 137
+  },
+  {
+    "library_number": 47,
+    "books_json_index": 37,
+    "bookcase": "Twenty-Fifth Bookcase",
+    "label_10digit": "5191186512",
+    "exact_match": true,
+    "content_length": 160
+  },
+  {
+    "library_number": 48,
+    "books_json_index": 61,
+    "bookcase": "Twenty-Sixth Bookcase",
+    "label_10digit": "85506499670",
+    "exact_match": true,
+    "content_length": 145
+  },
+  {
+    "library_number": 49,
+    "books_json_index": 46,
+    "bookcase": "Twenty-Seventh Bookcase",
+    "label_10digit": "1180014015",
+    "exact_match": true,
+    "content_length": 253
+  },
+  {
+    "library_number": 50,
+    "books_json_index": 47,
+    "bookcase": "Twenty-Seventh Bookcase",
+    "label_10digit": "4519889975",
+    "exact_match": true,
+    "content_length": 126
+  },
+  {
+    "library_number": 51,
+    "books_json_index": 65,
+    "bookcase": "Twenty-Eighth Bookcase",
+    "label_10digit": "9658550649",
+    "exact_match": true,
+    "content_length": 169
+  },
+  {
+    "library_number": 52,
+    "books_json_index": 17,
+    "bookcase": "Twenty-Ninth Bookcase",
+    "label_10digit": "7816705747",
+    "exact_match": true,
+    "content_length": 274
+  },
+  {
+    "library_number": 53,
+    "books_json_index": 32,
+    "bookcase": "Thirtieth Bookcase",
+    "label_10digit": "6518009967",
+    "exact_match": true,
+    "content_length": 137
+  },
+  {
+    "library_number": 54,
+    "books_json_index": 33,
+    "bookcase": "Thirtieth Bookcase",
+    "label_10digit": "1928895216",
+    "exact_match": true,
+    "content_length": 134
+  },
+  {
+    "library_number": 55,
+    "books_json_index": 48,
+    "bookcase": "Thirty-First Bookcase",
+    "label_10digit": "9521961800",
+    "exact_match": true,
+    "content_length": 169
+  },
+  {
+    "library_number": 56,
+    "books_json_index": 66,
+    "bookcase": "Thirty-Second Bookcase",
+    "label_10digit": "0421595615",
+    "exact_match": true,
+    "content_length": 210
+  },
+  {
+    "library_number": 57,
+    "books_json_index": 67,
+    "bookcase": "Thirty-Second Bookcase",
+    "label_10digit": "6284770908",
+    "exact_match": true,
+    "content_length": 98
+  },
+  {
+    "library_number": 58,
+    "books_json_index": 18,
+    "bookcase": "Thirty-Third Bookcase",
+    "label_10digit": "9785857651",
+    "exact_match": true,
+    "content_length": 93
+  },
+  {
+    "library_number": 59,
+    "books_json_index": 19,
+    "bookcase": "Thirty-Third Bookcase",
+    "label_10digit": "7563561145",
+    "exact_match": true,
+    "content_length": 129
+  },
+  {
+    "library_number": 60,
+    "books_json_index": 34,
+    "bookcase": "Thirty-Fourth Bookcase",
+    "label_10digit": "4672521977",
+    "exact_match": true,
+    "content_length": 123
+  },
+  {
+    "library_number": 61,
+    "books_json_index": 49,
+    "bookcase": "Thirty-Fifth Bookcase",
+    "label_10digit": "6797577144",
+    "exact_match": true,
+    "content_length": 115
+  },
+  {
+    "library_number": 62,
+    "books_json_index": 8,
+    "bookcase": "Thirty-Sixth Bookcase",
+    "label_10digit": "4647261145",
+    "exact_match": true,
+    "content_length": 155
+  },
+  {
+    "library_number": 63,
+    "books_json_index": 9,
+    "bookcase": "Thirty-Sixth Bookcase",
+    "label_10digit": "5857651972",
+    "exact_match": true,
+    "content_length": 294
+  },
+  {
+    "library_number": 64,
+    "books_json_index": 23,
+    "bookcase": "Thirty-Seventh Bookcase",
+    "label_10digit": "2196057963",
+    "exact_match": true,
+    "content_length": 177
+  },
+  {
+    "library_number": 65,
+    "books_json_index": 35,
+    "bookcase": "Thirty-Eighth Bookcase",
+    "label_10digit": "4519045042",
+    "exact_match": true,
+    "content_length": 286
+  },
+  {
+    "library_number": 66,
+    "books_json_index": 10,
+    "bookcase": "Thirty-Ninth Bookcase",
+    "label_10digit": "04215956151",
+    "exact_match": true,
+    "content_length": 281
+  },
+  {
+    "library_number": 67,
+    "books_json_index": 11,
+    "bookcase": "Thirty-Ninth Bookcase",
+    "label_10digit": "79282784350",
+    "exact_match": true,
+    "content_length": 137
+  },
+  {
+    "library_number": 68,
+    "books_json_index": 50,
+    "bookcase": "Fortieth Bookcase",
+    "label_10digit": "8005953724",
+    "exact_match": true,
+    "content_length": 141
+  },
+  {
+    "library_number": 69,
+    "books_json_index": 51,
+    "bookcase": "Fortieth Bookcase",
+    "label_10digit": "5460036467",
+    "exact_match": true,
+    "content_length": 268
+  },
+  {
+    "library_number": 70,
+    "books_json_index": 52,
+    "bookcase": "Fortieth Bookcase",
+    "label_10digit": "8952197278",
+    "exact_match": true,
+    "content_length": 137
+  },
+  {
+    "library_number": 71,
+    "books_json_index": 53,
+    "bookcase": "Fortieth Bookcase",
+    "label_10digit": "1801894452",
+    "exact_match": true,
+    "content_length": 271
+  }
+]
