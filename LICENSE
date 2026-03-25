@@ -1,0 +1,47 @@
+Business Source License 1.1
+
+Licensed Work:     Tibia Bonelord 469 Cipher Research
+Licensor:          J. Arturo Ornelas Brand <arturoornelas62@gmail.com>
+Change Date:       2030-03-24
+Change License:    GNU Affero General Public License v3.0
+
+Additional Use Grant:
+  Production use of the Licensed Work is permitted without a commercial
+  license for: (a) individual persons, (b) academic and research
+  institutions, and (c) non-profit organizations.
+
+  All other production use — including by for-profit companies,
+  government contractors, and commercial entities — requires a
+  commercial participation agreement with the Licensor.
+
+  All users are subject to the contribution terms in TERMS.md.
+
+  The cryptanalytic techniques described in this repository (Bag-of-Letters
+  Word Partition, Context-Aware Anagram Resolution, Concatenation-Aware
+  Digit-Split Testing) are original contributions. Citation is required
+  when referencing these techniques in academic or commercial work.
+
+  Game data (books.json) contains community-transcribed content from Tibia,
+  which is the intellectual property of CipSoft GmbH. Included under fair
+  use for research purposes.
+
+Terms:
+  The Licensor hereby grants you the right to copy, modify, create
+  derivative works, redistribute, and make non-production use of the
+  Licensed Work. The Licensor may make an Additional Use Grant above,
+  permitting limited production use.
+
+  Effective on the Change Date, or the fourth anniversary of the first
+  publicly available distribution of a specific version of the Licensed
+  Work under this License, whichever comes first, the Licensor hereby
+  grants you rights under the terms of the Change License, and the
+  rights granted in the paragraph above terminate.
+
+  If your use of the Licensed Work does not comply with the requirements
+  currently in effect as described in this License, you must purchase a
+  commercial license from the Licensor, its affiliated entities, or
+  authorized resellers, or you must refrain from using the Licensed Work.
+
+  For commercial licensing inquiries, contact: arturoornelas62@gmail.com
+
+  Full BUSL-1.1 text: https://mariadb.com/bsl11/
