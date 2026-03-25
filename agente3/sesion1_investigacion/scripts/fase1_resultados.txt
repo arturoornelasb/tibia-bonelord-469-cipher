@@ -1,0 +1,230 @@
+ÔòöÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòù
+Ôòæ    FASE 1: HIP├ôTESIS DEL ESPEJO ÔÇö Cifrado 469          Ôòæ
+ÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòØ
+
+Mapeo cargado: 98 c├│digos ÔåÆ 21 letras
+Total d├¡gitos: 11263 (70 libros)
+
+ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûê
+  BASELINE ÔÇö Mapeo original v4 (sin transformaci├│n)
+ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûê
+
+============================================================
+  Offset 0
+============================================================
+  Longitud texto:     5631 chars (3 desconocidos, 0.1%)
+  IC (caracteres):    0.0882  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.395  (2223/5627 bigramas top-25 alem├ín)
+  Word parse score:   0.366  (36.6% del texto es alem├ín)
+  Primeros 200 chars: EURALTESTEINENTERADTHARSCISTSCHAUNRUIINWIISETNHIERSERTIUMENGEMIORTENGCHDKELSEIDENDNRHAUNRNVMHISDIZARUNEDDUNTERLAUSINHIETDENDEESCHWITEIONEISTLRSZTHKWIRDASEUGENDRTHENAEDEULGHLWUOEHSGSEIIGEVMTWIIETUNNRTA
+  IC (pares):         0.0165  (alem├ín esperado: ~0.0172)
+
+============================================================
+  Offset 1
+============================================================
+  Longitud texto:     5631 chars (0 desconocidos, 0.0%)
+  IC (caracteres):    0.0863  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.360  (2025/5630 bigramas top-25 alem├ín)
+  Word parse score:   0.336  (33.6% del texto es alem├ín)
+  Primeros 200 chars: EINNDGEDASIEOWIRUNEAUIENERDENGEENDENTENTTUIGAAERGEIGETESINCHNESRERSCEAUSENDEUTRUNRDENENDEREDERKOENIGLABGZERASUNENITGHNEEAUNRSONGETRASESRWRDAEIETAUTRISTEILCHANHEARUCHTIGERSODASSTUNDIESERTEINERSEINEDETO
+  IC (pares):         0.0167  (alem├ín esperado: ~0.0172)
+
+ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûê
+  FASE 1A ÔÇö Reversal de d├¡gitos (95ÔåÆ59, 61ÔåÆ16, etc.)
+ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûê
+
+============================================================
+  1A Offset 0
+============================================================
+  Longitud texto:     5631 chars (55 desconocidos, 1.0%)
+  IC (caracteres):    0.0950  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.260  (1450/5575 bigramas top-25 alem├ín)
+  Word parse score:   0.162  (16.2% del texto es alem├ín)
+  Primeros 200 chars: SIINUWRETSSHSEIEDNRWENIETEICETHNIEEIUTEDTTISWATESEESEWU?DENRRMRSIHSNRTEMKSUODTEBNMEIENIEIEKMTEIOSZNGLGIOE?ETSDUNIIUGHERHWINMSSETHDTTSSONEEITEEIZTEVTSIOTOSIRENMEWTBNNERS?ERTEDISRTINONESORKMITERSIIEEIAT
+  IC (pares):         0.0165  (alem├ín esperado: ~0.0172)
+
+============================================================
+  1A Offset 1
+============================================================
+  Longitud texto:     5631 chars (52 desconocidos, 0.9%)
+  IC (caracteres):    0.0967  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.258  (1440/5578 bigramas top-25 alem├ín)
+  Word parse score:   0.152  (15.2% del texto es alem├ín)
+  Primeros 200 chars: IRAAERSOTOURODTELERTLRSNRIOSNREINEBNIEAIIISONNEIOSSORCEITETHERORNIETRTUOSAMRUIEIEIMSGINMSGEMEIKDNESNUNENZNGTOLGINSIRNAEINIEIEONREIETOSEEDIOTESRWTLTERITSSETHNETRNEITTISONEIGWAIOH?AMSEOSEWETGEIEITNNMSTO
+  IC (pares):         0.0167  (alem├ín esperado: ~0.0172)
+
+  --- 1A Alternativa: Mapeo con c├│digos invertidos ---
+
+============================================================
+  1A-alt (mapeo invertido) Offset 0
+============================================================
+  Longitud texto:     5631 chars (55 desconocidos, 1.0%)
+  IC (caracteres):    0.0950  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.260  (1450/5575 bigramas top-25 alem├ín)
+  Word parse score:   0.162  (16.2% del texto es alem├ín)
+  Primeros 200 chars: SIINUWRETSSHSEIEDNRWENIETEICETHNIEEIUTEDTTISWATESEESEWU?DENRRMRSIHSNRTEMKSUODTEBNMEIENIEIEKMTEIOSZNGLGIOE?ETSDUNIIUGHERHWINMSSETHDTTSSONEEITEEIZTEVTSIOTOSIRENMEWTBNNERS?ERTEDISRTINONESORKMITERSIIEEIAT
+  IC (pares):         0.0165  (alem├ín esperado: ~0.0172)
+
+============================================================
+  1A-alt (mapeo invertido) Offset 1
+============================================================
+  Longitud texto:     5631 chars (52 desconocidos, 0.9%)
+  IC (caracteres):    0.0967  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.258  (1440/5578 bigramas top-25 alem├ín)
+  Word parse score:   0.152  (15.2% del texto es alem├ín)
+  Primeros 200 chars: IRAAERSOTOURODTELERTLRSNRIOSNREINEBNIEAIIISONNEIOSSORCEITETHERORNIETRTUOSAMRUIEIEIMSGINMSGEMEIKDNESNUNENZNGTOLGINSIRNAEINIEIEONREIETOSEEDIOTESRWTLTERITSSETHNETRNEITTISONEIGWAIOH?AMSEOSEWETGEIEITNNMSTO
+  IC (pares):         0.0167  (alem├ín esperado: ~0.0172)
+
+ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûê
+  FASE 1B ÔÇö Swap de pares adyacentes ([A,B]ÔåÆ[B,A])
+ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûê
+
+============================================================
+  1B Offset 0
+============================================================
+  Longitud texto:     5631 chars (3 desconocidos, 0.1%)
+  IC (caracteres):    0.0882  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.210  (1183/5627 bigramas top-25 alem├ín)
+  Word parse score:   0.118  (11.8% del texto es alem├ín)
+  Primeros 200 chars: UEARTLSEETNINEETARTDAHSRICTSCSAHNUURIIWNIIESNTIHREESTRUIEMGNMEOITRNECGDHEKSLIEEDDNRNAHNUNRMVIHDSZIRANUDEUDTNREALSUNIIHTEEDDNEECSWHTIIENOIETSRLZSHTWKRIADESGUNERDHTNEEAEDLUHGWLOUHEGSESIIEGMVWTIITENURNAT
+  IC (pares):         0.0165  (alem├ín esperado: ~0.0172)
+
+============================================================
+  1B Offset 1
+============================================================
+  Longitud texto:     5631 chars (0 desconocidos, 0.0%)
+  IC (caracteres):    0.0863  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.205  (1153/5630 bigramas top-25 alem├ín)
+  Word parse score:   0.111  (11.1% del texto es alem├ín)
+  Primeros 200 chars: IENNGDDESAEIWORINUAEIUNEREEDGNEEDNNEETTNUTGIAAREEGGITESENIHCENRSRECSAESUNEEDTUURRNEDENDNREDEREOKNEGIALGBEZARUSENINGTNHEEUARNOSGNTEARESRSRWADIETEUARTSIETLIHCNAEHRACUTHGIREOSADSSUTDNEIESTRIEENSRIEENEDOT
+  IC (pares):         0.0167  (alem├ín esperado: ~0.0172)
+
+ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûê
+  FASE 1C ÔÇö Superstring al rev├®s
+ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûê
+
+============================================================
+  1C Reversed Offset 0
+============================================================
+  Longitud texto:     5631 chars (52 desconocidos, 0.9%)
+  IC (caracteres):    0.0967  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.269  (1501/5578 bigramas top-25 alem├ín)
+  Word parse score:   0.159  (15.9% del texto es alem├ín)
+  Primeros 200 chars: ITTDETUIEEINHTECIETEINEWRNDEIESHSSTERWUNIISRRSMSMMDTASMRRMALETDTNGIENUNROREHTETDHTETTERNSSEI?REMESOTOEOSSTNSMGTDREDHAEIET?EHNRAESHHNEDDHSTILNROISTVETZIEETIEENOSSTTDHTESSMNIWHREHGUIINUDSTE?EOIGLGNZSOIE
+  IC (pares):         0.0167  (alem├ín esperado: ~0.0172)
+
+============================================================
+  1C Reversed Offset 1
+============================================================
+  Longitud texto:     5631 chars (55 desconocidos, 1.0%)
+  IC (caracteres):    0.0950  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.264  (1470/5575 bigramas top-25 alem├ín)
+  Word parse score:   0.149  (14.9% del texto es alem├ín)
+  Primeros 200 chars: IIIAEINBENIERNSOIRNSRLTRELETDORUOTOSREAARIESMMEIDUZNRRHAIUNDEIWECESIGEISRMRRNEIEHDEHNHTENETDOETESSSTIZSOTTEINIMKMLERMNBEMEOISNEORIEEHEESTONEITIRETLTWRSETOIDEESOTEIERNOEIEINIEANRISNIGLOTGNZNENUNSENDKIE
+  IC (pares):         0.0165  (alem├ín esperado: ~0.0172)
+
+ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûê
+  FASE 1D ÔÇö F├│rmula Facebook: R = round(0.593*L + 25.28)
+ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûê
+
+  Tabla de transformaci├│n (muestra):
+  Original ÔåÆ Transformado
+    00 ÔåÆ 25
+    10 ÔåÆ 31
+    20 ÔåÆ 37
+    30 ÔåÆ 43
+    40 ÔåÆ 49
+    50 ÔåÆ 55
+    60 ÔåÆ 61
+    70 ÔåÆ 67
+    80 ÔåÆ 73
+    90 ÔåÆ 79
+    95 ÔåÆ 82
+    99 ÔåÆ 84
+
+============================================================
+  1D Facebook Offset 0
+============================================================
+  Longitud texto:     5631 chars (299 desconocidos, 5.3%)
+  IC (caracteres):    0.0959  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.223  (1188/5331 bigramas top-25 alem├ín)
+  Word parse score:   0.105  (10.5% del texto es alem├ín)
+  Primeros 200 chars: OUEIDREGZOKUEGDIMUIRTUEOWT?NOWOIULRUANEDNN?ERNSTERGERRAEHI?NEELMEUE?NWTSKODEENNE?SLETEULEOEDST?DKNIERMNDNEOZOMDEU?AMOTEUDN?SEEOWODNZOKG?ET?ZOR?NZTNZKEDTEEUNE?SRRSE?EUIEEONSODUMESDTEATKVEEDDZTLODULLEVT
+  IC (pares):         0.0240  (alem├ín esperado: ~0.0172)
+
+============================================================
+  1D Facebook Offset 1
+============================================================
+  Longitud texto:     5631 chars (278 desconocidos, 4.9%)
+  IC (caracteres):    0.0986  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.232  (1242/5352 bigramas top-25 alem├ín)
+  Word parse score:   0.112  (11.2% del texto es alem├ín)
+  Primeros 200 chars: NLWHNNEDTEAEGDNRRLETRLE?EEDE?NEN?NE?DIWDDUKVEEUEVDKVENIDNEWOLEENAEOWETREDHSERDRULESEMN?SEEUSUEKEAERTDEBTNAETERMN?KDNENINIULEOG?NEDATEEOADEDTIKERTRZRL?ZOKOWOULSEERUWSDKVAADRDT?EUENSKUEERRUNMUENNN?ISEZG
+  IC (pares):         0.0237  (alem├ín esperado: ~0.0172)
+
+  --- 1D Inversa: X = (c├│digo_visto - 25.28) / 0.593 ---
+
+============================================================
+  1D Inversa Offset 0
+============================================================
+  Longitud texto:     5631 chars (29 desconocidos, 0.5%)
+  IC (caracteres):    0.1542  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.071  (399/5601 bigramas top-25 alem├ín)
+  Word parse score:   0.044  (4.4% del texto es alem├ín)
+  Primeros 200 chars: ONUIIAHOOOHSHOIUHRDAORUOHEHHOHHINHONHAZCAAHHARNEHOOHOAHTNUHSHOHHUGHHSHOWHOIDOAEEHWHUOONHUOGHNEHSHWIHEKSSETOOOHIONHHKHEOGTSHWHHOHHCAOOHOHHEHOOOHWOOIOHUSODHNSHHWOANEHOEDHTOSNOCNHENHODHEHOEGHIOEHOINHHUOO
+  IC (pares):         0.1197  (alem├ín esperado: ~0.0172)
+
+============================================================
+  1D Inversa Offset 1
+============================================================
+  Longitud texto:     5631 chars (26 desconocidos, 0.5%)
+  IC (caracteres):    0.1497  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.067  (377/5604 bigramas top-25 alem├ín)
+  Word parse score:   0.045  (4.5% del texto es alem├ín)
+  Primeros 200 chars: SHHDESHSODHHOCAOEHEOEHHHOUSHHSHSHEEHIUHIINHOOOEUOHHOEHUHAZHHHHDIHUOHHO?DHDWE?IONHUWHKSHWHHRWEUHLHGDOIOBOWHHODEKSHHISHRUSINHUOOHSHIRODHOHCUSOUHEAOEOOHHOOHOHHRHNEOONHNIHOHRHSTEHDGTRWHEDHOARAKEUHSAHEWHOO
+  IC (pares):         0.1143  (alem├ín esperado: ~0.0172)
+
+ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûê
+  COMBINACIONES ÔÇö Espejo + Reversal
+ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûê
+
+============================================================
+  Combo: Full reverse + digit reverse (offset 0)
+============================================================
+  Longitud texto:     5631 chars (0 desconocidos, 0.0%)
+  IC (caracteres):    0.0863  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.208  (1170/5630 bigramas top-25 alem├ín)
+  Word parse score:   0.120  (12.0% del texto es alem├ín)
+  Primeros 200 chars: SIIWNIIURNUAHCSTSICSRAHTDARETNENIETSETLARUEIDIMEDDEHNIMEIDNURIWINRRBALERSENHCNIWHIIHHEGNEIETSREDSESADNGIETNEDNIFDNWHNNURIULEHRNLENTGLRWHETSUNEDRIWKHTZSRLTSIENOIETIWHCSEEDNEDTEIHNISUALRETNUDDENURAZIDSI
+  IC (pares):         0.0167  (alem├ín esperado: ~0.0172)
+
+============================================================
+  Combo: Swap adjacent + digit reverse (offset 0)
+============================================================
+  Longitud texto:     5631 chars (55 desconocidos, 1.0%)
+  IC (caracteres):    0.0950  (alem├ín esperado: ~0.0762)
+  Bigram score:       0.251  (1397/5575 bigramas top-25 alem├ín)
+  Word parse score:   0.144  (14.4% del texto es alem├ín)
+  Primeros 200 chars: ISNIWUERSTHSESEINDWRNEEIETCITENHEIIETUDETTSIAWETESSEWE?UEDRNMRSRHINSTRMESKOUTDBEMNIENEEIEIMKETOIZSGNGLOI?ETEDSNUIIGUEHHRIWMNSSTEDHTTSSNOEETIEEZIETTVISTOSORINEEMTWNBENSRE?TRDESITRNINOSEROMKTIREISEIIETA
+  IC (pares):         0.0165  (alem├ín esperado: ~0.0172)
+
+ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûê
+  RESUMEN COMPARATIVO
+ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûê
+
+  Recopilando scores de todas las transformaciones...
+
+  Test                            IC-char  IC-pair  Bigram% WordParse%     ?%
+  ------------------------------ -------- -------- -------- ---------- ------
+  Baseline (offset 0)              0.0882   0.0165     0.4%      36.6%   0.1%
+  Baseline (offset 1)              0.0863   0.0167     0.4%      33.6%   0.0%
+  1A Reverse digits (o0)           0.0950   0.0165     0.3%      16.2%   1.0%
+  1A Reverse digits (o1)           0.0967   0.0167     0.3%      15.2%   0.9%
+  1B Swap adjacent (o0)            0.0882   0.0165     0.2%      11.8%   0.1%
+  1C Full reverse (o0)             0.0967   0.0167     0.3%      15.9%   0.9%
+  1D Facebook (o0)                 0.0959   0.0240     0.2%      10.5%   5.3%
+  1D FB Inverse (o0)               0.1542   0.1197     0.1%       4.4%   0.5%
+
+  Alem├ín esperado:               ~0.0762  ~0.0172     >25%       >60%
+
+  *** La MEJOR transformaci├│n es la que m├ís se acerca a los valores esperados ***

@@ -1,0 +1,109 @@
+============================================================
+  FASE 3: SEGMENTACION POR LIBROS PARES
+============================================================
+
+Cargados 70 libros
+Longitudes: min=35, max=294, media=161
+
+--- Buscando unidades repetidas (4-30 digitos, en 2+ libros) ---
+
+Top 40 unidades repetidas:
+Secuencia                           Len   Libros  Total   Decodificado        
+--------------------------------------------------------------------------
+  956151353478019288952160199364    30    14      15      EURALTESTEINENT     
+  561513534780192889521601993646    30    14      15      EINNDGEDASIEOWI     
+  615135347801928895216019936467    30    14      15      URALTESTEINENTE     
+  151353478019288952160199364672    30    14      15      INNDGEDASIEOWIR     
+  042159561513534780192889521601    30    14      15      MISEINNDGEDASIE     
+  421595615135347801928895216019    30    14      15      DIEURALTESTEINE     
+  215956151353478019288952160199    30    14      15      ISEINNDGEDASIEO     
+  513534780192889521601993646724    30    13      14      RALTESTEINENTER     
+  135347801928895216019936467243    30    13      14      NNDGEDASIEOWIRU     
+  353478019288952160199364672431    30    13      14      ALTESTEINENTERA     
+  534780192889521601993646724314    30    13      14      NDGEDASIEOWIRUN     
+  347801928895216019936467243142    30    13      14      LTESTEINENTERAD     
+  478019288952160199364672431427    30    13      14      DGEDASIEOWIRUNE     
+  780192889521601993646724314278    30    13      14      TESTEINENTERADT     
+  801928895216019936467243142789    30    13      14      GEDASIEOWIRUNEA     
+  019288952160199364672431427894    30    13      14      ESTEINENTERADTH     
+  452176521972783046487651595646    30    13      13      DIESERTEINERSEI     
+  521765219727830464876515956461    30    13      13      SEIIGEVMTWIIETU     
+  217652197278304648765159564611    30    13      13      IESERTEINERSEIN     
+  176521972783046487651595646114    30    13      13      EIIGEVMTWIIETUN     
+  765219727830464876515956461141    30    13      13      ESERTEINERSEINE     
+  159561513534780192889521601993    30    13      14      IEURALTESTEINEN     
+  595615135347801928895216019936    30    13      14      SEINNDGEDASIEOW     
+  192889521601993646724314278943    30    12      12      EDASIEOWIRUNEAU     
+  928895216019936467243142789431    30    12      12      STEINENTERADTHA     
+  315191186512819118003561147261    30    12      12      ARSCISTSCHAUNRU     
+  151911865128191180035611472611    30    12      12      IENERDENGEENDEN     
+  519118651281911800356114726116    30    12      12      RSCISTSCHAUNRUI     
+  191186512819118003561147261164    30    12      12      ENERDENGEENDENT     
+  911865128191180035611472611646    30    12      12      SCISTSCHAUNRUII     
+  118651281911800356114726116467    30    12      12      NERDENGEENDENTE     
+  561145191991180036468895219911    30    12      14      ENDEESCHWITEION     
+  125275705845217652197278304648    30    12      12      SSTUNDIESERTEIN     
+  252757058452176521972783046487    30    12      12      OEHSGSEIIGEVMTW     
+  527570584521765219727830464876    30    12      12      STUNDIESERTEINE     
+  275705845217652197278304648765    30    12      12      EHSGSEIIGEVMTWI     
+  757058452176521972783046487651    30    12      12      TUNDIESERTEINER     
+  570584521765219727830464876515    30    12      12      HSGSEIIGEVMTWII     
+  705845217652197278304648765159    30    12      12      UNDIESERTEINERS     
+  058452176521972783046487651595    30    12      12      SGSEIIGEVMTWIIE     
+
+--- Libros contenidos dentro de otros ---
+  31 relaciones de contencion encontradas
+  Libro 46 (253 dig) esta contenido en Libro 51 (268 dig)
+  Libro 66 (210 dig) esta contenido en Libro 10 (281 dig)
+  Libro 66 (210 dig) esta contenido en Libro 35 (286 dig)
+  Libro 28 (146 dig) esta contenido en Libro 48 (169 dig)
+  Libro 61 (145 dig) esta contenido en Libro 65 (169 dig)
+  Libro 0 (144 dig) esta contenido en Libro 10 (281 dig)
+  Libro 0 (144 dig) esta contenido en Libro 35 (286 dig)
+  Libro 0 (144 dig) esta contenido en Libro 66 (210 dig)
+  Libro 68 (143 dig) esta contenido en Libro 17 (274 dig)
+  Libro 43 (141 dig) esta contenido en Libro 58 (272 dig)
+  Libro 43 (141 dig) esta contenido en Libro 59 (272 dig)
+  Libro 50 (141 dig) esta contenido en Libro 9 (294 dig)
+  Libro 69 (140 dig) esta contenido en Libro 9 (294 dig)
+  Libro 11 (137 dig) esta contenido en Libro 58 (272 dig)
+  Libro 12 (137 dig) esta contenido en Libro 21 (176 dig)
+
+--- Solapamientos suffix-prefix (>= 10 digitos) ---
+  164 solapamientos encontrados
+  Libro 35 -> Libro 10: 279 digitos = "MISEINNDGEDASIEOWIRUNEAUIENERD"
+  Libro  5 -> Libro  9: 271 digitos = "NHIERTAUTRISTEILCHANHEARUCHTIG"
+  Libro 51 -> Libro 53: 239 digitos = "CEAUSENDEDUNLNDEFSANGEVMMINHIH"
+  Libro 46 -> Libro 53: 234 digitos = "CEAUSENDEDUNLNDEFSANGEVMMINHIH"
+  Libro 66 -> Libro 10: 210 digitos = "MISEINNDGEDASIEOWIRUNEAUIENERD"
+  Libro 53 -> Libro  5: 155 digitos = "ENHIERTAUTRISTEILCHANHEARUCHTI"
+  Libro 53 -> Libro  9: 153 digitos = "NHIERTAUTRISTEILCHANHEARUCHTIG"
+  Libro 48 -> Libro 28: 146 digitos = "NAEDEULGHLWUOEHSGSEIIGEVMTWIIE"
+  Libro 26 -> Libro 21: 144 digitos = "IGLAUNHEARUCHTWIRUNDEEESTEIGAW"
+  Libro 43 -> Libro 59: 141 digitos = "TEERLABRRNIWIRURIHWNRSISTVMTEG"
+  Libro  5 -> Libro 50: 137 digitos = "GSEERLABRRNIWIRUNDIEMINHEDDEMI"
+  Libro 26 -> Libro 12: 137 digitos = "ENDRTHENAEUTERALSTNEDASENNTERL"
+  Libro 45 -> Libro 51: 134 digitos = "MNETENGEMIORTENGCHDKELSEZEEELU"
+  Libro 58 -> Libro 35: 133 digitos = "DEMIDIEURALTESTEINENTERADTHARS"
+  Libro  0 -> Libro 33: 131 digitos = "EDASIEOWIRUNEAUIENERDENGEENDEN"
+  Libro 50 -> Libro 69: 131 digitos = "LABRRNIWIRUNDIEMINHEDDEMIDIEUR"
+  Libro 52 -> Libro  3: 129 digitos = "TIURITGHNUNADAIEBERDEEOIAITOEM"
+  Libro  5 -> Libro 69: 127 digitos = "LABRRNIWIRUNDIEMINHEDDEMIDIEUR"
+  Libro 11 -> Libro 43: 126 digitos = "TEERLABRRNIWIRURIHWNRSISTVMTEG"
+  Libro 11 -> Libro 59: 126 digitos = "TEERLABRRNIWIRURIHWNRSISTVMTEG"
+
+--- Cadenas reconstruidas ---
+  Cadena 0: [10 libros, ~1644 dig] 17 -> 32 -> 11 -> 43 -> 59 -> 18 -> 67 -> 2 -> 48 -> 28
+  Cadena 1: [8 libros, ~1664 dig] 44 -> 3 -> 68 -> 45 -> 51 -> 53 -> 5 -> 9
+  Cadena 2: [4 libros, ~570 dig] 24 -> 21 -> 13 -> 38
+  Cadena 3: [4 libros, ~944 dig] 31 -> 19 -> 35 -> 10
+  Cadena 4: [3 libros, ~352 dig] 25 -> 15 -> 16
+  Cadena 5: [2 libros, ~120 dig] 20 -> 54
+  Cadena 6: [2 libros, ~307 dig] 26 -> 12
+  Cadena 7: [2 libros, ~263 dig] 52 -> 62
+
+  Libros aislados: 33 (0, 1, 4, 6, 7, 8, 14, 22, 27, 29, 30, 33, 34, 36, 37, 40, 41, 42, 46, 47, 49, 50, 55, 56, 57, 58, 60, 61, 63, 64, 65, 66, 69)
+
+--- Glosario de 'palabras 469' (unidades de 4-12 digitos en 5+ libros) ---
+Codigo469      Decodificado Libros  Total  
+--------------------------------------

@@ -1,4 +1,17 @@
+# Python
 __pycache__/
 *.pyc
 .env
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+
+# Claude worktrees
+.claude/worktrees/
+
+# Legacy agent work (in repo history)
 agente2/
