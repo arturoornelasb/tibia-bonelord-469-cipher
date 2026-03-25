@@ -55,8 +55,8 @@ Esta cifra ha estado sin resolver por más de 25 años. La solución generará u
 | Dato | Valor |
 |---|---|
 | **Años sin resolver** | 25+ (la cifra existe desde ~2000) |
-| **Cobertura alcanzada** | 94.4% a nivel de palabras, 100% a nivel de letras |
-| **Sesiones de análisis** | 30 |
+| **Cobertura alcanzada** | 94.6% a nivel de palabras, 100% a nivel de letras |
+| **Sesiones de análisis** | 31 |
 | **Idioma del texto plano** | Alemán (vocabulario del alto alemán medio) |
 | **Tipo de cifra** | Sustitución homofónica (98 códigos → 22 letras) |
 | **Contenido decodificado** | Inscripción funeraria bonelord — Rey Salzberg, Siervos de Dios, ruinas antiguas, magia rúnica |
@@ -75,7 +75,7 @@ Esta cifra ha estado sin resolver por más de 25 años. La solución generará u
 El repositorio contiene material listo para usar:
 - `docs/hellgate_library_guide.md` — Los 71 libros con texto decodificado (listo para wiki)
 - `docs/narrative_translation.md` — Traducciones completas en inglés y español
-- `docs/paper_469_cipher.es.md` — Artículo de investigación completo (español)
+- `papers/469_cipher/paper_469_cipher.es.md` — Artículo de investigación completo (también en PDF)
 - `data/mapping_v7.json` — La clave de descifrado (98 códigos → 22 letras)
 
 ### El Arco Narrativo (para contenido basado en narrativa)

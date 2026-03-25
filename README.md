@@ -1,6 +1,6 @@
 > **Idioma / Language:** [Español](README.es.md) | English
 
-# Tibia Bonelord 469 Cipher — SOLVED (94.4%)
+# Tibia Bonelord 469 Cipher — SOLVED (94.6%)
 
 Computational cryptanalysis of the **Bonelord Language** from the MMORPG [Tibia](https://www.tibia.com). **First known solution** to a 25-year-old cipher.
 
@@ -16,10 +16,10 @@ No public solution has existed in 25+ years of community effort.
 |--------|-------|
 | **Cipher type** | Homophonic substitution (98 two-digit codes → 22 German letters) |
 | **Plaintext language** | German (with Middle High German vocabulary) |
-| **Word-level coverage** | **94.4%** (5204/5515 characters) |
+| **Word-level coverage** | **94.6%** (5219/5514 characters) |
 | **Letter-level coverage** | **100%** (all codes mapped) |
 | **Codes mapped** | 98/100 (codes 07 and 32 never appear in any book) |
-| **Sessions** | 30 sessions of systematic cryptanalysis |
+| **Sessions** | 31 sessions of systematic cryptanalysis |
 | **Content** | Bonelord funerary inscription (LEICH) — King Salzberg, God's Servants, ancient stone ruins, rune magic |
 
 ### The Mapping (v7 — 98 codes → 22 letters)
@@ -85,7 +85,7 @@ Never appear: 07, 32
 
 ## Novel Techniques
 
-This research produced three novel cryptanalytic techniques, described in a [separate technical paper](docs/paper_bag_of_letters.md):
+This research produced three novel cryptanalytic techniques, described in a [separate technical paper](papers/bag_of_letters/paper_bag_of_letters.md):
 
 1. **Bag-of-Letters Word Partition (BoLWP)** — Combinatorial multi-word decomposition of garbled cipher blocks with systematic letter-swap tolerance. Largest single-session gain: +10.1% coverage.
 
@@ -102,7 +102,11 @@ This research produced three novel cryptanalytic techniques, described in a [sep
 ├── COMMERCIAL.md / .es.md             # Commercial participation guidelines
 ├── CREATORS.md / .es.md               # Content creator guidelines & media kit
 ├── TERMS.md / .es.md                  # Terms of use & contribution obligation
-├── FINDINGS.md                        # Complete 30-session research log (7000+ lines)
+├── FINDINGS.md                        # Complete 31-session research log (7000+ lines)
+├── papers/
+│   ├── 469_cipher/                    # Main research paper (EN/ES) + PDF
+│   ├── bag_of_letters/                # BoLWP technique paper (EN/ES) + PDF
+│   └── shared/                        # Shared LaTeX preamble
 ├── data/
 │   ├── mapping_v7.json                # THE mapping (98 codes → 22 letters)
 │   ├── books.json                     # 70 books as digit strings
@@ -114,12 +118,9 @@ This research produced three novel cryptanalytic techniques, described in a [sep
 │   └── experimental/                  # Early hypotheses & exploratory work
 ├── docs/
 │   ├── INDEX.md                       # Documentation index (EN/ES)
-│   ├── paper_469_cipher.md / .es.md   # Research paper (EN/ES)
-│   ├── paper_bag_of_letters.md / .es.md # BoLWP technique paper (EN/ES)
 │   ├── narrative_translation.md       # All 70 books translated (DE/EN/ES)
 │   ├── hellgate_library_guide.md      # Wiki-ready library guide (71 books)
-│   ├── roadmap_ingame.md              # In-game verification roadmap
-│   ├── npc-research.md                # NPC dialogue research
+│   ├── investigation/                 # In-game research & NPC data
 │   └── archive/                       # Legacy community data
 └── agente3/                           # Spanish-language investigation phases
 ```
@@ -129,7 +130,7 @@ This research produced three novel cryptanalytic techniques, described in a [sep
 ## Quick Start
 
 ```bash
-# Decode all 70 books with 94.4% word coverage
+# Decode all 70 books with 94.6% word coverage
 python scripts/core/narrative_v3_clean.py
 ```
 

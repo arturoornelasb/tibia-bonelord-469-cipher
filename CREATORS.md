@@ -55,8 +55,8 @@ This cipher has been unsolved for 25+ years. The solution will generate signific
 | Fact | Value |
 |---|---|
 | **Years unsolved** | 25+ (cipher exists since ~2000) |
-| **Coverage achieved** | 94.4% word-level, 100% letter-level |
-| **Sessions of analysis** | 30 |
+| **Coverage achieved** | 94.6% word-level, 100% letter-level |
+| **Sessions of analysis** | 31 |
 | **Plaintext language** | German (Middle High German vocabulary) |
 | **Cipher type** | Homophonic substitution (98 codes → 22 letters) |
 | **Content decoded** | Bonelord funerary inscription — King Salzberg, God's Servants, ancient ruins, rune magic |
@@ -75,7 +75,7 @@ This cipher has been unsolved for 25+ years. The solution will generate signific
 The repository contains ready-to-use material:
 - `docs/hellgate_library_guide.md` — All 71 books with decoded text (wiki-ready)
 - `docs/narrative_translation.md` — Full translations in English and Spanish
-- `docs/paper_469_cipher.md` — Complete research paper
+- `papers/469_cipher/paper_469_cipher.md` — Complete research paper (also available as PDF)
 - `data/mapping_v7.json` — The decryption key (98 codes → 22 letters)
 
 ### The Story Arc (for narrative-driven content)

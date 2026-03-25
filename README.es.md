@@ -1,6 +1,6 @@
 > **Idioma / Language:** Español | [English](README.md)
 
-# Cifra Bonelord 469 de Tibia — RESUELTA (94.4%)
+# Cifra Bonelord 469 de Tibia — RESUELTA (94.6%)
 
 Criptoanálisis computacional del **Lenguaje Bonelord** del MMORPG [Tibia](https://www.tibia.com). **Primera solución conocida** de una cifra de 25 años de antigüedad.
 
@@ -16,10 +16,10 @@ Ninguna solución pública ha existido en más de 25 años de esfuerzo comunitar
 |-----------|-------|
 | **Tipo de cifra** | Sustitución homofónica (98 códigos de 2 dígitos → 22 letras alemanas) |
 | **Idioma del texto plano** | Alemán (con vocabulario del alto alemán medio) |
-| **Cobertura a nivel de palabras** | **94.4%** (5204/5515 caracteres) |
+| **Cobertura a nivel de palabras** | **94.6%** (5219/5514 caracteres) |
 | **Cobertura a nivel de letras** | **100%** (todos los códigos mapeados) |
 | **Códigos mapeados** | 98/100 (los códigos 07 y 32 nunca aparecen en ningún libro) |
-| **Sesiones** | 30 sesiones de criptoanálisis sistemático |
+| **Sesiones** | 31 sesiones de criptoanálisis sistemático |
 | **Contenido** | Inscripción funeraria bonelord (LEICH) — Rey Salzberg, Siervos de Dios, ruinas de piedra antiguas, magia rúnica |
 
 ### El Mapeo (v7 — 98 códigos → 22 letras)
@@ -85,7 +85,7 @@ Nunca aparecen: 07, 32
 
 ## Técnicas Novedosas
 
-Esta investigación produjo tres técnicas criptoanalíticas novedosas, descritas en un [artículo técnico aparte](docs/paper_bag_of_letters.es.md):
+Esta investigación produjo tres técnicas criptoanalíticas novedosas, descritas en un [artículo técnico aparte](papers/bag_of_letters/paper_bag_of_letters.es.md):
 
 1. **Partición de Bolsa de Letras (BoLWP)** — Descomposición combinatoria multipalabra de bloques ilegibles con tolerancia sistemática a intercambio de letras. Mayor ganancia en una sesión: +10.1% de cobertura.
 
@@ -102,25 +102,25 @@ Esta investigación produjo tres técnicas criptoanalíticas novedosas, descrita
 ├── COMMERCIAL.md / .es.md             # Participación comercial
 ├── CREATORS.md / .es.md               # Guía para creadores de contenido
 ├── TERMS.md / .es.md                  # Términos de uso
-├── FINDINGS.md                        # Registro de investigación de 30 sesiones (7000+ líneas)
+├── FINDINGS.md                        # Registro de investigación de 31 sesiones (7000+ líneas)
+├── papers/
+│   ├── 469_cipher/                    # Artículo principal (EN/ES) + PDF
+│   ├── bag_of_letters/                # Artículo técnico BoLWP (EN/ES) + PDF
+│   └── shared/                        # Preámbulo LaTeX compartido
 ├── data/
 │   ├── mapping_v7.json                # EL mapeo (98 códigos → 22 letras)
 │   ├── books.json                     # 70 libros como cadenas de dígitos
 │   ├── bookcase_mapping.json          # Mapeo libro → estantería
 │   └── archive/                       # Versiones históricas del mapeo (v1-v6)
 ├── scripts/
-│   ├── README.md                      # Guía de organización de scripts
 │   ├── core/                          # Pipeline de descifrado + ataques
 │   ├── analysis/                      # Análisis por sesión
 │   └── experimental/                  # Hipótesis tempranas
 ├── docs/
 │   ├── INDEX.md                       # Índice maestro de documentación
-│   ├── paper_469_cipher.md / .es.md   # Artículo de investigación (EN/ES)
-│   ├── paper_bag_of_letters.md / .es.md # Artículo técnico BoLWP (EN/ES)
 │   ├── narrative_translation.md       # Los 70 libros (DE/EN/ES)
 │   ├── hellgate_library_guide.md      # Guía de biblioteca para wiki
-│   ├── roadmap_ingame.md              # Hoja de ruta de verificación in-game
-│   ├── npc-research.md                # Investigación de diálogos NPC
+│   ├── investigation/                 # Investigación in-game y datos NPC
 │   └── archive/                       # Datos comunitarios legacy
 └── agente3/                           # Fases de investigación en español
 ```
@@ -128,7 +128,7 @@ Esta investigación produjo tres técnicas criptoanalíticas novedosas, descrita
 ## Inicio Rápido
 
 ```bash
-# Decodificar los 70 libros con 94.4% de cobertura
+# Decodificar los 70 libros con 94.6% de cobertura
 python scripts/core/narrative_v3_clean.py
 ```
 

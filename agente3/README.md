@@ -34,7 +34,7 @@ Spanish-language investigation sessions conducted by a specialized research agen
 
 ### Session 2: `sesion2_nuevo_plan/`
 
-Planned but not executed. Superseded by the main research pipeline which achieved 94.4% coverage.
+Planned but not executed. Superseded by the main research pipeline which achieved 94.6% coverage.
 
 ---
 
@@ -68,4 +68,4 @@ Sesiones de investigación en español conducidas por un agente de investigació
 
 ### Sesión 2: `sesion2_nuevo_plan/`
 
-Planeada pero no ejecutada. Superada por el pipeline principal de investigación que alcanzó 94.4% de cobertura.
+Planeada pero no ejecutada. Superada por el pipeline principal de investigación que alcanzó 94.6% de cobertura.

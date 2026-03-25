@@ -3,8 +3,8 @@
 **Location:** Underground beneath Ab'Dendriel (Shadow Caves → Hellgate, Key 3012)
 **Total Books:** 71 (across 40 bookcases)
 **Cipher:** Homophonic substitution, 98 two-digit codes → 22 German letters
-**Overall Decode:** 94.4% word coverage (100% letter-level)
-**Generated:** 2026-03-24 from pipeline v7 (30 sessions)
+**Overall Decode:** 94.6% word coverage (100% letter-level)
+**Generated:** 2026-03-25 from pipeline v7 (31 sessions)
 
 ---
 

@@ -4,7 +4,7 @@
 
 ## English
 
-This directory contains **255 Python scripts** developed across 30 sessions of cryptanalysis. All scripts are preserved as-is — they document the complete research journey from initial frequency analysis to 94.4% decode.
+This directory contains **255 Python scripts** developed across 31 sessions of cryptanalysis. All scripts are preserved as-is — they document the complete research journey from initial frequency analysis to 94.6% decode.
 
 ### Directory Structure
 
@@ -18,7 +18,7 @@ This directory contains **255 Python scripts** developed across 30 sessions of c
 
 | Script | What it does |
 |--------|-------------|
-| `core/narrative_v3_clean.py` | **START HERE** — Decodes all 70 books with v7 mapping (94.4%) |
+| `core/narrative_v3_clean.py` | **START HERE** — Decodes all 70 books with v7 mapping (94.6%) |
 | `core/build_v7_and_attack.py` | Builds mapping v7 and runs final attacks |
 | `core/anagram_resolution.py` | Resolves anagrammed proper nouns (SALZBERG, etc.) |
 | `analysis/generate_library_guide.py` | Generates the wiki-ready Hellgate Library guide |
@@ -35,7 +35,7 @@ See each subdirectory's README for detailed script catalogs.
 
 ## Español
 
-Este directorio contiene **255 scripts de Python** desarrollados a lo largo de 30 sesiones de criptoanálisis. Todos los scripts se conservan tal cual — documentan el recorrido completo de investigación desde el análisis de frecuencia inicial hasta el 94.4% de decodificación.
+Este directorio contiene **255 scripts de Python** desarrollados a lo largo de 31 sesiones de criptoanálisis. Todos los scripts se conservan tal cual — documentan el recorrido completo de investigación desde el análisis de frecuencia inicial hasta el 94.6% de decodificación.
 
 ### Estructura de Directorios
 
@@ -49,7 +49,7 @@ Este directorio contiene **255 scripts de Python** desarrollados a lo largo de 3
 
 | Script | Qué hace |
 |--------|----------|
-| `core/narrative_v3_clean.py` | **EMPIEZA AQUÍ** — Decodifica los 70 libros con mapeo v7 (94.4%) |
+| `core/narrative_v3_clean.py` | **EMPIEZA AQUÍ** — Decodifica los 70 libros con mapeo v7 (94.6%) |
 | `core/build_v7_and_attack.py` | Construye el mapeo v7 y ejecuta ataques finales |
 | `core/anagram_resolution.py` | Resuelve nombres propios anagramados (SALZBERG, etc.) |
 | `analysis/generate_library_guide.py` | Genera la guía de la Biblioteca Hellgate para wiki |

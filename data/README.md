@@ -8,7 +8,7 @@
 
 | File | Description |
 |------|-------------|
-| **`mapping_v7.json`** | **THE SOLUTION** — 98 two-digit codes mapped to 22 German letters (94.4% coverage) |
+| **`mapping_v7.json`** | **THE SOLUTION** — 98 two-digit codes mapped to 22 German letters (94.6% coverage) |
 | `books.json` | All 70 Hellgate Library books as digit strings (11,263 digits total) |
 | `bookcase_mapping.json` | Which book sits on which bookcase (40 bookcases, 71 slots) |
 | `decoded_narrative.json` | Full decoded text with per-character coverage tracking |
@@ -38,7 +38,7 @@ The `archive/` folder contains superseded mapping versions (v1 through v6). Thes
 
 | Archivo | Descripción |
 |---------|-------------|
-| **`mapping_v7.json`** | **LA SOLUCIÓN** — 98 códigos de 2 dígitos mapeados a 22 letras alemanas (94.4%) |
+| **`mapping_v7.json`** | **LA SOLUCIÓN** — 98 códigos de 2 dígitos mapeados a 22 letras alemanas (94.6%) |
 | `books.json` | Los 70 libros de la Biblioteca Hellgate como cadenas de dígitos (11,263 dígitos) |
 | `bookcase_mapping.json` | Qué libro está en qué estantería (40 estanterías, 71 espacios) |
 | `decoded_narrative.json` | Texto decodificado completo con seguimiento de cobertura por carácter |
