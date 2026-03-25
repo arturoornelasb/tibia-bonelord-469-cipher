@@ -4,55 +4,47 @@
 
 ## English
 
-This directory contains **255 Python scripts** developed across 31 sessions of cryptanalysis. All scripts are preserved as-is — they document the complete research journey from initial frequency analysis to 94.6% decode.
+| Folder | Scripts | Description |
+|--------|---------|-------------|
+| [`core/`](core/) | 14 | Canonical pipeline: decoder, optimizer, attacks, anagram tools |
 
-### Directory Structure
+Historical and exploratory scripts are preserved in [`archive/scripts/`](../archive/scripts/):
 
-| Directory | Scripts | Purpose |
-|-----------|---------|---------|
-| `core/` | 98 | Main decryption pipeline, cipher attacks, and mapping builders |
-| `analysis/` | 78 | Per-session analysis, validation, and statistics |
-| `experimental/` | 79 | Early hypotheses: base-5, bigram, checkerboard, DNA alignment |
-
-### Key Entry Points
-
-| Script | What it does |
-|--------|-------------|
-| `core/narrative_v3_clean.py` | **START HERE** — Decodes all 70 books with v7 mapping (94.6%) |
-| `core/build_v7_and_attack.py` | Builds mapping v7 and runs final attacks |
-| `core/anagram_resolution.py` | Resolves anagrammed proper nouns (SALZBERG, etc.) |
-| `analysis/generate_library_guide.py` | Generates the wiki-ready Hellgate Library guide |
+| Folder | Scripts | Description |
+|--------|---------|-------------|
+| `archive/scripts/sessions/` | 43 | Per-round crack scripts from Sessions 9–12 |
+| `archive/scripts/core_misc/` | 27 | One-off investigation scripts |
+| `archive/scripts/experimental/` | 79 | Early-hypothesis scripts |
+| `archive/scripts/analysis/` | 81 | Per-session analysis scripts (Sessions 18–31) |
 
 ### Quick Start
 
 ```bash
+# Decode all 70 books (uses committed data/mapping_v7.json)
 python scripts/core/narrative_v3_clean.py
+
+# Or via Makefile
+make decode
 ```
 
-See each subdirectory's README for detailed script catalogs.
+See [`core/README.md`](core/README.md) for the full script catalog.
 
 ---
 
 ## Español
 
-Este directorio contiene **255 scripts de Python** desarrollados a lo largo de 31 sesiones de criptoanálisis. Todos los scripts se conservan tal cual — documentan el recorrido completo de investigación desde el análisis de frecuencia inicial hasta el 94.6% de decodificación.
+| Carpeta | Scripts | Descripción |
+|---------|---------|-------------|
+| [`core/`](core/) | 14 | Pipeline canónico: decodificador, optimizador, ataques, herramientas de anagramas |
 
-### Estructura de Directorios
+Los scripts históricos y exploratorios están en [`archive/scripts/`](../archive/scripts/):
 
-| Directorio | Scripts | Propósito |
-|------------|---------|-----------|
-| `core/` | 98 | Pipeline principal de descifrado, ataques y constructores de mapeo |
-| `analysis/` | 78 | Análisis por sesión, validación y estadísticas |
-| `experimental/` | 79 | Hipótesis tempranas: base-5, bigramas, checkerboard, alineación DNA |
-
-### Puntos de Entrada Clave
-
-| Script | Qué hace |
-|--------|----------|
-| `core/narrative_v3_clean.py` | **EMPIEZA AQUÍ** — Decodifica los 70 libros con mapeo v7 (94.6%) |
-| `core/build_v7_and_attack.py` | Construye el mapeo v7 y ejecuta ataques finales |
-| `core/anagram_resolution.py` | Resuelve nombres propios anagramados (SALZBERG, etc.) |
-| `analysis/generate_library_guide.py` | Genera la guía de la Biblioteca Hellgate para wiki |
+| Carpeta | Scripts | Descripción |
+|---------|---------|-------------|
+| `archive/scripts/sessions/` | 43 | Scripts de ataque por ronda (Sesiones 9–12) |
+| `archive/scripts/core_misc/` | 27 | Scripts de investigación puntuales |
+| `archive/scripts/experimental/` | 79 | Scripts de hipótesis tempranas |
+| `archive/scripts/analysis/` | 81 | Scripts de análisis por sesión (Sesiones 18–31) |
 
 ### Inicio Rápido
 
@@ -60,4 +52,4 @@ Este directorio contiene **255 scripts de Python** desarrollados a lo largo de 3
 python scripts/core/narrative_v3_clean.py
 ```
 
-Ver el README de cada subdirectorio para catálogos detallados de scripts.
+Ver [`core/README.md`](core/README.md) para el catálogo completo de scripts.
