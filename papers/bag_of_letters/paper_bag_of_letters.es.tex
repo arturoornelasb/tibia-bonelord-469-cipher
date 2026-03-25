@@ -1,0 +1,463 @@
+\documentclass[11pt,a4paper]{article}
+\input{../shared/preamble}
+\usepackage[spanish]{babel}
+
+\title{Partición de Bolsa de Letras: Una Técnica Novedosa para Resolver Bloques Ilegibles en Cifrados de Sustitución Homofónica}
+\author{Proyecto de Investigación Independiente}
+\date{Marzo 2026\\[0.5em]\normalsize Licencia: BUSL-1.1 (ver LICENSE en la raíz del repositorio)}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Resumen}
+
+Presentamos la \textbf{Partición de Bolsa de Letras por Palabras} (Bag-of-Letters Word Partition, BoLWP), una técnica combinatoria para recuperar texto legible a partir de bloques ilegibles producidos por cifrados de sustitución homofónica (homophonic substitution ciphers) que codifican texto sin espacios. A diferencia de la resolución de anagramas tradicional (que mapea un bloque ilegible a una palabra conocida), BoLWP descompone el inventario de letras de un bloque en la \textbf{combinación óptima de múltiples palabras} de un diccionario conocido, tolerando sustituciones de letras sistemáticas inherentes al cifrado. Aplicada a un cifrado sin resolver de 25 años de antigüedad en el MMORPG Tibia, la técnica logró +10,1\% de cobertura de palabras en una sola sesión --- la mayor ganancia en 30 sesiones de análisis --- resolviendo 34 bloques previamente opacos. También describimos dos técnicas complementarias: la \textbf{Resolución de Anagramas Consciente del Contexto} (Context-Aware Anagram Resolution, CAAR), que respeta los límites de palabras compuestas durante la sustitución, y la \textbf{Prueba de División de Dígitos Consciente de Concatenación} (Concatenation-Aware Digit-Split Testing, CADST), que valida modificaciones por fragmento contra el texto reconstruido global para prevenir regresiones en los límites entre fragmentos.
+
+\section{Introducción}
+
+\subsection{El Problema}
+
+Los cifrados de sustitución homofónica (homophonic substitution ciphers) asignan múltiples símbolos de texto cifrado a la misma letra del texto plano, aplanando las distribuciones de frecuencia y derrotando el análisis de frecuencia estándar. Cuando el texto plano además \textbf{carece de límites de palabras} (sin espacios, puntuación ni delimitadores), incluso una descifrado correcto a nivel de letras produce una cadena continua de letras que debe segmentarse en palabras --- una tarea no trivial, especialmente para idiomas con composición productiva (p. ej., alemán).
+
+La segmentación de palabras por programación dinámica (PD) contra un diccionario logra buena cobertura en la mayor parte del flujo descifrado, pero ciertas regiones resisten la segmentación. Estos \textbf{bloques ilegibles} contienen letras correctamente descifradas que no coinciden con ninguna entrada individual del diccionario. Los enfoques anteriores tratan cada bloque como un posible anagrama de una palabra conocida. Demostramos que esto es insuficiente: muchos bloques ilegibles codifican \textbf{múltiples palabras} cuyas letras están intercaladas por el mapeo muchos-a-uno del cifrado.
+
+\subsection{Contexto}
+
+Esta técnica fue desarrollada durante el descifrado del cifrado ``Bonelord 469'' --- 70 libros de secuencias de dígitos puros del MMORPG Tibia (CipSoft GmbH, 1997–presente). El cifrado utiliza 98 códigos de dos dígitos mapeados a 22 letras alemanas (incluyendo vocabulario del alto alemán medio). Después de alcanzar ~81\% de cobertura a nivel de palabras mediante métodos criptoanalíticos estándar, el ~19\% restante consistía en bloques ilegibles que variaban de 3 a 35 caracteres.
+
+\subsection{Contribuciones}
+
+\begin{enumerate}
+\item \textbf{Partición de Bolsa de Letras por Palabras (Bag-of-Letters Word Partition, BoLWP):} Descomposición combinatoria multipalabra de bloques ilegibles con tolerancia a intercambios
+\item \textbf{Resolución de Anagramas Consciente del Contexto (Context-Aware Anagram Resolution, CAAR):} Reemplazo de cadenas sensible a los límites de frases
+\item \textbf{Prueba de División de Dígitos Consciente de Concatenación (Concatenation-Aware Digit-Split Testing, CADST):} Validación global de modificaciones locales en texto cifrado fragmentado
+\end{enumerate}
+
+\section{Antecedentes}
+
+\subsection{Sustitución Homofónica}
+
+Un cifrado de sustitución homofónica (homophonic substitution cipher) mapea cada letra del texto plano $l$ a un conjunto de símbolos de texto cifrado $C(l)$, donde $|C(l)|$ es aproximadamente proporcional a la frecuencia de $l$ en el idioma del texto plano. Para un alfabeto alemán de 22 letras:
+
+\begin{itemize}
+\item E (16,4\% de frecuencia) $ightarrow$ 20 códigos
+\item N (9,8\%) $ightarrow$ 10 códigos
+\item I (7,6\%) $ightarrow$ 8 códigos
+\item S (7,3\%) $ightarrow$ 7 códigos
+\item ...hasta V (0,7\%) $ightarrow$ 1 código
+\end{itemize}
+
+Con 98 códigos que abarcan 22 letras, cada código mapea determinísticamente a una letra, pero el mapeo inverso es de uno a muchos.
+
+\subsection{El Problema de Segmentación}
+
+Dada una secuencia de letras descifradas (p. ej., \texttt{DIERALTESTEINEISEINRUIN}), la segmentación por PD encuentra los límites de palabras que maximizan la cobertura del diccionario:
+
+\begin{lstlisting}[style=plain]
+DIE|RALT|STEIN|E|IST|EIN|RUIN  $ightarrow$  subóptimo
+DIE|R|ALTE|STEIN|E|IST|EIN|RUIN  $ightarrow$  mejor
+\end{lstlisting}
+
+Los bloques que no coinciden con ninguna entrada del diccionario se encierran entre llaves: \texttt{\{RALT\}}. Estos bloques ilegibles son el objetivo de BoLWP.
+
+\subsection{Por Qué Falla la Coincidencia de Anagramas de Palabra Única}
+
+Considere el bloque ilegible \texttt{DNRHAUNIIOD} (11 caracteres). Ninguna palabra alemana individual es un anagrama de estas letras. Los enfoques tradicionales abandonan este bloque. Pero las letras pueden particionarse en:
+
+\begin{itemize}
+\item OEDE (4 letras, ``páramo'') --- requiere 2 intercambios I$ightarrow$E
+\item NUR (3 letras, ``solo'') --- coincidencia exacta
+\item HAND (4 letras, ``mano'') --- coincidencia exacta
+\end{itemize}
+
+Total: 4 + 3 + 4 = 11 letras consumidas, 100\% de cobertura.
+
+\section{Partición de Bolsa de Letras por Palabras (Bag-of-Letters Word Partition, BoLWP)}
+
+\subsection{Algoritmo}
+
+\textbf{Entrada:} Un bloque ilegible $G$ de longitud $n$, un diccionario $D$ de palabras conocidas, y un conjunto de intercambios de letras (letter swaps) permitidos $S$ (p. ej., \{I$eftrightarrow$E, I$eftrightarrow$L\}).
+
+\textbf{Salida:} Una secuencia ordenada de palabras $(w_1, w_2, \ldots, w_k)$ de $D$ tal que la unión de multiconjuntos de sus letras coincida (o coincida aproximadamente vía $S$) con el multiconjunto de letras de $G$, maximizando el total de caracteres cubiertos.
+
+\begin{lstlisting}[style=plain]
+function BoLWP(G, D, S, max_swaps):
+    bag = letter_multiset(G)
+    n = |G|
+    best = (0, [])  # (coverage, word_list)
+
+    function search(remaining_bag, remaining_len, words, swaps_used):
+        if coverage(words) > best.coverage:
+            best = (coverage(words), words)
+
+        for w in D where |w| <= remaining_len:
+            w_bag = letter_multiset(w)
+            (ok, new_swaps) = can_satisfy(remaining_bag, w_bag, S, max_swaps - swaps_used)
+            if ok:
+                new_bag = remaining_bag - w_bag (with swaps applied)
+                search(new_bag, remaining_len - |w|, words + [w], swaps_used + new_swaps)
+
+    search(bag, n, [], 0)
+    return best
+\end{lstlisting}
+
+\subsection{Modelo de Intercambio de Letras}
+
+El mapeo muchos-a-uno del cifrado crea ambigüedades sistemáticas en los límites de los códigos. En nuestro cifrado:
+
+\begin{itemize}
+\item \textbf{Intercambio I$eftrightarrow$E:} Los 8 códigos de I y 20 códigos de E crean confusión en los límites donde un par de códigos descifrado como \texttt{...I} podría en realidad terminar en \texttt{E} si el límite del par se desplaza
+\item \textbf{Intercambio I$eftrightarrow$L:} Los 2 códigos de L (34, 96) son numéricamente adyacentes a los códigos de I, causando asignaciones erróneas ocasionales
+\end{itemize}
+
+El modelo de intercambio permite hasta $k$ sustituciones de letras totales por bloque (típicamente $k \leq 3$ para bloques de menos de 15 caracteres). Cada intercambio tiene un coste, y el algoritmo prefiere soluciones con menos intercambios.
+
+\subsection{Poda}
+
+La búsqueda ingenua es exponencial. Aplicamos tres estrategias de poda (pruning):
+
+\begin{enumerate}
+\item \textbf{Límite de longitud:} Solo considerar palabras $w$ donde $|w| \leq$ letras restantes
+\item \textbf{Disponibilidad de letras:} Verificar previamente que la bolsa restante contiene suficientes letras (con intercambios) para formar $w$ antes de recurrir
+\item \textbf{Longitud mínima de palabra:} Las palabras deben tener $\geq 2$ caracteres (las letras individuales son demasiado ambiguas)
+\item \textbf{Umbral de cobertura:} Abandonar ramas donde la cobertura máxima alcanzable (actual + letras restantes) no puede superar la mejor actual
+\end{enumerate}
+
+\subsection{Diccionario}
+
+El diccionario combina:
+
+\begin{itemize}
+\item Alemán moderno (palabras comunes, 2-20 caracteres)
+\item Vocabulario del alto alemán medio (MHG) (538 entradas incluyendo formas arcaicas: SCE, NIT, SER, LEICH, SCHRAT, OEL)
+\item Nombres propios confirmados del cifrado (SALZBERG, WEICHSTEIN, GOTTDIENER, etc.)
+\item Palabras de un solo carácter excluidas para prevenir descomposición trivial
+\end{itemize}
+
+Total: ~12.000 entradas (después de filtrar al alfabeto de 22 letras del cifrado).
+
+\subsection{Complejidad}
+
+Para un bloque ilegible de longitud $n$ y un diccionario de tamaño $|D|$:
+
+\begin{itemize}
+\item Peor caso: $O(|D|^{n/2})$ (todas palabras de 2 letras)
+\item Caso práctico: $O(|D|^{n/\bar{w}})$ donde $\bar{w}$ es la longitud promedio de palabra (~4,5 para alemán)
+\item Con poda, los bloques típicos ($n \leq 20$) se resuelven en menos de 1 segundo
+\end{itemize}
+
+\section{Resolución de Anagramas Consciente del Contexto (Context-Aware Anagram Resolution, CAAR)}
+
+\subsection{El Problema de Palabras Compuestas}
+
+El reemplazo de cadenas estándar es agnóstico al contexto: reemplazar todas las ocurrencias del patrón $P$ con el reemplazo $R$ puede romper palabras compuestas válidas que contienen $P$ como subcadena.
+
+\textbf{Ejemplo:} El bloque ilegible \texttt{UNR} es un anagrama de \texttt{NUR} (``solo''). Pero reemplazar ingenuamente todos los \texttt{UNR} con \texttt{NUR} destruye:
+\begin{itemize}
+\item \texttt{WINDUNRUH} $ightarrow$ \texttt{WINDNURH} (rompe el compuesto ``Windunruh'' = viento-inquietud)
+\item \texttt{SCHAUNRUIN} $ightarrow$ \texttt{SCHAUNRUIN} (rompe ``schaun ruin'' = contemplar ruina)
+\end{itemize}
+
+\subsection{Solución: Focalización en Límites de Frase}
+
+En lugar de reemplazo global, CAAR identifica el \textbf{contexto frasal} específico en el que ocurre el anagrama y apunta solo a ese patrón:
+
+\begin{lstlisting}[style=python]
+# INCORRECTO: reemplazo global rompe compuestos
+resolved = resolved.replace('UNR', 'NUR')
+
+# CORRECTO: reemplazo específico por contexto
+resolved = resolved.replace('TREUUNR', 'TREUNUR')
+\end{lstlisting}
+
+Esto resolvió las 8 ocurrencias del anagrama UNR$ightarrow$NUR sin afectar las 4 ocurrencias de WINDUNRUH.
+
+\subsection{Cuándo Aplicar CAAR}
+
+CAAR es necesario cuando:
+\begin{enumerate}
+\item El patrón del anagrama aparece como subcadena de una palabra compuesta válida
+\item La palabra compuesta fue formada por una resolución de anagrama \textbf{previa} (ya que las resoluciones se aplican de mayor a menor longitud)
+\item Tanto el compuesto como el anagrama independiente son lecturas legítimas
+\end{enumerate}
+
+CAAR opera como un \textbf{paso posterior} (post-pass) después de la resolución principal de anagramas, corrigiendo colisiones específicas del contexto.
+
+\section{Prueba de División de Dígitos Consciente de Concatenación (Concatenation-Aware Digit-Split Testing, CADST)}
+
+\subsection{El Problema de División de Dígitos}
+
+En el cifrado Bonelord, CipSoft eliminó un solo dígito de 37 de los 70 libros (todos los libros con conteos de dígitos impares). Esta ofuscación deliberada rompe la alineación de pares de 2 dígitos en el punto de eliminación, produciendo una decodificación incorrecta de letras aguas abajo.
+
+La recuperación requiere encontrar:
+\begin{enumerate}
+\item La \textbf{posición} correcta (0 a $n$) para el dígito faltante
+\item El \textbf{dígito} correcto (0-9) a insertar
+\end{enumerate}
+
+Para un libro de longitud $n$, esto es un espacio de búsqueda de $10 \times (n+1)$.
+
+\subsection{Prueba Por Libro vs. Global}
+
+La \textbf{prueba por libro} evalúa cada inserción de dígito contra solo el texto descifrado de ese libro. Esto omite:
+
+\begin{itemize}
+\item Límites de anagramas entre libros (entradas de ANAGRAM\_MAP que abarcan la unión entre dos libros en la narrativa concatenada)
+\item Efectos aguas abajo donde el cambio de un libro desplaza las frecuencias de letras lo suficiente para alterar la segmentación por PD en libros superpuestos
+\end{itemize}
+
+\textbf{CADST} evalúa cada inserción candidata mediante:
+\begin{enumerate}
+\item Insertar el dígito en el libro objetivo
+\item Re-decodificar el \textbf{corpus completo} (los 70 libros concatenados)
+\item Aplicar la pipeline completa de resolución de ANAGRAM\_MAP
+\item Ejecutar la segmentación por PD en el texto resuelto \textbf{global}
+\item Comparar la cobertura global contra la línea base
+\end{enumerate}
+
+\subsection{Resultados}
+
+La Sesión 30 aplicó CADST después de que la prueba por libro se había agotado:
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Libro} & \textbf{Mejor Por Libro} & \textbf{Mejor CADST} & \textbf{Diferencia} \\
+\midrule
+42 & dígito '0', pos 45 (+8) & dígito '2', pos 91 (+25) & +17 caracteres \\
+60 & dígito '0', pos 73 (+3) & dígito '9', pos 73 (+15) & +12 caracteres \\
+15 & dígito '0', pos 0 (+0) & dígito '5', pos 62 (+8) & +8 caracteres \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+CADST encontró 17 mejoras que la prueba por libro pasó por alto, totalizando +38 caracteres. La idea clave: en una narrativa concatenada con fragmentos superpuestos, la optimalidad local no garantiza la optimalidad global.
+
+\section{Resultados}
+
+\subsection{Rendimiento de BoLWP}
+
+Aplicado a lo largo de las Sesiones 29-30, BoLWP resolvió bloques ilegibles en tres rondas:
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Ronda} & \textbf{Bloques Resueltos} & \textbf{Caracteres Recuperados} & \textbf{Tamaño Promedio de Bloque} \\
+\midrule
+Sesión 29, Ronda 1 & 14 & +151 caracteres & 10,8 \\
+Sesión 29, Ronda 2 & 20 & +119 caracteres & 6,0 \\
+Sesión 30 & 4 & +15 caracteres & 4,8 \\
+\midrule
+\textbf{Total} & \textbf{38} & \textbf{+285 caracteres} & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Impacto en la Cobertura}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Métrica} & \textbf{Antes de BoLWP} & \textbf{Después de BoLWP+CAAR+CADST} & \textbf{Delta} \\
+\midrule
+Cobertura de palabras & 81,1\% (4470/5515) & 94,6\% (5219/5514) & +13,5\% \\
+Bloques ilegibles & ~180 & ~50 & -130 \\
+Cobertura a nivel de letras & 100\% & 100\% & 0\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Resoluciones Individuales Más Grandes}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{lclcc}
+\toprule
+\textbf{Bloque Ilegible} & \textbf{Longitud} & \textbf{Resolución} & \textbf{Palabras} & \textbf{Intercambios} \\
+\midrule
+\texttt{OIAITOEMEENDGEEMKMTGRSCASEZSTEIEHHIS} & 35 & HECHELT+ALLES+GOTTDIENERS & 3 & 4 I$ightarrow$E \\
+\texttt{UUISEMIADIIRGELNMH} & 18 & LANG+HEIME+DIESER & 3 & 2 I$ightarrow$E \\
+\texttt{EHHIIHHISLUIRUNNS} & 17 & HEHL+UNRUH+SEINES & 3 & 2 I$ightarrow$E \\
+\texttt{AUIGLAUNHEARUCHT} & 16 & LANG+URALTE+AUCH & 3 & 1 I$ightarrow$L \\
+\texttt{OIAITOEMEEND} & 12 & OEDE+NAME+TEE & 3 & 2 I$ightarrow$E \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Distribución de Intercambios}
+
+A lo largo de los 38 bloques resueltos:
+\begin{itemize}
+\item 0 intercambios (partición exacta de anagrama): 12 bloques (31\%)
+\item 1 intercambio: 9 bloques (24\%)
+\item 2 intercambios: 14 bloques (37\%)
+\item 3 intercambios: 3 bloques (8\%)
+\end{itemize}
+
+El intercambio I$ightarrow$E domina (87\% de todos los intercambios), consistente con que E es la letra más frecuente (20 códigos) creando la mayor ambigüedad en los límites.
+
+\section{Discusión}
+
+\subsection{Por Qué Funciona BoLWP}
+
+La resolución de anagramas tradicional asume un mapeo 1:1 entre bloques ilegibles y palabras del diccionario. Esta suposición falla en cifrados homofónicos sin espacios porque:
+
+\begin{enumerate}
+\item \textbf{No existen límites de palabras} en la codificación del texto plano --- las letras de múltiples palabras están intercaladas en el flujo descifrado
+\item \textbf{La segmentación por PD coincide ávidamente} con palabras conocidas, dejando residuos multipalabra como bloques únicos
+\item \textbf{Los intercambios de letras por ambigüedad de códigos} impiden la coincidencia exacta de anagramas incluso para palabras individuales
+\end{enumerate}
+
+BoLWP relaja las tres suposiciones: permite la descomposición multipalabra, tolera sustituciones de letras conocidas y opera sobre el multiconjunto de letras en lugar de caracteres ordenados.
+
+\subsection{Limitaciones}
+
+\begin{enumerate}
+\item \textbf{Peor caso exponencial:} Bloques ilegibles muy largos (>25 caracteres) con longitud promedio de palabra pequeña pueden no resolverse en tiempo práctico
+\item \textbf{Ambigüedad:} Pueden existir múltiples descomposiciones válidas; el algoritmo devuelve la de mayor cobertura, que puede no ser semánticamente correcta
+\item \textbf{Especificidad del modelo de intercambio:} Los intercambios I$eftrightarrow$E e I$eftrightarrow$L son específicos de la distribución de códigos de este cifrado --- otros cifrados requerirían modelos de intercambio diferentes
+\item \textbf{Dependencia del diccionario:} La calidad de los resultados depende enteramente de la completitud del diccionario --- la falta de palabras arcaicas o específicas del dominio produce falsos negativos
+\end{enumerate}
+
+\subsection{Generalización}
+
+BoLWP es aplicable a cualquier cifrado donde:
+\begin{itemize}
+\item El texto descifrado carece de límites de palabras
+\item Los bloques ilegibles contienen letras correctamente descifradas de múltiples palabras
+\item Los patrones de confusión de letras sistemáticos pueden identificarse y modelarse como intercambios
+\end{itemize}
+
+Las aplicaciones candidatas incluyen:
+\begin{itemize}
+\item Otros cifrados de sustitución homofónica (cifrados diplomáticos históricos, sistemas tipo Zodiac)
+\item Corrección de errores de OCR en manuscritos históricos (donde la confusión de caracteres sigue patrones sistemáticos)
+\item Desciframiento de lenguas antiguas (Lineal A, escritura del Valle del Indo) donde los límites de palabras son desconocidos
+\end{itemize}
+
+\subsection{Comparación con Métodos Existentes}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Método} & \textbf{Palabra Única} & \textbf{Multipalabra} & \textbf{Tolerante a Intercambios} & \textbf{Consciente del Contexto} \\
+\midrule
+Coincidencia de anagramas tradicional & Sí & No & No & No \\
+Segmentación de palabras por PD & No & Sí & No & No \\
+Corrección ortográfica (Levenshtein) & Sí & No & Sí & No \\
+\textbf{BoLWP} & \textbf{Sí} & \textbf{Sí} & \textbf{Sí} & \textbf{No} \\
+\textbf{BoLWP + CAAR} & \textbf{Sí} & \textbf{Sí} & \textbf{Sí} & \textbf{Sí} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Implementación}
+
+\subsection{Algoritmo Principal (Python)}
+
+\begin{lstlisting}[style=python]
+def bag_of_letters_partition(garbled, dictionary, max_swaps=3):
+    """Find best multi-word decomposition of a garbled block."""
+    from collections import Counter
+
+    bag = Counter(garbled)
+    n = len(garbled)
+    best = {'coverage': 0, 'words': [], 'swaps': 0}
+
+    # Pre-filter dictionary to words that could fit
+    candidates = [w for w in dictionary if len(w) <= n]
+
+    def can_match(remaining, word, swap_budget):
+        """Check if word can be formed from remaining letters with swaps."""
+        needed = Counter(word)
+        swaps = 0
+        for letter, count in needed.items():
+            have = remaining.get(letter, 0)
+            if have >= count:
+                continue
+            deficit = count - have
+            # Try I<->E swap
+            if letter == 'E' and remaining.get('I', 0) >= deficit:
+                swaps += deficit
+            elif letter == 'I' and remaining.get('E', 0) >= deficit:
+                swaps += deficit
+            # Try I<->L swap
+            elif letter == 'L' and remaining.get('I', 0) >= deficit:
+                swaps += deficit
+            elif letter == 'I' and remaining.get('L', 0) >= deficit:
+                swaps += deficit
+            else:
+                return False, 0
+        return swaps <= swap_budget, swaps
+
+    def search(remaining, rem_len, words, swaps_used):
+        coverage = sum(len(w) for w in words)
+        if coverage > best['coverage']:
+            best['coverage'] = coverage
+            best['words'] = words[:]
+            best['swaps'] = swaps_used
+
+        if rem_len == 0:
+            return
+
+        for w in candidates:
+            if len(w) > rem_len:
+                continue
+            ok, sw = can_match(remaining, w, max_swaps - swaps_used)
+            if ok:
+                new_rem = subtract_with_swaps(remaining, w)
+                search(new_rem, rem_len - len(w), words + [w], swaps_used + sw)
+
+    search(bag, n, [], 0)
+    return best
+\end{lstlisting}
+
+\subsection{Implementación de CAAR}
+
+\begin{lstlisting}[style=python]
+def context_aware_replace(text, anagram_map):
+    """Apply anagram resolutions respecting compound word boundaries."""
+    # Phase 1: Standard longest-first replacement
+    for key in sorted(anagram_map.keys(), key=len, reverse=True):
+        text = text.replace(key, anagram_map[key])
+
+    # Phase 2: Context-specific fixups for compound collisions
+    # Each entry: (pattern_in_context, replacement_in_context)
+    context_fixes = [
+        ('TREUUNR', 'TREUNUR'),  # UNR->NUR without breaking WINDUNRUH
+    ]
+    for pattern, replacement in context_fixes:
+        text = text.replace(pattern, replacement)
+
+    return text
+\end{lstlisting}
+
+\section{Conclusión}
+
+La Partición de Bolsa de Letras por Palabras (Bag-of-Letters Word Partition) aborda una brecha en el criptoanálisis clásico: la recuperación de secuencias multipalabra a partir de bloques ilegibles en cifrados homofónicos sin espacios. Al tratar los bloques ilegibles como multiconjuntos de letras y buscar descomposiciones multipalabra óptimas con tolerancia a intercambios sistemáticos, BoLWP recuperó 285 caracteres (ganancia de 13,3\% en cobertura) de un cifrado que había resistido 25 años de esfuerzo comunitario y todas las técnicas previas en nuestro propio análisis de 31 sesiones.
+
+Las técnicas complementarias CAAR y CADST resuelven problemas adyacentes: sustitución segura para palabras compuestas y validación global de modificaciones locales en textos fragmentados. Junto con la re-optimización de digit-split y correcciones post-resolución posteriores, estas técnicas elevaron la cobertura de 81,1\% a 94,6\%, demostrando que métodos novedosos de recuperación de texto post-descifrado pueden extraer un valor adicional significativo de un cifrado ``mayormente resuelto''.
+
+\section*{References}
+
+\begin{enumerate}
+\item Beker, H. \& Piper, F. (1982). \textit{Cipher Systems: The Protection of Communications.} Northwood.
+\item Lasry, G. (2018). \textit{A Methodology for the Cryptanalysis of Classical Ciphers with Search Metaheuristics.} Kassel University Press.
+\item CipSoft GmbH. (1997–present). \textit{Tibia.} \url{https://www.tibia.com}
+\item s2ward. (2024). \textit{469 Repository.} \url{https://github.com/s2ward/469}
+\item Schmeh, K. (2020). \textit{Codebreaking: A Practical Guide.} No Starch Press.
+\end{enumerate}
+
+\vfill
+\begin{center}
+\textit{Este trabajo está licenciado bajo BUSL-1.1. Gratuito para individuos, académicos y organizaciones sin fines de lucro. El uso comercial requiere un acuerdo de participación. Ver LICENSE y COMMERCIAL.md en la raíz del repositorio.}
+\end{center}
+
+\end{document}

@@ -2,7 +2,7 @@
 
 ## English Summary
 
-In-game verification roadmap for the decoded Bonelord 469 cipher (94.4% coverage, 30 sessions). This document lists:
+In-game verification roadmap for the decoded Bonelord 469 cipher (94.6% coverage, 31 sessions). This document lists:
 
 - **Confirmed proper nouns** (SALZBERG, WEICHSTEIN, ORANGENSTRASSE, GOTTDIENER, SCHARDT) with specific NPCs and locations to investigate in-game
 - **Unsolved proper nouns** (THENAEUT, LGTNELGZ, WRLGTNELNR, NDCE, HISDIZA) requiring field research
@@ -14,8 +14,8 @@ In-game verification roadmap for the decoded Bonelord 469 cipher (94.4% coverage
 
 # Roadmap de Investigación In-Game — Cifra 469 Bonelord
 
-**Estado actual:** 94.4% del texto descifrado (5204/5514 caracteres). 100% decodificado a nivel de letra.
-**Fecha:** 2026-03-24 | **Sesiones completadas:** 30
+**Estado actual:** 94.6% del texto descifrado (5219/5514 caracteres). 100% decodificado a nivel de letra.
+**Fecha:** 2026-03-25 | **Sesiones completadas:** 31
 
 ---
 

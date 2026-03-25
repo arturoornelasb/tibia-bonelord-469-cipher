@@ -4,13 +4,13 @@
 
 **Autores:** Proyecto de Investigación Independiente
 **Fecha:** Marzo 2026
-**Estado:** 94.4% descifrado (5204/5514 caracteres)
+**Estado:** 94.6% descifrado (5219/5514 caracteres)
 
 ---
 
 ## Resumen
 
-El "Lenguaje Bonelord" o "cifrado 469" es un rompecabezas criptográfico sin resolver incrustado en el MMORPG Tibia (CipSoft GmbH, 1997-presente). Setenta libros en la Biblioteca Hellgate del juego contienen secuencias de dígitos puros que totalizan 11,263 dígitos, sin solución conocida en más de 25 años de esfuerzo comunitario. A través de 30 sesiones de criptoanálisis computacional sistemático, demostramos que el cifrado es un **sistema de sustitución homofónica** (homophonic substitution) que codifica **texto en alemán** utilizando 98 códigos de dos dígitos mapeados a 22 letras. Alcanzamos un 94.4% de cobertura a nivel de palabra del texto descifrado, revelando una inscripción funeraria bonelord que presenta al Rey Salzberg, los Siervos de Dios, ruinas de piedra antiguas y magia rúnica. Con la longitud mínima de palabra reducida a 1, la cobertura a nivel de letra alcanza el 100%, confirmando el descifrado completo a nivel de caracteres. Esta representa la primera solución conocida del cifrado.
+El "Lenguaje Bonelord" o "cifrado 469" es un rompecabezas criptográfico sin resolver incrustado en el MMORPG Tibia (CipSoft GmbH, 1997-presente). Setenta libros en la Biblioteca Hellgate del juego contienen secuencias de dígitos puros que totalizan 11,263 dígitos, sin solución conocida en más de 25 años de esfuerzo comunitario. A través de 31 sesiones de criptoanálisis computacional sistemático, demostramos que el cifrado es un **sistema de sustitución homofónica** (homophonic substitution) que codifica **texto en alemán** utilizando 98 códigos de dos dígitos mapeados a 22 letras. Alcanzamos un 94.6% de cobertura a nivel de palabra del texto descifrado, revelando una inscripción funeraria bonelord que presenta al Rey Salzberg, los Siervos de Dios, ruinas de piedra antiguas y magia rúnica. Con la longitud mínima de palabra reducida a 1, la cobertura a nivel de letra alcanza el 100%, confirmando el descifrado completo a nivel de caracteres. Esta representa la primera solución conocida del cifrado.
 
 ---
 
@@ -31,7 +31,7 @@ El cifrado ha atraído un interés significativo de la comunidad:
 - **Tales of Tibia** publicó una serie de tres partes ("Introduction to Madness", "A Taste of Madness", "Descent into Madness") explorando diversas hipótesis.
 - Múltiples miembros de la comunidad han probado mapeos de coordenadas, codificaciones de notas musicales y cifrados de sustitución simple — ninguno produciendo resultados coherentes.
 
-**Nunca se ha producido una solución pública.** Nuestro descifrado del 94.4% es, hasta donde sabemos, el primero.
+**Nunca se ha producido una solución pública.** Nuestro descifrado del 94.6% es, hasta donde sabemos, el primero.
 
 ### 1.3 Fuentes de Datos
 
@@ -288,6 +288,7 @@ Con la longitud mínima de palabra reducida a 1, la cobertura por programación 
 | 28 | 81.1% | 4470 | Coincidencia tolerante a intercambio de letras |
 | **29** | **91.2%** | **5026** | **Partición por bolsa de letras (+556 caract.)** |
 | **30** | **94.4%** | **5204** | **Optimización digit-split, corrección UNR (+178 caract.)** |
+| **31** | **94.6%** | **5219** | **Correcciones post-resolución, re-opt digit-split (+15 caract.)** |
 
 La mayor ganancia en una sola sesión fue la Sesión 29 (+10.1%), impulsada por la técnica de bolsa de letras (bag-of-letters).
 
@@ -375,7 +376,7 @@ La pista del Wrinkled Bonelord sobre "mathemagic" puede referirse a las matemát
 | Sustitución en inglés (varios) | Texto sin sentido |
 | Codificación de longitud variable (varios) | Sin mapeo consistente |
 | Codificación de notas musicales (comunidad) | Sin patrón |
-| **Nuestro enfoque (homofónico + alemán + cribas)** | **94.4% descifrado** |
+| **Nuestro enfoque (homofónico + alemán + cribas)** | **94.6% descifrado** |
 
 ---
 
@@ -412,11 +413,11 @@ La pista del Wrinkled Bonelord sobre "mathemagic" puede referirse a las matemát
 
 ## 13. Conclusión
 
-Después de 30 sesiones de criptoanálisis sistemático, hemos logrado un descifrado del 94.4% a nivel de palabra del cifrado Tibia Bonelord 469 — la primera solución conocida en los más de 25 años de historia del cifrado. El texto es un cifrado de sustitución homofónica (homophonic substitution) que codifica texto alemán usando 98 códigos de dos dígitos mapeados a 22 letras. El texto descifrado revela una inscripción funeraria bonelord que presenta al Rey Salzberg, los Siervos de Dios, ruinas de piedra antiguas, demonios del bosque y magia rúnica.
+Después de 31 sesiones de criptoanálisis sistemático, hemos logrado un descifrado del 94.6% a nivel de palabra del cifrado Tibia Bonelord 469 — la primera solución conocida en los más de 25 años de historia del cifrado. El texto es un cifrado de sustitución homofónica (homophonic substitution) que codifica texto alemán usando 98 códigos de dos dígitos mapeados a 22 letras. El texto descifrado revela una inscripción funeraria bonelord que presenta al Rey Salzberg, los Siervos de Dios, ruinas de piedra antiguas, demonios del bosque y magia rúnica.
 
-Las innovaciones metodológicas clave fueron: (1) identificar el idioma del texto plano como alemán en lugar de inglés; (2) asignación progresiva de códigos por niveles con validación de cribas; (3) partición de palabras por bolsa de letras con tolerancia de intercambio I↔E/L; y (4) optimización de digit-split consciente de concatenación para libros de longitud impar.
+Las innovaciones metodológicas clave fueron: (1) identificar el idioma del texto plano como alemán en lugar de inglés; (2) asignación progresiva de códigos por niveles con validación de cribas; (3) partición de palabras por bolsa de letras con tolerancia de intercambio I↔E/L; (4) optimización de digit-split consciente de concatenación para libros de longitud impar; y (5) correcciones post-resolución para artefactos creados por la aplicación secuencial de anagramas.
 
-A nivel de letra, el texto está 100% descifrado. La brecha restante del 5.6% a nivel de palabra consiste en letras alemanas correctamente decodificadas en límites de palabras que resisten la segmentación — un artefacto del algoritmo de PD, no una brecha criptográfica. El cifrado está resuelto.
+A nivel de letra, el texto está 100% descifrado. La brecha restante del 5.4% a nivel de palabra consiste en letras alemanas correctamente decodificadas en límites de palabras que resisten la segmentación — un artefacto del algoritmo de PD, no una brecha criptográfica. El cifrado está resuelto.
 
 ---
 
@@ -435,13 +436,13 @@ tibia-research/
     narrative_translation.md  # Full translated text (EN/ES)
     roadmap_ingame.md        # In-game verification roadmap
     npc-research.md          # NPC dialogue research
-  FINDINGS.md               # Complete 30-session research log
+  FINDINGS.md               # Complete 31-session research log
 ```
 
 ## Apéndice B: Reproducción de Resultados
 
 ```bash
-# Decode all 70 books with 94.4% word coverage
+# Decode all 70 books with 94.6% word coverage
 python scripts/core/narrative_v3_clean.py
 ```
 

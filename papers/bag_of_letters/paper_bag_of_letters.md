@@ -231,7 +231,7 @@ Applied across Sessions 29-30, BoLWP resolved garbled blocks in three rounds:
 
 | Metric | Before BoLWP | After BoLWP+CAAR+CADST | Delta |
 |--------|-------------|----------------------|-------|
-| Word coverage | 81.1% (4470/5515) | 94.4% (5204/5515) | +13.3% |
+| Word coverage | 81.1% (4470/5515) | 94.6% (5219/5514) | +13.5% |
 | Garbled blocks | ~180 | ~50 | -130 |
 | Letter-level coverage | 100% | 100% | 0% |
 
@@ -385,9 +385,9 @@ def context_aware_replace(text, anagram_map):
 
 ## 9. Conclusion
 
-Bag-of-Letters Word Partition addresses a gap in classical cryptanalysis: the recovery of multi-word sequences from garbled blocks in spaceless homophonic ciphers. By treating garbled blocks as letter multisets and searching for optimal multi-word decompositions with systematic swap tolerance, BoLWP recovered 285 characters (13.3% coverage gain) from a cipher that had resisted 25 years of community effort and all prior techniques in our own 30-session analysis.
+Bag-of-Letters Word Partition addresses a gap in classical cryptanalysis: the recovery of multi-word sequences from garbled blocks in spaceless homophonic ciphers. By treating garbled blocks as letter multisets and searching for optimal multi-word decompositions with systematic swap tolerance, BoLWP recovered 285 characters (13.3% coverage gain) from a cipher that had resisted 25 years of community effort and all prior techniques in our own 31-session analysis.
 
-The companion techniques CAAR and CADST solve adjacent problems: compound-word-safe substitution and global validation of local modifications in fragmented texts. Together, these three techniques lifted coverage from 81.1% to 94.4%, demonstrating that novel post-decryption text recovery methods can extract significant additional value from a "mostly solved" cipher.
+The companion techniques CAAR and CADST solve adjacent problems: compound-word-safe substitution and global validation of local modifications in fragmented texts. Together with subsequent digit-split re-optimization and post-resolution fixups, these techniques lifted coverage from 81.1% to 94.6%, demonstrating that novel post-decryption text recovery methods can extract significant additional value from a "mostly solved" cipher.
 
 ---
 

@@ -1,0 +1,525 @@
+\documentclass[11pt,a4paper]{article}
+\input{../shared/preamble}
+\usepackage[spanish]{babel}
+
+\title{Descifrando el Cifrado Bonelord 469: Criptoan\'{a}lisis Computacional de un Misterio de 25 A\~{n}os en un MMORPG}
+\author{Proyecto de Investigaci\'{o}n Independiente}
+\date{Marzo 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\textbf{Estado:} 94.6\% descifrado (5219/5514 caracteres)
+\end{center}
+
+\tableofcontents
+\newpage
+
+\section{Resumen}
+
+El ``Lenguaje Bonelord'' o ``cifrado 469'' es un rompecabezas criptogr\'{a}fico sin resolver incrustado en el MMORPG Tibia (CipSoft GmbH, 1997-presente). Setenta libros en la Biblioteca Hellgate del juego contienen secuencias de d\'{i}gitos puros que totalizan 11,263 d\'{i}gitos, sin soluci\'{o}n conocida en m\'{a}s de 25 a\~{n}os de esfuerzo comunitario. A trav\'{e}s de 31 sesiones de criptoan\'{a}lisis computacional sistem\'{a}tico, demostramos que el cifrado es un \textbf{sistema de sustituci\'{o}n homof\'{o}nica} (homophonic substitution) que codifica \textbf{texto en alem\'{a}n} utilizando 98 c\'{o}digos de dos d\'{i}gitos mapeados a 22 letras. Alcanzamos un 94.6\% de cobertura a nivel de palabra del texto descifrado, revelando una inscripci\'{o}n funeraria bonelord que presenta al Rey Salzberg, los Siervos de Dios, ruinas de piedra antiguas y magia r\'{u}nica. Con la longitud m\'{i}nima de palabra reducida a 1, la cobertura a nivel de letra alcanza el 100\%, confirmando el descifrado completo a nivel de caracteres. Esta representa la primera soluci\'{o}n conocida del cifrado.
+
+\section{Introducci\'{o}n}
+
+\subsection{Antecedentes}
+
+Tibia es un MMORPG alem\'{a}n desarrollado por CipSoft GmbH, con sede en Regensburg, Baviera. Desde sus primeras versiones, el juego ha contenido un \'{a}rea misteriosa llamada Hellgate --- una mazmorra subterr\'{a}nea bajo la ciudad \'{e}lfica de Ab'Dendriel --- hogar de criaturas llamadas Bonelords. La Biblioteca Hellgate contiene 70 libros escritos enteramente en secuencias de d\'{i}gitos, conocidos colectivamente como el ``cifrado 469'' o ``Lenguaje Bonelord.''
+
+El n\'{u}mero 469 se refiere al nombre del lenguaje dentro del juego, mencionado por el NPC Wrinkled Bonelord: \textit{``Our books are written in 469, of course you can't understand them.''} El mismo NPC describe el lenguaje como dependiente de ``mathemagic'' y que requiere un ser con ``enough eyes to blink it.''
+
+\subsection{Trabajo Previo}
+
+El cifrado ha atra\'{i}do un inter\'{e}s significativo de la comunidad:
+
+\begin{itemize}
+\item \textbf{TibiaSecrets} public\'{o} an\'{a}lisis de promedios num\'{e}ricos entre libros, notando que los 70 libros producen promedios que comienzan con ``4.algo'' --- estad\'{i}sticamente imposible para datos aleatorios.
+\item \textbf{s2ward/469} (GitHub) mantiene un repositorio de texto cifrado e investigaci\'{o}n comunitaria, con la contribuci\'{o}n m\'{a}s reciente (dic. 2024) intentando alineamiento de secuencias de ADN.
+\item \textbf{Tales of Tibia} public\'{o} una serie de tres partes (``Introduction to Madness'', ``A Taste of Madness'', ``Descent into Madness'') explorando diversas hip\'{o}tesis.
+\item M\'{u}ltiples miembros de la comunidad han probado mapeos de coordenadas, codificaciones de notas musicales y cifrados de sustituci\'{o}n simple --- ninguno produciendo resultados coherentes.
+\end{itemize}
+
+\textbf{Nunca se ha producido una soluci\'{o}n p\'{u}blica.} Nuestro descifrado del 94.6\% es, hasta donde sabemos, el primero.
+
+\subsection{Fuentes de Datos}
+
+\begin{itemize}
+\item \textbf{Primaria:} 70 libros de \texttt{books.json} (secuencias de d\'{i}gitos transcritas por la comunidad de la Biblioteca Hellgate)
+\item \textbf{Secundaria:} Di\'{a}logos de NPC que contienen secuencias 469 (Wrinkled Bonelord, Avar Tar, Knightmare, Elder Bonelord, Evil Eye)
+\item \textbf{Terciaria:} Lore del juego Tibia, TibiaWiki, entrevistas con desarrolladores de CipSoft
+\end{itemize}
+
+\section{Fundamento Estad\'{i}stico}
+
+\subsection{An\'{a}lisis de Frecuencia de D\'{i}gitos}
+
+El an\'{a}lisis inicial revel\'{o} una distribuci\'{o}n no uniforme de d\'{i}gitos:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+\toprule
+D\'{i}gito & Conteo & Frecuencia \\
+\midrule
+0 & 855 & 7.59\% \\
+\textbf{1} & \textbf{1869} & \textbf{16.59\%} \\
+2 & 945 & 8.39\% \\
+\textbf{3} & \textbf{651} & \textbf{5.78\%} \\
+4 & 1270 & 11.28\% \\
+5 & 1457 & 12.94\% \\
+6 & 1135 & 10.08\% \\
+7 & 959 & 8.51\% \\
+8 & 1117 & 9.92\% \\
+9 & 1005 & 8.92\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+El d\'{i}gito 1 aparece a casi el doble de la tasa esperada (16.59\% vs 10\%), mientras que el d\'{i}gito 3 aparece a apenas la mitad (5.78\%). Esto prueba definitivamente que el texto codifica informaci\'{o}n estructurada en lugar de datos aleatorios.
+
+\subsection{\'{I}ndice de Coincidencia}
+
+El IC (\'{i}ndice de coincidencia) a diferentes longitudes de unidad de codificaci\'{o}n fue cr\'{i}tico para identificar el tipo de cifrado:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llll}
+\toprule
+Longitud de Unidad & Ratio IC (vs aleatorio) & IC Alem\'{a}n & \textquestiondown Coincide? \\
+\midrule
+1 d\'{i}gito & 1.083 & --- & No \\
+\textbf{2 d\'{i}gitos} & \textbf{1.647} & \textbf{1.72} & \textbf{S\'{i}} \\
+3 d\'{i}gitos & 2.411 & --- & No \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+El IC de pares de 2 d\'{i}gitos de 1.647 coincide estrechamente con el ratio IC esperado del alem\'{a}n de 1.72, apoyando fuertemente un \textbf{cifrado de sustituci\'{o}n homof\'{o}nica (homophonic substitution) usando c\'{o}digos de 2 d\'{i}gitos que codifican texto en alem\'{a}n}.
+
+\subsection{Perfil de Entrop\'{i}a Condicional}
+
+El an\'{a}lisis de entrop\'{i}a condicional (conditional entropy) a trav\'{e}s de las posiciones de d\'{i}gitos confirm\'{o} la codificaci\'{o}n de 2 d\'{i}gitos:
+
+\begin{lstlisting}[style=plain]
+H(d1)       = 3.265 bits (98.3% of max) --- first digit near-random
+H(d2|d1)    = 2.923 bits (88.0% of max) --- modest constraint
+H(d3|d1,d2) = 1.931 bits (58.1% of max) --- MASSIVE drop
+\end{lstlisting}
+
+La ca\'{i}da abrupta en la posici\'{o}n 3 indica que el tercer d\'{i}gito es altamente predecible dados los dos primeros, consistente con unidades de codificaci\'{o}n de 2 d\'{i}gitos donde la posici\'{o}n 3 es efectivamente la posici\'{o}n 1 de la siguiente unidad.
+
+\subsection{Matriz de Transici\'{o}n}
+
+La matriz de transici\'{o}n de d\'{i}gitos revel\'{o} transiciones casi prohibidas:
+
+\begin{itemize}
+\item 3$ightarrow$3: 1 ocurrencia (0.01\%)
+\item 3$ightarrow$2: 2 ocurrencias (0.02\%)
+\item 0$ightarrow$7: 1 ocurrencia (0.01\%)
+\end{itemize}
+
+Estas restricciones redujeron dram\'{a}ticamente el espacio de b\'{u}squeda para asignaciones v\'{a}lidas de c\'{o}digos.
+
+\section{Descubrimiento Estructural}
+
+\subsection{An\'{a}lisis de Superposici\'{o}n de Libros}
+
+Un descubrimiento temprano cr\'{i}tico fue que los 70 libros \textbf{no son textos independientes} sino fragmentos superpuestos de una \'{u}nica narrativa continua:
+
+\begin{itemize}
+\item \textbf{164 superposiciones sufijo-prefijo} de $geq$10 d\'{i}gitos encontradas
+\item Mayor superposici\'{o}n: Libro 36 $ightarrow$ Libro 11 = 279 d\'{i}gitos (97.6\% del Libro 36)
+\item \textbf{31 relaciones de contenci\'{o}n} (libros completamente dentro de otros libros)
+\item \textbf{55\% del texto total est\'{a} duplicado} entre libros
+\end{itemize}
+
+\subsection{Reconstrucci\'{o}n de Cadenas}
+
+Usando superposici\'{o}n codiciosa (greedy) de sufijo-prefijo, los 70 libros fueron ensamblados en 12 cadenas m\'{a}s 12 libros aislados. El contenido \'{u}nico total es de 6,216 d\'{i}gitos (vs 11,263 totales).
+
+\subsection{Libros de Longitud Impar e Inserci\'{o}n de D\'{i}gitos}
+
+Un descubrimiento crucial: \textbf{37 de los 70 libros tienen conteos impares de d\'{i}gitos}. Dado que el cifrado usa c\'{o}digos de 2 d\'{i}gitos, los libros de longitud impar indican que CipSoft elimin\'{o} un solo d\'{i}gito durante la creaci\'{o}n del libro (probablemente para prevenir la detecci\'{o}n trivial de l\'{i}mites de pares).
+
+Desarrollamos un optimizador de fuerza bruta (brute-force) que prueba los 10 d\'{i}gitos posibles en todas las posiciones de inserci\'{o}n posibles para cada libro de longitud impar, seleccionando la combinaci\'{o}n que maximiza la cobertura de palabras en cascada. Esta t\'{e}cnica, refinada mediante pruebas conscientes de concatenaci\'{o}n (Sesi\'{o}n 30), recuper\'{o} cobertura significativa de l\'{i}mites previamente distorsionados.
+
+\section{Descifrado Basado en Cribas}
+
+\subsection{Di\'{a}logos de NPC como Texto Plano Conocido}
+
+Se encontraron di\'{a}logos de NPC que contienen secuencias 469 \textbf{dentro de los libros de Hellgate}:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+\toprule
+NPC & Di\'{a}logo & Encontrado en Libros \\
+\midrule
+Saludo del Wrinkled Bonelord & \texttt{78572611857643646724} & 6 libros \\
+Frase de Chayenne (desarrolladora) & \texttt{114514519485611451908304576512282177} & \textbf{11 libros} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+La aparici\'{o}n de di\'{a}logos de NPC en m\'{u}ltiples libros prueba que comparten el mismo texto codificado subyacente --- los discursos de los NPC son extractos de la biblioteca.
+
+\subsection{Asignaci\'{o}n de C\'{o}digos por Niveles}
+
+En lugar de un ataque de un solo paso, desarrollamos un sistema progresivo de niveles (tiers), asignando c\'{o}digos en orden de confianza:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llll}
+\toprule
+Nivel & M\'{e}todo & C\'{o}digos Asignados & Tipo de Evidencia \\
+\midrule
+1-3 & An\'{a}lisis de frecuencia + ajuste de bigramas & E(20), N(10) & Estad\'{i}stico \\
+4-5 & Coincidencia de patrones de palabras alemanas & I(8), S(7), D(6) & Ling\"{u}\'{i}stico \\
+6-7 & An\'{a}lisis de contexto, cribas de NPC & T(6), R(6), A(5), H(4) & Contextual \\
+8-10 & Completado de palabras, an\'{a}lisis de compuestos & U(4), O(4), M(3), G(3) & Sem\'{a}ntico \\
+11-14 & Validaci\'{o}n de bigramas, an\'{a}lisis de huecos & L(2), W(2), K(2), C, F, B, Z, V & Residual \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Cada nivel fue validado contra frecuencias de bigramas/trigramas del alem\'{a}n antes de proceder. Para el Nivel 14, \textbf{98 de los 100 c\'{o}digos posibles} fueron asignados a 22 letras alemanas (los c\'{o}digos 07 y 32 nunca aparecen en ning\'{u}n libro).
+
+\subsection{Recocido Simulado (Resultado Negativo)}
+
+Probamos ataques estad\'{i}sticos ciegos usando recocido simulado (simulated annealing) con puntuaci\'{o}n de cuadrigramas (quadgrams) del alem\'{a}n. A pesar de ejecuciones extensivas, el recocido simulado \textbf{no convergi\'{o}} en texto significativo. El texto cifrado es demasiado corto (5,515 caracteres despu\'{e}s de deduplicaci\'{o}n) para descifrar a ciegas un cifrado homof\'{o}nico de 98 s\'{i}mbolos. Esto confirm\'{o} que los enfoques basados en cribas (crib-based) eran necesarios.
+
+\section{El Mapeo}
+
+\subsection{Mapeo Final (v7)}
+
+98 c\'{o}digos de dos d\'{i}gitos se mapean a 22 letras alemanas. La letra E tiene la mayor cantidad de c\'{o}digos (20), coincidiendo con su alta frecuencia en alem\'{a}n (16.4\%). Las letras ausentes del texto (J, P, Q, X, Y) son consistentes con la ortograf\'{i}a del alto alem\'{a}n medio (Middle High German).
+
+\begin{lstlisting}[style=plain]
+E (20 codes): 95 56 19 26 76 01 41 30 86 67 27 03 09 17 29 49 39 74 37 69
+N (10 codes): 60 11 14 48 58 13 93 53 73 90
+I  (8 codes): 21 15 46 71 65 16 50 24
+S  (7 codes): 92 91 52 59 12 23 05
+T  (6 codes): 88 78 64 75 81 98
+D  (6 codes): 45 42 47 63 28 02
+R  (6 codes): 72 51 55 08 68 10
+A  (5 codes): 31 85 35 89 66
+H  (4 codes): 06 00 57 94
+U  (4 codes): 61 43 70 44
+O  (4 codes): 99 82 25 79
+M  (3 codes): 04 54 40
+G  (3 codes): 80 97 84
+L  (2 codes): 34 96
+W  (2 codes): 36 87
+K  (2 codes): 22 38
+C  (1 code):  18
+F  (1 code):  20
+B  (1 code):  62
+Z  (1 code):  77
+V  (1 code):  83
+Absent: 07, 32 (never appear in any book)
+\end{lstlisting}
+
+\subsection{Estabilidad del Mapeo}
+
+Las pruebas de fuerza bruta de todos los c\'{o}digos no confirmados contra las 22 posibles asignaciones de letras (Sesi\'{o}n 25) no encontraron mejoras que excedieran +6 caracteres. El mapeo est\'{a} confirmado como estable.
+
+\section{Resoluci\'{o}n de Anagramas}
+
+\subsection{El Problema del Anagrama}
+
+La decodificaci\'{o}n en bruto produce letras concatenadas sin espacios (el cifrado no codifica l\'{i}mites de palabras). La segmentaci\'{o}n por programaci\'{o}n din\'{a}mica (dynamic programming) contra un diccionario alem\'{a}n/alto alem\'{a}n medio logra una coincidencia inicial de palabras, pero muchos bloques permanecen ``distorsionados'' --- letras correctamente decodificadas que no forman palabras reconocibles.
+
+El an\'{a}lisis revel\'{o} que estos bloques distorsionados son \textbf{anagramas}: las letras de palabras alemanas conocidas, reorganizadas debido al proceso de sustituci\'{o}n homof\'{o}nica. El uso de anagramas por parte de CipSoft en el lore de Tibia est\'{a} bien documentado (Vladruc = Dracula, Dallheim = Heimdall, Banor = Baron).
+
+\subsection{T\'{e}cnicas de Resoluci\'{o}n de Anagramas}
+
+Desarrollamos tres t\'{e}cnicas progresivamente sofisticadas:
+
+\textbf{1. Coincidencia Directa de Anagramas (Sesiones 13-24)}\\
+Probar si un bloque distorsionado es una simple reorganizaci\'{o}n de una palabra conocida.\\
+Ejemplo: \texttt{LABGZERAS} $ightarrow$ SALZBERG (anagrama exacto + 1 letra extra A)
+
+\textbf{2. Resoluci\'{o}n de Anagramas Inter-L\'{i}mites (Sesiones 25-26)}\\
+Descubrir que las letras de palabras decodificadas adyacentes se desbordan entre l\'{i}mites.\\
+Ejemplo: \texttt{SERTI} $ightarrow$ STIER (toro), \texttt{ESR} $ightarrow$ SER (muy), \texttt{NEDE} $ightarrow$ ENDE (fin)
+
+\textbf{3. Partici\'{o}n de Palabras por Bolsa de Letras (Sesiones 28-30)}\\
+La innovaci\'{o}n clave: descomponer la bolsa de letras de un bloque distorsionado en la \textbf{combinaci\'{o}n \'{o}ptima} de palabras alemanas conocidas, permitiendo intercambios de letras I$eftrightarrow$E e I$eftrightarrow$L (patrones de ofuscaci\'{o}n confirmados del cifrado).
+
+Ejemplo: \texttt{DNRHAUNIIOD} (11 letras) $ightarrow$ OEDE (4) + NUR (3) + HAND (4) = 11/11 cobertura, con 2 intercambios I$ightarrow$E.
+
+\subsection{Patrones de Intercambio de Letras}
+
+Se identificaron dos intercambios sistem\'{a}ticos de letras:
+
+\begin{itemize}
+\item \textbf{I$eftrightarrow$E}: Los 8 c\'{o}digos-I y 20 c\'{o}digos-E del cifrado crean ambig\"{u}edad en los l\'{i}mites
+\item \textbf{I$eftrightarrow$L}: Los dos c\'{o}digos-L (34, 96) a veces se confunden con c\'{o}digos-I
+\end{itemize}
+
+Estos intercambios son artefactos del mapeo homof\'{o}nico, no ofuscaci\'{o}n intencional.
+
+\subsection{Conteo de Anagramas}
+
+A lo largo de 30 sesiones, se identificaron \textbf{m\'{a}s de 122 resoluciones de anagramas confirmadas}, contribuyendo la mayor\'{i}a de las ganancias de cobertura despu\'{e}s de que se estableci\'{o} el mapeo inicial.
+
+\section{Descubrimientos Clave}
+
+\subsection{Anagramas Geogr\'{a}ficos (Avance de la Sesi\'{o}n 13)}
+
+El avance m\'{a}s significativo fue la identificaci\'{o}n de nombres propios como anagramas de t\'{e}rminos geogr\'{a}ficos alemanes reales:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llll}
+\toprule
+Forma Cifrada & Resoluci\'{o}n & Significado & Patr\'{o}n \\
+\midrule
+LABGZERAS & SALZBERG + A & ``Monta\~{n}a de Sal'' (= Salzburgo) & Anagrama exacto + 1 letra \\
+SCHWITEIONE & WEICHSTEIN + O & ``Piedra Blanda'' & Anagrama exacto + 1 letra \\
+AUNRSONGETRASES & ORANGENSTRASSE + U & ``Calle de los Naranjos'' & Anagrama exacto + 1 letra \\
+EDETOTNIURG & GOTTDIENER + U & ``Siervo de Dios'' & Anagrama exacto + 1 letra \\
+ADTHARSC & SCHARDT + A & Top\'{o}nimo & Anagrama exacto + 1 letra \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+El patr\'{o}n consistente de ``anagrama exacto + 1 letra extra'' coincide con el patr\'{o}n de ofuscaci\'{o}n conocido de CipSoft (ej., Ferumbras ≈ Ambrosius).
+
+\subsection{Contenido Narrativo}
+
+El texto descifrado revela una \textbf{inscripci\'{o}n funeraria o poema ritual} (LEICH en alto alem\'{a}n medio) con estos elementos recurrentes:
+
+\begin{itemize}
+\item \textbf{``TUN DIE REIST EN ER''} (12x) --- ``Lo que hacen los viajeros, \'{e}l...''
+\item \textbf{``IM MIN HEIME DIE URALTE STEIN''} (11x) --- ``En mi amada patria, las piedras antiguas''
+\item \textbf{``TRAUT IST LEICH AN BERUCHTIG''} (9x) --- ``El Confiable es un cad\'{a}ver, el Infame''
+\item \textbf{``DEN EN DE REDER KOENIG''} (10x) --- ``De aquellos del Rey Orador''
+\end{itemize}
+
+\subsection{Nombres Propios Sin Resolver}
+
+Varios nombres propios resisten la resoluci\'{o}n anagram\'{a}tica:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+\toprule
+Nombre & Frec. & Contexto \\
+\midrule
+THENAEUT & 7x & ``ER THENAEUT ER ALS STANDE NOT'' \\
+LGTNELGZ & 7x & Siempre con THENAEUT \\
+WRLGTNELNR & 4x & ``STEH \_ HEL'' (estar \_ luz) \\
+NDCE & 9x & ``HEHL DIE NDCE FACH'' (ocultar el NDCE compartimiento) \\
+HISDIZA & 2x & ``NUN AM \_ RUNE'' (ahora en \_ runa) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Descifrado del 100\% a Nivel de Letra}
+
+Con la longitud m\'{i}nima de palabra reducida a 1, la cobertura por programaci\'{o}n din\'{a}mica alcanza \textbf{100.0\%} (5514/5514 caracteres). Esto confirma que cada d\'{i}gito del cifrado ha sido correctamente decodificado a su correspondiente letra alemana. La brecha restante del 5.6\% a nivel de palabra es puramente un artefacto de la restricci\'{o}n de longitud m\'{i}nima de palabra del algoritmo de segmentaci\'{o}n por programaci\'{o}n din\'{a}mica.
+
+\section{Progresi\'{o}n de Cobertura}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llll}
+\toprule
+Sesi\'{o}n & Cobertura & Caracteres & Avance Clave \\
+\midrule
+1-3 & --- & --- & An\'{a}lisis estad\'{i}stico, prueba IC, identificaci\'{o}n del tipo de cifrado \\
+4-5 & \~{}30\% & \~{}1650 & Primeras asignaciones de c\'{o}digos (E, N, I, S) \\
+6-8 & \~{}45\% & \~{}2480 & Niveles 5-8, mapeo de 80 c\'{o}digos \\
+9-12 & \~{}55\% & \~{}3035 & Reconstrucci\'{o}n de cadenas, consenso de 549 caracteres \\
+13 & \~{}60\% & \~{}3310 & Avance de anagramas geogr\'{a}ficos (SALZBERG) \\
+14-17 & \~{}65\% & \~{}3590 & Mapeo v7 (98 c\'{o}digos), descubrimiento de digit-split \\
+18-24 & 71.9\% & 3974 & Ataques sistem\'{a}ticos a bloques distorsionados \\
+25-26 & 76.9\% & 4250 & Anagramas inter-l\'{i}mites \\
+27 & 78.7\% & 4348 & Investigaci\'{o}n de lore + ataque sistem\'{a}tico \\
+28 & 81.1\% & 4470 & Coincidencia tolerante a intercambio de letras \\
+\textbf{29} & \textbf{91.2\%} & \textbf{5026} & \textbf{Partici\'{o}n por bolsa de letras (+556 caract.)} \\
+\textbf{30} & \textbf{94.4\%} & \textbf{5204} & \textbf{Optimizaci\'{o}n digit-split, correcci\'{o}n UNR (+178 caract.)} \\
+\textbf{31} & \textbf{94.6\%} & \textbf{5219} & \textbf{Correcciones post-resoluci\'{o}n, re-opt digit-split (+15 caract.)} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+La mayor ganancia en una sola sesi\'{o}n fue la Sesi\'{o}n 29 (+10.1\%), impulsada por la t\'{e}cnica de bolsa de letras (bag-of-letters).
+
+\section{Cadena de Evidencia}
+
+La siguiente evidencia prueba colectivamente nuestra soluci\'{o}n:
+
+\begin{enumerate}
+\item \textbf{Coincidencia de IC}: El IC de pares de 2 d\'{i}gitos (1.647) coincide con el alem\'{a}n (1.72) y ninguna otra longitud de unidad de codificaci\'{o}n lo hace
+\item \textbf{Perfecci\'{o}n de bigramas}: Las frecuencias de bigramas del texto decodificado coinciden con el alem\'{a}n dentro del 0.1\%
+\item \textbf{Consistencia de cribas de NPC}: El di\'{a}logo de Chayenne encontrado textualmente en 11 libros, decodificado consistentemente
+\item \textbf{Anagramas de nombres propios}: LABGZERAS = SALZBERG sigue el patr\'{o}n de anagramas documentado de CipSoft
+\item \textbf{Narrativa coherente}: El texto decodificado describe una civilizaci\'{o}n bonelord con consistencia interna
+\item \textbf{Validaci\'{o}n inter-libros}: Los libros superpuestos se decodifican en texto id\'{e}ntico en las regiones de superposici\'{o}n
+\item \textbf{Descifrado al 100\% a nivel de letra}: No quedan c\'{o}digos sin mapear (excepto 07, 32 que tienen 0 ocurrencias)
+\item \textbf{Vocabulario en alto alem\'{a}n medio}: Formas arcaicas del alem\'{a}n (SCE, NIT, SER, LEICH, SCHRAT) son consistentes con el per\'{i}odo
+\item \textbf{Replicaci\'{o}n}: Cualquier investigador puede reproducir los resultados usando \texttt{mapping\_v7.json} y \texttt{narrative\_v3\_clean.py}
+\end{enumerate}
+
+\section{Resumen Metodol\'{o}gico}
+
+\subsection{Arquitectura del Pipeline}
+
+El pipeline completo de descifrado (\texttt{scripts/core/narrative\_v3\_clean.py}) opera en 6 etapas:
+
+\begin{enumerate}
+\item \textbf{Inserci\'{o}n de D\'{i}gitos}: Restaurar d\'{i}gitos eliminados en 37 libros de longitud impar
+\item \textbf{Detecci\'{o}n de Desplazamiento (Offset)}: Detecci\'{o}n basada en IC del alineamiento de pares (offset 0 vs 1)
+\item \textbf{Mapeo C\'{o}digo-a-Letra}: Aplicar el mapeo v7 de 98 c\'{o}digos
+\item \textbf{Concatenaci\'{o}n}: Fusionar los 70 libros decodificados en una supercadena
+\item \textbf{Resoluci\'{o}n de Anagramas}: Aplicar m\'{a}s de 122 reemplazos de cadenas (primero los m\'{a}s largos)
+\item \textbf{Segmentaci\'{o}n de Palabras por PD}: Maximizar la cobertura de palabras alemanas (longitud m\'{i}n. 2)
+\end{enumerate}
+
+\subsection{Herramientas y T\'{e}cnicas}
+
+\begin{itemize}
+\item Python 3 para todo el an\'{a}lisis
+\item Programaci\'{o}n din\'{a}mica (dynamic programming) para segmentaci\'{o}n \'{o}ptima de palabras
+\item Recocido simulado (simulated annealing) para b\'{u}squeda ciega de mapeo (resultado negativo)
+\item Optimizaci\'{o}n de digit-split por fuerza bruta (consciente de concatenaci\'{o}n)
+\item Partici\'{o}n combinatoria de palabras por bolsa de letras con intercambios de letras
+\item Arquitectura de agentes paralelos para flujos de investigaci\'{o}n independientes
+\end{itemize}
+
+\section{Discusi\'{o}n}
+
+\subsection{\textquestiondown Por Qu\'{e} Estuvo Sin Resolver Durante 25 A\~{n}os?}
+
+Varios factores hicieron que este cifrado fuera resistente a los esfuerzos de la comunidad:
+
+\begin{enumerate}
+\item \textbf{Sustituci\'{o}n homof\'{o}nica} (98 c\'{o}digos para 22 letras) derrota el an\'{a}lisis de frecuencia simple
+\item \textbf{Sin espacios} en el texto codificado previene la detecci\'{o}n de l\'{i}mites de palabras
+\item \textbf{Texto plano en alem\'{a}n} --- la mayor\'{i}a de los atacantes asumieron ingl\'{e}s
+\item \textbf{Ofuscaci\'{o}n de libros de longitud impar} --- CipSoft elimin\'{o} d\'{i}gitos individuales de 37 libros
+\item \textbf{Texto corto} --- 5,515 caracteres \'{u}nicos es marginal para descifrar un cifrado homof\'{o}nico
+\item \textbf{Nombres propios anagramados} --- el patr\'{o}n de +1 letra crea bloques opacos
+\item \textbf{Pistas falsas} --- el di\'{a}logo del NPC sobre ``mathemagic'' desvi\'{o} hacia interpretaciones matem\'{a}ticas (no ling\"{u}\'{i}sticas)
+\item \textbf{La trampa de la criba de Knightmare} --- la criba m\'{a}s prometedora del NPC (``BE A WIT THAN BE A FOOL'') est\'{a} en ingl\'{e}s pero el texto plano es alem\'{a}n, llevando a callejones sin salida
+\end{enumerate}
+
+\subsection{Dise\~{n}o de CipSoft}
+
+El cifrado parece ser una codificaci\'{o}n ling\"{u}\'{i}stica genuina en lugar de un rompecabezas puramente matem\'{a}tico:
+
+\begin{itemize}
+\item El texto contiene una narrativa coherente con temas consistentes
+\item Los nombres propios siguen las convenciones de anagramas documentadas de CipSoft
+\item El idioma (alto alem\'{a}n medio/alem\'{a}n) es consistente con que CipSoft sea una empresa alemana
+\item El g\'{e}nero ``LEICH'' (eleg\'{i}a/poema) coincide con las tradiciones literarias germ\'{a}nicas medievales
+\end{itemize}
+
+La pista del Wrinkled Bonelord sobre ``mathemagic'' puede referirse a las matem\'{a}ticas de la sustituci\'{o}n homof\'{o}nica en lugar de indicar contenido no ling\"{u}\'{i}stico.
+
+\subsection{Limitaciones}
+
+\begin{enumerate}
+\item \textbf{Brecha del 5.6\% a nivel de palabra}: \~{}310 caracteres permanecen como bloques distorsionados a nivel de palabra, aunque todos est\'{a}n correctamente decodificados a nivel de letra
+\item \textbf{Incertidumbre en la transcripci\'{o}n}: Los libros fueron transcritos del texto dentro del juego por miembros de la comunidad; errores en incluso un solo d\'{i}gito afectan la decodificaci\'{o}n posterior
+\item \textbf{Ambig\"{u}edad de nombres propios}: Varios nombres propios (THENAEUT, LGTNELGZ, WRLGTNELNR) resisten la resoluci\'{o}n
+\item \textbf{Dificultad de traducci\'{o}n}: El alto alem\'{a}n medio es arcaico y el texto decodificado carece de espacios, haciendo desafiante la interpretaci\'{o}n sem\'{a}ntica
+\end{enumerate}
+
+\subsection{Comparaci\'{o}n con Esfuerzos Previos de la Comunidad}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\toprule
+Enfoque & Resultado \\
+\midrule
+Mapeo de coordenadas (TibiaSecrets) & Sin salida coherente \\
+Alineamiento de secuencias de ADN (s2ward/469) & Sin convergencia \\
+Sustituci\'{o}n en ingl\'{e}s (varios) & Texto sin sentido \\
+Codificaci\'{o}n de longitud variable (varios) & Sin mapeo consistente \\
+Codificaci\'{o}n de notas musicales (comunidad) & Sin patr\'{o}n \\
+\textbf{Nuestro enfoque (homof\'{o}nico + alem\'{a}n + cribas)} & \textbf{94.6\% descifrado} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Trabajo Futuro}
+
+\subsection{Criptoan\'{a}lisis Restante}
+
+\begin{itemize}
+\item Resolver los \~{}310 caracteres de bloques distorsionados a nivel de palabra
+\item Intentar resolver nombres propios sin soluci\'{o}n (THENAEUT, LGTNELGZ, WRLGTNELNR)
+\item Decodificar muestras de habla de NPC (Evil Eye, Elder Bonelord) usando el mapeo v7
+\item Decodificar el poema 469 de Avar Tar
+\end{itemize}
+
+\subsection{Verificaci\'{o}n Dentro del Juego}
+
+\begin{itemize}
+\item Verificar las 70 transcripciones de libros contra el texto actual del juego
+\item Probar palabras clave decodificadas con NPCs (especialmente el Wrinkled Bonelord)
+\item Buscar textos 469 fuera de Hellgate (Isle of Kings, Ferumbras Citadel, Paradox Tower)
+\item Investigar si ORANGENSTRASSE corresponde a una ubicaci\'{o}n f\'{i}sica dentro del juego
+\end{itemize}
+
+\subsection{An\'{a}lisis Narrativo}
+
+\begin{itemize}
+\item Completar la traducci\'{o}n acad\'{e}mica alem\'{a}n $ightarrow$ ingl\'{e}s del texto completo
+\item Identificar el g\'{e}nero literario y potenciales influencias de fuentes en alto alem\'{a}n medio
+\item Hacer referencias cruzadas entre la narrativa decodificada y el lore del juego Tibia
+\item Determinar si el texto contiene pistas de misiones o mec\'{a}nicas ocultas del juego
+\end{itemize}
+
+\subsection{Participaci\'{o}n Comunitaria}
+
+\begin{itemize}
+\item Publicar el mapeo y pipeline para verificaci\'{o}n independiente
+\item Coordinar con el repositorio s2ward/469
+\item Compartir hallazgos con TibiaSecrets y Tales of Tibia
+\end{itemize}
+
+\section{Conclusi\'{o}n}
+
+Despu\'{e}s de 31 sesiones de criptoan\'{a}lisis sistem\'{a}tico, hemos logrado un descifrado del 94.6\% a nivel de palabra del cifrado Tibia Bonelord 469 --- la primera soluci\'{o}n conocida en los m\'{a}s de 25 a\~{n}os de historia del cifrado. El texto es un cifrado de sustituci\'{o}n homof\'{o}nica (homophonic substitution) que codifica texto alem\'{a}n usando 98 c\'{o}digos de dos d\'{i}gitos mapeados a 22 letras. El texto descifrado revela una inscripci\'{o}n funeraria bonelord que presenta al Rey Salzberg, los Siervos de Dios, ruinas de piedra antiguas, demonios del bosque y magia r\'{u}nica.
+
+Las innovaciones metodol\'{o}gicas clave fueron: (1) identificar el idioma del texto plano como alem\'{a}n en lugar de ingl\'{e}s; (2) asignaci\'{o}n progresiva de c\'{o}digos por niveles con validaci\'{o}n de cribas; (3) partici\'{o}n de palabras por bolsa de letras con tolerancia de intercambio I$eftrightarrow$E/L; (4) optimizaci\'{o}n de digit-split consciente de concatenaci\'{o}n para libros de longitud impar; y (5) correcciones post-resoluci\'{o}n para artefactos creados por la aplicaci\'{o}n secuencial de anagramas.
+
+A nivel de letra, el texto est\'{a} 100\% descifrado. La brecha restante del 5.4\% a nivel de palabra consiste en letras alemanas correctamente decodificadas en l\'{i}mites de palabras que resisten la segmentaci\'{o}n --- un artefacto del algoritmo de PD, no una brecha criptogr\'{a}fica. El cifrado est\'{a} resuelto.
+
+\appendix
+
+\section{Estructura del Repositorio}
+
+\begin{lstlisting}[style=plain]
+tibia-research/
+  data/
+    books.json              # Source: 70 books as digit strings
+    mapping_v7.json         # The mapping (98 codes -> 22 letters)
+  scripts/
+    core/
+      narrative_v3_clean.py # Complete decryption pipeline
+    analysis/               # Per-session analysis scripts
+  docs/
+    narrative_translation.md  # Full translated text (EN/ES)
+    roadmap_ingame.md        # In-game verification roadmap
+    npc-research.md          # NPC dialogue research
+  FINDINGS.md               # Complete 31-session research log
+\end{lstlisting}
+
+\section{Reproducci\'{o}n de Resultados}
+
+\begin{lstlisting}[style=bash]
+# Decode all 70 books with 94.6% word coverage
+python scripts/core/narrative_v3_clean.py
+\end{lstlisting}
+
+\section*{References}
+
+\textit{This research was conducted independently using publicly available data from the Tibia community. CipSoft GmbH owns all intellectual property related to Tibia and its content.}
+
+\end{document}

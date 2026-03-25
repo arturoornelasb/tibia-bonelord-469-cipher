@@ -1,0 +1,103 @@
+% Shared preamble for tibia-research papers
+% Compile with: xelatex <paper>.tex
+
+% --- Fonts & Encoding ---
+\usepackage{fontspec}
+
+% --- Page Layout ---
+\usepackage[
+  a4paper,
+  margin=2.5cm,
+  top=3cm,
+  bottom=3cm
+]{geometry}
+
+% --- Math ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% --- Tables ---
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+
+% --- Colors ---
+\usepackage[dvipsnames]{xcolor}
+\definecolor{codebackground}{HTML}{F5F5F5}
+\definecolor{codeborder}{HTML}{CCCCCC}
+\definecolor{linkblue}{HTML}{0366D6}
+
+% --- Code Listings ---
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{codebackground},
+  frame=single,
+  rulecolor=\color{codeborder},
+  breaklines=true,
+  breakatwhitespace=false,
+  tabsize=4,
+  showstringspaces=false,
+  numbers=none,
+  xleftmargin=0.5em,
+  xrightmargin=0.5em,
+  aboveskip=1em,
+  belowskip=1em,
+}
+\lstdefinestyle{python}{
+  language=Python,
+  keywordstyle=\color{blue}\bfseries,
+  stringstyle=\color{OliveGreen},
+  commentstyle=\color{gray}\itshape,
+}
+\lstdefinestyle{bash}{
+  language=bash,
+  keywordstyle=\color{blue}\bfseries,
+}
+\lstdefinestyle{plain}{
+  language={},
+  keywordstyle={},
+}
+
+% --- Hyperlinks ---
+\usepackage[
+  colorlinks=true,
+  linkcolor=linkblue,
+  urlcolor=linkblue,
+  citecolor=linkblue,
+]{hyperref}
+
+% --- Headers & Footers ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\leftmark}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\small\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% --- Section Formatting ---
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
+
+% --- Lists ---
+\usepackage{enumitem}
+\setlist{nosep, leftmargin=1.5em}
+
+% --- Misc ---
+\usepackage{graphicx}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+\setlength{\headheight}{12.7pt}
+\addtolength{\topmargin}{-0.7pt}
+
+% --- Custom commands ---
+\newcommand{\garbled}[1]{\texttt{#1}}
+\newcommand{\code}[1]{\texttt{#1}}

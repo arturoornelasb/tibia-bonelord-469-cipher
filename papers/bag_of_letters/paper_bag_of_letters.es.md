@@ -231,7 +231,7 @@ Aplicado a lo largo de las Sesiones 29-30, BoLWP resolvió bloques ilegibles en 
 
 | Métrica | Antes de BoLWP | Después de BoLWP+CAAR+CADST | Delta |
 |---------|----------------|------------------------------|-------|
-| Cobertura de palabras | 81,1% (4470/5515) | 94,4% (5204/5515) | +13,3% |
+| Cobertura de palabras | 81,1% (4470/5515) | 94,6% (5219/5514) | +13,5% |
 | Bloques ilegibles | ~180 | ~50 | -130 |
 | Cobertura a nivel de letras | 100% | 100% | 0% |
 
@@ -385,9 +385,9 @@ def context_aware_replace(text, anagram_map):
 
 ## 9. Conclusión
 
-La Partición de Bolsa de Letras por Palabras (Bag-of-Letters Word Partition) aborda una brecha en el criptoanálisis clásico: la recuperación de secuencias multipalabra a partir de bloques ilegibles en cifrados homofónicos sin espacios. Al tratar los bloques ilegibles como multiconjuntos de letras y buscar descomposiciones multipalabra óptimas con tolerancia a intercambios sistemáticos, BoLWP recuperó 285 caracteres (ganancia de 13,3% en cobertura) de un cifrado que había resistido 25 años de esfuerzo comunitario y todas las técnicas previas en nuestro propio análisis de 30 sesiones.
+La Partición de Bolsa de Letras por Palabras (Bag-of-Letters Word Partition) aborda una brecha en el criptoanálisis clásico: la recuperación de secuencias multipalabra a partir de bloques ilegibles en cifrados homofónicos sin espacios. Al tratar los bloques ilegibles como multiconjuntos de letras y buscar descomposiciones multipalabra óptimas con tolerancia a intercambios sistemáticos, BoLWP recuperó 285 caracteres (ganancia de 13,3% en cobertura) de un cifrado que había resistido 25 años de esfuerzo comunitario y todas las técnicas previas en nuestro propio análisis de 31 sesiones.
 
-Las técnicas complementarias CAAR y CADST resuelven problemas adyacentes: sustitución segura para palabras compuestas y validación global de modificaciones locales en textos fragmentados. Juntas, estas tres técnicas elevaron la cobertura de 81,1% a 94,4%, demostrando que métodos novedosos de recuperación de texto post-descifrado pueden extraer un valor adicional significativo de un cifrado "mayormente resuelto".
+Las técnicas complementarias CAAR y CADST resuelven problemas adyacentes: sustitución segura para palabras compuestas y validación global de modificaciones locales en textos fragmentados. Junto con la re-optimización de digit-split y correcciones post-resolución posteriores, estas técnicas elevaron la cobertura de 81,1% a 94,6%, demostrando que métodos novedosos de recuperación de texto post-descifrado pueden extraer un valor adicional significativo de un cifrado "mayormente resuelto".
 
 ---
 
