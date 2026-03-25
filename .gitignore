@@ -13,5 +13,20 @@ __pycache__/
 # Claude worktrees
 .claude/worktrees/
 
+# LaTeX build artifacts (keep *.pdf)
+*.aux
+*.log
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.bbl
+*.blg
+*.xdv
+
 # Legacy agent work (in repo history)
 agente2/
