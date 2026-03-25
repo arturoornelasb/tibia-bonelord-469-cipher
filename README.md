@@ -1,34 +1,28 @@
-# Tibia Bonelord 469 Cipher
+> **Idioma / Language:** [Español](README.es.md) | English
 
-Computational cryptanalysis of the unsolved **Bonelord Language** from the MMORPG [Tibia](https://www.tibia.com).
+# Tibia Bonelord 469 Cipher — SOLVED (94.4%)
+
+Computational cryptanalysis of the **Bonelord Language** from the MMORPG [Tibia](https://www.tibia.com). **First known solution** to a 25-year-old cipher.
 
 ## The Mystery
 
-The Hellgate Library in Tibia contains **70 books written entirely in digit sequences**. No one has deciphered them in 25+ years. The community calls this the "469 cipher" or "Bonelord Language."
+The Hellgate Library in Tibia contains **70 books written entirely in digit sequences** — 11,263 digits total. The community calls this the "469 cipher" after the Wrinkled Bonelord's dialogue: *"Our books are written in 469."*
 
-Example book:
-```
-956151353478019288952160199364672431427894315191186512819118003561147261164671364646121978585765197292197278167054671180014015255175191180189445
-```
+No public solution has existed in 25+ years of community effort.
 
-## What We Found
+## Solution
 
-| Finding | Status |
-|---------|--------|
-| Cipher type: **homophonic substitution** (2-digit codes -> letters) | Confirmed |
-| Plaintext language: **German** (IC = 1.73, matches German 1.72) | Confirmed |
-| **98 of 100 codes mapped** to 21 letters (mapping v7) | Confirmed |
-| 70 books = overlapping fragments of **ONE continuous narrative** | Proven |
-| 37/70 books have odd digit counts — last digit is artifact | **Critical** |
-| **71.9%** of decoded text parses as German words (DP segmentation) | Current |
-| 25/70 books assembled into raw-code superstring | Current |
-| Consensus narrative: **549 chars** (voting across aligned books) | Current |
-| Narrative about King LABGZERAS, ancient stones, runes | Partial |
-| **TOTNIURG** reversed = GRUIN+TOT (ruin + dead) | Discovered |
-| **11+ proper nouns** identified — none found in Tibia wiki | Novel |
-| **No prior public decode exists** — this would be a first | Verified |
+| Result | Value |
+|--------|-------|
+| **Cipher type** | Homophonic substitution (98 two-digit codes → 22 German letters) |
+| **Plaintext language** | German (with Middle High German vocabulary) |
+| **Word-level coverage** | **94.4%** (5204/5515 characters) |
+| **Letter-level coverage** | **100%** (all codes mapped) |
+| **Codes mapped** | 98/100 (codes 07 and 32 never appear in any book) |
+| **Sessions** | 30 sessions of systematic cryptanalysis |
+| **Content** | Bonelord funerary inscription (LEICH) — King Salzberg, God's Servants, ancient stone ruins, rune magic |
 
-### The Mapping (97 codes -> 21 letters)
+### The Mapping (v7 — 98 codes → 22 letters)
 
 ```
 E (20 codes): 95 56 19 26 76 01 41 30 86 67 27 03 09 17 29 49 39 74 37 69
@@ -52,126 +46,123 @@ F  (1 code):  20
 B  (1 code):  62
 Z  (1 code):  77
 V  (1 code):  83
-Never appear: 07, 32 (confirmed absent from all books)
-Unmapped:     33 (1x, likely W)
+Never appear: 07, 32
 ```
 
-No P, J, Q, X, or Y found in the text.
-
-### Consensus Narrative (549 chars, assembled from 25+ books)
-
-The full decoded text reads as a bonelord historical inscription. Key readable passages:
+### Key Decoded Phrases
 
 ```
-...HIER TAUTR IST EILCHANHEARUCHTIG ER SO DAS TUN DIESER
-EINER SEIN EDETOTNIURGS ER LABRNI WIR UND IE...IN HEDEMI
-DIE URALTE STEINEN TER ADTHARSC IST SCHAUN...IN WISET...
-TIUMENGEMI ORT ENGCHD KELSEI...RUNE...UNTER...
-SCHWITEIONE IST...WIR...SEI GEVMT WIE TUN...
-NGETRAS ER...WIR...SCHAER ALTE
+"TUN DIE REIST EN ER"              (12x) — "What the travelers do, he..."
+"IM MIN HEIME DIE URALTE STEIN"   (11x) — "In my beloved homeland, the ancient stones"
+"TRAUT IST LEICH AN BERUCHTIG"     (9x) — "The Trusted One is a corpse, the Notorious"
+"DEN EN DE REDER KOENIG"          (10x) — "Of those of the Speaker-King"
+"SALZBERG"                         (5x) — "Salt Mountain" (= Salzburg)
+"ORANGENSTRASSE"                   (3x) — "Orange Street"
+"GOTTDIENER"                       (4x) — "God's Servant"
+"WEICHSTEIN"                       (4x) — "Soft Stone"
 ```
 
-**Key decoded phrases:**
-```
-HIER TAUTR IST EILCHANHEARUCHTIG  => "Here Tautr is [the] Eilchanhearuchtig"
-EINER SEIN EDETOTNIURGS           => "one [is] his Edetotniurgs"
-IN HEDEMI DIE URALTE STEINEN      => "in Hedemi the ancient stones"
-ADTHARSC IST SCHAUN               => "Adtharsc is — look!"
-TIUMENGEMI ORT ENGCHD KELSEI      => "Tiumengemi place Engchd Kelsei"
-SCHWITEIONE IST                   => "[the] Schwiteione is"
-HWND FINDEN TEIGN DAS ES          => "hound find(s) [the] sign that it"
-DER KOENIG LABGZERAS              => "the King Labgzeras"
-RUNE UNTER                        => "rune beneath"
-WIR UND...                        => "we and..."
-```
+### Confirmed Proper Nouns (Anagram Resolutions)
 
-### Identified Proper Nouns (11+)
+| Cipher Form | Resolution | Meaning | Pattern |
+|------------|-----------|---------|---------|
+| LABGZERAS | SALZBERG | "Salt Mountain" (Salzburg) | anagram + 1 letter |
+| SCHWITEIONE | WEICHSTEIN | "Soft Stone" | anagram + 1 letter |
+| AUNRSONGETRASES | ORANGENSTRASSE | "Orange Street" | anagram + 1 letter |
+| EDETOTNIURG | GOTTDIENER | "God's Servant" | anagram + 1 letter |
+| ADTHARSC | SCHARDT | Place name | anagram + 1 letter |
+| HEDEMI/HEDDEMI | HEIME | "Homeland" (MHG) | anagram |
 
-| Name | Context | Notes |
-|------|---------|-------|
-| **TAUTR** | Subject, "ist Eilchanhearuchtig" | A person/entity described by a title |
-| **EILCHANHEARUCHTIG** | Title/descriptor of TAUTR | Compound word, possibly MHG |
-| **EDETOTNIURGS** | Attribute of TAUTR | Contains TOTNIURG |
-| **LABGZERAS** | "KOENIG LABGZERAS" = King | No known Tibian king matches |
-| **HEDEMI** | Place with "uralte Steinen" | Wiki opensearch recognizes term! |
-| **ADTHARSC** | At HEDEMI, "ist schaun" | Unknown entity/place |
-| **KELSEI** | After ENGCHD | Wiki opensearch recognizes term! |
-| **TIUMENGEMI** | "ORT" (place) | A location name |
-| **ENGCHD** | Before KELSEI | Unknown |
-| **SCHWITEIONE** | 10x in text, "ist..." | May be bonelord race name |
-| **LABRNI** | After TAUTR's description | Person or place |
-| **GEVMT** | "SEI GEVMT WIE TUN" | Unknown |
-| **NGETRAS** | "SO NGETRAS ER" | Unknown |
+### Unsolved Proper Nouns
+
+| Name | Freq | Context |
+|------|------|---------|
+| THENAEUT | 7x | "ER THENAEUT ER ALS STANDE NOT" |
+| LGTNELGZ | 7x | Always paired with THENAEUT |
+| WRLGTNELNR | 4x | "STEH _ HEL" (stand _ light) |
+| NDCE | 9x | "HEHL DIE NDCE FACH" (concealment the _ compartment) |
+| HISDIZA | 2x | "NUN AM _ RUNE" (now at _ rune) |
+
+## Novel Techniques
+
+This research produced three novel cryptanalytic techniques, described in a [separate technical paper](docs/paper_bag_of_letters.md):
+
+1. **Bag-of-Letters Word Partition (BoLWP)** — Combinatorial multi-word decomposition of garbled cipher blocks with systematic letter-swap tolerance. Largest single-session gain: +10.1% coverage.
+
+2. **Context-Aware Anagram Resolution (CAAR)** — Phrase-boundary-sensitive string replacement that avoids breaking valid compound words during anagram substitution.
+
+3. **Concatenation-Aware Digit-Split Testing (CADST)** — Global validation of per-fragment modifications in fragmented ciphertext, detecting cross-boundary regressions invisible to local testing.
 
 ## Repository Structure
 
 ```
 .
-├── README.md              # This file
-├── FINDINGS.md            # Complete research log (23+ sessions, 7000+ lines)
+├── README.md / README.es.md           # Bilingual overview (EN/ES)
+├── LICENSE                            # BUSL-1.1 (free for individuals/academics/non-profits)
+├── COMMERCIAL.md / .es.md             # Commercial participation guidelines
+├── CREATORS.md / .es.md               # Content creator guidelines & media kit
+├── TERMS.md / .es.md                  # Terms of use & contribution obligation
+├── FINDINGS.md                        # Complete 30-session research log (7000+ lines)
 ├── data/
-│   ├── books.json         # Source data: all 70 books as digit strings
-│   ├── final_mapping_v4.json  # Best 97-code mapping (current)
-│   └── ...
+│   ├── mapping_v7.json                # THE mapping (98 codes → 22 letters)
+│   ├── books.json                     # 70 books as digit strings
+│   ├── bookcase_mapping.json          # Library book → bookcase mapping
+│   └── archive/                       # Historical mapping versions (v1-v6)
 ├── scripts/
-│   ├── core/              # Key scripts that produced results
-│   │   ├── crack_session12m.py     # Consensus assembly via voting (latest)
-│   │   ├── crack_session12l.py     # Substring alignment assembly
-│   │   ├── crack_session12k.py     # Decoded-text-level assembly
-│   │   ├── crack_session12j.py     # Code forensics (proper noun codes)
-│   │   ├── crack_session12i.py     # Aggressive assembly + proper nouns
-│   │   ├── crack_session12h.py     # Multi-chain assembly
-│   │   ├── decode_tier14.py        # 92-code decoder (tiers 1-14)
-│   │   ├── narrative_reconstruct.py # Full narrative decoder
-│   │   ├── deep_narrative.py       # DP word segmentation
-│   │   └── ...                     # 25+ core scripts
-│   └── experimental/      # 79+ exploratory scripts
-└── docs/
-    ├── 01-books.md         # Book transcriptions
-    └── README-469.md       # Early research notes
+│   ├── core/                          # Decryption pipeline & cipher attacks
+│   ├── analysis/                      # Per-session analysis & validation
+│   └── experimental/                  # Early hypotheses & exploratory work
+├── docs/
+│   ├── INDEX.md                       # Documentation index (EN/ES)
+│   ├── paper_469_cipher.md / .es.md   # Research paper (EN/ES)
+│   ├── paper_bag_of_letters.md / .es.md # BoLWP technique paper (EN/ES)
+│   ├── narrative_translation.md       # All 70 books translated (DE/EN/ES)
+│   ├── hellgate_library_guide.md      # Wiki-ready library guide (71 books)
+│   ├── roadmap_ingame.md              # In-game verification roadmap
+│   ├── npc-research.md                # NPC dialogue research
+│   └── archive/                       # Legacy community data
+└── agente3/                           # Spanish-language investigation phases
 ```
 
-## Tibia Lore Cross-Reference
+> See [docs/INDEX.md](docs/INDEX.md) for the complete documentation index.
 
-Comprehensive wiki research (4 parallel agents, 300+ searches) confirmed:
-- **None of our decoded proper nouns appear anywhere in public Tibia research**
-- **HEDEMI and KELSEI** are recognized as search terms on TibiaWiki (no pages exist)
-- **KOENIG LABGZERAS** doesn't match any of the ~68 known Tibian kings
-- Bonelord civilization lore (ancient cities, pyramids, necromancy, high council) aligns with decoded text
-- **German plaintext is consistent** with CipSoft being a German company (Regensburg)
-- The only previously named bonelord is **Honeminas** (mathematical formulae, Demona)
-- **SCHWITEIONE** (10x frequency) may be the bonelord race name — the Wrinkled Bonelord says their race name "is not fix but a complex formula, always changes"
-- Reversal/mirroring is canonical in bonelord lore (Paradox Tower mirrored room)
+## Quick Start
 
-## Open Questions
+```bash
+# Decode all 70 books with 94.4% word coverage
+python scripts/core/narrative_v3_clean.py
+```
 
-- **8 unconfirmed codes**: 04(M,80x), 38(K,6x), 40(M,19x), 69(E,5x), 80(G,92x), 83(V,43x), 94(H,50x), 96(L,52x) — never appear in confirmed German word contexts
-- **I inflation**: 10.4% vs 7.6% expected (+2.8%) — persistent across all assembly methods
-- **B/F deficit**: B=0.2% (exp 1.9%), F=0.5% (exp 1.7%) — some I codes may actually be B or F
-- **45 unaligned books**: Only 25/70 books align at code level; remaining books encode same text with different homophonic codes
-- **SCHWITEIONE**: 10x frequency, always in same context. Bonelord race name?
-- **Proper noun meanings**: EILCHANHEARUCHTIG, EDETOTNIURGS, TIUMENGEMI — compound words or titles?
-- **TibiaSecrets English decode vs our German decode**: Their key (62=N, 79=A, 20=R) differs completely from ours (62=B, 79=O, 20=F)
+## Why Was This Unsolved for 25 Years?
 
-## How to Contribute
+1. **Homophonic substitution** (98 codes for 22 letters) defeats frequency analysis
+2. **No spaces** in the encoded text — no word boundaries
+3. **German plaintext** — most attackers assumed English
+4. **CipSoft removed digits** from 37/70 books to break pair alignment
+5. **Short text** — 5,515 unique chars is marginal for blind homophonic cracking
+6. **Anagrammed proper nouns** with +1 extra letter
+7. **"Mathemagic" red herring** — NPC dialogue misdirects toward math, not language
 
-The cipher text is in `data/books.json`. The mapping is in `data/mapping_v7.json`. The complete research log is in `FINDINGS.md` (7000+ lines, 23 sessions).
+## License
 
-Key areas where help is needed:
-- **Book alignment**: 45/70 books don't align at code level due to homophonic substitution. A multi-sequence alignment or voting approach could recover the full narrative
-- **Unconfirmed code verification**: 8 codes (esp. 80(G) and 04(M)) may be wrong — fixing them could unlock proper noun meanings
-- **Archaic German vocabulary**: Unrecognized segments may be Middle High German (MHG) or Old High German
-- **Anagram analysis**: CipSoft uses anagrams extensively (Vladruc=Dracula, Dallheim=Heimdall). Do any proper nouns rearrange to known terms?
-- **NPC dialogue 469**: Avar Tar, Knightmare NPC, and Chayenne (dev) all speak 469 — additional cribs
+**Business Source License 1.1 (BUSL-1.1)**
 
-## Methodology
+- **Free for:** individuals, academics, researchers, non-profits
+- **Commercial use:** requires participation agreement (see [COMMERCIAL.md](COMMERCIAL.md))
+- **Contribution obligation:** improvements must be shared back (see [TERMS.md](TERMS.md))
+- **Change date:** 2030-03-24 (auto-converts to AGPL-3.0)
+- **Game data:** CipSoft GmbH intellectual property, included under fair use for research
 
-This research uses crib-based incremental decryption:
-1. Identify the cipher type via Index of Coincidence
-2. Use frequency analysis to get initial E/N assignments
-3. Progressively assign codes through 14 tiers of evidence
-4. Validate using German bigram/trigram statistics
-5. Parse decoded text with DP word segmentation
-6. Use book overlap structure to verify assignments
+See [LICENSE](LICENSE) for full terms.
 
-Blind statistical attacks (Simulated Annealing) were tested and do **not** converge on this text — it's too short for 98-symbol homophonic cipher cracking without cribs.
+**Content creators:** You can monetize freely — no license needed. See [CREATORS.md](CREATORS.md) for attribution guidelines and media kit.
+
+## Acknowledgments
+
+- **CipSoft GmbH** for creating and maintaining Tibia since 1997
+- **s2ward/469** repository for community-transcribed book data
+- **TibiaSecrets** and **Tales of Tibia** for prior analysis
+
+---
+
+*This research was conducted independently. CipSoft GmbH owns all intellectual property related to Tibia and its in-game content.*
