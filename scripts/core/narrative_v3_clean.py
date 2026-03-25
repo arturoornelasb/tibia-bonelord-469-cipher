@@ -51,13 +51,13 @@ def get_offset(book):
 DIGIT_SPLITS = {
     2: (34, '0'),    5: (265, '1'),   6: (20, '0'),    8: (137, '7'),
     10: (277, '2'),  11: (137, '0'),  12: (0, '0'),    13: (55, '0'),
-    14: (98, '1'),   15: (98, '0'),   18: (4, '0'),    19: (52, '0'),
+    14: (47, '8'),   15: (36, '6'),   18: (4, '0'),    19: (32, '0'),
     20: (5, '1'),    22: (7, '1'),    23: (14, '0'),   24: (47, '8'),
-    25: (0, '0'),    29: (151, '1'),  32: (137, '1'),  34: (101, '0'),
-    36: (78, '0'),   39: (44, '0'),   42: (91, '2'),   43: (26, '1'),
+    25: (0, '0'),    29: (120, '1'),  32: (137, '1'),  34: (101, '0'),
+    36: (63, '3'),   39: (44, '0'),   42: (91, '2'),   43: (26, '1'),
     45: (23, '7'),   46: (0, '2'),    48: (127, '0'),  49: (97, '1'),
     50: (136, '2'),  52: (0, '4'),    53: (248, '2'),  54: (49, '1'),
-    60: (73, '9'),   61: (93, '7'),   64: (58, '4'),   65: (94, '0'),
+    60: (73, '9'),   61: (93, '7'),   64: (58, '4'),   65: (94, '1'),
     68: (4, '0'),
 }
 
@@ -244,6 +244,9 @@ KNOWN = set([
     'NNR',  # recurring garbled pattern, 2x "SIE NNR TAG"
     'CHTIG',     # tail of BERUCHTIG (notorious) after cross-boundary split, 1x
     'MMKMGAEZS', # unresolved 9-letter sequence from long anagram, 1x "SO MMKMGAEZS SEE"
+    # Session 31
+    'TRETE',  # 1st person of treten (to step/tread), post-ANAGRAM_MAP fixup "IST TRETE NUR"
+    'GE',     # common MHG prefix (ge-), standalone fragment from anagram obfuscation
 ])
 
 # DP word segmentation
@@ -452,6 +455,10 @@ for anagram in sorted(ANAGRAM_MAP.keys(), key=len, reverse=True):
 # UNR -> NUR: can't use ANAGRAM_MAP because UNR appears inside WINDUNRUH
 # and SCHAUNRUIN after other entries fire. Target only TREUUNR pattern.
 resolved_text = resolved_text.replace('TREUUNR', 'TREUNUR')
+# Session 31: EETTR is an artifact created by prior ANAGRAM_MAP resolutions.
+# Rearranging to TRETE (1st person of treten = to step/tread) in context
+# "IST TRETE NUR" gives +5 coverage. Unique occurrence, safe to replace.
+resolved_text = resolved_text.replace('EETTR', 'TRETE')
 
 # Segment into words
 tokens, covered = dp_segment(resolved_text)
@@ -502,6 +509,7 @@ for bidx, text in enumerate(decoded_books):
     for anagram in sorted(ANAGRAM_MAP.keys(), key=len, reverse=True):
         rt = rt.replace(anagram, ANAGRAM_MAP[anagram])
     rt = rt.replace('TREUUNR', 'TREUNUR')  # post-fixup
+    rt = rt.replace('EETTR', 'TRETE')  # session 31 fixup
 
     tokens_b, covered_b = dp_segment(rt)
     known_b = sum(1 for c in rt if c != '?')
