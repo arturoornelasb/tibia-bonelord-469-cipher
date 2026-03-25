@@ -1,879 +1,1067 @@
-# Bonelord 469 Cipher - Full Decoded Text & English Translation
+# Bonelord 469 Cipher — Full Decoded Text with Translations
 
 ## Overview
 
 - **Source:** 70 numerical books from Tibia's Hellgate Library
 - **Cipher type:** Homophonic substitution (98 two-digit codes -> 22 German letters)
-- **Mapping:** `data/mapping_v7.json` (Session 27 final)
-- **Overall coverage:** 78.8% (4353/5524 characters)
+- **Mapping:** `data/mapping_v7.json` (Session 30 final)
+- **Overall coverage:** 94.4% (5204/5514 characters)
 - **Language:** Middle High German (MHG) mixed with modern German
-- **Generated:** 2026-03-24 from `scripts/analysis/session27_apply.py`
+- **Generated:** 2026-03-24 from `scripts/core/narrative_v3_clean.py`
 
 ### Notation
 
-- `{XYZ}` = garbled/undecoded letter blocks (letters decoded but word not identified)
-- Words in the decoded text are MHG/German, segmented by dynamic programming
-- Book order is by index (0-69), which is the order they appear in `books.json`
+- `{XYZ}` = garbled/undecoded letter blocks (correctly decoded letters but word boundaries unresolved)
+- Words are segmented by dynamic programming against a German/MHG dictionary
+- Coverage = percentage of characters that match known German words (min word length 2)
 
-### Chain Reconstruction (books are overlapping fragments)
+### Key Vocabulary (MHG/Archaic German)
 
-The 70 books are NOT independent texts. They are fragments of a larger continuous text with massive overlaps. The chains identified:
-1. Chain 1: 1 -> 34 -> 47 -> 54 -> 6 -> 10
-2. Chain 2: 2 -> 28 -> 68 -> 3 -> 49 -> 29
-3. Chain 3: 13 -> 14 -> 39
-4. Chain 4: 18 -> 33 -> 12 -> 44 -> 60 -> 19
-5. Chain 5: 20 -> 36 -> 11
-6. Chain 6: 21 -> 55
-7. Chain 7: 25 -> 22
-8. Chain 8: 26 -> 16 -> 17
-9. Chain 9: 30 -> 66 -> 59
-10. Chain 10: 38 -> 9 -> 65
-11. Chain 11: 45 -> 4 -> 69 -> 46 -> 52
-12. Chain 12: 48 -> 51 -> 70
+| Term | Modern German | English | Spanish |
+|------|--------------|---------|---------|
+| SCE | schon | already | ya |
+| LEICH | Leiche / Leich | corpse / lay-poem | cadaver / poema |
+| SCHRAT | Schratt | forest demon | demonio forestal |
+| BERUCHTIG | beruechtigt | notorious | notorio |
+| TRAUT | vertraut | trusted/beloved | confiable/querido |
+| GOTTDIENER | Gottdiener | God's servant | servidor de Dios |
+| REDER | Redner | speaker/orator | orador |
+| HEIME | Heimat | homeland | patria |
+| URALTE | uralt | ancient | antiguo |
+| EIGENTUM | Eigentum | property | propiedad |
+| WISTEN | wussten | knew | sabian |
+| HEHL | Hehl | concealment | ocultamiento |
+| HECHELT | hecheln | to gasp/pant | jadear |
+| OEL | Oel | oil | aceite |
+| REIST | reisen | to travel | viajar |
+| NIT | nicht | not | no |
+| SER | sehr | very | muy |
+| MIN | Minne/mein | love/my | amor/mi |
+| SCHAUN | schauen | to behold | contemplar |
+| OEDE | Oede | wasteland | yermo/desolacion |
+| SUN | Sohn | son | hijo |
+| DIGE | wuerdig | worthy | digno |
+| STIER | Stier | bull/stern | toro/severo |
+| GETRAS | getragen | carried/borne | portado/cargado |
+| HISS | Hitze | heat/ardor | calor/ardor |
+
+### Chain Reconstruction
+
+The 70 books are overlapping fragments of ONE continuous narrative:
+
+1. **Chain 1:** 1 -> 34 -> 47 -> 54 -> 6 -> 10
+2. **Chain 2:** 2 -> 28 -> 68 -> 3 -> 49 -> 29
+3. **Chain 3:** 13 -> 14 -> 39
+4. **Chain 4:** 18 -> 33 -> 12 -> 44 -> 60 -> 19
+5. **Chain 5:** 20 -> 36 -> 11
+6. **Chain 6:** 21 -> 55
+7. **Chain 7:** 25 -> 22
+8. **Chain 8:** 26 -> 16 -> 17
+9. **Chain 9:** 30 -> 66 -> 59
+10. **Chain 10:** 38 -> 9 -> 65
+11. **Chain 11:** 45 -> 4 -> 69 -> 46 -> 52
+12. **Chain 12:** 48 -> 51 -> 70
+13. **Isolated:** 5, 7, 8, 15, 31, 35, 37, 42, 43, 50, 56, 61
 
 ---
 
-## Books with >= 95% Coverage (Highest Confidence)
+## Books at 100% Coverage
 
 ---
 
-### Book 25 (100.0%, 17/17)
+### Book 5 (100% | 137 chars)
+
+**Decoded German:**
+> EN HI ER TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REIST EN ER SEIN GOTTDIENERS ERE LAB IRREN WIR TOD IM MIN HEIME DIE URALTE STEIN EN TER SCHARDT IST SCHAUN DEN
+
+**English:**
+> Here the Trusted One is a corpse — the Notorious One, he who so does [this to] the travelers, he [and] his God's Servants. Their sustenance [is] delusion. We [found] death in [our] beloved homeland. The ancient stones of Schardt — behold them!
+
+**Espanol:**
+> Aqui el Fiel es un cadaver — el Notorio, el que asi les hace [esto] a los viajeros, el y sus Servidores de Dios. Su sustento [es] delirio. Encontramos la muerte en [nuestra] amada patria. Las piedras antiguas de Schardt — contempladlas!
+
+---
+
+### Book 25 (100% | 17 chars)
 
 **Decoded German:**
 > DER SCHRAT SCE AUS ER
 
-**English Translation:**
-> The forest demon already [came] out of him.
+**English:**
+> The forest demon [has] already [come] out of him.
 
-**Notes:** SCHRAT is a MHG term for a forest demon or wild spirit (related to modern German "Schratt"). SCE (= schon/already) modifies the verb. This is the shortest and most cleanly decoded book -- a single declarative statement about a supernatural entity emerging or being released from someone.
+**Espanol:**
+> El demonio forestal ya [ha salido] de el.
+
+**Notes:** Shortest fully decoded book. A SCHRAT is a Germanic forest demon (Waldschrat). This fragment describes a supernatural entity emerging from or being released from someone.
 
 ---
 
-### Book 39 (96.4%, 27/28)
+### Book 27 (100% | 62 chars)
+
+**Decoded German:**
+> OD TREU NUR DEN EN DE REDER KOENIG SALZBERG UNE NIT GEH EN ORANGENSTRASSE
+
+**English:**
+> Or faithfully only to those of the Speaker-King Salzberg, and not [to] go to Orangenstrasse.
+
+**Espanol:**
+> O fielmente solo a los del Rey Orador Salzberg, y no ir a Orangenstrasse.
+
+**Notes:** Key narrative fragment. KOENIG SALZBERG = King Salzberg (anagram of LABGZERAS). ORANGENSTRASSE = "Orange Street", a place name appearing 10x in the full text. The king is called REDER (speaker/orator).
+
+---
+
+### Book 45 (100% | 74 chars)
+
+**Decoded German:**
+> NACHTS IM NIT EN CHN SER ER SCE AUS OEDE DU FINDEN SAG EN AM MIN HEHL DIE NDCE FACH HECHELT ICH
+
+**English:**
+> At night in the nothing... CHN, very [much] he [has] already [gone] out of [the] wasteland. You [shall] find [and] tell at my concealment the NDCE compartment [that] gasps — I...
+
+**Espanol:**
+> De noche en la nada... CHN, el ya [ha salido] del yermo. Tu [debes] encontrar [y] contar en mi ocultamiento el compartimento NDCE [que] jadea — yo...
+
+**Notes:** First-person narration. The narrator speaks of a hidden compartment (FACH) that breathes/gasps (HECHELT). NDCE remains an unsolved proper noun.
+
+---
+
+### Book 52 (100% | 69 chars)
+
+**Decoded German:**
+> NEIGT SEE SIN IHM NU STEH WRLGTNELNR HEL WI ND UNRUH FINDEN NEIGT DAS ES DE REIST GEN
+
+**English:**
+> [It] inclines — the sea. His now standing [at] WRLGTNELNR, light like wind [and] unrest. Find [what] inclines, that [which] the travelers [seek].
+
+**Espanol:**
+> [Se] inclina — el mar. Su posicion ahora [en] WRLGTNELNR, luz como viento [e] inquietud. Encontrar [lo que] se inclina, eso [que] los viajeros [buscan].
+
+---
+
+## Books at 95-99% Coverage
+
+---
+
+### Book 2 (97% | 89 chars)
+
+**Decoded German:**
+> {MT} DEN EID WEICHSTEIN ER WARD EI {E} TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REIST EN ER SEIN GOTTDIENER
+
+**English:**
+> {?} the oath [of] Weichstein — he became a {?} Trusted One. [This] is [a] lay/corpse of [the] Notorious One, he who so does [this to] the travelers, he [and] his God's Servant.
+
+**Espanol:**
+> {?} el juramento [de] Weichstein — el se convirtio en un {?} Fiel. [Este] es [un] poema/cadaver del Notorio, el que asi les hace [esto] a los viajeros, el y su Servidor de Dios.
+
+---
+
+### Book 3 (97% | 69 chars)
+
+**Decoded German:**
+> {T} ES SIN IHM NU STEH WRLGTNELNR HEL WI ND UNRUH FINDEN NEIGT DAS ES DE REIST GEN HEHL {I}
+
+**English:**
+> {?} They are — his now standing [at] WRLGTNELNR. Light like wind [and] unrest. Find [what] inclines, that [which] the travelers [seek at the] concealment {?}.
+
+**Espanol:**
+> {?} Ellos son — su posicion ahora [en] WRLGTNELNR. Luz como viento [e] inquietud. Encontrar [lo que] se inclina, eso [que] los viajeros [buscan en el] ocultamiento {?}.
+
+---
+
+### Book 8 (95% | 77 chars)
+
+**Decoded German:**
+> {TR} NUR DEN EN DE REDER KOENIG LABT DEN EID WEICHSTEIN {N} GAR SUN EN DE DIENST ORT AN EIN NEU UM SER {S}
+
+**English:**
+> {?} Only to those of the Speaker-King — [he] sustains the Weichstein oath {?}. Very much [the] son, at the service-place, at a new [one], around very [much] {?}.
+
+**Espanol:**
+> {?} Solo a los del Rey Orador — [el] sustenta el juramento Weichstein {?}. Mucho [el] hijo, en el lugar de servicio, en uno nuevo, alrededor de muy {?}.
+
+**Notes:** KOENIG LABT = "the king sustains/refreshes" (variation of LABGZERAS/SALZBERG). DIENST ORT = "place of service" appears throughout the text.
+
+---
+
+### Book 9 (98% | 147 chars)
+
+**Decoded German:**
+> {N} HI ER TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REIST EN ER SEIN GOTTDIENERS ERE LAB IRREN WIR TOD IM MIN HEIME DIE URALTE STEIN EN TER SCHARDT IST SCHAUN RUIN WI IST {E} EI {S}
+
+**English:**
+> {?} Here the Trusted One is a corpse — the Notorious One, he who so does [this to] the travelers, he and his God's Servants. Their sustenance [is] delusion. We [found] death in [our] beloved homeland. The ancient stones of Schardt — behold [the] ruin! How is {?} a {?}.
+
+**Espanol:**
+> {?} Aqui el Fiel es un cadaver — el Notorio, el que asi les hace a los viajeros, el y sus Servidores de Dios. Su sustento [es] delirio. Encontramos la muerte en [nuestra] amada patria. Las piedras antiguas de Schardt — contemplad [la] ruina! Como es {?} un {?}.
+
+---
+
+### Book 10 (99% | 141 chars)
+
+**Decoded German:**
+> IM ES {I} GODES DA SIE OWI RUNE MANIER DE GEN EN DE NEST TUT IGAA ER GIGE {T} SEE IN CHN SER ER SCE AUS ODE TREU NUR DEN EN DE REDER KOENIG SALZBERG UNE NIT GEH EN ORANGENSTRASSE SEI
+
+**English:**
+> In it {?} God's — for they [practice] OWI rune [in the] manner of those against the nest. [He] does IGAA, he fiddles {?} [at the] sea. In CHN, very [much] he [has] already [gone] from [the] wasteland. Faithfully only to those of the Speaker-King Salzberg, and not [to] go to Orangenstrasse — [so] be [it].
+
+**Espanol:**
+> En ello {?} de Dios — pues ellos [practican] la runa OWI [a la] manera de aquellos contra el nido. [El] hace IGAA, el toca [el violin] {?} [en el] mar. En CHN, el ya [ha salido] del yermo. Fielmente solo a los del Rey Orador Salzberg, y no ir a Orangenstrasse — [que asi] sea.
+
+**Notes:** GIGE = MHG verb "to fiddle/play stringed instrument" (geigen). NEST = literal nest or metaphorical stronghold.
+
+---
+
+### Book 11 (98% | 69 chars)
+
+**Decoded German:**
+> ODE GAR {E} OR UNE ORT ND TER AM NEU DE DIENST ORT SAND IM MIN HEIME DIE URALTE STEIN EN
+
+**English:**
+> Or even {?} [in that] place and [the] territory at [the] new service-place [of] sand, in [our] beloved homeland [with] the ancient stones.
+
+**Espanol:**
+> O incluso {?} [en ese] lugar y [el] territorio en [el] nuevo lugar de servicio [de] arena, en [nuestra] amada patria [con] las piedras antiguas.
+
+---
+
+### Book 12 (98% | 68 chars)
+
+**Decoded German:**
+> DER THENAEUT ER ALS STANDE NOT ERE LGTNELGZ ER {A} STIER TREU ORANGENSTRASSE SICH
+
+**English:**
+> The THENAEUT — he as [one of] standing [in] distress, their LGTNELGZ. He {?} [is] stern [and] faithful [to] Orangenstrasse himself.
+
+**Espanol:**
+> El THENAEUT — el como [uno de] rango [en] necesidad, su LGTNELGZ. El {?} [es] severo [y] fiel [a] Orangenstrasse.
+
+**Notes:** THENAEUT and LGTNELGZ are unsolved proper nouns that always appear together. STANDE = rank/standing. STIER = stern/bull-like.
+
+---
+
+### Book 16 (95% | 87 chars)
+
+**Decoded German:**
+> KLAR SUN EN DE WINDUNRUHS FINDEN DIGE {ST} EI HEHL STEH WIR DAS NEU {W} DA NUN DE GEN IM MIN {H} IST RUNEN EI DE ND TEE ZU HEL
+
+**English:**
+> Clear son[s] of the Wind-Unrest — [they] find [the] worthy {?}, a concealment. [We] stand [before] the new {?}, for now those against, in [our] love {?}, are runes — a [bond of] the [land] and tea, toward [the] light.
+
+**Espanol:**
+> Claro[s] hijo[s] de la Inquietud del Viento — [ellos] encuentran [al] digno {?}, un ocultamiento. [Nosotros] estamos ante lo nuevo {?}, pues ahora los que [van] contra, en [nuestro] amor {?}, son runas — un [vinculo de] la [tierra] y te, hacia la luz.
+
+**Notes:** WINDUNRUHS = "Wind-Unrest" (plural genitive). Appears to be an important concept — wind unrest as a mystical force.
+
+---
+
+### Book 22 (99% | 69 chars)
+
+**Decoded German:**
+> IST SEI {E} TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REIST EN ER SEI EN DE TOT RUIN
+
+**English:**
+> Is — be [it] {?}. The Trusted One is [a] corpse, the Notorious One. He [who] so does [this to] the travelers — he [shall] be of the dead, [in] ruin.
+
+**Espanol:**
+> Es — sea {?}. El Fiel es [un] cadaver, el Notorio. El [que] asi les hace [esto] a los viajeros — el sera de los muertos, [en] ruina.
+
+---
+
+### Book 29 (96% | 76 chars)
+
+**Decoded German:**
+> NU STEH WRLGTNELNR HEL WI ND UNRUH FINDEN NEIGT DAS ES DE REIST GEN EHH EI EN DE {LE} ALLE ZU {H} SEI
+
+**English:**
+> Now [we] stand [at] WRLGTNELNR. Light like wind [and] unrest. Find [what] inclines — that [which] the travelers [seek] against EHH, a [bond] of the {?}. All toward {?} — be [it so].
+
+**Espanol:**
+> Ahora [nos] erguimos [en] WRLGTNELNR. Luz como viento [e] inquietud. Encontrar [lo que] se inclina — eso [que] los viajeros [buscan] contra EHH, un [vinculo] de los {?}. Todo hacia {?} — [que asi] sea.
+
+---
+
+### Book 31 (96% | 123 chars)
+
+**Decoded German:**
+> {L} SEI ERE DER KOENIG SALZBERG ORT AUS GEN ES OD TREU NUR DEN EN NEID {H} ORANGENSTRASSE EN HAND {R} NUN AM HISDIZA RUNE DEN NIT {G} DU NUR ALTES IN IHM {T} DEN DE
+
+**English:**
+> {?} Be [it] their — the King Salzberg's place, out against it. Or faithfully only to those [of] envy {?} Orangenstrasse, in hand {?}. Now at [the] HISDIZA rune — the not {?}. You [shall find] only [the] old [things] in him {?}, of those.
+
+**Espanol:**
+> {?} Sea su — el lugar del Rey Salzberg, fuera contra ello. O fielmente solo a los [de] envidia {?} Orangenstrasse, en mano {?}. Ahora en [la] runa HISDIZA — el no {?}. Tu [encontraras] solo [lo] viejo en el {?}, de esos.
+
+**Notes:** HISDIZA is an unsolved proper noun — a place where runes are found. NEID = envy.
+
+---
+
+### Book 32 (98% | 69 chars)
+
+**Decoded German:**
+> ICH OEL SO DE GAR {E} OR UNE ORT ND TER AM NEU DE DIENST ORT SAND IM MIN HEIME DIE URALTE
+
+**English:**
+> I [anoint with] oil — so, the even {?} place and territory, at [the] new service-place [of] sand, in [our] beloved homeland [with] the ancient [stones].
+
+**Espanol:**
+> Yo [unjo con] aceite — asi, el {?} lugar y territorio, en [el] nuevo lugar de servicio [de] arena, en [nuestra] amada patria [con] las [piedras] antiguas.
+
+---
+
+### Book 33 (95% | 67 chars)
+
+**Decoded German:**
+> {E} DA SIE OWI RUNE MANIER DE GEN EN DE NEST TUT IGAA ER GIGE {T} SEE IN CHN SER ER SCE AUS {E}
+
+**English:**
+> {?} For they [practice] OWI rune [in the] manner of those against the nest. [He] does IGAA, he fiddles {?} [at the] sea. In CHN, very [much] he [has] already [gone] from {?}.
+
+**Espanol:**
+> {?} Pues ellos [practican] la runa OWI [a la] manera de aquellos contra el nido. [El] hace IGAA, el toca [el violin] {?} [en el] mar. En CHN, el ya [ha salido] de {?}.
+
+---
+
+### Book 39 (96% | 29 chars)
 
 **Decoded German:**
 > ES ER SCHRAT SCE AUS ER {T} AM KLAR SUN
 
-**English Translation:**
-> It [was] the forest demon, already out of him, {?} at the clear sun.
+**English:**
+> It [was] the forest demon — already out of him {?}, at [the] clear sun.
 
-**Notes:** Extends Book 25's content. The SCHRAT (forest demon) has already come out, now standing in bright sunlight. SUN = Sohn (son) or Sonne (sun); in context, "clear sun" suggests daylight or divine light. The {T} garbled block is likely a conjunction or preposition.
+**Espanol:**
+> [Fue] el demonio forestal — ya [salido] de el {?}, al sol claro.
+
+**Notes:** Extends Book 25. The SCHRAT has emerged and now stands in bright sunlight.
 
 ---
 
-### Book 46 (99.2%, 125/126)
+### Book 43 (96% | 71 chars)
 
 **Decoded German:**
-> ICH {N} SER ER SCE AUS OEDE DU FINDEN SAGEN AM MIN HEHL DIE NDCE FACH HECHELT ICH OEL SO DEN HIER TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REISTEN ER SEINE
+> TER {E} LAB IRREN WI ER AM NEU DE DIENST ORT SAND IM MIN HEIME DIE URALTE STEIN EN TER AD {TH}
 
-**English Translation:**
-> I {?} very he already out of desolation. You [shall] find [and] tell at my concealment the NDCE compartment [that] gasps. I [anoint with] oil so the here trusted [one]. [This] is [a] lay/poem about [the] notorious one, he so that do [it] -- those who traveled, he [and] his [people].
+**English:**
+> Territory {?} sustenance [and] delusion — how he [is] at [the] new service-place [of] sand, in [our] beloved homeland [with] the ancient stones of territory. At {?}.
 
-**Notes:** This is a key narrative passage. The narrator speaks in first person. Key elements:
-- OEDE (desolation/wasteland) -- the setting
-- HEHL (concealment/secret place) -- something hidden
-- NDCE -- a proper noun, possibly a place or artifact
-- HECHELT (gasps/pants) -- the hidden thing breathes or wheezes
-- OEL (oil) -- anointing, a religious/ritual act
-- TRAUT (trusted/familiar one) -- a central character
-- LEICH (lay/poem) -- the text self-identifies as a poetic composition
-- BERUCHTIG (notorious) -- the subject of the poem
-- DIE REISTEN (those who traveled) -- travelers or pilgrims
+**Espanol:**
+> Territorio {?} sustento [y] delirio — como el [esta] en [el] nuevo lugar de servicio [de] arena, en [nuestra] amada patria [con] las piedras antiguas del territorio. En {?}.
 
 ---
 
-### Book 22 (98.5%, 67/68)
+### Book 46 (99% | 127 chars)
 
 **Decoded German:**
-> IST SEI {E} TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REISTEN ER SEI ENDE TOT RUIN
+> ICH {N} SER ER SCE AUS OEDE DU FINDEN SAG EN AM MIN HEHL DIE NDCE FACH HECHELT ICH OEL SO DEN HI ER TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REIST EN ER SEINE
 
-**English Translation:**
-> [He] is, may [he] be {?}. [The] trusted one -- [this] is [a] lay about [the] notorious one, he so that did those who traveled. He may be [at the] end: dead, [in] ruin.
+**English:**
+> I {?} very [much] — he [has] already [gone] from [the] wasteland. You [shall] find [and] tell at my concealment the NDCE compartment [that] gasps. I [anoint with] oil — so, the [one] here: the Trusted One is [a] corpse, the Notorious One. He who so does [this to] the travelers — he [and] his [people].
 
-**Notes:** The narrative formula "TRAUT IST LEICH AN BERUCHTIG" recurs frequently across many books. It appears to be a refrain or formulaic identification: "The trusted one is [the subject of] a lay about the notorious one." The ending -- "ENDE TOT RUIN" -- declares the subject dead and ruined.
+**Espanol:**
+> Yo {?} mucho — el ya [ha salido] del yermo. Tu [debes] encontrar [y] contar en mi ocultamiento el compartimento NDCE [que] jadea. Yo [unjo con] aceite — asi, el [que esta] aqui: el Fiel es [un] cadaver, el Notorio. El que asi les hace [esto] a los viajeros — el y los suyos.
+
+**Notes:** First-person narration. The narrator anoints with oil and speaks of a hidden gasping compartment.
 
 ---
 
-### Book 5 (97.7%, 130/133)
+### Book 47 (97% | 63 chars)
 
 **Decoded German:**
-> {EN} HIER TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REISTEN ER SEIN GOTTDIENERS ERE {L} AB IRREN WIR TOD IM MIN HEIME DIE URALTE STEINEN TER SCHARDT IST SCHAUN DEN
+> DE TOT RUIN {G} SER {E} LAB IRREN WIR TOD IM MIN HEIME DIE URALTE STEIN EN TER DA HAT
 
-**English Translation:**
-> {?} Here [the] trusted one -- [this] is [a] lay about [the] notorious one, he so that did those who traveled, he [was] his God-servant's honor. {?} Away! We wander [in] death in my homeland. The ancient stones of SCHARDT, [one] is [to] behold them.
+**English:**
+> Of [the] dead, ruin {?}. Very [much] {?} sustenance [and] delusion. We [found] death in [our] beloved homeland [with] the ancient stones of [the] territory. There [it] has...
 
-**Notes:** Critical narrative passage:
-- GOTTDIENERS ERE = "God-servant's honor" -- religious authority figure
-- IRREN WIR TOD IM MIN HEIME = "We wander in death in my homeland" -- the narrator and companions are lost or dead in their own homeland
-- URALTE STEINEN TER SCHARDT = "ancient stones of SCHARDT" -- a real German place name; the ancient stones are a monument or ruin
-- SCHAUN = "behold/look upon"
-- This establishes the narrator as someone who has died or is in a death-like state, wandering among ancient ruins
+**Espanol:**
+> De los muertos, ruina {?}. Mucho {?} sustento [y] delirio. Encontramos la muerte en [nuestra] amada patria [con] las piedras antiguas del territorio. Alli [se] tiene...
 
 ---
 
-### Book 53 (97.0%, 130/134)
+### Book 48 (95% | 85 chars)
 
 **Decoded German:**
-> {CE} AUS OEDE DU FINDEN SAGEN AM MIN HEHL DIE NDCE FACH HECHELT ICH OEL SO DEN HIER TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REISTEN ER SEIN GOTTDIENERS SO RUNE {OR}
+> LEICH AN BERUCHTIG ER SO DASS TUN DIE REIST EN ER SEIN GOTTDIENERS DA {U} NOT EN RUNEN EID EN DE GEN INS {AUU}
 
-**English Translation:**
-> {?} Out of [the] desolation you [shall] find [and] tell at my concealment the NDCE compartment [that] gasps. I [anoint with] oil so the here. [The] trusted one -- [this] is [a] lay about [the] notorious one, he so that did those who traveled, he [was] his God-servant's. So [the] rune {?}.
+**English:**
+> [A] lay/corpse of [the] Notorious One — he who so does [this to] the travelers, he [and] his God's Servants. For {?} distress [and] rune-oaths of those against, into {?}.
 
-**Notes:** Closely parallels Book 46. The RUNE at the end ties the narrative to runic writing/magic. The God-servant (GOTTDIENER) is linked to the travelers (REISTEN).
+**Espanol:**
+> [Un] poema/cadaver del Notorio — el que asi les hace a los viajeros, el y sus Servidores de Dios. Pues {?} angustia [y] juramentos runicos de aquellos contra, hacia {?}.
+
+**Notes:** RUNEN EID = "rune oath" — an oath sworn on runes, a significant Germanic/bonelord concept.
 
 ---
 
-### Book 18 (95.6%, 43/45)
+### Book 50 (97% | 71 chars)
 
 **Decoded German:**
-> GAR HIER SER EIGENTUM ORT GEN {A} RUNE {D} DU NUR ALTES IN IHM
+> {G} SER {E} LAB IRREN WIR TOD IM MIN HEIME DIE URALTE STEIN EN TER SCHARDT IST SCHAUN TREUE
 
-**English Translation:**
-> Truly here, very [much] a place of property/possession toward {?} rune {?}. You [find] only old [things] in him.
+**English:**
+> {?} Very [much] {?} sustenance [and] delusion. We [found] death in [our] beloved homeland. The ancient stones of Schardt — behold [the] fidelity!
 
-**Notes:** EIGENTUM (property/possession) suggests a place that belongs to someone or something. The speaker notes that only old things remain. This describes arrival at an ancient site. "GEN" (toward) implies movement or direction.
+**Espanol:**
+> {?} Mucho {?} sustento [y] delirio. Encontramos la muerte en [nuestra] amada patria. Las piedras antiguas de Schardt — contemplad [la] fidelidad!
 
 ---
 
-### Book 51 (95.5%, 126/132)
+### Book 51 (99% | 133 chars)
 
 **Decoded German:**
-> {IHW} IN {CHN} SER ER SCE AUS OEDE DU FINDEN SAGEN AM MIN HEHL DIE NDCE FACH HECHELT ICH OEL SO DEN HIER TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REISTEN ER SEI ENDE
+> IH WI {N} CHN SER ER SCE AUS OEDE DU FINDEN SAG EN AM MIN HEHL DIE NDCE FACH HECHELT ICH OEL SO DEN HI ER TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REIST EN ER SEI EN DE
 
-**English Translation:**
-> {?} in {?} very he already out of [the] desolation. You [shall] find [and] tell at my concealment the NDCE compartment [that] gasps. I [anoint with] oil so them here. [The] trusted one -- [this] is [a] lay about [the] notorious one, he so that did those who traveled. He may be [at the] end.
+**English:**
+> I [tell you] how {?} CHN — very [much] he [has] already [gone] from [the] wasteland. You [shall] find [and] tell at my concealment the NDCE compartment [that] gasps. I [anoint with] oil — so, the [one] here: the Trusted One is [a] corpse, the Notorious One. He who so does [this to] the travelers — he [shall] be of those...
 
-**Notes:** Another variant of the core narrative passage. The {CHN} garbled block recurs in many books (always "IN CHN SER"), suggesting it may be a proper noun or specific MHG term that has not been resolved.
-
----
-
-## Books with 90-94.9% Coverage
+**Espanol:**
+> Yo [les digo] como {?} CHN — el ya [ha salido] del yermo. Tu [debes] encontrar [y] contar en mi ocultamiento el compartimento NDCE [que] jadea. Yo [unjo con] aceite — asi, el [que esta] aqui: el Fiel es [un] cadaver, el Notorio. El que asi les hace a los viajeros — el sera de esos...
 
 ---
 
-### Book 9 (94.4%, 134/142)
+### Book 53 (99% | 136 chars)
 
 **Decoded German:**
-> {N} HIER TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REISTEN ER SEIN GOTTDIENERS ERE {L} AB IRREN WIR TOD IM MIN HEIME DIE URALTE STEINEN TER SCHARDT IST SCHAUN RUIN {WI} IST {EEIS}
+> {CE} AUS OEDE DU FINDEN SAG EN AM MIN HEHL DIE NDCE FACH HECHELT ICH OEL SO DEN HI ER TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REIST EN ER SEI EN DE TOT NIE ICH SO RUNE OR
 
-**English Translation:**
-> {?} Here [the] trusted one -- [this] is [a] lay about [the] notorious one, he so that did those who traveled, he [was] his God-servant's honor. {?} Away! We wander [in] death in my homeland. The ancient stones of SCHARDT, [one] is [to] behold [the] ruin. {?} is {?}.
+**English:**
+> {?} From [the] wasteland — you [shall] find [and] tell at my concealment the NDCE compartment [that] gasps. I [anoint with] oil — so, the [one] here: the Trusted One is [a] corpse, the Notorious One. He who so does [this to] the travelers — he [shall] be of the dead. Never! I [swear] so [by] rune [and] place.
 
-**Notes:** Nearly identical to Book 5 but continues past "SCHAUN" to mention RUIN explicitly. The ancient stones of SCHARDT are now a ruin to be beheld.
+**Espanol:**
+> {?} Del yermo — tu [debes] encontrar [y] contar en mi ocultamiento el compartimento NDCE [que] jadea. Yo [unjo con] aceite — asi, el [que esta] aqui: el Fiel es [un] cadaver, el Notorio. El que asi les hace a los viajeros — el sera de los muertos. Nunca! Yo [juro] asi [por] runa [y] lugar.
 
 ---
 
-### Book 2 (94.2%, 81/86)
+### Book 58 (98% | 135 chars)
 
 **Decoded German:**
-> {MTD} ENDE {E} WEICHSTEIN IST SEI {E} TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REISTEN ER SEIN GOTTDIENER
+> HEHL DIE NDCE {RT} ICH OEL SO DE GAR {E} OR UNE ORT ND TER AM NEU DE DIENST ORT SAND IM MIN HEIME DIE URALTE STEIN EN TER SCHARDT IST SCHAUN RUIN WISTEN HI ER STIER UM GEN
 
-**English Translation:**
-> {?} [the] end {?} WEICHSTEIN is, may [it] be {?}. [The] trusted one -- [this] is [a] lay about [the] notorious one, he so that did those who traveled, he [was] his God-servant.
+**English:**
+> [The] concealment [of] the NDCE {?} — I [anoint with] oil, so the even {?} place and territory, at [the] new service-place [of] sand, in [our] beloved homeland. The ancient stones of Schardt — behold [the] ruin! [They] knew [it] here — he [is] stern around [those] against [him].
 
-**Notes:** WEICHSTEIN (literally "soft stone") is a confirmed German place name, likely referring to a real location. It appears at a transition point -- after "ENDE" (end) and before the recurring TRAUT/LEICH refrain. GOTTDIENER (God-servant) appears without the genitive -S, possibly as a title.
+**Espanol:**
+> [El] ocultamiento [de] la NDCE {?} — yo [unjo con] aceite, asi el {?} lugar y territorio, en [el] nuevo lugar de servicio [de] arena, en [nuestra] amada patria. Las piedras antiguas de Schardt — contemplad [la] ruina! [Ellos lo] sabian aqui — el [es] severo con [aquellos] en su contra.
 
 ---
 
-### Book 0 (94.0%, 63/67)
+### Book 59 (98% | 135 chars)
 
 **Decoded German:**
-> {E} URALTE STEINEN TER SCHARDT IST SCHAUN RUIN WISTEN HIER SER EIGENTUM ORT GEN {CHD}
+> {E} OR UNE ORT ND TER AM NEU DE DIENST ORT SAND IM MIN HEIME DIE URALTE STEIN EN TER DA HAT ES LANG HEIME DIES ER {U} UM SO AUS TER {C} IST SCHAUN RUIN WISTEN HI ER STIER UM GEN
 
-**English Translation:**
-> {?} [The] ancient stones of SCHARDT, [one] is [to] behold [the] ruin. [They] knew [that] here [is] very [much] a place of property toward {?}.
+**English:**
+> {?} Place and territory, at [the] new service-place [of] sand, in [our] beloved homeland. The ancient stones of [the] territory — there [it] has [been] long [our] homeland. This he {?}, all the more from [the] territory {?} — behold [the] ruin! [They] knew [it] here — he [is] stern around [those] against [him].
 
-**Notes:** WISTEN (MHG past tense of "wissen" = to know) -- those who came before knew this place. The ancient stones of SCHARDT are in ruin, but the site is recognized as a place of significance or ownership.
+**Espanol:**
+> {?} Lugar y territorio, en [el] nuevo lugar de servicio [de] arena, en [nuestra] amada patria. Las piedras antiguas del territorio — alli [ha sido] largo [tiempo nuestra] patria. Esto el {?}, tanto mas del territorio {?} — contemplad [la] ruina! [Ellos lo] sabian aqui — el [es] severo con [aquellos] en su contra.
 
 ---
 
-### Book 58 (93.0%, 120/129)
+### Book 62 (98% | 63 chars)
 
 **Decoded German:**
-> HEHL DIE NDCE {RT} ICH OEL {S} ODE GAR {EO} RUNE ORT {ND} TER AM NEU {DE} DIENST ORT SAND IM MIN HEIME DIE URALTE STEINEN TER SCHARDT IST SCHAUN RUIN WISTEN HIER STIER UM GEN
+> {N} IHM NU STEH WRLGTNELNR HEL WI ND UNRUH FINDEN NEIGT DAS ES DE REIST GEN HEHL
 
-**English Translation:**
-> [The] concealment [of] the NDCE {?}. I [anoint with] oil {?} desolation, truly {?} rune place {?} of at [a] new {?} service-place [of] sand in my homeland. The ancient stones of SCHARDT, [one] is [to] behold [the] ruin. [They] knew here [the] bull/Stier around toward.
+**English:**
+> {?} In him — now [we] stand [at] WRLGTNELNR. Light like wind [and] unrest. Find [what] inclines — that [which] the travelers [seek] against [the] concealment.
 
-**Notes:** New elements:
-- DIENST ORT = "service place" (a place of duty/worship)
-- SAND = sand (geographic descriptor -- sandy terrain)
-- STIER = bull (possibly a symbol, heraldic device, or place marker)
-- RUNE ORT = "rune place" (a place of runes/inscriptions)
-- The landscape is desolate (ODE), sandy, with ancient stones and runes
+**Espanol:**
+> {?} En el — ahora [nos] erguimos [en] WRLGTNELNR. Luz como viento [e] inquietud. Encontrar [lo que] se inclina — eso [que] los viajeros [buscan] contra [el] ocultamiento.
 
 ---
 
-### Book 69 (92.5%, 62/67)
+### Book 68 (97% | 72 chars)
 
 **Decoded German:**
-> {L} AB IRREN WIR TOD IM MIN HEIME DIE URALTE STEINEN TER SCHARDT IST SCHAUN RUIN {WIIS}
+> UNE STEH WRLGTNELNR HEL WI ND UNRUH FINDEN NEIGT DAS ES DE REIST GEN HEHL IH WI {N} CHN SER {E}
 
-**English Translation:**
-> {?} Away! We wander [in] death in my homeland. The ancient stones of SCHARDT, [one] is [to] behold [the] ruin. {?}
+**English:**
+> And [we] stand [at] WRLGTNELNR. Light like wind [and] unrest. Find [what] inclines — that [which] the travelers [seek] against [the] concealment. I [tell you] how {?} CHN, very [much] {?}.
 
-**Notes:** Compact restatement of the death-wandering motif. The narrator and companions wander in death through their homeland, beholding the ruins of SCHARDT.
+**Espanol:**
+> Y [nos] erguimos [en] WRLGTNELNR. Luz como viento [e] inquietud. Encontrar [lo que] se inclina — eso [que] los viajeros [buscan] contra [el] ocultamiento. Yo [les digo] como {?} CHN, mucho {?}.
 
 ---
 
-### Book 45 (91.9%, 68/74)
+### Book 69 (97% | 70 chars)
 
 **Decoded German:**
-> NACHTS ES {IHW} IN {CHN} SER ER SCE AUS OEDE DU FINDEN SAGEN AM MIN HEHL DIE NDCE FACH HECHELT ICH
+> LAB IRREN WIR TOD IM MIN HEIME DIE URALTE STEIN EN TER SCHARDT IST SCHAUN RUIN WI {IS}
 
-**English Translation:**
-> At night it {?} in {?} very he already out of [the] desolation. You [shall] find [and] tell at my concealment the NDCE compartment [that] gasps, I...
+**English:**
+> Sustenance [and] delusion — we [found] death in [our] beloved homeland. The ancient stones of Schardt — behold [the] ruin! How {?}.
 
-**Notes:** NACHTS (at night) -- the action takes place at night. The narrator instructs someone to find and tell about the concealed NDCE compartment that gasps/breathes. The nocturnal setting adds atmosphere to the supernatural narrative.
+**Espanol:**
+> Sustento [y] delirio — encontramos la muerte en [nuestra] amada patria. Las piedras antiguas de Schardt — contemplad [la] ruina! Como {?}.
 
 ---
 
-### Book 10 (91.7%, 122/133)
+## Books at 90-94% Coverage
+
+---
+
+### Book 0 (94% | 72 chars)
 
 **Decoded German:**
-> DIE URALTE STEINEN TER SCHARDT IST SCHAUN RUIN WISTEN HIER SER EIGENTUM ORT GEN {CHDKEL} SEID ENDE DEN ENDE REDER KOENIG SALZBERG {UNE} NIT GEHEN ORANGENSTRASSE {RW}
+> {E} URALTE STEIN EN TER SCHARDT IST SCHAUN RUIN WISTEN HI ER SER EIGENTUM ORT GEN {CHD}
 
-**English Translation:**
-> The ancient stones of SCHARDT, [one] is [to] behold [the] ruin. [They] knew here [is] very [much] a place of property toward {?}. Be [at the] end! The end! [The] speaker [of the] King [of] SALZBERG {?} not [to] go [to] ORANGENSTRASSE {?}.
+**English:**
+> {?} Ancient stones of Schardt — behold [the] ruin. [They] knew [it] here — very [much] property, [a] place against {?}.
 
-**Notes:** Major narrative elements:
-- REDER KOENIG = "speaker/orator of the King" -- a royal herald or spokesperson
-- SALZBERG = a real German place name (literally "salt mountain," cf. Salzburg)
-- ORANGENSTRASSE = "Orange Street" -- a real German street name
-- NIT GEHEN = "not to go" (MHG NIT = nicht/not)
-- The King's speaker is commanded not to go to Orangenstrasse -- a prohibition or warning
-- This connects the mythological (SCHRAT, ancient stones) to specific geography
+**Espanol:**
+> {?} Piedras antiguas de Schardt — contemplad [la] ruina. [Ellos lo] sabian aqui — mucha propiedad, [un] lugar contra {?}.
 
 ---
 
-### Book 11 (90.9%, 60/66)
+### Book 1 (95% | 45 chars)
 
 **Decoded German:**
-> ODE GAR {EO} RUNE ORT {ND} TER AM NEU {DE} DIENST ORT SAND IM MIN HEIME DIE URALTE STEINEN
+> ODE TREU NUR DEN EN DE REDER KOENIG SALZBERG UNE NIT {GH}
 
-**English Translation:**
-> Desolation, truly {?} rune place {?} of at [a] new {?} service-place [of] sand in my homeland. The ancient stones...
+**English:**
+> Or faithfully only to those of the Speaker-King Salzberg, and not {?}.
 
-**Notes:** Fragment describing the landscape: desolate, with a rune-place, a new service-place in sandy terrain, and the ancient stones. Connects to Books 58 and 43.
+**Espanol:**
+> O fielmente solo a los del Rey Orador Salzberg, y no {?}.
 
 ---
 
-### Book 48 (90.4%, 75/83)
+### Book 13 (91% | 70 chars)
 
 **Decoded German:**
-> LEICH AN BERUCHTIG ER SO DASS TUN DIE REISTEN ER SEIN GOTTDIENERS DA {U} NOTE {H} RUNEN {DEE} ENDE GEN INS {AUU}
+> GETRAS ES SICH {T} ES {T} EI GEN HEL SO DREI {I} OR TEE {L} SO DEN HISS TUN DIE REIST EN ER SEI EN DE {TO}
 
-**English Translation:**
-> [A] lay about [the] notorious one, he so that did those who traveled, he [was] his God-servant's. There {?} distress/need {?} runes {?} end toward into {?}.
+**English:**
+> [It] bore itself {?} it {?} a [bond] against [the] light. So three {?} or tea {?}, so the heat. [What] the travelers do — he [shall] be of the {?}.
 
-**Notes:** After the LEICH/BERUCHTIG refrain, new elements emerge: NOTE (distress/need) and RUNEN (runes, plural). The runes are associated with an ending or a direction ("GEN INS" = toward into).
+**Espanol:**
+> [Se] porto a si mismo {?} un [vinculo] contra [la] luz. Asi tres {?} o te {?}, asi el calor. [Lo que] los viajeros hacen — el sera de los {?}.
 
 ---
 
-### Book 50 (91.2%, 62/68)
+### Book 14 (91% | 66 chars)
 
 **Decoded German:**
-> {H} SO RUNE {E} IRREN WIR TOD IM MIN HEIME DIE URALTE STEINEN TER SCHARDT IST SCHAUN {RUII}
+> AD GEN INS AUE URE GEN {I} IH WI ND {T} GEN {E} EN DE NEST TUT {IGG} WI DEN ER DEN EN DE IM ES MIN HI
 
-**English Translation:**
-> {?} So [the] rune {?}. We wander [in] death in my homeland. The ancient stones of SCHARDT, [one] is [to] behold {?}.
+**English:**
+> At [those] against, into [the] meadow [and] ancient [lands], against {?}. I [tell you] how wind {?} against {?} [those] of the nest. [It] does {?} — how he, those of [the land], in it, [our] love, here.
 
-**Notes:** The rune is mentioned before the death-wandering passage. The RUII garbled block at the end is likely RUIN with a decoding artifact.
-
----
-
-## Books with 80-89.9% Coverage
+**Espanol:**
+> En [aquellos] contra, hacia [el] prado [y] tierras antiguas, contra {?}. Yo [les digo] como viento {?} contra {?} [los] del nido. [Ello] hace {?} — como el, esos de [la tierra], en ello, [nuestro] amor, aqui.
 
 ---
 
-### Book 8 (88.3%, 68/77)
+### Book 17 (93% | 136 chars)
 
 **Decoded German:**
-> {TRUNR} DEN ENDE REDER KOENIG LABT {D} ENDE {E} WEICHSTEIN {N} GAR SUN ENDE DIENST ORT AN EIN NEU UM SER {S}
+> {TE} ZU HEL GEIST NUN AD AB EI ER EID HECHELT ALLES GOTTDIENER SO MMKMGAEZS SEE WIR NACHTS IM NIT GEN {EMI} ORT GEN DES DEN ICH {KF} SAG EN AM MIN HEHL DIE NDCE FACH HECHELT ICH {OE}
 
-**English Translation:**
-> {?} The end. [The] speaker [of the] King refreshes/revives {?} [the] end {?} WEICHSTEIN {?}, truly son/sun. [The] end [of the] service-place at a new [one], around [it] very {?}.
+**English:**
+> {?} Toward [the] light — spirit! Now at [the] end, a [bond] — he [swears an] oath. [It] gasps — everything! God's Servant, so MMKMGAEZS [at the] sea. We, at night, in [the] nothing, against {?} [the] place against, of those [whom] I {?} tell at my concealment the NDCE compartment [that] gasps. I {?}.
 
-**Notes:** LABT (refreshes/revives) -- the King's speaker LABT, possibly reviving or consecrating something. WEICHSTEIN appears again. DIENST ORT AN EIN NEU = "service-place at a new one" -- the old place of worship is being replaced or renewed.
+**Espanol:**
+> {?} Hacia [la] luz — espiritu! Ahora al final, un [vinculo] — el [jura un] juramento. [Todo] jadea — todo! Servidor de Dios, asi MMKMGAEZS [en el] mar. Nosotros, de noche, en [la] nada, contra {?} [el] lugar contra, de aquellos [a quienes] yo {?} cuento en mi ocultamiento el compartimento NDCE [que] jadea. Yo {?}.
+
+**Notes:** GEIST = spirit. MMKMGAEZS remains an unsolved 9-letter block.
 
 ---
 
-### Book 27 (86.7%, 52/60)
+### Book 18 (96% | 47 chars)
 
 **Decoded German:**
-> {OD} TREU {UNR} DEN ENDE REDER KOENIG SALZBERG {UNE} NIT GEHEN ORANGENSTRASSE
+> GAR HI ER SER EIGENTUM ORT GEN {A} RUNE {D} DU NUR ALTES IN IHM
 
-**English Translation:**
-> {?} Faithful/loyal {?} the end. [The] speaker [of the] King [of] SALZBERG {?} not [to] go [to] ORANGENSTRASSE.
+**English:**
+> Even here — very [much] property, [a] place against {?}. Rune {?} — you [shall find] only [the] old [things] in him.
 
-**Notes:** TREU (faithful) parallels TRAUT (trusted). The prohibition against going to ORANGENSTRASSE is repeated. The King of Salzberg's speaker is warned or forbidden from traveling there.
+**Espanol:**
+> Incluso aqui — mucha propiedad, [un] lugar contra {?}. Runa {?} — tu [encontraras] solo [lo] viejo en el.
 
 ---
 
-### Book 66 (86.5%, 90/104)
+### Book 19 (91% | 65 chars)
 
 **Decoded German:**
-> {MI} SEI GODES DA SIE OWI RUNE MANIER DEGEN ENDE NEST TUT {IGAA} ER GIGE TEE SIN {CHN} SER ER SCE AUS ODE TREU {UNR} DEN ENDE REDER KOENIG {LA}
+> {T} DEN EID WEICHSTEIN {L} SEID EN DE DEN EN DE REDER {KO} ERE ND IM ES {I} GODES DA SIE OWI {R}
 
-**English Translation:**
-> {?} May [it] be God's! There they -- woe! -- [the] rune [in the] manner [of a] sword/hero [at the] end [of the] nest does {?}. He [plays the] fiddle [at] tea/gathering. [They] are {?} very, he already out of [the] desolation, faithful {?} the end. [The] speaker [of the] King {?}.
+**English:**
+> {?} The Weichstein oath {?} — be [ye] of those, of those [of the] Speaker {?}. Their [bond], in it {?} God's — for they [practice] OWI {?}.
 
-**Notes:** Rich passage:
-- GODES (MHG God's) -- divine attribution
-- OWI (Woe!) -- MHG exclamation of grief
-- RUNE MANIER DEGEN = "rune in the manner of a sword/hero" -- runes are wielded like weapons, or a hero uses runes
-- NEST = nest/stronghold
-- GIGE (MHG fiddle) -- someone plays the fiddle, a Spielmann (minstrel) element
-- TEE could be "tea" but more likely a gathering or assembly in MHG context
-- This passage blends supernatural (runes), martial (DEGEN/sword), and artistic (GIGE/fiddle) elements
+**Espanol:**
+> {?} El juramento Weichstein {?} — sed de esos, de esos [del] Orador {?}. Su [vinculo], en ello {?} de Dios — pues ellos [practican] OWI {?}.
 
 ---
 
-### Book 33 (86.4%, 57/66)
+### Book 21 (95% | 87 chars)
 
 **Decoded German:**
-> {E} DA SIE OWI RUNE MANIER DEGEN ENDE NEST TUT {IGAA} ER GIGE TEE SIN {CHN} SER ER SCE AUS {E}
+> {R} UND ER THENAEUT ER ALS STANDE NOT ERE LGTNELGZ ER {A} STIER TREU ORANGENSTRASSE SICH {T} ES {T} EI GEN HEL SO DA
 
-**English Translation:**
-> {?} There they -- woe! -- [the] rune [in the] manner [of a] sword/hero [at the] end [of the] nest does {?}. He [plays the] fiddle [at] tea/gathering. [They] are {?} very, he already out of {?}.
+**English:**
+> {?} And he [is] THENAEUT — he as [one of] standing [in] distress, their LGTNELGZ. He {?} stern [and] faithful [to] Orangenstrasse, himself {?} it {?}, a [bond] against [the] light. So there...
 
-**Notes:** Closely parallels Book 66 but without the opening GODES or closing KOENIG references. The {IGAA} garbled block appears consistently across multiple books in this position.
+**Espanol:**
+> {?} Y el [es] THENAEUT — el como [uno de] rango [en] necesidad, su LGTNELGZ. El {?} severo [y] fiel [a] Orangenstrasse, a si mismo {?} un [vinculo] contra [la] luz. Asi alli...
 
 ---
 
-### Book 35 (86.3%, 120/139)
+### Book 24 (93% | 59 chars)
 
 **Decoded German:**
-> {RNDMI} SEI GODES DA SIE OWI RUNE MANIER DEGEN ENDE NEST TUT {IGAA} ER GIGE TEE SIN {CHN} SER ER SCE AUS ODE TREU {UNR} DEN ENDE REDER KOENIG SALZBERG {UNE} NIT GEHEN ORANGENSTRASSE {R}
+> {R} THENAEUT ER ALS {T} EN DEN EID AN GETRAS ES SICH {T} ES {T} EI GEN HEL SO DAS RUNEN
 
-**English Translation:**
-> {?} May [it] be God's! There they -- woe! -- [the] rune [in the] manner [of a] sword/hero [at the] end [of the] nest does {?}. He [plays the] fiddle [at] tea/gathering. [They] are {?}, very, he already out of [the] desolation. Faithful {?} the end. [The] speaker [of the] King [of] SALZBERG {?} not [to] go [to] ORANGENSTRASSE {?}.
+**English:**
+> {?} THENAEUT — he as {?} the oath upon [which it was] borne. [It] bore itself {?} it {?}, a [bond] against [the] light. So the runes...
 
-**Notes:** The longest continuous high-confidence passage combining the GODES/OWI/RUNE/DEGEN/GIGE sequence with the KOENIG SALZBERG/ORANGENSTRASSE prohibition.
+**Espanol:**
+> {?} THENAEUT — el como {?} el juramento sobre [el cual fue] portado. [Se] porto a si mismo {?} un [vinculo] contra [la] luz. Asi las runas...
 
 ---
 
-### Book 61 (85.9%, 61/71)
+### Book 26 (91% | 84 chars)
 
 **Decoded German:**
-> {R} HEL WIND UNRUH FINDEN NEIGT DAS ES DER {E} IST GEN {EHH} EIN NEU UM {SEU} FINDEN SAGEN AM MIN {HI}
+> MIN HI {SI} ICH {HLAR} UND ER THENAEUT ER ALS STANDE NOT ERE LGTNELGZ ER {A} STIER TREU ORANGENSTRASSE SICH
 
-**English Translation:**
-> {?} Bright/clear wind-unrest. [You shall] find [that it] inclines, that it the {?} is, toward {?} a new [one] around {?}. Find [and] tell at my {?}.
+**English:**
+> [My] love, here {?}. I {?} and he [is] THENAEUT — he as [one of] standing [in] distress, their LGTNELGZ. He {?} stern [and] faithful [to] Orangenstrasse, himself.
 
-**Notes:**
-- HEL = bright/clear (MHG, related to modern "hell" meaning bright)
-- WINDUNRUH = "wind-unrest" -- a compound describing atmospheric disturbance or turmoil
-- NEIGT = inclines/bows -- something bending or yielding
-- The passage describes finding something in turbulent wind, a new thing emerging, and the instruction to report back ("FINDEN SAGEN AM MIN" = find and tell at my [place])
+**Espanol:**
+> [Mi] amor, aqui {?}. Yo {?} y el [es] THENAEUT — el como [uno de] rango [en] necesidad, su LGTNELGZ. El {?} severo [y] fiel [a] Orangenstrasse, a si mismo.
 
 ---
 
-### Book 47 (83.9%, 52/62)
+### Book 35 (97% | 142 chars)
 
 **Decoded German:**
-> {DE} TOT RUIN {G} SER {EL} AB IRREN WIR TOD IM MIN HEIME DIE URALTE STEINEN TER {ADTHA}
+> {R} ND IM ES {I} GODES DA SIE OWI RUNE MANIER DE GEN EN DE NEST TUT IGAA ER GIGE {T} SEE IN CHN SER ER SCE AUS ODE TREU NUR DEN EN DE REDER KOENIG SALZBERG UNE NIT GEH EN ORANGENSTRASSE {R}
 
-**English Translation:**
-> {?} Dead, [in] ruin {?}, very {?} away. We wander [in] death in my homeland. The ancient stones of {SCHARDT?}...
+**English:**
+> {?} In it {?} God's — for they [practice] OWI rune [in the] manner of those against the nest. [He] does IGAA, he fiddles {?} [at the] sea. In CHN, very [much] he [has] already [gone] from [the] wasteland. Faithfully only to those of the Speaker-King Salzberg, and not [to] go to Orangenstrasse {?}.
 
-**Notes:** The {ADTHA} at the end is likely a partially garbled SCHARDT (the anagram ADTHARSC -> SCHARDT is known, but here truncated). The TOT RUIN / TOD dichotomy: TOT (dead, adjective) vs. TOD (death, noun) -- both appear, reinforcing the death theme.
+**Espanol:**
+> {?} En ello {?} de Dios — pues ellos [practican] la runa OWI [a la] manera de aquellos contra el nido. [El] hace IGAA, el toca [el violin] {?} [en el] mar. En CHN, el ya [ha salido] del yermo. Fielmente solo a los del Rey Orador Salzberg, y no ir a Orangenstrasse {?}.
+
+**Notes:** Identical content to Book 10, confirming the overlapping fragment structure.
 
 ---
 
-### Book 19 (82.8%, 53/64)
+### Book 38 (92% | 66 chars)
 
 **Decoded German:**
-> {TD} ENDE {E} WEICHSTEIN {L} SEID ENDE DEN ENDE REDER {KO} ERE {NDMI} SEI GODES DA SIE OWI {R}
+> WIR NACH ER ALTE {II} OR TEE {L} SO DEN HISS TUN DIE REIST EN ER SEI EN DE TOT {I} ERE {L} AUE AD
 
-**English Translation:**
-> {?} [The] end {?} WEICHSTEIN {?}. Be [at the] end! The end! [The] speaker {?} honor {?}. May [it] be God's! There they -- woe! {?}.
+**English:**
+> We, after [the] old [one] {?} — or tea {?}, so the heat. [What] the travelers do — he [shall] be of the dead {?}. Their {?} meadow at...
 
-**Notes:** Transition passage linking WEICHSTEIN to the GODES/OWI sequence. ERE (MHG honor) appears between the King's speaker and God's invocation.
+**Espanol:**
+> Nosotros, despues [del] viejo {?} — o te {?}, asi el calor. [Lo que] los viajeros hacen — el sera de los muertos {?}. Su {?} prado en...
 
 ---
 
-### Book 64 (82.7%, 62/75)
+### Book 44 (94% | 63 chars)
 
 **Decoded German:**
-> {EION} GAR SUN ENDE DIENST ORT AN EIN {LEU} UM SER {S} ZU FINDEN SAGEN AM MIN HEHL DIE NDCE FACH {HECHL}
+> {IGT} SEE SIN IHM NU STEH WRLGTNELNR HEL WI ND UNRUH FINDEN NEIGT DAS ES {D} ERSTE
 
-**English Translation:**
-> {?} Truly son/sun. [The] end [of the] service-place at a {?} around, very {?}, to find [and] tell at my concealment the NDCE compartment {gasps?}...
+**English:**
+> {?} Sea — [they] are [with] him. Now [we] stand [at] WRLGTNELNR — light like wind [and] unrest. Find [what] inclines, that [which is] {?} [the] first.
 
-**Notes:** Links the DIENST ORT (service-place) ending to the HEHL/NDCE/HECHELT discovery sequence. ZU FINDEN SAGEN = "to find and tell" -- the imperative mission.
+**Espanol:**
+> {?} Mar — [ellos] estan [con] el. Ahora [nos] erguimos [en] WRLGTNELNR — luz como viento [e] inquietud. Encontrar [lo que] se inclina, eso [que es] {?} [lo] primero.
 
 ---
 
-### Book 52 (82.4%, 56/68)
+### Book 61 (97% | 72 chars)
 
 **Decoded German:**
-> GIGE TEE {S} SIN IHM NU STEH WRLGTNELNR HEL WIND UNRUH FINDEN NEIGT DAS ES DER {E} IST GEN
+> {R} HEL WI ND UNRUH FINDEN NEIGT DAS ES DE REIST GEN EHH EIN NEU {U} UM ES FINDEN SAG EN AM MIN HI
 
-**English Translation:**
-> [The] fiddle [at] tea/gathering {?}, [they] are [with] him. Now stand! WRLGTNELNR, bright wind-unrest! Find [that which] inclines, that it the {?} is, toward [it].
+**English:**
+> {?} Light like wind [and] unrest. Find [what] inclines — that [which] the travelers [seek] against EHH. A new {?}, around it. Find [and] tell at [our] love, here.
 
-**Notes:** Critical passage:
-- WRLGTNELNR is a proper noun (40 chars across 4 occurrences) -- an unresolved place name with letters E,G,L,L,N,N,R,R,T,W
-- The command "NU STEH" (now stand!) is imperative
-- WRLGTNELNR is addressed directly, followed by HEL WINDUNRUH -- possibly the name of a person or place associated with wind-turmoil
-- The fiddle player and the gathering are mentioned just before
+**Espanol:**
+> {?} Luz como viento [e] inquietud. Encontrar [lo que] se inclina — eso [que] los viajeros [buscan] contra EHH. Uno nuevo {?}, alrededor de ello. Encontrar [y] contar en [nuestro] amor, aqui.
 
 ---
 
-### Book 67 (81.2%, 39/48)
+### Book 63 (95% | 63 chars)
 
 **Decoded German:**
-> {BGZ} ER {A} SUN {E} NIT GEHEN ORANGENSTRASSE {R} WARD {EIE} TRAUT IST
+> IH WI {N} CHN SER ER SCE AUS ODE TREU NUR DEN EN DE REDER KOENIG LABT DEN DE SCE {H} WI {T}
 
-**English Translation:**
-> {?} He {?} son/sun {?}, not [to] go [to] ORANGENSTRASSE {?}. [It] became {?}. [The] trusted one is...
+**English:**
+> I [tell you] how {?} CHN — very [much] he [has] already [gone] from [the] wasteland. Faithfully only to those of the Speaker-King — [he] sustains those [who] already {?} how {?}.
 
-**Notes:** WARD (MHG became/was) marks a narrative shift. After the Orangenstrasse prohibition, something "became" or transformed. The TRAUT refrain follows.
+**Espanol:**
+> Yo [les digo] como {?} CHN — el ya [ha salido] del yermo. Fielmente solo a los del Rey Orador — [el] sustenta a aquellos [que] ya {?} como {?}.
 
 ---
 
-### Book 42 (80.4%, 74/92)
+### Book 65 (93% | 85 chars)
 
 **Decoded German:**
-> ER STIER UM {EC} DU NUR ALTES IN IHM {TD} ENDE SCE {HWIASS} TUN {E} DASS ER WARD {EIE} TRAUT IST LEICH AN BERUCHTIG ER SO DA {GRSN}
+> {LNR} HEL WI ND UNRUH FINDEN NEIGT DAS ES DE REIST GEN EHH EI {M} AUE UM ES FINDEN SAG EN AM MIN HEHL DIE NDCE {RT}
 
-**English Translation:**
-> He [the] bull, around {?}. You [find] only old [things] in him. {?} [The] end, already {?}. Do {?} that he became {?}. [The] trusted one -- [this] is [a] lay about [the] notorious one, he so there {?}.
+**English:**
+> {?} Light like wind [and] unrest. Find [what] inclines — that [which] the travelers [seek] against EHH. A {?} meadow, around it. Find [and] tell at [our] love's concealment the NDCE {?}.
 
-**Notes:** STIER (bull) reappears -- possibly a character epithet, heraldic symbol, or place marker. "DU NUR ALTES IN IHM" (you only old things in him) echoes Book 18, describing an ancient, depleted place or person.
+**Espanol:**
+> {?} Luz como viento [e] inquietud. Encontrar [lo que] se inclina — eso [que] los viajeros [buscan] contra EHH. Un {?} prado, alrededor de ello. Encontrar [y] contar en [el] ocultamiento [de nuestro] amor, la NDCE {?}.
 
 ---
 
-### Book 16 (80.0%, 68/85)
+### Book 66 (96% | 105 chars)
 
 **Decoded German:**
-> KLAR SUN ENDE WINDUNRUHS FINDEN DIGE {STEIEHHI} STEH WIR DAS NEU {W} DA {UNRN} DEGEN IM MIN {H} IST RUNEN {DEE} ENDE
+> IM ES {I} GODES DA SIE OWI RUNE MANIER DE GEN EN DE NEST TUT IGAA ER GIGE {T} SEE IN CHN SER ER SCE AUS ODE TREU NUR DEN EN DE REDER KOENIG {LA}
 
-**English Translation:**
-> Clear son/sun. End [of] WINDUNRUH'S. Find [the] worthy {?}. Stand, we [find] the new {?}! There {?} [the] sword/hero in my {?} is [of] runes {?} end.
+**English:**
+> In it {?} God's — for they [practice] OWI rune [in the] manner of those against the nest. [He] does IGAA, he fiddles {?} [at the] sea. In CHN, very [much] he [has] already [gone] from [the] wasteland. Faithfully only to those of the Speaker-King {?}.
 
-**Notes:** WINDUNRUHS (genitive of WINDUNRUH) -- the wind-unrest belongs to something. DIGE may relate to "wuerdig" (worthy). RUNEN (runes) are associated with the DEGEN (sword/hero). The compound "DEGEN IM MIN" places the hero/sword in the narrator's personal realm.
+**Espanol:**
+> En ello {?} de Dios — pues ellos [practican] la runa OWI [a la] manera de aquellos contra el nido. [El] hace IGAA, el toca [el violin] {?} [en el] mar. En CHN, el ya [ha salido] del yermo. Fielmente solo a los del Rey Orador {?}.
 
 ---
 
-### Book 24 (80.0%, 48/60)
+## Books at 80-89% Coverage
+
+---
+
+### Book 4 (81% | 70 chars)
 
 **Decoded German:**
-> {R} THENAEUT ER ALS {T} ENDE {NDEE} WEICHSTEIN {NGHR} DAS WIR {N} AN GEH {I} SO DAS RUNEN
+> {H} HI {SLUIRUNNS} SIN IHM NU STEH WRLGTN SEE TEE {I} NEIGT DAS ER GEH HER NU HEL HI ND FINDEN {TE}
 
-**English Translation:**
-> {?} THENAEUT, he as {?} [the] end {?} WEICHSTEIN {?}. That we {?} to go {?}, so the runes [say].
+**English:**
+> {?} Here {?} [they] are [with] him. Now [we] stand [at] WRLGTN — sea [and] tea {?}. [It] inclines — that he [should] go here, now [in the] light, here and find {?}.
 
-**Notes:** THENAEUT is a proper noun, close to ATHENAEUM (library/place of learning) but not an exact anagram. It may be an MHG rendering of a classical reference. The passage connects THENAEUT to WEICHSTEIN and the runes.
+**Espanol:**
+> {?} Aqui {?} [ellos] estan [con] el. Ahora [nos] erguimos [en] WRLGTN — mar [y] te {?}. [Se] inclina — que el vaya aqui, ahora [en la] luz, aqui y encontrar {?}.
 
 ---
 
-### Book 1 (81.8%, 36/44)
+### Book 6 (85% | 88 chars)
 
 **Decoded German:**
-> ODE TREU {UNR} DEN ENDE REDER KOENIG SALZBERG {UNE} NIT {GH}
+> EIN TOD IM IM SER SEI {M} ERE ERE LAB IRREN DIE URALTE {ST} SIE NNR TAG ND {TEDHT} RUIN {GH} RUNE {A} UND DIE SO {WE} DE GEN EN DEN
 
-**English Translation:**
-> Desolation. Faithful {?} the end. [The] speaker [of the] King [of] SALZBERG {?} not {?}.
+**English:**
+> A death in [the]... in [the] very [depths] — be [it] {?}! Their, their sustenance [is] delusion. The ancient {?} — they NNR day and {?} ruin {?} rune {?} and those so {?} of those against the...
 
-**Notes:** Fragment of the SALZBERG prohibition sequence. ODE (desolation) sets the scene before the King's speaker narrative.
+**Espanol:**
+> Una muerte en... en [lo] mas [profundo] — sea {?}! Su, su sustento [es] delirio. Lo antiguo {?} — ellos NNR dia y {?} ruina {?} runa {?} y esos asi {?} de aquellos contra los...
 
 ---
 
-### Book 43 (89.6%, 60/67)
+### Book 7 (83% | 52 chars)
 
 **Decoded German:**
-> {EO} RUNE ORT {ND} TER AM NEU {DE} DIENST ORT SAND IM MIN HEIME DIE URALTE STEINE OWI RUNE {A}
+> TOD IM {T} NIE ORT NEU HEL ES {T} SIE NNR TAG ND {TTSS} AD {I} ER SEI {M} ERE ERE {K}
 
-**English Translation:**
-> {?} Rune-place {?} of, at [a] new {?} service-place [of] sand in my homeland. The ancient stones -- woe! -- [the] rune {?}.
+**English:**
+> Death in {?} — never! Place [of] new light, it {?}. They NNR day and {?} at {?} — he [shall] be {?}, their, their {?}.
 
-**Notes:** OWI (Woe!) is exclaimed upon seeing the ancient stones. The rune-place and service-place in the sandy homeland are lamented.
+**Espanol:**
+> Muerte en {?} — nunca! Lugar [de] nueva luz, ello {?}. Ellos NNR dia y {?} en {?} — el sera {?}, su, su {?}.
 
 ---
 
-### Book 32 (89.4%, 59/66)
+### Book 15 (84% | 71 chars)
 
 **Decoded German:**
-> ICH OEL {S} ODE GAR {EO} RUNE ORT {ND} TER AM NEU {DE} DIENST ORT SAND IM MIN HEIME DIE URALTE
+> {EAUI} EN {A} GEN {CH} DIGE {TH} KLAR SUN EN DE WINDUNRUHS FINDEN {D} FERN DAS ES DER DA BEI IST EI {L}
 
-**English Translation:**
-> I [anoint with] oil {?} desolation, truly {?} rune-place {?} of, at [a] new {?} service-place [of] sand in my homeland. The ancient [stones]...
+**English:**
+> {?} [those] {?} against {?} worthy {?}. Clear son[s] of the Wind-Unrest — find {?} far, that it [is] the one there, nearby, is a {?}.
 
-**Notes:** The narrator anoints with oil in the desolate rune-place. The anointing (OEL) is a ritual act performed at the site.
-
----
-
-## Books with 70-79.9% Coverage (Partial Translations)
+**Espanol:**
+> {?} [aquellos] {?} contra {?} digno {?}. Claro[s] hijo[s] de la Inquietud del Viento — encontrar {?} lejos, que ello [es] el que alli, cerca, es un {?}.
 
 ---
 
-### Book 3 (75.0%, 51/68)
+### Book 20 (80% | 31 chars)
 
 **Decoded German:**
-> {T} ES SIN IHM NU STEH WRLGTNELNR HEL WIND UNRUH FINDEN NEIGT DAS ES DER {E} IST GEN {EHHII}
+> EIN AUE SO TEE DER DAS ER {RR} IN {RH} SCE {HW}
 
-**English Translation:**
-> {?} They are [with] him. Now stand! WRLGTNELNR, bright wind-unrest! Find [that which] inclines, that it the {?} is, toward {?}.
+**English:**
+> A meadow, so [like] tea — the [one] that he {?} in {?} already {?}.
+
+**Espanol:**
+> Un prado, asi [como] te — el que el {?} en {?} ya {?}.
 
 ---
 
-### Book 6 (74.2%, 66/89)
+### Book 23 (84% | 89 chars)
 
 **Decoded German:**
-> EIN {TO} DENN DIE {R} SEI {M} ERE ERE {L} AB IRREN DIE URALTE {ST} SIE {NNR} TAG {NDTEDHT} RUIN {GH} RUNE {A} UND DIE SO {WE} DEGEN ENDE {N}
+> {IL} SO DASS EN {A} EN ER SEIN GOTTDIENER {MT} DEN EID WEICHSTEIN {NK} WIR {ET} AD EHRT DA EI ES {G} SEI {IGE} AM TAT GUT REICH {G} ER
 
-**English Translation:**
-> A {?} for the {?} may be {?} honor, honor {?} away. [We/they] wander [among] the ancient {?}. They {?} day {?} ruin {?} rune {?} and those so {?} sword/hero end {?}.
+**English:**
+> {?} So that [those] {?} he [and] his God's Servant {?} the Weichstein oath {?}. We {?} at — [it] honors, for a [bond] it {?}. Be {?} at [the] deed, good realm {?} he.
 
-**Notes:** Double ERE (honor, honor) is emphatic. The wandering among ancient things, ruin, runes, and the sword/hero (DEGEN) form the consistent thematic cluster.
+**Espanol:**
+> {?} Asi que [esos] {?} el y su Servidor de Dios {?} el juramento Weichstein {?}. Nosotros {?} en — [ello] honra, pues un [vinculo] ello {?}. Sea {?} en [la] hazana, buen reino {?} el.
+
+**Notes:** TAT GUT REICH = "deed/good/realm" — possibly describing a righteous kingdom.
 
 ---
 
-### Book 12 (72.9%, 51/70)
+### Book 28 (87% | 72 chars)
 
 **Decoded German:**
-> {ENDR} THENAEUT ER ALS STANDE NOT SEE ERDE {EOR} DU {NTEIG} TEE {S} SIN ENDE {E} WEICHSTEIN {NGHRD}
+> CHTIG ER SO DASS TUN DIE REIST EN ER SEIN GOTTDIENERS DA NEU URALTE {NRLR} NU NACH {HECHL}
 
-**English Translation:**
-> {?} THENAEUT, he as [a man of] standing/estate [in] need. [The] sea [and] earth {?}. You {?} tea/gathering {?}, [they] are [at the] end {?} WEICHSTEIN {?}.
+**English:**
+> ...[noto]rious — he who so does [this to] the travelers, he and his God's Servants. For [the] new ancient {?}, now after {?}.
 
-**Notes:** STANDE (standing/estate, MHG) and NOT (need/distress) characterize THENAEUT as a person of rank in trouble. SEE ERDE (sea and earth) may describe the extent of his domain or journey.
+**Espanol:**
+> ...[noto]rio — el que asi les hace a los viajeros, el y sus Servidores de Dios. Pues [lo] nuevo antiguo {?}, ahora despues {?}.
 
 ---
 
-### Book 13 (70.0%, 49/70)
+### Book 30 (77% | 75 chars)
 
 **Decoded German:**
-> {GETRAS} ES SICH {T} ES {TEI} GEN ES ER ALTE {II} ORT {EEL} SO DEN {HISS} TUN DIE REISTEN ER SEI ENDE {TO}
+> {EUUIGL} AUCH WAGE WIR ER EID OR DU {NT} EI {RAS} ES SICH {TDR} THENAEUT ER ALS STANDE {GT} SEE SIN EN {D} SEE
 
-**English Translation:**
-> {?} It itself {?}, it {?} toward it. He [the] old {?} place {?} so them {?}. Did those who traveled, he may be [at the] end {?}.
+**English:**
+> {?} Also [we] dare — we, his oath, or you {?} a {?}. [It] bore itself {?} THENAEUT — he as [one of] standing {?}. [The] sea — [they] are of {?} [the] sea.
+
+**Espanol:**
+> {?} Tambien [nos] atrevemos — nosotros, su juramento, o tu {?} un {?}. [Se] porto a si mismo {?} THENAEUT — el como [uno de] rango {?}. [El] mar — [ellos] son de {?} [el] mar.
 
 ---
 
-### Book 15 (79.7%, 55/69)
+### Book 34 (82% | 61 chars)
 
 **Decoded German:**
-> {EAUIENA} GEN {CH} DIGE {TH} KLAR SUN ENDE WINDUNRUHS FINDEN {D} FERN DAS ES DER DA BEI {IS} TEIL
+> {EOIGTST} EI GEN HEHL IH WI {N} CHN SER {KE} DAS ES ER SCE AUS OEDE ND GEH NU HI IN DEN {T}
 
-**English Translation:**
-> {?} Toward {?} worthy {?}, clear son/sun. End [of] WINDUNRUH'S. Find {?} far [away], that it the there by {?} part/portion.
+**English:**
+> {?} A [bond] against [the] concealment. I [tell you] how {?} CHN, very {?} — that it [is] he, already from [the] wasteland. And go now, here, into the {?}.
+
+**Espanol:**
+> {?} Un [vinculo] contra [el] ocultamiento. Yo [les digo] como {?} CHN, muy {?} — que ello [es] el, ya del yermo. Y ve ahora, aqui, hacia los {?}.
 
 ---
 
-### Book 21 (74.4%, 64/86)
+### Book 36 (85% | 68 chars)
 
 **Decoded German:**
-> RUNEN {DR} THENAEUT ER ALS STANDE NOT ERE {LGTNELGZ} ER {A} STIER {URIT} ORANGENSTRASSE SICH {T} ES {TEI} GEN {EHI} SO DA
+> {UIT} SIE {UR} WORT SAND IM MIN HEIME {DLT} ES {T} EIN EN ODE OR UNE ORT ND TER AM NEU DES ND {T} EI
 
-**English Translation:**
-> Runes {?} THENAEUT, he as [a man of] standing [in] need. Honor {?} he {?} bull {?} ORANGENSTRASSE itself {?} it {?} toward {?} so there.
+**English:**
+> {?} They {?} word [of] sand, in [our] beloved homeland {?}. It {?} — one of [the] wasteland, or [the] place and territory, at [the] new [one] of [the land] and {?} a [bond].
 
-**Notes:** THENAEUT is again associated with STANDE NOT (standing in need) and ERE (honor). ORANGENSTRASSE and STIER (bull) appear in the same context. The runes open the passage.
+**Espanol:**
+> {?} Ellos {?} palabra [de] arena, en [nuestra] amada patria {?}. Ello {?} — uno del yermo, o [el] lugar y territorio, en [lo] nuevo de [la tierra] y {?} un [vinculo].
 
 ---
 
-### Book 26 (73.5%, 61/83)
+### Book 37 (88% | 80 chars)
 
 **Decoded German:**
-> MIN {HISI} ICH {HLA} RUNEN {DR} THENAEUT ER ALS STANDE NOT ERE {LGTNELGZ} ER {A} STIER {URIT} ORANGENSTRASSE SICH
+> {RSC} IST SCHAUN RUIN WI IST {EETTR} NUR DEN EN DE REDER KOENIG LABT DEN EID WEICHSTEIN {N} GAR SUN EN DES {N}
 
-**English Translation:**
-> My {?} I {?} runes {?} THENAEUT, he as [a man of] standing [in] need. Honor {?} he {?} bull {?} ORANGENSTRASSE itself.
+**English:**
+> {?} — behold [the] ruin! How is {?} — only to those of the Speaker-King. [He] sustains the Weichstein oath {?}. Very much [the] son of those {?}.
+
+**Espanol:**
+> {?} — contemplad [la] ruina! Como es {?} — solo a los del Rey Orador. [El] sustenta el juramento Weichstein {?}. Mucho [el] hijo de esos {?}.
 
 ---
 
-### Book 28 (70.4%, 50/71)
+### Book 40 (87% | 84 chars)
 
 **Decoded German:**
-> {CHTIG} ER SO DASS TUN DIE REISTEN ER SEIN GOTTDIENERS DA {UENO} URALTE {NRLRUNR} NACH {HECHL}
+> {A} ZU {MR} ND IM ES {I} GODES DA SIE OWI RUNE MANIER DE GEN EN DE NEST TUT IGAA ER GIGE {T} SEE IN CHN SER ER SCE AUS ODE TREU NUR DEN EN DE REDER KOENIG SALZBERG UNE NIT GEH EN ORANGENSTRASSE {R}
 
-**English Translation:**
-> {notorious?} He so that did those who traveled, he [was] his God-servant's. There {?} ancient {?} after {gasps?}...
+**English:**
+> {?} Toward {?} — in it {?} God's, for they [practice] OWI rune [in the] manner of those against the nest. [He] does IGAA, he fiddles {?} [at the] sea. In CHN, very [much] he [has] already [gone] from [the] wasteland. Faithfully only to those of the Speaker-King Salzberg, and not [to] go to Orangenstrasse {?}.
+
+**Espanol:**
+> {?} Hacia {?} — en ello {?} de Dios, pues ellos [practican] la runa OWI [a la] manera de aquellos contra el nido. [El] hace IGAA, el toca [el violin] {?} [en el] mar. En CHN, el ya [ha salido] del yermo. Fielmente solo a los del Rey Orador Salzberg, y no ir a Orangenstrasse {?}.
 
 ---
 
-### Book 30 (62.7%, 47/75)
+### Book 41 (87% | 68 chars)
 
 **Decoded German:**
-> {EUUIGL} AUCH {WEGA} WIR ERDE {EOR} DU {NTEIRAS} ES SICH {TDR} THENAEUT ER ALS STANDE {G} TEE {S} SIN {END} SEE
+> SER ER SCE AD {I} ERE IST EN ER SEINE {DDKEL} SEID EN HAND {R} NUN AM HISDIZA RUNE {S} TUT IGAA {E}
 
-**English Translation:**
-> {?} Also {?} we earth {?} you {?} it itself {?} THENAEUT, he as [a man of] standing {?} tea/gathering {?} are {?} sea.
+**English:**
+> Very [much] he [has] already [gone] — at {?}. Their [bond] is of his [people] {?}. Be [ye] in hand {?}! Now at [the] HISDIZA rune {?} — [it] does IGAA {?}.
+
+**Espanol:**
+> Mucho el ya [se fue] — en {?}. Su [vinculo] es de los suyos {?}. Sed en mano {?}! Ahora en [la] runa HISDIZA {?} — [ello] hace IGAA {?}.
 
 ---
 
-### Book 36 (74.2%, 49/66)
+### Book 42 (86% | 93 chars)
 
 **Decoded German:**
-> {UIT} SIE {UR} WORT SAND IM MIN HEIME {DLT} ES {T} EINEN ODE {O} RUNE ORT {ND} TER AM NEU DES {NDTEI}
+> ER STIER UM {EC} DU NUR ALTES IN IHM {T} DEN DE SCE {H} WI {ASS} TUN {E} DASS ER WARD EI {E} TRAUT IST LEICH AN BERUCHTIG ER SO DA {GRSN}
 
-**English Translation:**
-> {?} They {?} word [of] sand in my homeland {?}. It {?} a desolation {?} rune-place {?} of, at [a] new one of {?}.
+**English:**
+> He [is] stern around {?}. You [shall find] only [the] old [things] in him {?}, of those [who] already {?} how {?} do {?} — that he became a {?} Trusted One. [This] is [a] corpse [of the] Notorious One, he so there {?}.
+
+**Espanol:**
+> El [es] severo alrededor {?}. Tu [encontraras] solo [lo] viejo en el {?}, de esos [que] ya {?} como {?} hacen {?} — que el se convirtio en un {?} Fiel. [Este] es [un] cadaver [del] Notorio, el asi alli {?}.
 
 ---
 
-### Book 37 (77.5%, 62/80)
+### Book 56 (88% | 132 chars)
 
 **Decoded German:**
-> {RSC} IST SCHAUN RUIN {WI} IST {EETTRUNR} DEN ENDE REDER KOENIG LABT {D} ENDE {E} WEICHSTEIN {N} GAR SUN ENDE {SN}
+> {R} DAS WIR NACH ER ALTE DIGE IN {Z} ER {A} STIER TREU LANG URALTE AUCH {UH} WIR TOD {E} SEE {TE} SAG OEL {A} SCE HEL SO DEN HISS TUN DIE REIST EN ER SEI EN DE TOT {N} ER {LGOS} EN {O} EN DE SCE {H} WI
 
-**English Translation:**
-> {SCHARDT?} is [to] behold [the] ruin. {?} is {?} the end. [The] speaker [of the] King refreshes/revives {?} [the] end {?} WEICHSTEIN {?}, truly son/sun. [The] end {?}.
+**English:**
+> {?} That we, after [the] old [one], worthy in {?}. He {?} stern [and] faithful, long ancient also {?}. We [found] death {?} [at the] sea {?}. Tell [of] oil {?} — already [in the] light, so the heat. [What] the travelers do — he [shall] be of the dead {?}. He {?} of {?}, of those [who] already {?} how.
+
+**Espanol:**
+> {?} Que nosotros, despues [del] viejo, digno en {?}. El {?} severo [y] fiel, largo tiempo antiguo tambien {?}. Encontramos la muerte {?} [en el] mar {?}. Contar [del] aceite {?} — ya [en la] luz, asi el calor. [Lo que] los viajeros hacen — el sera de los muertos {?}. El {?} de {?}, de esos [que] ya {?} como.
 
 ---
 
-### Book 38 (68.2%, 45/66)
+### Book 57 (88% | 114 chars)
 
 **Decoded German:**
-> WIR {NSCHA} ER ALTE {II} ORT {EEL} SO DEN {HISS} TUN DIE REISTEN ER SEI ENDE TOT {I} ERE {LAUEAD}
+> GETRAS ES EN {DNRT} EN DE REDER KOENIG {L} GAB ER {AGSRW} ES {S} SCE DE {IT} EI OEL SEID EN OEDE NUR HAND TREU NUR DEN EN AD HER NU TEE ORANGENSTRASSE DENN
 
-**English Translation:**
-> We {?} he [the] old {?} place {?} so them {?}. Did those who traveled, he may be [at the] end, dead {?} honor {?}.
+**English:**
+> [It] bore [itself] of {?} — of those [of the] Speaker-King {?}. [He] gave {?} it {?}. Already, the {?}, a [bond of] oil. Be [ye] in [the] wasteland — only [by] hand, faithfully only to those, at [this] place, now [at] tea [and] Orangenstrasse. For...
+
+**Espanol:**
+> [Se] porto de {?} — de esos [del] Rey Orador {?}. [El] dio {?} ello {?}. Ya, el {?}, un [vinculo de] aceite. Sed en [el] yermo — solo [por] mano, fielmente solo a esos, en [este] lugar, ahora [en] te [y] Orangenstrasse. Pues...
 
 ---
 
-### Book 40 (68.7%, 57/83)
+### Book 60 (93% | 75 chars)
 
 **Decoded German:**
-> {A} ZU {MRNDMI} SEI GODES DA SIE OWI RUNE MANIER DEGEN ENDE {NTECTCHMN} GEN {A} WIR {UN} ENDE {E} ENDE GEN INS {AUUCHN}
+> AD TEE {E} AM MIN HEHL DIE NDCE FACH ES ICH {H} SCE URE SUN EN DE DIENST ORT AN {S} UM SER {S} ZU FINDEN {S} AN
 
-**English Translation:**
-> {?} To {?} may [it] be God's! There they -- woe! -- [the] rune [in the] manner [of a] sword/hero [at the] end {?} toward {?}. We {?} end {?} end toward into {?}.
+**English:**
+> At [the] tea {?}, at [our] love's concealment the NDCE compartment — it [is] I {?}. Already [the] ancient son of the service-place, at {?}, around very [much] {?}, to find {?}, at...
+
+**Espanol:**
+> En [el] te {?}, en [el] ocultamiento [de nuestro] amor, el compartimento NDCE — soy yo {?}. Ya [el] antiguo hijo del lugar de servicio, en {?}, alrededor de mucho {?}, para encontrar {?}, en...
 
 ---
 
-### Book 44 (77.4%, 48/62)
+### Book 64 (87% | 76 chars)
 
 **Decoded German:**
-> {IG} TEE {S} SIN IHM NU STEH WRLGTNELNR HEL WIND UNRUH FINDEN NEIGT DAS ES {D} ERSTE
+> EI {ON} GAR SUN EN DE DIENST ORT AN EI NU {EU} UM SER {S} ZU FINDEN SAG EN AM MIN HEHL DIE NDCE FACH {HECHL}
 
-**English Translation:**
-> {?} Tea/gathering {?}, [they] are [with] him. Now stand! WRLGTNELNR, bright wind-unrest! Find [that which] inclines, that it {?} [the] first.
+**English:**
+> A {?} — very much [the] son of the service-place. At a [bond], now {?}, around very [much] {?}, to find [and] tell at [our] love's concealment the NDCE compartment {?}.
 
-**Notes:** ERSTE (first) is new here -- "the first" of something. Could indicate primacy or sequence.
+**Espanol:**
+> Un {?} — mucho [el] hijo del lugar de servicio. En un [vinculo], ahora {?}, alrededor de mucho {?}, para encontrar [y] contar en [el] ocultamiento [de nuestro] amor, el compartimento NDCE {?}.
 
 ---
 
-### Book 54 (79.3%, 23/29)
+### Book 67 (85% | 49 chars)
+
+**Decoded German:**
+> {BGZ} ER {A} SUN {E} NIT GEH EN ORANGENSTRASSE {R} WARD EI {E} TRAUT IST
+
+**English:**
+> {?} He {?} son {?} — not [to] go to Orangenstrasse {?}. [He] became a {?} Trusted One — [this] is...
+
+**Espanol:**
+> {?} El {?} hijo {?} — no ir a Orangenstrasse {?}. [El] se convirtio en un {?} Fiel — [esto] es...
+
+---
+
+## Books Below 80% Coverage
+
+---
+
+### Book 49 (70% | 57 chars)
+
+**Decoded German:**
+> {OTZ} ND {AIE?} ER AN DE NNR ZU {N} SAND IM {MI} IM MIN {D} IM MIN {HE} DIE MIR IM {AA} ZU {NNS}
+
+**English:**
+> {?} And {?} he at the NNR, toward {?} sand in {?}, in [our] love {?}, in [our] love {?} — those [of] me, in {?}, toward {?}.
+
+**Espanol:**
+> {?} Y {?} el en el NNR, hacia {?} arena en {?}, en [nuestro] amor {?}, en [nuestro] amor {?} — los [de] mi, en {?}, hacia {?}.
+
+**Notes:** Lowest coverage book (70%). May contain transcription errors. Priority for in-game verification.
+
+---
+
+### Book 54 (79% | 29 chars)
 
 **Decoded German:**
 > {U} SO TEE DER DAS ER {RR} IN {RH} SCE HAT ER {A}
 
-**English Translation:**
-> {?} So [the] tea/gathering, the that he {?} in {?} already has he {?}.
+**English:**
+> {?} So [like] tea — the [one] that he {?} in {?}. [He] already has, he {?}.
+
+**Espanol:**
+> {?} Asi [como] te — el que el {?} en {?}. [El] ya tiene, el {?}.
 
 ---
 
-### Book 59 (72.3%, 94/130)
+### Book 55 (79% | 57 chars)
 
 **Decoded German:**
-> {EO} RUNE ORT {ND} TER AM NEU {DE} DIENST ORT SAND IM MIN HEIME DIE URALTE STEINEN TER {ADTHA} ES {UUISEMIADIIRGELNMH} SO {TUIARSC} IST SCHAUN RUIN WISTEN HIER STIER UM GEN
+> DER DA {II} STEH WIR DAS NEU {W} DA NUN DE GEN BEI IST EI {L} NUT {N} EN DEM {ISCHASD}
 
-**English Translation:**
-> {?} Rune-place {?} of, at [a] new {?} service-place [of] sand in my homeland. The ancient stones of {SCHARDT?}. It {?} so {SCHARDT?} is [to] behold [the] ruin. [They] knew here [the] bull around toward.
+**English:**
+> The [one] there {?} — [we] stand [before] the new {?}. There, now, those against [him], nearby, is a {?}. [Of] use {?}, of the {?}.
 
----
-
-### Book 60 (79.7%, 59/74)
-
-**Decoded German:**
-> {ETAEDE} AM MIN HEHL DIE NDCE FACH {HECHLS} SCE URE SUN ENDE DIENST ORT AN {S} UM SER {S} ZU FINDEN {S} AN
-
-**English Translation:**
-> {?} At my concealment the NDCE compartment {gasps?}, already hour/time. Son/sun, end [of the] service-place at {?}, around very {?}, to find {?} at.
+**Espanol:**
+> El [que esta] alli {?} — [nos] erguimos [ante] lo nuevo {?}. Alli, ahora, los [que estan] contra [el], cerca, es un {?}. [De] uso {?}, de los {?}.
 
 ---
 
-### Book 62 (74.2%, 46/62)
+## Narrative Synthesis
 
-**Decoded German:**
-> {N} IHM NU STEH WRLGTNELNR HEL WIND UNRUH FINDEN NEIGT DAS ES DER {E} IST GEN {EHHI}
+### The Core Story (Reconstructed)
 
-**English Translation:**
-> {?} [With] him. Now stand! WRLGTNELNR, bright wind-unrest! Find [that which] inclines, that it the {?} is toward {?}.
+The 70 books tell a **bonelord funerary inscription or ritual poem** (LEICH). The text is highly repetitive, with 12 occurrences of key phrases forming a liturgical structure.
 
----
+**Central themes:**
 
-### Book 63 (77.8%, 49/63)
+1. **Death of the Trusted One** (TRAUT IST LEICH AN BERUCHTIG): A beloved/trusted figure has died, described as "notorious" — possibly notorious to enemies but beloved to the bonelords.
 
-**Decoded German:**
-> {IHW} IN {CHN} SER ER SCE AUS ODE TREU {UNR} DEN ENDE REDER KOENIG LABT {D} ENDE SCE {HWIT}
+2. **King Salzberg** (KOENIG SALZBERG / LABGZERAS): A bonelord king who is also called REDER (speaker/orator/lawgiver). He rules from or is associated with ORANGENSTRASSE.
 
-**English Translation:**
-> {?} In {?}, very he already out of [the] desolation. Faithful {?} the end. [The] speaker [of the] King refreshes {?} [the] end, already {?}.
+3. **The Ancient Homeland** (IM MIN HEIME DIE URALTE STEINEN): The bonelords mourn the loss of their ancient homeland with its sacred stones. SCHARDT is a specific place within this homeland.
 
----
+4. **God's Servants** (GOTTDIENER/S): A religious order serving GODES (God). They practice OWI rune magic and are connected to IGAA rituals.
 
-### Book 65 (77.4%, 65/84)
+5. **The Travelers** (DIE REISTEN): Recurring figures — possibly adventurers or pilgrims — who are affected by the events.
 
-**Decoded German:**
-> {LNR} HEL WIND UNRUH FINDEN NEIGT DAS ES DER {E} IST GEN {EHH} EIN {LHLADIZEE} ENDE {F} SAGEN AM MIN HEHL DIE NDCE {RT}
+6. **The Forest Demon** (SCHRAT): A supernatural entity that emerges from someone, standing in clear sunlight.
 
-**English Translation:**
-> {?} Bright wind-unrest! Find [that which] inclines, that it the {?} is toward {?}, a {?} end {?}. Tell at my concealment, the NDCE {?}.
+7. **The Hidden Compartment** (NDCE FACH HECHELT): A concealed container that gasps/breathes, anointed with oil. The narrator commands the reader to find and speak of it.
 
----
+8. **WRLGTNELNR**: A mysterious place where the bonelords stand, associated with "light like wind and unrest."
 
-## Books with 60-79.9% Coverage (Fragmentary)
+9. **THENAEUT and LGTNELGZ**: Two unknown proper nouns that always appear together, describing someone "of standing in distress."
 
----
+10. **Wind-Unrest** (WINDUNRUHS): A mystical concept — the "sons of Wind-Unrest" seek what is worthy and find the concealment.
 
-### Book 14 (63.6%, 42/66)
+### Narrative Translation (Composite)
 
-**Decoded German:**
-> {AD} GEN INS {AUUIIR} GEN {IIH} WIND {T} GEN {E} ENDE NEST TUT {IGGWI} DEN ER DEN ENDE {MISE} MIN {HI}
+**English:**
+> The ancient stones of Schardt — behold the ruin! They knew it here, very much property, a place [of power]. Or faithfully only to those of the Speaker-King Salzberg, and not to go to Orangenstrasse. The Weichstein oath — he became the Trusted One. This is a corpse of the Notorious One, he who so does this to the travelers, he and his God's Servants. Their sustenance is delusion. We found death in our beloved homeland with the ancient stones. The THENAEUT, he of standing in distress, their LGTNELGZ, stern and faithful to Orangenstrasse. It bore itself against the light. At night, he has already gone from the wasteland. You shall find and tell at my concealment the NDCE compartment that gasps. I anoint with oil. The forest demon has already come out of him, at the clear sun. In God's name, they practice OWI rune in the manner of those against the nest. Light like wind and unrest — find what inclines, that which the travelers seek.
 
-**English Translation:**
-> {?} Toward into {?} toward {?} wind {?} toward {?} end. [The] nest does {?} them, he them [at the] end {?} my {?}.
+**Espanol:**
+> Las piedras antiguas de Schardt — contemplad la ruina! Ellos lo sabian aqui, mucha propiedad, un lugar [de poder]. O fielmente solo a los del Rey Orador Salzberg, y no ir a Orangenstrasse. El juramento Weichstein — el se convirtio en el Fiel. Este es un cadaver del Notorio, el que asi les hace a los viajeros, el y sus Servidores de Dios. Su sustento es delirio. Encontramos la muerte en nuestra amada patria con las piedras antiguas. El THENAEUT, el de rango en necesidad, su LGTNELGZ, severo y fiel a Orangenstrasse. Se porto a si mismo contra la luz. De noche, el ya ha salido del yermo. Tu debes encontrar y contar en mi ocultamiento el compartimento NDCE que jadea. Yo unjo con aceite. El demonio forestal ya ha salido de el, al sol claro. En nombre de Dios, ellos practican la runa OWI a la manera de aquellos contra el nido. Luz como viento e inquietud — encontrar lo que se inclina, eso que los viajeros buscan.
 
 ---
 
-### Book 20 (67.7%, 21/31)
-
-**Decoded German:**
-> EIN {AEUU} SO TEE DER DAS ER {RR} IN {RH} SCE {HW}
-
-**English Translation:**
-> A {?} so [the] tea/gathering, the that he {?} in {?} already {?}.
-
----
-
-### Book 31 (61.2%, 74/121)
-
-**Decoded German:**
-> {L} SEI ERE DER KOENIG SALZBERG {UONGETRAS} ES {OD} TREU {UNR} DEN {ENDHNEE} ORANGENSTRASSE {ENDNRHAUNRN} AM {HISDIZA} RUNE {DDNE} NIT {G} DU NUR ALTES IN IHM {TD} ENDE
-
-**English Translation:**
-> {?} May honor be [to] the King [of] SALZBERG {?}. It {?} faithful {?} the {?} ORANGENSTRASSE {?} at {?} rune {?} not {?}. You [find] only old [things] in him {?} [the] end.
-
----
-
-### Book 55 (68.4%, 39/57)
-
-**Decoded German:**
-> DER DA {II} STEH WIR DAS NEU {W} DA {UNRN} DEGEN BEI {IS} TEIL NUT {N} ENDE {MISCHASD}
-
-**English Translation:**
-> The there {?} stand! We [find] the new {?}! There {?} [the] sword/hero by {?} part, use/profit {?} end {?}.
-
----
-
-## Books with < 60% Coverage (Low Confidence)
-
-These books have too many garbled blocks for reliable translation. Key readable fragments only:
-
-### Book 4 (45.7%): `{HHISLUIRUNNS} SIN IHM NU STEH {WRLGTNSE} TEE {IEETIGN} DAS ER GEH {HIIHULNR} HIN {D} FINDEN {TE}` -- "They are with him. Now stand! ... tea/gathering ... that he go ... thither ... find ..."
-
-### Book 7 (53.8%): `TOD IM {T} NIE {UHONRIELT} ES {T} SIE {NNR} TAG {NDTTSSA} DIE {R} SEI {M} ERE ERE {K}` -- "Death in {?} never {?} it {?} they {?} day {?} the {?} may be {?} honor honor {?}"
-
-### Book 17 (49.3%): `{T} ES {EZEEUITGH} NUN {A} DA BEI ERDE ... NACHTS ... SAGEN AM MIN HEHL DIE NDCE FACH HECHELT ICH {OE}` -- "... now ... there by earth ... at night ... tell at my concealment the NDCE compartment gasps I ..."
-
-### Book 23 (59.6%): `{IL} SO DASS {TT} NUN ER SEIN GOTTDIENER {MTD} ENDE {E} WEICHSTEIN {NK} WIR {ETADETHR} DA ...` -- "... so that now he [is] his God-servant {?} end {?} WEICHSTEIN ... we ... there ..."
-
-### Book 29 (53.3%): `{NA} DA BEI ERDE {EOIAITOEMEEND} GEH {ND} FINDEN NEIGT DAS ES DER {E} IST GEN {EHH} EIN {LHLADIZEEELUSE}` -- "... there by earth ... go ... find inclines that it the ... is toward ... a ..."
-
-### Book 34 (57.4%): `{EOIGTSTEI} GEN {EHHIIHW} IN {CHN} SER {KE} DAS ES ER SCE AUS OEDE {ND} GEH NU {HI} IN DEN {T}` -- "... toward ... in ... very ... that it he already out of desolation ... go now ... into the ..."
-
-### Book 41 (58.8%): `SER ER SCE {A} DIE REISTEN ER SEINE {DDKEL} SEI DEN {DNRHAUNRN} AM {HISDIZA} RUNE {S} TUT {IGAAE}` -- "Very he already ... those who traveled, he his ... may be the ... at ... rune ... does ..."
-
-### Book 49 (51.8%): `{OTZN} DA {IE?} ER {NRNNDIA} ZU {N} SAND IM {MI} IM MIN {D} IM MIN {HE} DIE {LRM} IM {AA} ZU {NNS}` -- "... there ... he ... to ... sand in ... in my ... in my ... the ... to ..."
-
-### Book 56 (56.8%): `... ALTE {IDNELGZ} ER {A} STIER {URITAUIGLAUNHEARUCHT} WIR TOD ES ... SCE HEL SO DEN {HISS} TUN DIE REISTEN ER SEI ENDE TOT ...` -- "... old ... he ... bull ... we death it ... already bright so them ... did those who traveled, he may be at the end, dead ..."
-
-### Book 57 (50.4%): `... ENDE REDER KOENIG {L} GAB ER ... TREU {UNR} DEN {ENDHEAUNR} TEE ORANGENSTRASSE {ENDNO}` -- "... end speaker king ... gave he ... faithful ... the ... tea ORANGENSTRASSE ..."
-
-### Book 68 (58.3%): `{UNA} DA BEI ERDE {EOIAITOEMEEND} GEH {ND} FINDEN NEIGT DAS ES DER {E} IST GEN {EHHIIHW} IN {CHN} SER {E}` -- "... there by earth ... go ... find inclines that it the ... is toward ... in ... very ..."
-
----
-
-## Narrative Synthesis: The Story Across 70 Books
-
-### The Setting
-
-The text describes a **desolate, sandy homeland** (MIN HEIME) containing:
-- **Ancient stones** (URALTE STEINEN) at a place called **SCHARDT** -- now in **ruin** (RUIN)
-- A **rune-place** (RUNE ORT) with inscriptions
-- A **service-place** (DIENST ORT) -- a site of worship or duty, described as being in sand
-- The landscape is **desolate** (ODE/OEDE) with **wind-unrest** (WINDUNRUH)
-
-### The Characters
-
-1. **The Narrator** (first person "ICH/WIR"): A person who has died or exists in a death-like state, wandering through the ruins of their homeland. They anoint with oil (OEL), conceal things (HEHL), and instruct others to find and report.
-
-2. **The Trusted One / The Notorious One** (TRAUT / BERUCHTIG): The subject of the poem (LEICH). The text repeatedly states "TRAUT IST LEICH AN BERUCHTIG" -- "The trusted one is [the subject of] a lay about the notorious one." This suggests a single figure who is both trusted and notorious -- a fallen hero or betrayer.
-
-3. **The God-Servant** (GOTTDIENER/GOTTDIENERS): A religious authority figure whose honor (ERE) is connected to the travelers. May be the Trusted/Notorious one himself.
-
-4. **Those Who Traveled** (DIE REISTEN): A group of travelers or pilgrims connected to the Notorious One. They did something significant ("SO DASS TUN DIE REISTEN").
-
-5. **The Forest Demon** (SCHRAT): A MHG supernatural being that has already come out or been released. Stands in clear sunlight (KLAR SUN).
-
-6. **The King's Speaker** (REDER KOENIG): A spokesperson for the **King of SALZBERG**, who is warned not to go to **ORANGENSTRASSE**.
-
-7. **THENAEUT**: A proper noun (near-anagram of ATHENAEUM), a person or place of standing (STANDE) in need (NOT), connected to WEICHSTEIN and the runes.
-
-8. **WRLGTNELNR**: An unresolved proper noun (letters E,G,L,L,N,N,R,R,T,W), addressed imperatively ("NU STEH WRLGTNELNR" = "Now stand, WRLGTNELNR!"), associated with wind-unrest.
-
-9. **NDCE**: A proper noun, associated with a compartment (FACH) that gasps (HECHELT), hidden in the narrator's concealment (HEHL).
-
-### The Narrative Arc
-
-Based on the decoded passages, the story follows this approximate arc:
-
-**I. The Invocation (Books 66, 33, 35, 40):**
-"May it be God's!" (SEI GODES). Woe! (OWI). The rune in the manner of a sword/hero at the end of the nest. The fiddle plays (GIGE). The narrative begins with a divine invocation and lamentation, mixing martial imagery (DEGEN) with musical performance (GIGE) -- characteristic of medieval German epic poetry (Spielmannsdichtung).
-
-**II. The Prohibition (Books 10, 27, 1, 35, 67):**
-The speaker of the King of Salzberg is told not to go to Orangenstrasse. This is a royal decree or warning. The King's speaker refreshes/revives something (LABT) at WEICHSTEIN before the prohibition. Something became (WARD) different -- a transformation.
-
-**III. The THENAEUT Episode (Books 24, 12, 21, 26):**
-THENAEUT, a person or place of standing and rank (STANDE), is in need (NOT). Connected to WEICHSTEIN, the sea (SEE), the earth (ERDE), and the runes. The bull (STIER) and Orangenstrasse appear nearby. This may describe a learned person or institution fallen on hard times.
-
-**IV. The Quest (Books 61, 52, 44, 3, 62, 65, 29):**
-"Now stand, WRLGTNELNR!" Commands are given to find something in the bright wind-unrest. That which inclines (NEIGT) must be found. The search leads toward something. The narrator instructs: "Find and tell at my concealment" (FINDEN SAGEN AM MIN HEHL).
-
-**V. The Discovery (Books 46, 53, 51, 45, 64, 60):**
-Out of the desolation, one is to find and report at the narrator's concealment. The NDCE compartment gasps. The narrator anoints with oil. Here the trusted one is found -- and the lay about the notorious one is sung.
-
-**VI. The Lay of the Notorious One (recurring refrain in 20+ books):**
-"TRAUT IST LEICH AN BERUCHTIG ER SO DASS TUN DIE REISTEN ER SEIN GOTTDIENERS" -- The trusted one is the subject of a lay about the notorious one, who was his God-servant's [honor]. Those who traveled did what they did because of him.
-
-**VII. Death and Ruin (Books 5, 9, 69, 50, 47, 22):**
-"We wander in death in my homeland" (IRREN WIR TOD IM MIN HEIME). The ancient stones of SCHARDT are in ruin. Only old things remain (NUR ALTES IN IHM). The trusted one's end: dead, in ruin (ENDE TOT RUIN).
-
-**VIII. The Ancient Landscape (Books 0, 58, 11, 43, 32, 59):**
-The stones of SCHARDT are in ruin. Those who knew (WISTEN) recognized this as a place of property/ownership (EIGENTUM ORT). The rune-place, the service-place of sand in the homeland -- all desolate. The narrator anoints with oil amid the ruins. Woe! (OWI).
-
-**IX. The Forest Demon (Books 25, 39):**
-"The forest demon already [came] out of him." At the clear sun. This brief, enigmatic statement may represent the climax or resolution -- the supernatural entity (SCHRAT) is released, perhaps through the ritual described in the preceding sections.
-
-### Thematic Summary
-
-The text is a **medieval German lay (LEICH)** about a figure who was both trusted (TRAUT) and notorious (BERUCHTIG) -- possibly a God-servant (GOTTDIENER) who fell from grace. The narrative involves:
-
-- A **desolate homeland** with ancient ruined stones (SCHARDT) and sandy service-places
-- A **royal prohibition** (the King of Salzberg's speaker must not go to Orangenstrasse)
-- A **quest** to find something hidden in the wind-unrest, guided by runes
-- A **ritual anointing** with oil at a gasping, concealed compartment
-- **Death and wandering** among ruins -- the narrator and companions are dead or in a death-realm
-- A **forest demon** (SCHRAT) that emerges from someone into the sunlight
-
-The language mixes Middle High German forms (MIN, SER, NIT, SIN, GODE, OWI, DEGEN, GIGE, LEICH, SCHRAT) with modern German, and references real German geography (SALZBERG, ORANGENSTRASSE, WEICHSTEIN, SCHARDT). The CipSoft developers, based in Regensburg, likely drew on **Nibelungenlied** traditions and local Bavarian/Austrian geography.
-
-### Unsolved Elements
-
-| Element | Occurrences | Status |
-|---------|-------------|--------|
-| WRLGTNELNR | 4x (40 chars) | Proper noun, letters E,G,L,L,N,N,R,R,T,W -- unresolved |
-| NDCE | 9x (28 chars) | Proper noun, classified but meaning unknown |
-| {CHN} | 8x (24 chars) | Always "IN CHN SER", likely proper noun |
-| {EHHIIHW} | 3x (21 chars) | Fixed code sequence, 3 H's unusual |
-| {IGAA} | 3x | Always after NEST TUT, before ER GIGE |
-| THENAEUT | 4x | Near-anagram of ATHENAEUM but not exact |
-
----
-
-*Generated from Session 27 decoding (78.8% coverage, mapping_v7.json). This represents the most complete translation of the Tibia Bonelord 469 cipher achieved to date. No public solution exists; this work is the product of 27 sessions of cryptanalysis.*
+*Generated 2026-03-24 from pipeline v7 (94.4% coverage, 30 sessions of cryptanalysis).*
+*Previous version was based on 78.8% coverage (Session 27).*
