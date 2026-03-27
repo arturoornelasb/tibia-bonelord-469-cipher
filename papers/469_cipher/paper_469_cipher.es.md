@@ -1,6 +1,6 @@
 > **Idioma / Language:** Español | [English](paper_469_cipher.md)
 
-# Descifrando el Cifrado Bonelord 469: Criptoanálisis Computacional de un Misterio de 25 Años en un MMORPG
+# Descifrando el Cifrado Bonelord 469: Criptoanálisis Computacional de un Misterio de 25 Años en el MMORPG Tibia
 
 **Autor:** J. Arturo Ornelas Brand — Investigador Independiente — arturoornelas62@gmail.com
 **Fecha:** Marzo 2026

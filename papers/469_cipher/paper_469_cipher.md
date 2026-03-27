@@ -1,6 +1,6 @@
 > **Idioma / Language:** [Español](paper_469_cipher.es.md) | English
 
-# Cracking the Bonelord 469 Cipher: Computational Cryptanalysis of a 25-Year-Old MMORPG Mystery
+# Cracking the Bonelord 469 Cipher: Computational Cryptanalysis of a 25-Year-Old Tibia MMORPG Mystery
 
 **Author:** J. Arturo Ornelas Brand — Independent Researcher — arturoornelas62@gmail.com
 **Date:** March 2026
