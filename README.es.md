@@ -98,11 +98,8 @@ Esta investigación produjo tres técnicas criptoanalíticas novedosas, descrita
 ```
 .
 ├── README.md / README.es.md           # Vista general bilingüe
-├── LICENSE                            # BUSL-1.1 (libre para individuos/academia/sin fines de lucro)
-├── COMMERCIAL.md / .es.md             # Participación comercial
-├── CREATORS.md / .es.md               # Guía para creadores de contenido
-├── TERMS.md / .es.md                  # Términos de uso
-├── FINDINGS.md                        # Registro de investigación de 31 sesiones (7000+ líneas)
+├── LICENSE                            # Licencia MIT
+├── CREATORS.md / .es.md               # Media kit para creadores de contenido
 ├── papers/
 │   ├── 469_cipher/                    # Artículo principal (EN/ES) + PDF
 │   ├── bag_of_letters/                # Artículo técnico BoLWP (EN/ES) + PDF
@@ -118,11 +115,12 @@ Esta investigación produjo tres técnicas criptoanalíticas novedosas, descrita
 │   └── experimental/                  # Hipótesis tempranas
 ├── docs/
 │   ├── INDEX.md                       # Índice maestro de documentación
+│   ├── findings.md                    # Registro de investigación de 31 sesiones (7000+ líneas)
 │   ├── narrative_translation.md       # Los 70 libros (DE/EN/ES)
 │   ├── hellgate_library_guide.md      # Guía de biblioteca para wiki
 │   ├── investigation/                 # Investigación in-game y datos NPC
 │   └── archive/                       # Datos comunitarios legacy
-└── agente3/                           # Fases de investigación en español
+└── archive/                           # Artefactos de trabajo interno
 ```
 
 ## Inicio Rápido
@@ -144,17 +142,11 @@ python scripts/core/narrative_v3_clean.py
 
 ## Licencia
 
-**Business Source License 1.1 (BUSL-1.1)**
+**Licencia MIT** — Usa libremente para cualquier propósito.
 
-- **Gratis para:** individuos, académicos, investigadores, organizaciones sin fines de lucro
-- **Uso comercial:** requiere acuerdo de participación (ver [COMMERCIAL.es.md](COMMERCIAL.es.md))
-- **Obligación de contribución:** las mejoras deben compartirse (ver [TERMS.es.md](TERMS.es.md))
-- **Fecha de cambio:** 2030-03-24 (se convierte automáticamente a AGPL-3.0)
-- **Datos del juego:** propiedad intelectual de CipSoft GmbH, incluidos bajo uso justo para investigación
+Los datos del juego (`books.json`) contienen contenido transcrito por la comunidad de Tibia, propiedad intelectual de CipSoft GmbH. Incluidos con fines de investigación.
 
-Ver [LICENSE](LICENSE) para los términos completos.
-
-**Creadores de contenido:** Puedes monetizar libremente — no se necesita licencia. Ver [CREATORS.es.md](CREATORS.es.md) para guías de atribución y media kit.
+Ver [CREATORS.es.md](CREATORS.es.md) para el media kit para creadores de contenido.
 
 ## Agradecimientos
 
@@ -165,3 +157,54 @@ Ver [LICENSE](LICENSE) para los términos completos.
 ---
 
 *Esta investigación fue conducida de manera independiente. CipSoft GmbH posee toda la propiedad intelectual relacionada con Tibia y su contenido in-game.*
+
+---
+
+## Disclaimer — by kardfon dogon
+
+**No puedo confirmar que el contenido decodificado sea el texto plano real que CipSoft escribio.**
+
+El mapeo pasa todas las pruebas de validacion computacional que le lanzamos: el Indice de Coincidencia confirma aleman + codificacion de 2 digitos (independiente de cualquier mapeo), 164 solapamientos entre libros decodifican con cero inconsistencias, las frecuencias de letras coinciden con el aleman dentro de un 2%, y el mapeo supera las 200 permutaciones aleatorias probadas (p < 0.005). La matematica es solida.
+
+Pero la matematica sola no prueba que CipSoft escribio estas palabras.
+
+### Como llegamos aqui
+
+Los libros de la Biblioteca de Hellgate son 70 secuencias de digitos que totalizan 11,263 digitos. Los tratamos como un **cifrado de sustitucion homofonica**: cada par de dos digitos codifica una de 22 letras alemanas, con multiples codigos por letra (solo la E tiene 20 codigos). El ataque combino:
+
+- **Analisis de frecuencia** para establecer proporciones de codigo-a-letra
+- **Cribs de dialogos NPC** (frases conocidas del Wrinkled Bonelord) como anclas para ataques de texto plano conocido
+- **Cadenas de solapamiento entre libros** — los libros comparten solapamientos sufijo-prefijo, permitiendonos reconstruir 12 cadenas de los 70 fragmentos
+- **Particion de Bolsa de Letras (BoLWP)** — una tecnica novedosa que descompone bloques de letras ilegibles en combinaciones de palabras alemanas validas, tolerando intercambios sistematicos de letras
+- **Testing de Digit-Split con Conciencia de Concatenacion** — CipSoft elimino un solo digito de 37/70 libros para romper la alineacion de pares; nosotros buscamos por fuerza bruta la insercion optima para cada uno
+- **Resolucion de Anagramas Sensible al Contexto** — los nombres propios estan anagramados con +1 letra extra (LABGZERAS = SALZBERG + A), coincidiendo con el patron conocido de CipSoft (Ferumbras, Vladruc, Dallheim)
+
+### La preocupacion del overfitting
+
+Con 98 codigos mapeados a 22 letras y un corpus de 5,515 caracteres, hay suficientes grados de libertad para que un optimizador determinado *pudiera* forzar texto aleman de apariencia plausible a partir de datos aleatorios. Nuestro 94.6% de cobertura de palabras se mide contra un diccionario aleman — pero el 5.4% restante consiste en clusters de consonantes y nombres propios sin decodificar, no ruido aleatorio. Eso es evidencia de un texto real en aleman arcaico con vocabulario especifico de bonelords... o evidencia de un overfit muy convincente.
+
+### Libros vs NPCs: dos sistemas de cifrado diferentes
+
+Esto es critico y frecuentemente ignorado:
+
+- **Los 70 libros de la biblioteca** usan una **sustitucion homofonica de dos digitos** limpia — pares de digitos se mapean a letras, sin espacios, sin puntuacion. Esto es lo que resolvimos.
+- **El dialogo de los NPCs** (el poema de Avar Tar, las frases de los Evil Eyes) usa una **codificacion completamente diferente** — grupos de digitos de longitud variable separados por espacios, con patrones que no coinciden con el cifrado de los libros en absoluto. El poema de Avar Tar tiene grupos como `29639`, `46781`, `9063376290` — estos NO son pares de dos digitos.
+
+Resolvimos los libros. NO hemos resuelto el cifrado de los NPCs. Pueden usar el mismo lenguaje subyacente pero un esquema de codificacion diferente, o pueden ser sistemas completamente separados. **Hasta que alguien descifre la codificacion NPC de forma independiente y encuentre que es consistente con la solucion de los libros, los dos sistemas permanecen desvinculados.**
+
+### Lo que probamos in-game
+
+Volvi a Tibia despues de años y probe palabras clave decodificadas (`SALZBERG`, `RUNE`, `STEIN`, `LEICH`, `GOTTDIENER`, `SCHARDT`) con el Wrinkled Bonelord. **Sin resultados.** Ningun dialogo nuevo, ninguna reaccion, nada. Esto es extraño, pero no necesariamente refuta la solucion — mi teoria es que el lenguaje *escrito* de los bonelords y su lenguaje *hablado* pueden ser sistemas fundamentalmente diferentes. Los bonelords se comunican parpadeando sus ojos en patrones, lo que podria explicar por que el dialogo hablado del NPC usa una codificacion completamente diferente a la de los libros de la biblioteca. Los libros son registros *escritos* — quiza en un registro formal o arcaico que no se mapea a como un bonelord vivo "habla" a traves de parpadeos de ojos.
+
+### En que puede ayudar la comunidad
+
+- **Avar Tar en Edron** — Este NPC recita un poema en 469 y podria ser critico para obtener mas datos. Su poema usa grupos de digitos de longitud variable (no pares de dos digitos como los libros), sugiriendo una capa de codificacion diferente. Descifrar su poema de forma independiente y encontrar consistencia con la narrativa de los libros seria la prueba definitiva.
+- **Referencia cruzada con el lore de Tibia** — Aparecen "King Salzberg", "Orangenstrasse", "Weichstein" o "Gottdiener" en algun otro lugar del juego? Alguna referencia en la wiki, algun dialogo NPC, algun libro fuera de Hellgate?
+- **Mas textos cifrados** — Hay textos codificados en 469 fuera de Hellgate? Isle of Kings? Ferumbras Citadel? Mientras mas datos, mas fuerte (o mas debil) se vuelve la solucion.
+- **Hablantes nativos de aleman** — El texto decodificado parece ser alto aleman medio. Un hablante nativo o un especialista en MHG revisando el texto podria confirmar si se lee como aleman arcaico coherente o como ruido estadistico que casualmente parece palabras.
+
+La evidencia estadistica dice que este mapeo es real. El texto decodificado se lee como aleman arcaico con una narrativa funeraria coherente. Pero he pasado suficientes horas mirando estos digitos para saber que el reconocimiento de patrones es una droga potente, y el cerebro humano es perturbadoramente bueno encontrando significado en el ruido.
+
+Me retire de Tibia hace años y volvi para cumplir mi sueño de llegar a nivel 100. Encontre un juego completamente diferente, uno que ya no me motiva a jugar. Pero este enigma de los bonelords siempre me causo intriga, y seguire a disposicion de la comunidad para seguir explorando.
+
+Solo espero que esta no sea otra puerta como la del nivel 999.

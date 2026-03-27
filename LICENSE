@@ -1,47 +1,26 @@
-Business Source License 1.1
+MIT License
 
-Licensed Work:     Tibia Bonelord 469 Cipher Research
-Licensor:          J. Arturo Ornelas Brand <arturoornelas62@gmail.com>
-Change Date:       2030-03-24
-Change License:    GNU Affero General Public License v3.0
+Copyright (c) 2026 J. Arturo Ornelas Brand
 
-Additional Use Grant:
-  Production use of the Licensed Work is permitted without a commercial
-  license for: (a) individual persons, (b) academic and research
-  institutions, and (c) non-profit organizations.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-  All other production use — including by for-profit companies,
-  government contractors, and commercial entities — requires a
-  commercial participation agreement with the Licensor.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-  All users are subject to the contribution terms in TERMS.md.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-  The cryptanalytic techniques described in this repository (Bag-of-Letters
-  Word Partition, Context-Aware Anagram Resolution, Concatenation-Aware
-  Digit-Split Testing) are original contributions. Citation is required
-  when referencing these techniques in academic or commercial work.
+---
 
-  Game data (books.json) contains community-transcribed content from Tibia,
-  which is the intellectual property of CipSoft GmbH. Included under fair
-  use for research purposes.
-
-Terms:
-  The Licensor hereby grants you the right to copy, modify, create
-  derivative works, redistribute, and make non-production use of the
-  Licensed Work. The Licensor may make an Additional Use Grant above,
-  permitting limited production use.
-
-  Effective on the Change Date, or the fourth anniversary of the first
-  publicly available distribution of a specific version of the Licensed
-  Work under this License, whichever comes first, the Licensor hereby
-  grants you rights under the terms of the Change License, and the
-  rights granted in the paragraph above terminate.
-
-  If your use of the Licensed Work does not comply with the requirements
-  currently in effect as described in this License, you must purchase a
-  commercial license from the Licensor, its affiliated entities, or
-  authorized resellers, or you must refrain from using the Licensed Work.
-
-  For commercial licensing inquiries, contact: arturoornelas62@gmail.com
-
-  Full BUSL-1.1 text: https://mariadb.com/bsl11/
+Note: Game data (books.json) contains community-transcribed content from Tibia,
+which is the intellectual property of CipSoft GmbH. Included for research purposes.

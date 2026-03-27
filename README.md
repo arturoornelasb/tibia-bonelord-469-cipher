@@ -98,11 +98,8 @@ This research produced three novel cryptanalytic techniques, described in a [sep
 ```
 .
 ├── README.md / README.es.md           # Bilingual overview (EN/ES)
-├── LICENSE                            # BUSL-1.1 (free for individuals/academics/non-profits)
-├── COMMERCIAL.md / .es.md             # Commercial participation guidelines
-├── CREATORS.md / .es.md               # Content creator guidelines & media kit
-├── TERMS.md / .es.md                  # Terms of use & contribution obligation
-├── FINDINGS.md                        # Complete 31-session research log (7000+ lines)
+├── LICENSE                            # MIT License
+├── CREATORS.md / .es.md               # Content creator media kit
 ├── papers/
 │   ├── 469_cipher/                    # Main research paper (EN/ES) + PDF
 │   ├── bag_of_letters/                # BoLWP technique paper (EN/ES) + PDF
@@ -118,11 +115,12 @@ This research produced three novel cryptanalytic techniques, described in a [sep
 │   └── experimental/                  # Early hypotheses & exploratory work
 ├── docs/
 │   ├── INDEX.md                       # Documentation index (EN/ES)
+│   ├── findings.md                    # Complete 31-session research log (7000+ lines)
 │   ├── narrative_translation.md       # All 70 books translated (DE/EN/ES)
 │   ├── hellgate_library_guide.md      # Wiki-ready library guide (71 books)
 │   ├── investigation/                 # In-game research & NPC data
 │   └── archive/                       # Legacy community data
-└── agente3/                           # Spanish-language investigation phases
+└── archive/                           # Internal agent work artifacts
 ```
 
 > See [docs/INDEX.md](docs/INDEX.md) for the complete documentation index.
@@ -146,17 +144,11 @@ python scripts/core/narrative_v3_clean.py
 
 ## License
 
-**Business Source License 1.1 (BUSL-1.1)**
+**MIT License** — Use freely for any purpose.
 
-- **Free for:** individuals, academics, researchers, non-profits
-- **Commercial use:** requires participation agreement (see [COMMERCIAL.md](COMMERCIAL.md))
-- **Contribution obligation:** improvements must be shared back (see [TERMS.md](TERMS.md))
-- **Change date:** 2030-03-24 (auto-converts to AGPL-3.0)
-- **Game data:** CipSoft GmbH intellectual property, included under fair use for research
+Game data (`books.json`) contains community-transcribed content from Tibia, which is the intellectual property of CipSoft GmbH. Included for research purposes.
 
-See [LICENSE](LICENSE) for full terms.
-
-**Content creators:** You can monetize freely — no license needed. See [CREATORS.md](CREATORS.md) for attribution guidelines and media kit.
+See [CREATORS.md](CREATORS.md) for a content creator media kit.
 
 ## Acknowledgments
 
@@ -167,3 +159,54 @@ See [LICENSE](LICENSE) for full terms.
 ---
 
 *This research was conducted independently. CipSoft GmbH owns all intellectual property related to Tibia and its in-game content.*
+
+---
+
+## Disclaimer — by kardfon dogon
+
+**I cannot confirm that the decoded content is the actual intended plaintext.**
+
+The mapping passes every computational validation test we threw at it: Index of Coincidence confirms German + 2-digit encoding (independent of any mapping), 164 book overlaps decode with zero inconsistencies, letter frequencies match German within 2%, and the mapping outperforms all 200 random permutations tested (p < 0.005). The math is solid.
+
+But math alone doesn't prove CipSoft wrote these words.
+
+### How we got here
+
+The Hellgate Library books are 70 digit sequences totaling 11,263 digits. We treated them as a **homophonic substitution cipher**: each pair of two digits encodes one of 22 German letters, with multiple codes per letter (E alone has 20 codes). The attack combined:
+
+- **Frequency analysis** to establish code-to-letter proportions
+- **NPC dialogue cribs** (known phrases from the Wrinkled Bonelord) as anchors for known-plaintext attacks
+- **Book overlap chains** — books share suffix-prefix overlaps, letting us reconstruct 12 chains from the 70 fragments
+- **Bag-of-Letters Word Partition (BoLWP)** — a novel technique that decomposes garbled letter blocks into valid German word combinations, tolerating systematic letter swaps
+- **Concatenation-Aware Digit-Split Testing** — CipSoft removed a single digit from 37/70 books to break pair alignment; we brute-forced the optimal insertion for each
+- **Context-Aware Anagram Resolution** — proper nouns are anagrammed with +1 extra letter (LABGZERAS = SALZBERG + A), matching CipSoft's known pattern (Ferumbras, Vladruc, Dallheim)
+
+### The overfitting concern
+
+With 98 codes mapped to 22 letters and a 5,515-character corpus, there are enough degrees of freedom that a determined optimizer *could* force plausible-looking German text out of random data. Our 94.6% word coverage is measured against a German dictionary — but the 5.4% gap consists of consonant clusters and undecoded proper nouns, not random noise. That's either evidence of a real archaic German text with bonelord-specific vocabulary... or evidence of a very convincing overfit.
+
+### Books vs NPCs: two different cipher systems
+
+This is critical and often overlooked:
+
+- **The 70 library books** use a clean **two-digit homophonic substitution** — pairs of digits map to letters, no spaces, no punctuation. This is what we solved.
+- **NPC dialogue** (Avar Tar's poem, Evil Eye utterances) uses a **completely different encoding** — variable-length digit groups separated by spaces, with patterns that don't match the book cipher at all. Avar Tar's poem has groups like `29639`, `46781`, `9063376290` — these are NOT two-digit pairs.
+
+We solved the books. We have NOT solved the NPC cipher. They may use the same underlying language but a different encoding scheme, or they may be entirely separate systems. **Until someone cracks the NPC encoding independently and finds it consistent with the book solution, the two systems remain unlinked.**
+
+### What we tested in-game
+
+I went back to Tibia after years away and tested decoded keywords (`SALZBERG`, `RUNE`, `STEIN`, `LEICH`, `GOTTDIENER`, `SCHARDT`) with the Wrinkled Bonelord. **No results.** No new dialogue, no reactions, nothing. This is strange, but it doesn't necessarily disprove the solution — my theory is that bonelord *written* language and bonelord *spoken* language may be fundamentally different systems. Bonelords communicate by blinking their eyes in patterns, which could explain why the NPC's spoken dialogue uses a completely different encoding than the library books. The books are *written* records — perhaps in a formal or archaic register that doesn't map to how a living bonelord "speaks" through eye-blinks.
+
+### What the community can help with
+
+- **Avar Tar in Edron** — This NPC recites a poem in 469 and could be critical for obtaining more data. His poem uses variable-length digit groups (not two-digit pairs like the books), suggesting a different encoding layer. Cracking his poem independently and finding consistency with the book narrative would be the smoking gun.
+- **Cross-reference with Tibia lore** — Do "King Salzberg", "Orangenstrasse", "Weichstein", or "Gottdiener" appear anywhere else in the game? Any wiki reference, any NPC dialogue, any book outside Hellgate?
+- **More cipher texts** — Are there 469-encoded texts outside Hellgate? Isle of Kings? Ferumbras Citadel? The more data, the stronger (or weaker) the solution becomes.
+- **Native German speakers** — The decoded text appears to be Middle High German. A native speaker or MHG scholar reviewing the text could confirm whether it reads as coherent archaic German or as statistical noise that happens to look like words.
+
+The statistical evidence says this mapping is real. The decoded text reads like archaic German with a coherent funeral narrative. But I've spent enough hours staring at these digits to know that pattern recognition is a hell of a drug, and the human brain is disturbingly good at finding meaning in noise.
+
+I retired from Tibia years ago and came back to fulfill my dream of reaching level 100. I found a completely different game — one that no longer motivates me to play. But this bonelord enigma always intrigued me, and I'll remain available to the community to keep exploring.
+
+I just hope this isn't another door like the one at level 999.

@@ -4,7 +4,7 @@
 
 **Autores:** Proyecto de Investigación Independiente
 **Fecha:** Marzo 2026
-**Licencia:** BUSL-1.1 (ver LICENSE en la raíz del repositorio)
+**Licencia:** MIT (ver LICENSE en la raíz del repositorio)
 
 ---
 
@@ -401,4 +401,4 @@ Las técnicas complementarias CAAR y CADST resuelven problemas adyacentes: susti
 
 ---
 
-*Este trabajo está licenciado bajo BUSL-1.1. Gratuito para individuos, académicos y organizaciones sin fines de lucro. El uso comercial requiere un acuerdo de participación. Ver LICENSE y COMMERCIAL.md en la raíz del repositorio.*
+*Este trabajo está licenciado bajo la Licencia MIT. Ver LICENSE en la raíz del repositorio.*

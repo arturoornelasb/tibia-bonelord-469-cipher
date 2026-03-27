@@ -4,7 +4,7 @@
 
 **Authors:** Independent Research Project
 **Date:** March 2026
-**License:** BUSL-1.1 (see LICENSE in repository root)
+**License:** MIT (see LICENSE in repository root)
 
 ---
 
@@ -401,4 +401,4 @@ The companion techniques CAAR and CADST solve adjacent problems: compound-word-s
 
 ---
 
-*This work is licensed under BUSL-1.1. Free for individuals, academics, and non-profits. Commercial use requires a participation agreement. See LICENSE and COMMERCIAL.md in the repository root.*
+*This work is licensed under the MIT License. See LICENSE in the repository root.*
