@@ -2,7 +2,7 @@
 
 # Descifrando el Cifrado Bonelord 469: Criptoanálisis Computacional de un Misterio de 25 Años en un MMORPG
 
-**Autores:** Proyecto de Investigación Independiente
+**Autor:** J. Arturo Ornelas Brand — Investigador Independiente — arturoornelas62@gmail.com
 **Fecha:** Marzo 2026
 **Estado:** 94.6% descifrado (5219/5514 caracteres)
 

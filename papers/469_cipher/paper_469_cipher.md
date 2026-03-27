@@ -2,7 +2,7 @@
 
 # Cracking the Bonelord 469 Cipher: Computational Cryptanalysis of a 25-Year-Old MMORPG Mystery
 
-**Authors:** Independent Research Project
+**Author:** J. Arturo Ornelas Brand — Independent Researcher — arturoornelas62@gmail.com
 **Date:** March 2026
 **Status:** 94.6% decoded (5219/5514 characters)
 

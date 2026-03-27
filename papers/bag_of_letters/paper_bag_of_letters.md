@@ -2,7 +2,7 @@
 
 # Bag-of-Letters Word Partition: A Novel Technique for Resolving Garbled Blocks in Homophonic Substitution Ciphers
 
-**Authors:** Independent Research Project
+**Author:** J. Arturo Ornelas Brand — Independent Researcher — arturoornelas62@gmail.com
 **Date:** March 2026
 **License:** MIT (see LICENSE in repository root)
 

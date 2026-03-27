@@ -2,7 +2,7 @@
 
 # Partición de Bolsa de Letras: Una Técnica Novedosa para Resolver Bloques Ilegibles en Cifrados de Sustitución Homofónica
 
-**Autores:** Proyecto de Investigación Independiente
+**Autor:** J. Arturo Ornelas Brand — Investigador Independiente — arturoornelas62@gmail.com
 **Fecha:** Marzo 2026
 **Licencia:** MIT (ver LICENSE en la raíz del repositorio)
 
