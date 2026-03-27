@@ -46,11 +46,11 @@ Esta técnica fue desarrollada durante el descifrado del cifrado ``Bonelord 469'
 Un cifrado de sustitución homofónica (homophonic substitution cipher) mapea cada letra del texto plano $l$ a un conjunto de símbolos de texto cifrado $C(l)$, donde $|C(l)|$ es aproximadamente proporcional a la frecuencia de $l$ en el idioma del texto plano. Para un alfabeto alemán de 22 letras:
 
 \begin{itemize}
-\item E (16,4\% de frecuencia) $ightarrow$ 20 códigos
-\item N (9,8\%) $ightarrow$ 10 códigos
-\item I (7,6\%) $ightarrow$ 8 códigos
-\item S (7,3\%) $ightarrow$ 7 códigos
-\item ...hasta V (0,7\%) $ightarrow$ 1 código
+\item E (16,4\% de frecuencia) $\rightarrow$ 20 códigos
+\item N (9,8\%) $\rightarrow$ 10 códigos
+\item I (7,6\%) $\rightarrow$ 8 códigos
+\item S (7,3\%) $\rightarrow$ 7 códigos
+\item ...hasta V (0,7\%) $\rightarrow$ 1 código
 \end{itemize}
 
 Con 98 códigos que abarcan 22 letras, cada código mapea determinísticamente a una letra, pero el mapeo inverso es de uno a muchos.
@@ -60,8 +60,8 @@ Con 98 códigos que abarcan 22 letras, cada código mapea determinísticamente a
 Dada una secuencia de letras descifradas (p. ej., \texttt{DIERALTESTEINEISEINRUIN}), la segmentación por PD encuentra los límites de palabras que maximizan la cobertura del diccionario:
 
 \begin{lstlisting}[style=plain]
-DIE|RALT|STEIN|E|IST|EIN|RUIN  $ightarrow$  subóptimo
-DIE|R|ALTE|STEIN|E|IST|EIN|RUIN  $ightarrow$  mejor
+DIE|RALT|STEIN|E|IST|EIN|RUIN  $\rightarrow$  subóptimo
+DIE|R|ALTE|STEIN|E|IST|EIN|RUIN  $\rightarrow$  mejor
 \end{lstlisting}
 
 Los bloques que no coinciden con ninguna entrada del diccionario se encierran entre llaves: \texttt{\{RALT\}}. Estos bloques ilegibles son el objetivo de BoLWP.
@@ -71,7 +71,7 @@ Los bloques que no coinciden con ninguna entrada del diccionario se encierran en
 Considere el bloque ilegible \texttt{DNRHAUNIIOD} (11 caracteres). Ninguna palabra alemana individual es un anagrama de estas letras. Los enfoques tradicionales abandonan este bloque. Pero las letras pueden particionarse en:
 
 \begin{itemize}
-\item OEDE (4 letras, ``páramo'') --- requiere 2 intercambios I$ightarrow$E
+\item OEDE (4 letras, ``páramo'') --- requiere 2 intercambios I$\rightarrow$E
 \item NUR (3 letras, ``solo'') --- coincidencia exacta
 \item HAND (4 letras, ``mano'') --- coincidencia exacta
 \end{itemize}
@@ -160,8 +160,8 @@ El reemplazo de cadenas estándar es agnóstico al contexto: reemplazar todas la
 
 \textbf{Ejemplo:} El bloque ilegible \texttt{UNR} es un anagrama de \texttt{NUR} (``solo''). Pero reemplazar ingenuamente todos los \texttt{UNR} con \texttt{NUR} destruye:
 \begin{itemize}
-\item \texttt{WINDUNRUH} $ightarrow$ \texttt{WINDNURH} (rompe el compuesto ``Windunruh'' = viento-inquietud)
-\item \texttt{SCHAUNRUIN} $ightarrow$ \texttt{SCHAUNRUIN} (rompe ``schaun ruin'' = contemplar ruina)
+\item \texttt{WINDUNRUH} $\rightarrow$ \texttt{WINDNURH} (rompe el compuesto ``Windunruh'' = viento-inquietud)
+\item \texttt{SCHAUNRUIN} $\rightarrow$ \texttt{SCHAUNRUIN} (rompe ``schaun ruin'' = contemplar ruina)
 \end{itemize}
 
 \subsection{Solución: Focalización en Límites de Frase}
@@ -176,7 +176,7 @@ resolved = resolved.replace('UNR', 'NUR')
 resolved = resolved.replace('TREUUNR', 'TREUNUR')
 \end{lstlisting}
 
-Esto resolvió las 8 ocurrencias del anagrama UNR$ightarrow$NUR sin afectar las 4 ocurrencias de WINDUNRUH.
+Esto resolvió las 8 ocurrencias del anagrama UNR$\rightarrow$NUR sin afectar las 4 ocurrencias de WINDUNRUH.
 
 \subsection{Cuándo Aplicar CAAR}
 
@@ -248,9 +248,10 @@ Aplicado a lo largo de las Sesiones 29-30, BoLWP resolvió bloques ilegibles en 
 
 \begin{table}[htbp]
 \centering
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lccc}
 \toprule
-\textbf{Ronda} & \textbf{Bloques Resueltos} & \textbf{Caracteres Recuperados} & \textbf{Tamaño Promedio de Bloque} \\
+\textbf{Ronda} & \textbf{Bloques Resueltos} & \textbf{Caracteres Recuperados} & \textbf{Tam. Promedio de Bloque} \\
 \midrule
 Sesión 29, Ronda 1 & 14 & +151 caracteres & 10,8 \\
 Sesión 29, Ronda 2 & 20 & +119 caracteres & 6,0 \\
@@ -258,7 +259,8 @@ Sesión 30 & 4 & +15 caracteres & 4,8 \\
 \midrule
 \textbf{Total} & \textbf{38} & \textbf{+285 caracteres} & --- \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \subsection{Impacto en la Cobertura}
@@ -280,18 +282,19 @@ Cobertura a nivel de letras & 100\% & 100\% & 0\% \\
 
 \begin{table}[htbp]
 \centering
-\small
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lclcc}
 \toprule
 \textbf{Bloque Ilegible} & \textbf{Longitud} & \textbf{Resolución} & \textbf{Palabras} & \textbf{Intercambios} \\
 \midrule
-\texttt{OIAITOEMEENDGEEMKMTGRSCASEZSTEIEHHIS} & 35 & HECHELT+ALLES+GOTTDIENERS & 3 & 4 I$ightarrow$E \\
-\texttt{UUISEMIADIIRGELNMH} & 18 & LANG+HEIME+DIESER & 3 & 2 I$ightarrow$E \\
-\texttt{EHHIIHHISLUIRUNNS} & 17 & HEHL+UNRUH+SEINES & 3 & 2 I$ightarrow$E \\
-\texttt{AUIGLAUNHEARUCHT} & 16 & LANG+URALTE+AUCH & 3 & 1 I$ightarrow$L \\
-\texttt{OIAITOEMEEND} & 12 & OEDE+NAME+TEE & 3 & 2 I$ightarrow$E \\
+\texttt{OIAITOEMEENDGEEMKMTGRSCASEZSTEIEHHIS} & 35 & HECHELT+ALLES+GOTTDIENERS & 3 & 4 I$\rightarrow$E \\
+\texttt{UUISEMIADIIRGELNMH} & 18 & LANG+HEIME+DIESER & 3 & 2 I$\rightarrow$E \\
+\texttt{EHHIIHHISLUIRUNNS} & 17 & HEHL+UNRUH+SEINES & 3 & 2 I$\rightarrow$E \\
+\texttt{AUIGLAUNHEARUCHT} & 16 & LANG+URALTE+AUCH & 3 & 1 I$\rightarrow$L \\
+\texttt{OIAITOEMEEND} & 12 & OEDE+NAME+TEE & 3 & 2 I$\rightarrow$E \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \subsection{Distribución de Intercambios}
@@ -304,7 +307,7 @@ A lo largo de los 38 bloques resueltos:
 \item 3 intercambios: 3 bloques (8\%)
 \end{itemize}
 
-El intercambio I$ightarrow$E domina (87\% de todos los intercambios), consistente con que E es la letra más frecuente (20 códigos) creando la mayor ambigüedad en los límites.
+El intercambio I$\rightarrow$E domina (87\% de todos los intercambios), consistente con que E es la letra más frecuente (20 códigos) creando la mayor ambigüedad en los límites.
 
 \section{Discusión}
 
@@ -349,6 +352,7 @@ Las aplicaciones candidatas incluyen:
 
 \begin{table}[htbp]
 \centering
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Método} & \textbf{Palabra Única} & \textbf{Multipalabra} & \textbf{Tolerante a Intercambios} & \textbf{Consciente del Contexto} \\
@@ -359,7 +363,8 @@ Corrección ortográfica (Levenshtein) & Sí & No & Sí & No \\
 \textbf{BoLWP} & \textbf{Sí} & \textbf{Sí} & \textbf{Sí} & \textbf{No} \\
 \textbf{BoLWP + CAAR} & \textbf{Sí} & \textbf{Sí} & \textbf{Sí} & \textbf{Sí} \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \section{Implementación}
@@ -461,7 +466,7 @@ Las técnicas complementarias CAAR y CADST resuelven problemas adyacentes: susti
 
 \vfill
 \begin{center}
-\textit{Este trabajo está licenciado bajo BUSL-1.1. Gratuito para individuos, académicos y organizaciones sin fines de lucro. El uso comercial requiere un acuerdo de participación. Ver LICENSE y COMMERCIAL.md en la raíz del repositorio.}
+\textit{Este trabajo está licenciado bajo la Licencia MIT. Ver LICENSE en la ra\'{i}z del repositorio.}
 \end{center}
 
 \end{document}

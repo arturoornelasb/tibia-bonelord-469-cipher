@@ -173,6 +173,7 @@ En lugar de un ataque de un solo paso, desarrollamos un sistema progresivo de ni
 
 \begin{table}[h]
 \centering
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{llll}
 \toprule
 Nivel & M\'{e}todo & C\'{o}digos Asignados & Tipo de Evidencia \\
@@ -183,7 +184,8 @@ Nivel & M\'{e}todo & C\'{o}digos Asignados & Tipo de Evidencia \\
 8-10 & Completado de palabras, an\'{a}lisis de compuestos & U(4), O(4), M(3), G(3) & Sem\'{a}ntico \\
 11-14 & Validaci\'{o}n de bigramas, an\'{a}lisis de huecos & L(2), W(2), K(2), C, F, B, Z, V & Residual \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 Cada nivel fue validado contra frecuencias de bigramas/trigramas del alem\'{a}n antes de proceder. Para el Nivel 14, \textbf{98 de los 100 c\'{o}digos posibles} fueron asignados a 22 letras alemanas (los c\'{o}digos 07 y 32 nunca aparecen en ning\'{u}n libro).
@@ -275,6 +277,7 @@ El avance m\'{a}s significativo fue la identificaci\'{o}n de nombres propios com
 
 \begin{table}[h]
 \centering
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{llll}
 \toprule
 Forma Cifrada & Resoluci\'{o}n & Significado & Patr\'{o}n \\
@@ -285,7 +288,8 @@ AUNRSONGETRASES & ORANGENSTRASSE + U & ``Calle de los Naranjos'' & Anagrama exac
 EDETOTNIURG & GOTTDIENER + U & ``Siervo de Dios'' & Anagrama exacto + 1 letra \\
 ADTHARSC & SCHARDT + A & Top\'{o}nimo & Anagrama exacto + 1 letra \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 El patr\'{o}n consistente de ``anagrama exacto + 1 letra extra'' coincide con el patr\'{o}n de ofuscaci\'{o}n conocido de CipSoft (ej., Ferumbras ≈ Ambrosius).

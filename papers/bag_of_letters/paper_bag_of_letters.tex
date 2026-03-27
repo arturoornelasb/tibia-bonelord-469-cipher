@@ -50,11 +50,11 @@ This technique was developed during the decryption of the "Bonelord 469" cipher 
 A homophonic substitution cipher maps each plaintext letter $l$ to a set of ciphertext symbols $C(l)$, where $|C(l)|$ is roughly proportional to the frequency of $l$ in the plaintext language. For a 22-letter German alphabet:
 
 \begin{itemize}
-\item E (16.4\% frequency) $ightarrow$ 20 codes
-\item N (9.8\%) $ightarrow$ 10 codes
-\item I (7.6\%) $ightarrow$ 8 codes
-\item S (7.3\%) $ightarrow$ 7 codes
-\item \ldots down to V (0.7\%) $ightarrow$ 1 code
+\item E (16.4\% frequency) $\rightarrow$ 20 codes
+\item N (9.8\%) $\rightarrow$ 10 codes
+\item I (7.6\%) $\rightarrow$ 8 codes
+\item S (7.3\%) $\rightarrow$ 7 codes
+\item \ldots down to V (0.7\%) $\rightarrow$ 1 code
 \end{itemize}
 
 With 98 codes spanning 22 letters, each code deterministically maps to one letter, but the reverse mapping is one-to-many.
@@ -64,8 +64,8 @@ With 98 codes spanning 22 letters, each code deterministically maps to one lette
 Given a decoded letter stream (e.g., \texttt{DIERALTESTEINEISEINRUIN}), DP segmentation finds the word boundaries that maximize dictionary coverage:
 
 \begin{lstlisting}[style=plain]
-DIE|RALT|STEIN|E|IST|EIN|RUIN  $ightarrow$  suboptimal
-DIE|R|ALTE|STEIN|E|IST|EIN|RUIN  $ightarrow$  better
+DIE|RALT|STEIN|E|IST|EIN|RUIN  $\rightarrow$  suboptimal
+DIE|R|ALTE|STEIN|E|IST|EIN|RUIN  $\rightarrow$  better
 \end{lstlisting}
 
 Blocks that match no dictionary entry are enclosed in braces: \texttt{\{RALT\}}. These garbled blocks are the target of BoLWP.
@@ -75,7 +75,7 @@ Blocks that match no dictionary entry are enclosed in braces: \texttt{\{RALT\}}.
 Consider the garbled block \texttt{DNRHAUNIIOD} (11 characters). No single German word is an anagram of these letters. Traditional approaches abandon this block. But the letters can be partitioned into:
 
 \begin{itemize}
-\item OEDE (4 letters, "wasteland") --- requires 2 I$ightarrow$E swaps
+\item OEDE (4 letters, "wasteland") --- requires 2 I$\rightarrow$E swaps
 \item NUR (3 letters, "only") --- exact match
 \item HAND (4 letters, "hand") --- exact match
 \end{itemize}
@@ -164,8 +164,8 @@ Standard string replacement is context-agnostic: replacing all occurrences of pa
 
 \textbf{Example:} The garbled block \texttt{UNR} is an anagram of \texttt{NUR} ("only"). But naively replacing all \texttt{UNR} with \texttt{NUR} destroys:
 \begin{itemize}
-\item \texttt{WINDUNRUH} $ightarrow$ \texttt{WINDNURH} (breaks the compound "Windunruh" = wind-unrest)
-\item \texttt{SCHAUNRUIN} $ightarrow$ \texttt{SCHAUNRUIN} (breaks "schaun ruin" = behold ruin)
+\item \texttt{WINDUNRUH} $\rightarrow$ \texttt{WINDNURH} (breaks the compound "Windunruh" = wind-unrest)
+\item \texttt{SCHAUNRUIN} $\rightarrow$ \texttt{SCHAUNRUIN} (breaks "schaun ruin" = behold ruin)
 \end{itemize}
 
 \subsection{Solution: Phrase-Boundary Targeting}
@@ -180,7 +180,7 @@ resolved = resolved.replace('UNR', 'NUR')
 resolved = resolved.replace('TREUUNR', 'TREUNUR')
 \end{lstlisting}
 
-This resolved all 8 occurrences of the UNR$ightarrow$NUR anagram without affecting the 4 occurrences of WINDUNRUH.
+This resolved all 8 occurrences of the UNR$\rightarrow$NUR anagram without affecting the 4 occurrences of WINDUNRUH.
 
 \subsection{When to Apply CAAR}
 
@@ -284,17 +284,19 @@ Letter-level coverage & 100\% & 100\% & 0\% \\
 
 \begin{table}[h]
 \centering
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lclcc}
 \toprule
 \textbf{Garbled Block} & \textbf{Length} & \textbf{Resolution} & \textbf{Words} & \textbf{Swaps} \\
 \midrule
-\texttt{OIAITOEMEENDGEEMKMTGRSCASEZSTEIEHHIS} & 35 & HECHELT+ALLES+GOTTDIENERS & 3 & 4 I$ightarrow$E \\
-\texttt{UUISEMIADIIRGELNMH} & 18 & LANG+HEIME+DIESER & 3 & 2 I$ightarrow$E \\
-\texttt{EHHIIHHISLUIRUNNS} & 17 & HEHL+UNRUH+SEINES & 3 & 2 I$ightarrow$E \\
-\texttt{AUIGLAUNHEARUCHT} & 16 & LANG+URALTE+AUCH & 3 & 1 I$ightarrow$L \\
-\texttt{OIAITOEMEEND} & 12 & OEDE+NAME+TEE & 3 & 2 I$ightarrow$E \\
+\texttt{OIAITOEMEENDGEEMKMTGRSCASEZSTEIEHHIS} & 35 & HECHELT+ALLES+GOTTDIENERS & 3 & 4 I$\rightarrow$E \\
+\texttt{UUISEMIADIIRGELNMH} & 18 & LANG+HEIME+DIESER & 3 & 2 I$\rightarrow$E \\
+\texttt{EHHIIHHISLUIRUNNS} & 17 & HEHL+UNRUH+SEINES & 3 & 2 I$\rightarrow$E \\
+\texttt{AUIGLAUNHEARUCHT} & 16 & LANG+URALTE+AUCH & 3 & 1 I$\rightarrow$L \\
+\texttt{OIAITOEMEEND} & 12 & OEDE+NAME+TEE & 3 & 2 I$\rightarrow$E \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \subsection{Swap Distribution}
@@ -307,7 +309,7 @@ Across all 38 resolved blocks:
 \item 3 swaps: 3 blocks (8\%)
 \end{itemize}
 
-The I$ightarrow$E swap dominates (87\% of all swaps), consistent with E being the most frequent letter (20 codes) creating the most boundary ambiguity.
+The I$\rightarrow$E swap dominates (87\% of all swaps), consistent with E being the most frequent letter (20 codes) creating the most boundary ambiguity.
 
 \section{Discussion}
 
@@ -464,7 +466,7 @@ The companion techniques CAAR and CADST solve adjacent problems: compound-word-s
 
 \vfill
 \begin{center}
-\textit{This work is licensed under BUSL-1.1. Free for individuals, academics, and non-profits. Commercial use requires a participation agreement. See LICENSE and COMMERCIAL.md in the repository root.}
+\textit{This work is licensed under the MIT License. See LICENSE in the repository root.}
 \end{center}
 
 \end{document}
