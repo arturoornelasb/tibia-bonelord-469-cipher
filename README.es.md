@@ -1,5 +1,7 @@
 > **Idioma / Language:** Español | [English](README.md)
 
+[![DOI](https://zenodo.org/badge/1188959183.svg)](https://doi.org/10.5281/zenodo.19262987)
+
 # Cifra Bonelord 469 de Tibia — RESUELTA (94.6%)
 
 Criptoanálisis computacional del **Lenguaje Bonelord** del MMORPG [Tibia](https://www.tibia.com). **Primera solución conocida** de una cifra de 25 años de antigüedad.

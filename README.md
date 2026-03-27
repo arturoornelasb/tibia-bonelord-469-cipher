@@ -1,5 +1,7 @@
 > **Idioma / Language:** [Español](README.es.md) | English
 
+[![DOI](https://zenodo.org/badge/1188959183.svg)](https://doi.org/10.5281/zenodo.19262987)
+
 # Tibia Bonelord 469 Cipher — SOLVED (94.6%)
 
 Computational cryptanalysis of the **Bonelord Language** from the MMORPG [Tibia](https://www.tibia.com). **First known solution** to a 25-year-old cipher.
