@@ -10,7 +10,7 @@
 
 ## Abstract
 
-The "Bonelord Language" or "469 cipher" is an unsolved cryptographic puzzle embedded in the MMORPG Tibia (CipSoft GmbH, 1997-present). Seventy books in the game's Hellgate Library contain pure digit sequences totaling 11,263 digits, with no known solution in over 25 years of community effort. Through 31 sessions of systematic computational cryptanalysis, we demonstrate that the cipher is a **homophonic substitution system** encoding **German text** using 98 two-digit codes mapping to 22 letters. We achieve 94.6% word-level coverage of the decoded text, revealing a bonelord funerary inscription featuring King Salzberg, God's Servants, ancient stone ruins, and rune magic. With minimum word length reduced to 1, letter-level coverage reaches 100%, confirming complete decipherment at the character level. This represents the first known solution to the cipher.
+The "Bonelord Language" or "469 cipher" is an unsolved cryptographic puzzle embedded in the MMORPG Tibia (CipSoft GmbH, 1997-present). Seventy books in the game's Hellgate Library contain pure digit sequences totaling 11,263 digits, with no known solution in over 25 years of community effort. Through 31 sessions of systematic computational cryptanalysis, we demonstrate that the cipher is a **homophonic substitution system** encoding **German text** using 98 two-digit codes mapping to 20 letters. We achieve 94.6% word-level coverage of the decoded text, revealing a bonelord funerary inscription featuring King Salzberg, God's Servants, ancient stone ruins, and rune magic. With minimum word length reduced to 1, letter-level coverage reaches 100%, confirming complete decipherment at the character level. This represents the first known solution to the cipher.
 
 ---
 
@@ -139,13 +139,13 @@ Rather than a single-pass attack, we developed a progressive tier system, assign
 
 | Tier | Method | Codes Assigned | Evidence Type |
 |------|--------|---------------|---------------|
-| 1-3 | Frequency analysis + bigram fit | E(20), N(10) | Statistical |
-| 4-5 | German word pattern matching | I(8), S(7), D(6) | Linguistic |
-| 6-7 | Context analysis, NPC cribs | T(6), R(6), A(5), H(4) | Contextual |
-| 8-10 | Word completion, compound analysis | U(4), O(4), M(3), G(3) | Semantic |
-| 11-14 | Bigram validation, gap analysis | L(2), W(2), K(2), C, F, B, Z, V | Residual |
+| 1-3 | Frequency analysis + bigram fit | E(19), N(9) | Statistical |
+| 4-5 | German word pattern matching | S(8), R(7), D(6) | Linguistic |
+| 6-7 | Context analysis, NPC cribs | T(6), I(6), A(6), H(4) | Contextual |
+| 8-10 | Word completion, compound analysis | U(4), O(5), M(4), G(3) | Semantic |
+| 11-14 | Bigram validation, gap analysis | L(2), W(3), K(2), C, F, B, Z | Residual |
 
-Each tier was validated against German bigram/trigram frequencies before proceeding. By Tier 14, **98 of 100 possible codes** were assigned to 22 German letters (codes 07 and 32 never appear in any book).
+Each tier was validated against German bigram/trigram frequencies before proceeding. By Tier 14, **98 of 100 possible codes** were assigned to 20 German letters (codes 07 and 32 never appear in any book).
 
 ### 4.3 Simulated Annealing (Negative Result)
 
@@ -157,30 +157,29 @@ We tested blind statistical attacks using simulated annealing with German quadgr
 
 ### 5.1 Final Mapping (v7)
 
-98 two-digit codes map to 22 German letters. The letter E has the most codes (20), matching its high frequency in German (16.4%). Letters absent from the text (J, P, Q, X, Y) are consistent with Middle High German orthography.
+98 two-digit codes map to 20 German letters. The letter E has the most codes (19), matching its high frequency in German (16.4%). Letters absent from the text (J, P, Q, V, X, Y) are consistent with Middle High German orthography.
 
 ```
-E (20 codes): 95 56 19 26 76 01 41 30 86 67 27 03 09 17 29 49 39 74 37 69
-N (10 codes): 60 11 14 48 58 13 93 53 73 90
-I  (8 codes): 21 15 46 71 65 16 50 24
-S  (7 codes): 92 91 52 59 12 23 05
+E (19 codes): 95 56 19 26 76 01 41 30 67 27 03 09 17 29 49 39 74 37 69
+N  (9 codes): 60 11 14 48 58 71 93 73 90
+S  (8 codes): 92 91 52 59 12 23 05 13
+R  (7 codes): 72 51 55 08 68 10 24
 T  (6 codes): 88 78 64 75 81 98
 D  (6 codes): 45 42 47 63 28 02
-R  (6 codes): 72 51 55 08 68 10
-A  (5 codes): 31 85 35 89 66
+I  (6 codes): 21 15 46 65 16 50
+A  (6 codes): 31 85 35 89 66 83
+O  (5 codes): 99 82 25 79 53
 H  (4 codes): 06 00 57 94
+M  (4 codes): 04 54 40 86
 U  (4 codes): 61 43 70 44
-O  (4 codes): 99 82 25 79
-M  (3 codes): 04 54 40
+W  (3 codes): 36 87 33
 G  (3 codes): 80 97 84
 L  (2 codes): 34 96
-W  (2 codes): 36 87
 K  (2 codes): 22 38
 C  (1 code):  18
 F  (1 code):  20
 B  (1 code):  62
 Z  (1 code):  77
-V  (1 code):  83
 Absent: 07, 32 (never appear in any book)
 ```
 
@@ -218,7 +217,7 @@ Example: `DNRHAUNIIOD` (11 letters) → OEDE (4) + NUR (3) + HAND (4) = 11/11 co
 ### 6.3 Letter Swap Patterns
 
 Two systematic letter swaps were identified:
-- **I↔E**: The cipher's 8 I-codes and 20 E-codes create boundary ambiguity
+- **I↔E**: The cipher's 6 I-codes and 19 E-codes create boundary ambiguity
 - **I↔L**: Two L-codes (34, 96) are sometimes confused with I-codes
 
 These swaps are artifacts of the homophonic mapping, not intentional obfuscation.
@@ -340,7 +339,7 @@ The complete decryption pipeline (`scripts/core/narrative_v3_clean.py`) operates
 
 Several factors made this cipher resistant to community efforts:
 
-1. **Homophonic substitution** (98 codes for 22 letters) defeats simple frequency analysis
+1. **Homophonic substitution** (98 codes for 20 letters) defeats simple frequency analysis
 2. **No spaces** in the encoded text prevents word-boundary detection
 3. **German plaintext** — most attackers assumed English
 4. **Odd-length book obfuscation** — CipSoft removed single digits from 37 books
@@ -413,7 +412,7 @@ The Wrinkled Bonelord's clue about "mathemagic" may refer to the homophonic subs
 
 ## 13. Conclusion
 
-After 31 sessions of systematic cryptanalysis, we have achieved a 94.6% word-level decode of the Tibia Bonelord 469 cipher — the first known solution in the cipher's 25+ year history. The text is a homophonic substitution cipher encoding German text using 98 two-digit codes mapped to 22 letters. The decoded text reveals a bonelord funerary inscription featuring King Salzberg, God's Servants, ancient stone ruins, forest demons, and rune magic.
+After 31 sessions of systematic cryptanalysis, we have achieved a 94.6% word-level decode of the Tibia Bonelord 469 cipher — the first known solution in the cipher's 25+ year history. The text is a homophonic substitution cipher encoding German text using 98 two-digit codes mapped to 20 letters. The decoded text reveals a bonelord funerary inscription featuring King Salzberg, God's Servants, ancient stone ruins, forest demons, and rune magic.
 
 The key methodological innovations were: (1) identifying the plaintext language as German rather than English; (2) progressive tier-based code assignment with crib validation; (3) bag-of-letters word partition with I↔E/L swap tolerance; (4) concatenation-aware digit-split optimization for odd-length books; and (5) post-resolution text fixups for artifacts created by sequential anagram application.
 
@@ -427,7 +426,7 @@ At the letter level, the text is 100% decoded. The remaining 5.4% word-level gap
 tibia-research/
   data/
     books.json              # Source: 70 books as digit strings
-    mapping_v7.json         # The mapping (98 codes -> 22 letters)
+    mapping_v7.json         # The mapping (98 codes -> 20 letters)
   scripts/
     core/
       narrative_v3_clean.py # Complete decryption pipeline

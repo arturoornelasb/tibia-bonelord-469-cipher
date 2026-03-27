@@ -20,7 +20,7 @@
 \newpage
 
 \begin{abstract}
-The ``Bonelord Language'' or ``469 cipher'' is an unsolved cryptographic puzzle embedded in the MMORPG Tibia (CipSoft GmbH, 1997-present). Seventy books in the game's Hellgate Library contain pure digit sequences totaling 11,263 digits, with no known solution in over 25 years of community effort. Through 31 sessions of systematic computational cryptanalysis, we demonstrate that the cipher is a \textbf{homophonic substitution system} encoding \textbf{German text} using 98 two-digit codes mapping to 22 letters. We achieve 94.6\% word-level coverage of the decoded text, revealing a bonelord funerary inscription featuring King Salzberg, God's Servants, ancient stone ruins, and rune magic. With minimum word length reduced to 1, letter-level coverage reaches 100\%, confirming complete decipherment at the character level. This represents the first known solution to the cipher.
+The ``Bonelord Language'' or ``469 cipher'' is an unsolved cryptographic puzzle embedded in the MMORPG Tibia (CipSoft GmbH, 1997-present). Seventy books in the game's Hellgate Library contain pure digit sequences totaling 11,263 digits, with no known solution in over 25 years of community effort. Through 31 sessions of systematic computational cryptanalysis, we demonstrate that the cipher is a \textbf{homophonic substitution system} encoding \textbf{German text} using 98 two-digit codes mapping to 20 letters. We achieve 94.6\% word-level coverage of the decoded text, revealing a bonelord funerary inscription featuring King Salzberg, God's Servants, ancient stone ruins, and rune magic. With minimum word length reduced to 1, letter-level coverage reaches 100\%, confirming complete decipherment at the character level. This represents the first known solution to the cipher.
 \end{abstract}
 
 \section{Introduction}
@@ -115,9 +115,9 @@ The sharp drop at position 3 indicates that the third digit is highly predictabl
 
 The digit transition matrix revealed near-forbidden transitions:
 \begin{itemize}
-\item 3$ightarrow$3: 1 occurrence (0.01\%)
-\item 3$ightarrow$2: 2 occurrences (0.02\%)
-\item 0$ightarrow$7: 1 occurrence (0.01\%)
+\item 3$\rightarrow$3: 1 occurrence (0.01\%)
+\item 3$\rightarrow$2: 2 occurrences (0.02\%)
+\item 0$\rightarrow$7: 1 occurrence (0.01\%)
 \end{itemize}
 
 These constraints dramatically reduced the search space for valid code assignments.
@@ -129,8 +129,8 @@ These constraints dramatically reduced the search space for valid code assignmen
 A critical early discovery was that the 70 books are \textbf{not independent texts} but overlapping fragments of a single continuous narrative:
 
 \begin{itemize}
-\item \textbf{164 suffix-prefix overlaps} of $geq$10 digits found
-\item Largest overlap: Book 36 $ightarrow$ Book 11 = 279 digits (97.6\% of Book 36)
+\item \textbf{164 suffix-prefix overlaps} of $\geq$10 digits found
+\item Largest overlap: Book 36 $\rightarrow$ Book 11 = 279 digits (97.6\% of Book 36)
 \item \textbf{31 containment relationships} (books fully inside other books)
 \item \textbf{55\% of total text is duplicated} across books
 \end{itemize}
@@ -153,6 +153,7 @@ NPC dialogues containing 469 sequences were found \textbf{inside the Hellgate bo
 
 \begin{table}[h]
 \centering
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{llc}
 \toprule
 NPC & Dialogue & Found in Books \\
@@ -160,7 +161,7 @@ NPC & Dialogue & Found in Books \\
 Wrinkled Bonelord greeting & \texttt{78572611857643646724} & 6 books \\
 Chayenne (developer) phrase & \texttt{114514519485611451908304576512282177} & \textbf{11 books} \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 The appearance of NPC dialogues in multiple books proves they share the same underlying encoded text --- the NPC speeches are excerpts from the library.
@@ -171,20 +172,21 @@ Rather than a single-pass attack, we developed a progressive tier system, assign
 
 \begin{table}[h]
 \centering
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{llll}
 \toprule
 Tier & Method & Codes Assigned & Evidence Type \\
 \midrule
-1--3 & Frequency analysis + bigram fit & E(20), N(10) & Statistical \\
-4--5 & German word pattern matching & I(8), S(7), D(6) & Linguistic \\
-6--7 & Context analysis, NPC cribs & T(6), R(6), A(5), H(4) & Contextual \\
-8--10 & Word completion, compound analysis & U(4), O(4), M(3), G(3) & Semantic \\
-11--14 & Bigram validation, gap analysis & L(2), W(2), K(2), C, F, B, Z, V & Residual \\
+1--3 & Frequency analysis + bigram fit & E(19), N(9) & Statistical \\
+4--5 & German word pattern matching & S(8), R(7), D(6) & Linguistic \\
+6--7 & Context analysis, NPC cribs & T(6), I(6), A(6), O(5) & Contextual \\
+8--10 & Word completion, compound analysis & H(4), M(4), U(4), W(3), G(3) & Semantic \\
+11--14 & Bigram validation, gap analysis & L(2), K(2), C, F, B, Z & Residual \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
-Each tier was validated against German bigram/trigram frequencies before proceeding. By Tier 14, \textbf{98 of 100 possible codes} were assigned to 22 German letters (codes 07 and 32 never appear in any book).
+Each tier was validated against German bigram/trigram frequencies before proceeding. By Tier 14, \textbf{98 of 100 possible codes} were assigned to 20 German letters (codes 07 and 32 never appear in any book).
 
 \subsection{Simulated Annealing (Negative Result)}
 
@@ -194,36 +196,35 @@ We tested blind statistical attacks using simulated annealing with German quadgr
 
 \subsection{Final Mapping (v7)}
 
-98 two-digit codes map to 22 German letters. The letter E has the most codes (20), matching its high frequency in German (16.4\%). Letters absent from the text (J, P, Q, X, Y) are consistent with Middle High German orthography.
+98 two-digit codes map to 20 German letters. The letter E has the most codes (19), matching its high frequency in German (16.4\%). Letters absent from the text (J, P, Q, V, X, Y) are consistent with Middle High German orthography.
 
 \begin{lstlisting}[style=plain]
-E (20 codes): 95 56 19 26 76 01 41 30 86 67 27 03 09 17 29 49 39 74 37 69
-N (10 codes): 60 11 14 48 58 13 93 53 73 90
-I  (8 codes): 21 15 46 71 65 16 50 24
-S  (7 codes): 92 91 52 59 12 23 05
+E (19 codes): 95 56 19 26 76 01 41 30 67 27 03 09 17 29 49 39 74 37 69
+N  (9 codes): 60 11 14 48 58 71 93 73 90
+S  (8 codes): 92 91 52 59 12 23 05 13
+R  (7 codes): 72 51 55 08 68 10 24
 T  (6 codes): 88 78 64 75 81 98
 D  (6 codes): 45 42 47 63 28 02
-R  (6 codes): 72 51 55 08 68 10
-A  (5 codes): 31 85 35 89 66
+I  (6 codes): 21 15 46 65 16 50
+A  (6 codes): 31 85 35 89 66 83
+O  (5 codes): 99 82 25 79 53
 H  (4 codes): 06 00 57 94
+M  (4 codes): 04 54 40 86
 U  (4 codes): 61 43 70 44
-O  (4 codes): 99 82 25 79
-M  (3 codes): 04 54 40
+W  (3 codes): 36 87 33
 G  (3 codes): 80 97 84
 L  (2 codes): 34 96
-W  (2 codes): 36 87
 K  (2 codes): 22 38
 C  (1 code):  18
 F  (1 code):  20
 B  (1 code):  62
 Z  (1 code):  77
-V  (1 code):  83
 Absent: 07, 32 (never appear in any book)
 \end{lstlisting}
 
 \subsection{Mapping Stability}
 
-Brute-force testing of all unconfirmed codes against all 22 possible letter assignments (Session 25) found no improvements exceeding +6 characters. The mapping is confirmed stable.
+Brute-force testing of all unconfirmed codes against all 20 possible letter assignments (Session 25) found no improvements exceeding +6 characters. The mapping is confirmed stable.
 
 \section{Anagram Resolution}
 
@@ -240,25 +241,25 @@ We developed three progressively sophisticated techniques:
 \textbf{1. Direct Anagram Matching (Sessions 13--24)}
 
 Testing if a garbled block is a simple rearrangement of a known word.
-Example: \texttt{LABGZERAS} $ightarrow$ SALZBERG (exact anagram + 1 extra letter A)
+Example: \texttt{LABGZERAS} $\rightarrow$ SALZBERG (exact anagram + 1 extra letter A)
 
 \textbf{2. Cross-Boundary Anagram Resolution (Sessions 25--26)}
 
 Finding that letters from adjacent decoded words spill across boundaries.
-Example: \texttt{SERTI} $ightarrow$ STIER (bull), \texttt{ESR} $ightarrow$ SER (very), \texttt{NEDE} $ightarrow$ ENDE (end)
+Example: \texttt{SERTI} $\rightarrow$ STIER (bull), \texttt{ESR} $\rightarrow$ SER (very), \texttt{NEDE} $\rightarrow$ ENDE (end)
 
 \textbf{3. Bag-of-Letters Word Partition (Sessions 28--30)}
 
-The key innovation: decomposing a garbled block's letter bag into the \textbf{optimal combination} of known German words, allowing I$eftrightarrow$E and I$eftrightarrow$L letter swaps (confirmed cipher obfuscation patterns).
+The key innovation: decomposing a garbled block's letter bag into the \textbf{optimal combination} of known German words, allowing I$\leftrightarrow$E and I$\leftrightarrow$L letter swaps (confirmed cipher obfuscation patterns).
 
-Example: \texttt{DNRHAUNIIOD} (11 letters) $ightarrow$ OEDE (4) + NUR (3) + HAND (4) = 11/11 coverage, with 2 I$ightarrow$E swaps.
+Example: \texttt{DNRHAUNIIOD} (11 letters) $\rightarrow$ OEDE (4) + NUR (3) + HAND (4) = 11/11 coverage, with 2 I$\rightarrow$E swaps.
 
 \subsection{Letter Swap Patterns}
 
 Two systematic letter swaps were identified:
 \begin{itemize}
-\item \textbf{I$eftrightarrow$E}: The cipher's 8 I-codes and 20 E-codes create boundary ambiguity
-\item \textbf{I$eftrightarrow$L}: Two L-codes (34, 96) are sometimes confused with I-codes
+\item \textbf{I$\leftrightarrow$E}: The cipher's 6 I-codes and 19 E-codes create boundary ambiguity
+\item \textbf{I$\leftrightarrow$L}: Two L-codes (34, 96) are sometimes confused with I-codes
 \end{itemize}
 
 These swaps are artifacts of the homophonic mapping, not intentional obfuscation.
@@ -275,6 +276,7 @@ The most significant breakthrough was identifying proper nouns as anagrams of re
 
 \begin{table}[h]
 \centering
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{llll}
 \toprule
 Cipher Form & Resolution & Meaning & Pattern \\
@@ -285,7 +287,7 @@ AUNRSONGETRASES & ORANGENSTRASSE + U & ``Orange Street'' & Exact anagram + 1 let
 EDETOTNIURG & GOTTDIENER + U & ``God's Servant'' & Exact anagram + 1 letter \\
 ADTHARSC & SCHARDT + A & Place name & Exact anagram + 1 letter \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 The consistent pattern of ``exact anagram + 1 extra letter'' matches CipSoft's known obfuscation pattern (e.g., Ferumbras ≈ Ambrosius).
@@ -328,6 +330,7 @@ With minimum word length reduced to 1, DP coverage reaches \textbf{100.0\%} (551
 
 \begin{table}[h]
 \centering
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lrrl}
 \toprule
 Session & Coverage & Characters & Key Advance \\
@@ -346,7 +349,7 @@ Session & Coverage & Characters & Key Advance \\
 \textbf{30} & \textbf{94.4\%} & \textbf{5204} & \textbf{Digit-split optimization, UNR fix (+178 chars)} \\
 \textbf{31} & \textbf{94.6\%} & \textbf{5219} & \textbf{Post-resolution fixups, digit-split re-opt (+15 chars)} \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 The biggest single-session gain was Session 29 (+10.1\%), driven by the bag-of-letters technique.
@@ -364,7 +367,7 @@ The following evidence collectively proves our solution:
 \item \textbf{Cross-book validation}: Overlapping books decode to identical text at overlapping regions
 \item \textbf{100\% letter-level decode}: No unmapped codes remain (except 07, 32 which have 0 occurrences)
 \item \textbf{MHG vocabulary}: Archaic German forms (SCE, NIT, SER, LEICH, SCHRAT) are period-consistent
-\item \textbf{Replication}: Any researcher can reproduce results using \texttt{mapping\_v7.json} and \texttt{narrative\_v3\_clean.py}
+\item \textbf{Replication}: Any researcher can reproduce results using \texttt{mapping\allowbreak\_v7.json} and \texttt{narrative\allowbreak\_v3\allowbreak\_clean.py}
 \end{enumerate}
 
 \section{Methodology Summary}
@@ -400,7 +403,7 @@ The complete decryption pipeline (\texttt{scripts/core/narrative\_v3\_clean.py})
 Several factors made this cipher resistant to community efforts:
 
 \begin{enumerate}
-\item \textbf{Homophonic substitution} (98 codes for 22 letters) defeats simple frequency analysis
+\item \textbf{Homophonic substitution} (98 codes for 20 letters) defeats simple frequency analysis
 \item \textbf{No spaces} in the encoded text prevents word-boundary detection
 \item \textbf{German plaintext} --- most attackers assumed English
 \item \textbf{Odd-length book obfuscation} --- CipSoft removed single digits from 37 books
@@ -473,7 +476,7 @@ Musical note encoding (community) & No pattern \\
 \subsection{Narrative Analysis}
 
 \begin{itemize}
-\item Complete German $ightarrow$ English scholarly translation of the full text
+\item Complete German $\rightarrow$ English scholarly translation of the full text
 \item Identify the literary genre and potential MHG source influences
 \item Cross-reference decoded narrative with Tibia game lore
 \item Determine if the text contains quest hints or hidden game mechanics
@@ -489,11 +492,13 @@ Musical note encoding (community) & No pattern \\
 
 \section{Conclusion}
 
-After 31 sessions of systematic cryptanalysis, we have achieved a 94.6\% word-level decode of the Tibia Bonelord 469 cipher --- the first known solution in the cipher's 25+ year history. The text is a homophonic substitution cipher encoding German text using 98 two-digit codes mapped to 22 letters. The decoded text reveals a bonelord funerary inscription featuring King Salzberg, God's Servants, ancient stone ruins, forest demons, and rune magic.
+After 31 sessions of systematic cryptanalysis, we have achieved a 94.6\% word-level decode of the Tibia Bonelord 469 cipher --- the first known solution in the cipher's 25+ year history. The text is a homophonic substitution cipher encoding German text using 98 two-digit codes mapped to 20 letters. The decoded text reveals a bonelord funerary inscription featuring King Salzberg, God's Servants, ancient stone ruins, forest demons, and rune magic.
 
-The key methodological innovations were: (1) identifying the plaintext language as German rather than English; (2) progressive tier-based code assignment with crib validation; (3) bag-of-letters word partition with I$eftrightarrow$E/L swap tolerance; (4) concatenation-aware digit-split optimization for odd-length books; and (5) post-resolution text fixups for artifacts created by sequential anagram application.
+The key methodological innovations were: (1) identifying the plaintext language as German rather than English; (2) progressive tier-based code assignment with crib validation; (3) bag-of-letters word partition with I$\leftrightarrow$E/L swap tolerance; (4) concatenation-aware digit-split optimization for odd-length books; and (5) post-resolution text fixups for artifacts created by sequential anagram application.
 
 At the letter level, the text is 100\% decoded. The remaining 5.4\% word-level gap consists of correctly decoded German letters at word boundaries that resist segmentation --- a DP algorithm artifact, not a cryptographic gap. The cipher is solved.
+
+\textbf{Note:} Two important tasks remain before the solution can be considered fully validated: (1)~NPC dialogues containing 469 sequences (Evil Eye, Elder Bonelord, Avar Tar) have not yet been decoded using the v7 mapping and may reveal additional context or confirm the cipher's scope; and (2)~all 70 book transcriptions must be verified against the current in-game text to rule out transcription errors that could affect downstream decoding.
 
 \appendix
 
@@ -503,7 +508,7 @@ At the letter level, the text is 100\% decoded. The remaining 5.4\% word-level g
 tibia-research/
   data/
     books.json              # Source: 70 books as digit strings
-    mapping_v7.json         # The mapping (98 codes -> 22 letters)
+    mapping_v7.json         # The mapping (98 codes -> 20 letters)
   scripts/
     core/
       narrative_v3_clean.py # Complete decryption pipeline

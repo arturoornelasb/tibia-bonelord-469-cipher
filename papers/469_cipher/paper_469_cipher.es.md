@@ -10,7 +10,7 @@
 
 ## Resumen
 
-El "Lenguaje Bonelord" o "cifrado 469" es un rompecabezas criptográfico sin resolver incrustado en el MMORPG Tibia (CipSoft GmbH, 1997-presente). Setenta libros en la Biblioteca Hellgate del juego contienen secuencias de dígitos puros que totalizan 11,263 dígitos, sin solución conocida en más de 25 años de esfuerzo comunitario. A través de 31 sesiones de criptoanálisis computacional sistemático, demostramos que el cifrado es un **sistema de sustitución homofónica** (homophonic substitution) que codifica **texto en alemán** utilizando 98 códigos de dos dígitos mapeados a 22 letras. Alcanzamos un 94.6% de cobertura a nivel de palabra del texto descifrado, revelando una inscripción funeraria bonelord que presenta al Rey Salzberg, los Siervos de Dios, ruinas de piedra antiguas y magia rúnica. Con la longitud mínima de palabra reducida a 1, la cobertura a nivel de letra alcanza el 100%, confirmando el descifrado completo a nivel de caracteres. Esta representa la primera solución conocida del cifrado.
+El "Lenguaje Bonelord" o "cifrado 469" es un rompecabezas criptográfico sin resolver incrustado en el MMORPG Tibia (CipSoft GmbH, 1997-presente). Setenta libros en la Biblioteca Hellgate del juego contienen secuencias de dígitos puros que totalizan 11,263 dígitos, sin solución conocida en más de 25 años de esfuerzo comunitario. A través de 31 sesiones de criptoanálisis computacional sistemático, demostramos que el cifrado es un **sistema de sustitución homofónica** (homophonic substitution) que codifica **texto en alemán** utilizando 98 códigos de dos dígitos mapeados a 20 letras. Alcanzamos un 94.6% de cobertura a nivel de palabra del texto descifrado, revelando una inscripción funeraria bonelord que presenta al Rey Salzberg, los Siervos de Dios, ruinas de piedra antiguas y magia rúnica. Con la longitud mínima de palabra reducida a 1, la cobertura a nivel de letra alcanza el 100%, confirmando el descifrado completo a nivel de caracteres. Esta representa la primera solución conocida del cifrado.
 
 ---
 
@@ -139,13 +139,13 @@ En lugar de un ataque de un solo paso, desarrollamos un sistema progresivo de ni
 
 | Nivel | Método | Códigos Asignados | Tipo de Evidencia |
 |-------|--------|-------------------|-------------------|
-| 1-3 | Análisis de frecuencia + ajuste de bigramas | E(20), N(10) | Estadístico |
-| 4-5 | Coincidencia de patrones de palabras alemanas | I(8), S(7), D(6) | Lingüístico |
-| 6-7 | Análisis de contexto, cribas de NPC | T(6), R(6), A(5), H(4) | Contextual |
-| 8-10 | Completado de palabras, análisis de compuestos | U(4), O(4), M(3), G(3) | Semántico |
-| 11-14 | Validación de bigramas, análisis de huecos | L(2), W(2), K(2), C, F, B, Z, V | Residual |
+| 1-3 | Análisis de frecuencia + ajuste de bigramas | E(19), N(9) | Estadístico |
+| 4-5 | Coincidencia de patrones de palabras alemanas | S(8), R(7), D(6) | Lingüístico |
+| 6-7 | Análisis de contexto, cribas de NPC | T(6), I(6), A(6), H(4) | Contextual |
+| 8-10 | Completado de palabras, análisis de compuestos | U(4), O(5), M(4), G(3) | Semántico |
+| 11-14 | Validación de bigramas, análisis de huecos | L(2), W(3), K(2), C, F, B, Z | Residual |
 
-Cada nivel fue validado contra frecuencias de bigramas/trigramas del alemán antes de proceder. Para el Nivel 14, **98 de los 100 códigos posibles** fueron asignados a 22 letras alemanas (los códigos 07 y 32 nunca aparecen en ningún libro).
+Cada nivel fue validado contra frecuencias de bigramas/trigramas del alemán antes de proceder. Para el Nivel 14, **98 de los 100 códigos posibles** fueron asignados a 20 letras alemanas (los códigos 07 y 32 nunca aparecen en ningún libro).
 
 ### 4.3 Recocido Simulado (Resultado Negativo)
 
@@ -157,30 +157,29 @@ Probamos ataques estadísticos ciegos usando recocido simulado (simulated anneal
 
 ### 5.1 Mapeo Final (v7)
 
-98 códigos de dos dígitos se mapean a 22 letras alemanas. La letra E tiene la mayor cantidad de códigos (20), coincidiendo con su alta frecuencia en alemán (16.4%). Las letras ausentes del texto (J, P, Q, X, Y) son consistentes con la ortografía del alto alemán medio (Middle High German).
+98 códigos de dos dígitos se mapean a 20 letras alemanas. La letra E tiene la mayor cantidad de códigos (19), coincidiendo con su alta frecuencia en alemán (16.4%). Las letras ausentes del texto (J, P, Q, V, X, Y) son consistentes con la ortografía del alto alemán medio (Middle High German).
 
 ```
-E (20 codes): 95 56 19 26 76 01 41 30 86 67 27 03 09 17 29 49 39 74 37 69
-N (10 codes): 60 11 14 48 58 13 93 53 73 90
-I  (8 codes): 21 15 46 71 65 16 50 24
-S  (7 codes): 92 91 52 59 12 23 05
+E (19 codes): 95 56 19 26 76 01 41 30 67 27 03 09 17 29 49 39 74 37 69
+N  (9 codes): 60 11 14 48 58 71 93 73 90
+S  (8 codes): 92 91 52 59 12 23 05 13
+R  (7 codes): 72 51 55 08 68 10 24
 T  (6 codes): 88 78 64 75 81 98
 D  (6 codes): 45 42 47 63 28 02
-R  (6 codes): 72 51 55 08 68 10
-A  (5 codes): 31 85 35 89 66
+I  (6 codes): 21 15 46 65 16 50
+A  (6 codes): 31 85 35 89 66 83
+O  (5 codes): 99 82 25 79 53
 H  (4 codes): 06 00 57 94
+M  (4 codes): 04 54 40 86
 U  (4 codes): 61 43 70 44
-O  (4 codes): 99 82 25 79
-M  (3 codes): 04 54 40
+W  (3 codes): 36 87 33
 G  (3 codes): 80 97 84
 L  (2 codes): 34 96
-W  (2 codes): 36 87
 K  (2 codes): 22 38
 C  (1 code):  18
 F  (1 code):  20
 B  (1 code):  62
 Z  (1 code):  77
-V  (1 code):  83
 Absent: 07, 32 (never appear in any book)
 ```
 
@@ -218,7 +217,7 @@ Ejemplo: `DNRHAUNIIOD` (11 letras) → OEDE (4) + NUR (3) + HAND (4) = 11/11 cob
 ### 6.3 Patrones de Intercambio de Letras
 
 Se identificaron dos intercambios sistemáticos de letras:
-- **I↔E**: Los 8 códigos-I y 20 códigos-E del cifrado crean ambigüedad en los límites
+- **I↔E**: Los 6 códigos-I y 19 códigos-E del cifrado crean ambigüedad en los límites
 - **I↔L**: Los dos códigos-L (34, 96) a veces se confunden con códigos-I
 
 Estos intercambios son artefactos del mapeo homofónico, no ofuscación intencional.
@@ -340,7 +339,7 @@ El pipeline completo de descifrado (`scripts/core/narrative_v3_clean.py`) opera 
 
 Varios factores hicieron que este cifrado fuera resistente a los esfuerzos de la comunidad:
 
-1. **Sustitución homofónica** (98 códigos para 22 letras) derrota el análisis de frecuencia simple
+1. **Sustitución homofónica** (98 códigos para 20 letras) derrota el análisis de frecuencia simple
 2. **Sin espacios** en el texto codificado previene la detección de límites de palabras
 3. **Texto plano en alemán** — la mayoría de los atacantes asumieron inglés
 4. **Ofuscación de libros de longitud impar** — CipSoft eliminó dígitos individuales de 37 libros
@@ -413,7 +412,7 @@ La pista del Wrinkled Bonelord sobre "mathemagic" puede referirse a las matemát
 
 ## 13. Conclusión
 
-Después de 31 sesiones de criptoanálisis sistemático, hemos logrado un descifrado del 94.6% a nivel de palabra del cifrado Tibia Bonelord 469 — la primera solución conocida en los más de 25 años de historia del cifrado. El texto es un cifrado de sustitución homofónica (homophonic substitution) que codifica texto alemán usando 98 códigos de dos dígitos mapeados a 22 letras. El texto descifrado revela una inscripción funeraria bonelord que presenta al Rey Salzberg, los Siervos de Dios, ruinas de piedra antiguas, demonios del bosque y magia rúnica.
+Después de 31 sesiones de criptoanálisis sistemático, hemos logrado un descifrado del 94.6% a nivel de palabra del cifrado Tibia Bonelord 469 — la primera solución conocida en los más de 25 años de historia del cifrado. El texto es un cifrado de sustitución homofónica (homophonic substitution) que codifica texto alemán usando 98 códigos de dos dígitos mapeados a 20 letras. El texto descifrado revela una inscripción funeraria bonelord que presenta al Rey Salzberg, los Siervos de Dios, ruinas de piedra antiguas, demonios del bosque y magia rúnica.
 
 Las innovaciones metodológicas clave fueron: (1) identificar el idioma del texto plano como alemán en lugar de inglés; (2) asignación progresiva de códigos por niveles con validación de cribas; (3) partición de palabras por bolsa de letras con tolerancia de intercambio I↔E/L; (4) optimización de digit-split consciente de concatenación para libros de longitud impar; y (5) correcciones post-resolución para artefactos creados por la aplicación secuencial de anagramas.
 
@@ -427,7 +426,7 @@ A nivel de letra, el texto está 100% descifrado. La brecha restante del 5.4% a 
 tibia-research/
   data/
     books.json              # Source: 70 books as digit strings
-    mapping_v7.json         # The mapping (98 codes -> 22 letters)
+    mapping_v7.json         # The mapping (98 codes -> 20 letters)
   scripts/
     core/
       narrative_v3_clean.py # Complete decryption pipeline

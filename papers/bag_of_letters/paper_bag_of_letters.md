@@ -24,7 +24,7 @@ Dynamic programming (DP) word segmentation against a dictionary achieves good co
 
 ### 1.2 Context
 
-This technique was developed during the decryption of the "Bonelord 469" cipher — 70 books of pure digit sequences from the MMORPG Tibia (CipSoft GmbH, 1997–present). The cipher uses 98 two-digit codes mapped to 22 German letters (including Middle High German vocabulary). After achieving ~81% word-level coverage through standard cryptanalytic methods, the remaining ~19% consisted of garbled blocks ranging from 3 to 35 characters.
+This technique was developed during the decryption of the "Bonelord 469" cipher — 70 books of pure digit sequences from the MMORPG Tibia (CipSoft GmbH, 1997–present). The cipher uses 98 two-digit codes mapped to 20 German letters (including Middle High German vocabulary). After achieving ~81% word-level coverage through standard cryptanalytic methods, the remaining ~19% consisted of garbled blocks ranging from 3 to 35 characters.
 
 ### 1.3 Contributions
 
@@ -38,15 +38,15 @@ This technique was developed during the decryption of the "Bonelord 469" cipher 
 
 ### 2.1 Homophonic Substitution
 
-A homophonic substitution cipher maps each plaintext letter $l$ to a set of ciphertext symbols $C(l)$, where $|C(l)|$ is roughly proportional to the frequency of $l$ in the plaintext language. For a 22-letter German alphabet:
+A homophonic substitution cipher maps each plaintext letter $l$ to a set of ciphertext symbols $C(l)$, where $|C(l)|$ is roughly proportional to the frequency of $l$ in the plaintext language. For a 20-letter German alphabet:
 
-- E (16.4% frequency) → 20 codes
-- N (9.8%) → 10 codes
-- I (7.6%) → 8 codes
-- S (7.3%) → 7 codes
-- ...down to V (0.7%) → 1 code
+- E (16.4% frequency) → 19 codes
+- N (9.8%) → 9 codes
+- S (7.3%) → 8 codes
+- I (7.6%) → 6 codes
+- ...down to Z (1.1%) → 1 code
 
-With 98 codes spanning 22 letters, each code deterministically maps to one letter, but the reverse mapping is one-to-many.
+With 98 codes spanning 20 letters, each code deterministically maps to one letter, but the reverse mapping is one-to-many.
 
 ### 2.2 The Segmentation Problem
 
@@ -104,7 +104,7 @@ function BoLWP(G, D, S, max_swaps):
 
 The cipher's many-to-one mapping creates systematic ambiguities at code boundaries. In our cipher:
 
-- **I↔E swap:** The 8 I-codes and 20 E-codes create boundary confusion where a code pair decoded as `...I` might actually end in `E` if the pair boundary is shifted
+- **I↔E swap:** The 6 I-codes and 19 E-codes create boundary confusion where a code pair decoded as `...I` might actually end in `E` if the pair boundary is shifted
 - **I↔L swap:** The 2 L-codes (34, 96) are numerically adjacent to I-codes, causing occasional misassignment
 
 The swap model permits up to $k$ total letter substitutions per block (typically $k \leq 3$ for blocks under 15 characters). Each swap has a cost, and the algorithm prefers solutions with fewer swaps.
@@ -127,7 +127,7 @@ The dictionary combines:
 - Confirmed proper nouns from the cipher (SALZBERG, WEICHSTEIN, GOTTDIENER, etc.)
 - Single-character words excluded to prevent trivial decomposition
 
-Total: ~12,000 entries (after filtering to the cipher's 22-letter alphabet).
+Total: ~12,000 entries (after filtering to the cipher's 20-letter alphabet).
 
 ### 3.5 Complexity
 
@@ -208,7 +208,7 @@ Session 30 applied CADST after per-book testing had been exhausted:
 |------|--------------|-----------|------------|
 | 42 | digit '0', pos 45 (+8) | digit '2', pos 91 (+25) | +17 chars |
 | 60 | digit '0', pos 73 (+3) | digit '9', pos 73 (+15) | +12 chars |
-| 15 | digit '0', pos 0 (+0) | digit '5', pos 62 (+8) | +8 chars |
+| 15 | digit '0', pos 0 (+0) | digit '6', pos 36 (+8) | +8 chars |
 
 CADST found 17 improvements that per-book testing missed, totaling +38 characters. The key insight: in a concatenated narrative with overlapping fragments, local optimality does not guarantee global optimality.
 
@@ -253,7 +253,7 @@ Across all 38 resolved blocks:
 - 2 swaps: 14 blocks (37%)
 - 3 swaps: 3 blocks (8%)
 
-The I→E swap dominates (87% of all swaps), consistent with E being the most frequent letter (20 codes) creating the most boundary ambiguity.
+The I→E swap dominates (87% of all swaps), consistent with E being the most frequent letter (19 codes) creating the most boundary ambiguity.
 
 ---
 

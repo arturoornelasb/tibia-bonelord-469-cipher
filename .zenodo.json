@@ -1,0 +1,38 @@
+{
+  "title": "Cracking the Bonelord 469 Cipher: Computational Cryptanalysis of a 25-Year-Old Tibia MMORPG Mystery",
+  "description": "<p>This repository contains the complete solution to the Bonelord 469 cipher, an unsolved cryptographic puzzle embedded in the MMORPG Tibia since 1997. Through 31 sessions of systematic computational cryptanalysis, we demonstrate that the cipher is a <strong>homophonic substitution system</strong> encoding <strong>German text</strong> using 98 two-digit codes mapped to 20 letters, achieving 94.6% word-level coverage (100% at the letter level).</p><p>The decoded text reveals a bonelord funerary inscription featuring King Salzberg, God's Servants, ancient stone ruins, and rune magic, written in Middle High German.</p><p>Includes two papers: (1) the main cryptanalysis paper describing the full solution, and (2) a companion paper on Bag-of-Letters Word Partition (BoLWP), a novel technique for resolving garbled blocks in homophonic substitution ciphers.</p><p><strong>Note:</strong> NPC dialogue decoding and in-game book transcription verification are still pending.</p>",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "publication_date": "2026-03-27",
+  "version": "1.0.0",
+  "access_right": "open",
+  "license": {
+    "id": "MIT"
+  },
+  "creators": [
+    {
+      "name": "Ornelas Brand, J. Arturo",
+      "affiliation": "Independent Researcher"
+    }
+  ],
+  "keywords": [
+    "cryptanalysis",
+    "homophonic substitution cipher",
+    "Tibia MMORPG",
+    "Bonelord 469",
+    "computational cryptography",
+    "cipher breaking",
+    "Middle High German",
+    "bag-of-letters",
+    "anagram resolution",
+    "video game mysteries"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/arturoornelasb/tibia-bonelord-469-cipher",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "notes": "This research was conducted independently using publicly available data from the Tibia community. CipSoft GmbH owns all intellectual property related to Tibia and its content. NPC dialogue decoding and in-game verification of book transcriptions are still pending."
+}

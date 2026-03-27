@@ -24,7 +24,7 @@ La segmentación de palabras por programación dinámica (PD) contra un dicciona
 
 ### 1.2 Contexto
 
-Esta técnica fue desarrollada durante el descifrado del cifrado "Bonelord 469" — 70 libros de secuencias de dígitos puros del MMORPG Tibia (CipSoft GmbH, 1997–presente). El cifrado utiliza 98 códigos de dos dígitos mapeados a 22 letras alemanas (incluyendo vocabulario del alto alemán medio). Después de alcanzar ~81% de cobertura a nivel de palabras mediante métodos criptoanalíticos estándar, el ~19% restante consistía en bloques ilegibles que variaban de 3 a 35 caracteres.
+Esta técnica fue desarrollada durante el descifrado del cifrado "Bonelord 469" — 70 libros de secuencias de dígitos puros del MMORPG Tibia (CipSoft GmbH, 1997–presente). El cifrado utiliza 98 códigos de dos dígitos mapeados a 20 letras alemanas (incluyendo vocabulario del alto alemán medio). Después de alcanzar ~81% de cobertura a nivel de palabras mediante métodos criptoanalíticos estándar, el ~19% restante consistía en bloques ilegibles que variaban de 3 a 35 caracteres.
 
 ### 1.3 Contribuciones
 
@@ -38,13 +38,13 @@ Esta técnica fue desarrollada durante el descifrado del cifrado "Bonelord 469" 
 
 ### 2.1 Sustitución Homofónica
 
-Un cifrado de sustitución homofónica (homophonic substitution cipher) mapea cada letra del texto plano $l$ a un conjunto de símbolos de texto cifrado $C(l)$, donde $|C(l)|$ es aproximadamente proporcional a la frecuencia de $l$ en el idioma del texto plano. Para un alfabeto alemán de 22 letras:
+Un cifrado de sustitución homofónica (homophonic substitution cipher) mapea cada letra del texto plano $l$ a un conjunto de símbolos de texto cifrado $C(l)$, donde $|C(l)|$ es aproximadamente proporcional a la frecuencia de $l$ en el idioma del texto plano. Para un alfabeto alemán de 20 letras:
 
-- E (16,4% de frecuencia) → 20 códigos
-- N (9,8%) → 10 códigos
-- I (7,6%) → 8 códigos
-- S (7,3%) → 7 códigos
-- ...hasta V (0,7%) → 1 código
+- E (16,4% de frecuencia) → 19 códigos
+- N (9,8%) → 9 códigos
+- S (7,3%) → 8 códigos
+- I (7,6%) → 6 códigos
+- ...hasta Z (1,1%) → 1 código
 
 Con 98 códigos que abarcan 22 letras, cada código mapea determinísticamente a una letra, pero el mapeo inverso es de uno a muchos.
 
@@ -104,7 +104,7 @@ function BoLWP(G, D, S, max_swaps):
 
 El mapeo muchos-a-uno del cifrado crea ambigüedades sistemáticas en los límites de los códigos. En nuestro cifrado:
 
-- **Intercambio I↔E:** Los 8 códigos de I y 20 códigos de E crean confusión en los límites donde un par de códigos descifrado como `...I` podría en realidad terminar en `E` si el límite del par se desplaza
+- **Intercambio I↔E:** Los 6 códigos de I y 19 códigos de E crean confusión en los límites donde un par de códigos descifrado como `...I` podría en realidad terminar en `E` si el límite del par se desplaza
 - **Intercambio I↔L:** Los 2 códigos de L (34, 96) son numéricamente adyacentes a los códigos de I, causando asignaciones erróneas ocasionales
 
 El modelo de intercambio permite hasta $k$ sustituciones de letras totales por bloque (típicamente $k \leq 3$ para bloques de menos de 15 caracteres). Cada intercambio tiene un coste, y el algoritmo prefiere soluciones con menos intercambios.
@@ -127,7 +127,7 @@ El diccionario combina:
 - Nombres propios confirmados del cifrado (SALZBERG, WEICHSTEIN, GOTTDIENER, etc.)
 - Palabras de un solo carácter excluidas para prevenir descomposición trivial
 
-Total: ~12.000 entradas (después de filtrar al alfabeto de 22 letras del cifrado).
+Total: ~12.000 entradas (después de filtrar al alfabeto de 20 letras del cifrado).
 
 ### 3.5 Complejidad
 
@@ -208,7 +208,7 @@ La Sesión 30 aplicó CADST después de que la prueba por libro se había agotad
 |-------|----------------|-------------|------------|
 | 42 | dígito '0', pos 45 (+8) | dígito '2', pos 91 (+25) | +17 caracteres |
 | 60 | dígito '0', pos 73 (+3) | dígito '9', pos 73 (+15) | +12 caracteres |
-| 15 | dígito '0', pos 0 (+0) | dígito '5', pos 62 (+8) | +8 caracteres |
+| 15 | dígito '0', pos 0 (+0) | dígito '6', pos 36 (+8) | +8 caracteres |
 
 CADST encontró 17 mejoras que la prueba por libro pasó por alto, totalizando +38 caracteres. La idea clave: en una narrativa concatenada con fragmentos superpuestos, la optimalidad local no garantiza la optimalidad global.
 
@@ -253,7 +253,7 @@ A lo largo de los 38 bloques resueltos:
 - 2 intercambios: 14 bloques (37%)
 - 3 intercambios: 3 bloques (8%)
 
-El intercambio I→E domina (87% de todos los intercambios), consistente con que E es la letra más frecuente (20 códigos) creando la mayor ambigüedad en los límites.
+El intercambio I→E domina (87% de todos los intercambios), consistente con que E es la letra más frecuente (19 códigos) creando la mayor ambigüedad en los límites.
 
 ---
 

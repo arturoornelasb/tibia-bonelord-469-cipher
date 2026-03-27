@@ -47,25 +47,25 @@ This technique was developed during the decryption of the "Bonelord 469" cipher 
 
 \subsection{Homophonic Substitution}
 
-A homophonic substitution cipher maps each plaintext letter $l$ to a set of ciphertext symbols $C(l)$, where $|C(l)|$ is roughly proportional to the frequency of $l$ in the plaintext language. For a 22-letter German alphabet:
+A homophonic substitution cipher maps each plaintext letter $l$ to a set of ciphertext symbols $C(l)$, where $|C(l)|$ is roughly proportional to the frequency of $l$ in the plaintext language. For a 20-letter German alphabet:
 
 \begin{itemize}
-\item E (16.4\% frequency) $\rightarrow$ 20 codes
-\item N (9.8\%) $\rightarrow$ 10 codes
-\item I (7.6\%) $\rightarrow$ 8 codes
-\item S (7.3\%) $\rightarrow$ 7 codes
-\item \ldots down to V (0.7\%) $\rightarrow$ 1 code
+\item E (16.4\% frequency) $\rightarrow$ 19 codes
+\item N (9.8\%) $\rightarrow$ 9 codes
+\item S (7.3\%) $\rightarrow$ 8 codes
+\item R (7.1\%) $\rightarrow$ 7 codes
+\item \ldots down to Z (1.1\%) $\rightarrow$ 1 code
 \end{itemize}
 
-With 98 codes spanning 22 letters, each code deterministically maps to one letter, but the reverse mapping is one-to-many.
+With 98 codes spanning 20 letters, each code deterministically maps to one letter, but the reverse mapping is one-to-many.
 
 \subsection{The Segmentation Problem}
 
 Given a decoded letter stream (e.g., \texttt{DIERALTESTEINEISEINRUIN}), DP segmentation finds the word boundaries that maximize dictionary coverage:
 
 \begin{lstlisting}[style=plain]
-DIE|RALT|STEIN|E|IST|EIN|RUIN  $\rightarrow$  suboptimal
-DIE|R|ALTE|STEIN|E|IST|EIN|RUIN  $\rightarrow$  better
+DIE|RALT|STEIN|E|IST|EIN|RUIN  -->  suboptimal
+DIE|R|ALTE|STEIN|E|IST|EIN|RUIN  -->  better
 \end{lstlisting}
 
 Blocks that match no dictionary entry are enclosed in braces: \texttt{\{RALT\}}. These garbled blocks are the target of BoLWP.
@@ -86,7 +86,7 @@ Total: 4 + 3 + 4 = 11 letters consumed, 100\% coverage.
 
 \subsection{Algorithm}
 
-\textbf{Input:} A garbled block $G$ of length $n$, a dictionary $D$ of known words, and a set of permitted letter swaps $S$ (e.g., \{I$eftrightarrow$E, I$eftrightarrow$L\}).
+\textbf{Input:} A garbled block $G$ of length $n$, a dictionary $D$ of known words, and a set of permitted letter swaps $S$ (e.g., \{I$\leftrightarrow$E, I$\leftrightarrow$L\}).
 
 \textbf{Output:} An ordered sequence of words $(w_1, w_2, \ldots, w_k)$ from $D$ such that the multiset union of their letters matches (or approximately matches via $S$) the letter multiset of $G$, maximizing total characters covered.
 
@@ -116,8 +116,8 @@ function BoLWP(G, D, S, max_swaps):
 The cipher's many-to-one mapping creates systematic ambiguities at code boundaries. In our cipher:
 
 \begin{itemize}
-\item \textbf{I$eftrightarrow$E swap:} The 8 I-codes and 20 E-codes create boundary confusion where a code pair decoded as \texttt{...I} might actually end in \texttt{E} if the pair boundary is shifted
-\item \textbf{I$eftrightarrow$L swap:} The 2 L-codes (34, 96) are numerically adjacent to I-codes, causing occasional misassignment
+\item \textbf{I$\leftrightarrow$E swap:} The 6 I-codes and 19 E-codes create boundary confusion where a code pair decoded as \texttt{...I} might actually end in \texttt{E} if the pair boundary is shifted
+\item \textbf{I$\leftrightarrow$L swap:} The 2 L-codes (34, 96) are numerically adjacent to I-codes, causing occasional misassignment
 \end{itemize}
 
 The swap model permits up to $k$ total letter substitutions per block (typically $k \leq 3$ for blocks under 15 characters). Each swap has a cost, and the algorithm prefers solutions with fewer swaps.
@@ -144,7 +144,7 @@ The dictionary combines:
 \item Single-character words excluded to prevent trivial decomposition
 \end{itemize}
 
-Total: \textasciitilde12,000 entries (after filtering to the cipher's 22-letter alphabet).
+Total: \textasciitilde12,000 entries (after filtering to the cipher's 20-letter alphabet).
 
 \subsection{Complexity}
 
@@ -237,7 +237,7 @@ Session 30 applied CADST after per-book testing had been exhausted:
 \midrule
 42 & digit '0', pos 45 (+8) & digit '2', pos 91 (+25) & +17 chars \\
 60 & digit '0', pos 73 (+3) & digit '9', pos 73 (+15) & +12 chars \\
-15 & digit '0', pos 0 (+0) & digit '5', pos 62 (+8) & +8 chars \\
+15 & digit '0', pos 0 (+0) & digit '6', pos 36 (+8) & +8 chars \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -269,6 +269,7 @@ Session 30 & 4 & +15 chars & 4.8 \\
 
 \begin{table}[h]
 \centering
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lccc}
 \toprule
 \textbf{Metric} & \textbf{Before BoLWP} & \textbf{After BoLWP+CAAR+CADST} & \textbf{Delta} \\
@@ -277,7 +278,7 @@ Word coverage & 81.1\% (4470/5515) & 94.6\% (5219/5514) & +13.5\% \\
 Garbled blocks & \textasciitilde180 & \textasciitilde50 & -130 \\
 Letter-level coverage & 100\% & 100\% & 0\% \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 \subsection{Largest Single Resolutions}
@@ -309,7 +310,7 @@ Across all 38 resolved blocks:
 \item 3 swaps: 3 blocks (8\%)
 \end{itemize}
 
-The I$\rightarrow$E swap dominates (87\% of all swaps), consistent with E being the most frequent letter (20 codes) creating the most boundary ambiguity.
+The I$\rightarrow$E swap dominates (87\% of all swaps), consistent with E being the most frequent letter (19 codes) creating the most boundary ambiguity.
 
 \section{Discussion}
 
@@ -330,7 +331,7 @@ BoLWP relaxes all three assumptions: it allows multi-word decomposition, tolerat
 \begin{enumerate}
 \item \textbf{Exponential worst case:} Very long garbled blocks (>25 characters) with small average word length may not resolve in practical time
 \item \textbf{Ambiguity:} Multiple valid decompositions may exist; the algorithm returns the highest-coverage one, which may not be semantically correct
-\item \textbf{Swap model specificity:} The I$eftrightarrow$E and I$eftrightarrow$L swaps are specific to this cipher's code distribution --- other ciphers would require different swap models
+\item \textbf{Swap model specificity:} The I$\leftrightarrow$E and I$\leftrightarrow$L swaps are specific to this cipher's code distribution --- other ciphers would require different swap models
 \item \textbf{Dictionary dependence:} The quality of results depends entirely on dictionary completeness --- missing archaic or domain-specific words produce false negatives
 \end{enumerate}
 
@@ -354,6 +355,7 @@ Candidate applications include:
 
 \begin{table}[h]
 \centering
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Method} & \textbf{Single Word} & \textbf{Multi-Word} & \textbf{Swap Tolerant} & \textbf{Context-Aware} \\
@@ -364,7 +366,7 @@ Spelling correction (Levenshtein) & Yes & No & Yes & No \\
 \textbf{BoLWP} & \textbf{Yes} & \textbf{Yes} & \textbf{Yes} & \textbf{No} \\
 \textbf{BoLWP + CAAR} & \textbf{Yes} & \textbf{Yes} & \textbf{Yes} & \textbf{Yes} \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 \section{Implementation}
