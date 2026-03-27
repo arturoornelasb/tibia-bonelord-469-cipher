@@ -14,8 +14,13 @@
 
 ### Investigation
 - [NPC Research](investigation/npc-research.md) — Complete NPC dialogue analysis and crib extraction
+- [Wrinkled Bonelord NPC Log](investigation/npc_wrinkled_bonelord_log.md) — Detailed interaction log with the Wrinkled Bonelord NPC
+- [Eye Count Hypothesis](investigation/eye-count-hypothesis.md) — Hypothesis linking Bonelord eye count to cipher mechanics
 - [In-Game Roadmap](investigation/roadmap_ingame.md) — Verification tasks for in-game field work (Spanish)
 - [NPCs to Visit](investigation/npcs_to_visit.md) — NPC location checklist for in-game verification
+
+### Research Log
+- [Session Findings](findings.md) — Complete log of 31 cryptanalysis sessions (methodology, discoveries, dead ends)
 
 ### Archive
 - [Community Research Summary](archive/README-469.md) — Prior community work from s2ward/469
@@ -36,8 +41,13 @@
 
 ### Investigación
 - [Investigación de NPCs](investigation/npc-research.md) — Análisis completo de diálogos NPC y extracción de cribas
+- [Log del NPC Wrinkled Bonelord](investigation/npc_wrinkled_bonelord_log.md) — Log detallado de interacción con el NPC Wrinkled Bonelord
+- [Hipótesis de Conteo de Ojos](investigation/eye-count-hypothesis.md) — Hipótesis que vincula el conteo de ojos del Bonelord con la mecánica del cifrado
 - [Hoja de Ruta In-Game](investigation/roadmap_ingame.md) — Tareas de verificación para trabajo de campo in-game
 - [NPCs por Visitar](investigation/npcs_to_visit.md) — Lista de NPCs y ubicaciones para verificación in-game
+
+### Log de Investigación
+- [Hallazgos por Sesión](findings.md) — Log completo de 31 sesiones de criptoanálisis (metodología, descubrimientos, callejones sin salida)
 
 ### Archivo
 - [Resumen de Investigación Comunitaria](archive/README-469.md) — Trabajo previo de la comunidad (s2ward/469)
