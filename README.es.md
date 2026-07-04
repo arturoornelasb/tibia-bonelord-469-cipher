@@ -74,16 +74,30 @@ Nunca aparecen: 07, 32
 | EDETOTNIURG | GOTTDIENER | "Siervo de Dios" | anagrama + 1 letra |
 | ADTHARSC | SCHARDT | Topónimo | anagrama + 1 letra |
 | HEDEMI/HEDDEMI | HEIME | "Tierra natal" (AAM) | anagrama |
+| THENAEUT † | ENTHAUTE | "desollado / despellejado" (encaja con el tema LEICH / cadáver) | anagrama exacto |
+| LGTNELGZ † | GEGLANZT | "resplandeció" (verbo en pasado emparejado) | anagrama + 1 letra (L↔A) |
+
+<sub>† Resuelto mediante verificación independiente contra datos de fuente primaria del servidor de Tibia 7.7 ([issue #1](https://github.com/arturoornelasb/tibia-bonelord-469-cipher/issues/1)).</sub>
 
 ### Nombres Propios Sin Resolver
 
 | Nombre | Frec. | Contexto |
 |--------|-------|----------|
-| THENAEUT | 7x | "ER THENAEUT ER ALS STANDE NOT" |
-| LGTNELGZ | 7x | Siempre emparejado con THENAEUT |
 | WRLGTNELNR | 4x | "STEH _ HEL" (permanecer _ luz) |
 | NDCE | 9x | "HEHL DIE NDCE FACH" (ocultar el _ compartimiento) |
-| HISDIZA | 2x | "NUN AM _ RUNE" (ahora en _ runa) |
+| HISDIZA | 2x | "NUN AM _ RUNE" — probablemente un nombre de runa ficticio (intraducible a propósito) |
+
+### Verificación Independiente por Fuente Primaria (Tibia 7.7)
+
+Un revisor independiente ([issue #1](https://github.com/arturoornelasb/tibia-bonelord-469-cipher/issues/1)) validó este trabajo contra datos server-side de archivo de **Tibia 7.7** (`map/*.sec`, `npc/*.npc`, `mon/*.mon`). Confirmaciones clave:
+
+- **El corpus es exacto.** Los 70 libros únicos coinciden dígito por dígito con los datos del servidor (la biblioteca tiene físicamente 71 libros; un texto está duplicado en dos estanterías).
+- **La remoción de un dígito es autoría original de CipSoft**, no corrupción — el mapa de referencia previo a la edición (`origmap/`) es idéntico. Esto valida la premisa de la técnica CADST.
+- **La estructura de 2 dígitos se confirma independientemente de cualquier mapeo**: en los 2,886 pares de longitud par, los códigos 07/32/33 nunca aparecen (p ≈ 3×10⁻¹³ con dígitos uniformemente aleatorios).
+- **El mapeo v7 obtiene 95.5%** de cobertura de diccionario contra un léxico alemán moderno de 50k; permutaciones aleatorias que preservan frecuencia solo obtienen 80–85%.
+- El libro 469 de **Isle of Kings** se confirma desde la fuente primaria (un substring exacto de un libro de Hellgate). **El poema de Avar Tar no existe en 7.7** — es contenido posterior, lo que explica su codificación distinta. El grito `653768764` del Evil Eye / Elder Beholder es un espécimen de "469 hablado" de fuente primaria que no decodifica bajo el cifrado de libros, apoyando la hipótesis de dos sistemas.
+
+Ver [docs/investigation/primary-source-7.7.md](docs/investigation/primary-source-7.7.md) para el registro completo.
 
 ## Técnicas Novedosas
 

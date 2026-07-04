@@ -4,8 +4,8 @@
 
 In-game verification roadmap for the decoded Bonelord 469 cipher (94.6% coverage, 31 sessions). This document lists:
 
-- **Confirmed proper nouns** (SALZBERG, WEICHSTEIN, ORANGENSTRASSE, GOTTDIENER, SCHARDT) with specific NPCs and locations to investigate in-game
-- **Unsolved proper nouns** (THENAEUT, LGTNELGZ, WRLGTNELNR, NDCE, HISDIZA) requiring field research
+- **Confirmed proper nouns** (SALZBERG, WEICHSTEIN, ORANGENSTRASSE, GOTTDIENER, SCHARDT, THENAEUT→ENTHAUTE, LGTNELGZ→GEGLANZT) with specific NPCs and locations to investigate in-game
+- **Unsolved proper nouns** (WRLGTNELNR, NDCE, HISDIZA) requiring field research
 - **Key phrases and locations** to verify against NPC dialogues
 - **Priority-ordered investigation routes** through Tibia's game world
 - **NPC dialogue tests** with decoded keywords
@@ -33,16 +33,16 @@ El texto descifrado revela nombres propios, lugares y conceptos que deben verifi
 | EDETOTNIURG | **GOTTDIENER** | "Servidor de Dios" — titulo religioso, 6x | Probar con NPCs religiosos: Cipfried, templos |
 | ADTHARSC | **SCHARDT** | Nombre de lugar + A | Buscar locaciones similares |
 | HEDDEMI | **HEIME** | "Hogar/patria" + DD, 11x "IM MIN HEIME" | El narrador tiene un hogar — buscar locaciones bonelord antiguas |
+| THENAEUT | **ENTHAUTE** | "desollado/despellejado" — anagrama exacto, encaja con LEICH (cadáver) | Resuelto vía fuente primaria 7.7 (issue #1) |
+| LGTNELGZ | **GEGLANZT** | "resplandeció" — anagrama + 1 sustitución (L↔A) | Resuelto vía fuente primaria 7.7 (issue #1) |
 
 ### Nombres Propios Sin Resolver
 
 | Nombre | Frecuencia | Contexto | Que buscar |
 |--------|-----------|----------|------------|
-| **THENAEUT** | 7x | "ER THENAEUT ER ALS STANDE NOT" | Posible titulo o rango. Probar como keyword con NPCs |
-| **LGTNELGZ** | 7x | Siempre junto a THENAEUT | Podria ser otro anagrama — probar variantes |
 | **WRLGTNELNR** | 4x | "STEH WRLGTNELNR HEL" | Nombre propio largo, posiblemente un lugar |
 | **NDCE** | 9x | "HEHL DIE NDCE FACH" | Un objeto o lugar oculto ("FACH" = compartimento) |
-| **HISDIZA** | 2x | "NUN AM HISDIZA RUNE" | Lugar donde hay runas |
+| **HISDIZA** | 2x | "NUN AM HISDIZA RUNE" | Probable nombre de runa ficticio (intraducible a propósito) |
 | **IGAA** | 4x | "TUT IGAA ER GIGE" | Posible verbo o nombre MHG |
 | **OWI** | 4x | "GODES DA SIE OWI RUNE" | Conectado a Dios y runas |
 | **CHN** | 7x | "IN CHN SER ER SCE AUS" | Posible abreviatura o nombre truncado |

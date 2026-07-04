@@ -74,16 +74,30 @@ Never appear: 07, 32
 | EDETOTNIURG | GOTTDIENER | "God's Servant" | anagram + 1 letter |
 | ADTHARSC | SCHARDT | Place name | anagram + 1 letter |
 | HEDEMI/HEDDEMI | HEIME | "Homeland" (MHG) | anagram |
+| THENAEUT † | ENTHAUTE | "flayed / skinned" (fits the LEICH / corpse theme) | exact anagram |
+| LGTNELGZ † | GEGLANZT | "gleamed" (paired past-tense verb) | anagram + 1 letter (L↔A) |
+
+<sub>† Resolved via independent primary-source verification against Tibia 7.7 server data ([issue #1](https://github.com/arturoornelasb/tibia-bonelord-469-cipher/issues/1)).</sub>
 
 ### Unsolved Proper Nouns
 
 | Name | Freq | Context |
 |------|------|---------|
-| THENAEUT | 7x | "ER THENAEUT ER ALS STANDE NOT" |
-| LGTNELGZ | 7x | Always paired with THENAEUT |
 | WRLGTNELNR | 4x | "STEH _ HEL" (stand _ light) |
 | NDCE | 9x | "HEHL DIE NDCE FACH" (concealment the _ compartment) |
-| HISDIZA | 2x | "NUN AM _ RUNE" (now at _ rune) |
+| HISDIZA | 2x | "NUN AM _ RUNE" — likely a fictional rune name (intentionally untranslatable) |
+
+### Independent Primary-Source Verification (Tibia 7.7)
+
+An independent reviewer ([issue #1](https://github.com/arturoornelasb/tibia-bonelord-469-cipher/issues/1)) validated this work against archival **Tibia 7.7 server-side data** (`map/*.sec`, `npc/*.npc`, `mon/*.mon`). Key confirmations:
+
+- **Corpus is exact.** All 70 unique books match the server data digit-for-digit (the library physically holds 71 books; one text is duplicated across two bookcases).
+- **The single-digit removal is original CipSoft authoring**, not corruption — the pre-edit `origmap/` reference map is identical. This validates the Concatenation-Aware Digit-Split Testing (CADST) premise.
+- **The 2-digit structure is confirmed independently of any mapping**: across the 2,886 even-length pairs, codes 07/32/33 never occur (p ≈ 3×10⁻¹³ under uniform-random digits).
+- **Mapping v7 scores 95.5%** dictionary coverage against a 50k modern-German lexicon; frequency-preserving random permutations of the same mapping score only 80–85%.
+- The **Isle of Kings** 469 book is confirmed from the primary source (an exact substring of a Hellgate book). **Avar Tar's poem does not exist in 7.7** — it is later content, which explains its different encoding. The Evil Eye / Elder Beholder shout `653768764` is a primary-source "spoken 469" specimen that does not decode under the book cipher, supporting the two-systems hypothesis.
+
+See [docs/investigation/primary-source-7.7.md](docs/investigation/primary-source-7.7.md) for the full record.
 
 ## Novel Techniques
 
