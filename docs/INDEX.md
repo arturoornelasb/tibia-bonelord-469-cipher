@@ -13,6 +13,7 @@
 - [Hellgate Library Guide](hellgate_library_guide.md) — Wiki-ready guide: 71 books organized by bookcase
 
 ### Investigation
+- [Primary-Source Verification (Tibia 7.7)](investigation/primary-source-7.7.md) — Independent validation against archival server data (mapping v7 confirmed, external book, two proper nouns resolved)
 - [NPC Research](investigation/npc-research.md) — Complete NPC dialogue analysis and crib extraction
 - [Wrinkled Bonelord NPC Log](investigation/npc_wrinkled_bonelord_log.md) — Detailed interaction log with the Wrinkled Bonelord NPC
 - [Eye Count Hypothesis](investigation/eye-count-hypothesis.md) — Hypothesis linking Bonelord eye count to cipher mechanics
@@ -40,6 +41,7 @@
 - [Guía de la Biblioteca Hellgate](hellgate_library_guide.md) — Guía para wiki: 71 libros organizados por estantería
 
 ### Investigación
+- [Verificación por Fuente Primaria (Tibia 7.7)](investigation/primary-source-7.7.md) — Validación independiente contra datos de archivo del servidor (mapeo v7 confirmado, libro externo, dos nombres propios resueltos)
 - [Investigación de NPCs](investigation/npc-research.md) — Análisis completo de diálogos NPC y extracción de cribas
 - [Log del NPC Wrinkled Bonelord](investigation/npc_wrinkled_bonelord_log.md) — Log detallado de interacción con el NPC Wrinkled Bonelord
 - [Hipótesis de Conteo de Ojos](investigation/eye-count-hypothesis.md) — Hipótesis que vincula el conteo de ojos del Bonelord con la mecánica del cifrado

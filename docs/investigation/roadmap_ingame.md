@@ -4,8 +4,8 @@
 
 In-game verification roadmap for the decoded Bonelord 469 cipher (94.6% coverage, 31 sessions). This document lists:
 
-- **Confirmed proper nouns** (SALZBERG, WEICHSTEIN, ORANGENSTRASSE, GOTTDIENER, SCHARDT) with specific NPCs and locations to investigate in-game
-- **Unsolved proper nouns** (THENAEUT, LGTNELGZ, WRLGTNELNR, NDCE, HISDIZA) requiring field research
+- **Confirmed proper nouns** (SALZBERG, WEICHSTEIN, ORANGENSTRASSE, GOTTDIENER, SCHARDT, THENAEUT→ENTHAUTE, LGTNELGZ→GEGLANZT) with specific NPCs and locations to investigate in-game
+- **Unsolved proper nouns** (WRLGTNELNR, NDCE, HISDIZA) requiring field research
 - **Key phrases and locations** to verify against NPC dialogues
 - **Priority-ordered investigation routes** through Tibia's game world
 - **NPC dialogue tests** with decoded keywords
@@ -33,16 +33,16 @@ El texto descifrado revela nombres propios, lugares y conceptos que deben verifi
 | EDETOTNIURG | **GOTTDIENER** | "Servidor de Dios" — titulo religioso, 6x | Probar con NPCs religiosos: Cipfried, templos |
 | ADTHARSC | **SCHARDT** | Nombre de lugar + A | Buscar locaciones similares |
 | HEDDEMI | **HEIME** | "Hogar/patria" + DD, 11x "IM MIN HEIME" | El narrador tiene un hogar — buscar locaciones bonelord antiguas |
+| THENAEUT | **ENTHAUTE** | "desollado/despellejado" — anagrama exacto, encaja con LEICH (cadáver) | Resuelto vía fuente primaria 7.7 (issue #1) |
+| LGTNELGZ | **GEGLANZT** | "resplandeció" — anagrama + 1 sustitución (L↔A) | Resuelto vía fuente primaria 7.7 (issue #1) |
 
 ### Nombres Propios Sin Resolver
 
 | Nombre | Frecuencia | Contexto | Que buscar |
 |--------|-----------|----------|------------|
-| **THENAEUT** | 7x | "ER THENAEUT ER ALS STANDE NOT" | Posible titulo o rango. Probar como keyword con NPCs |
-| **LGTNELGZ** | 7x | Siempre junto a THENAEUT | Podria ser otro anagrama — probar variantes |
 | **WRLGTNELNR** | 4x | "STEH WRLGTNELNR HEL" | Nombre propio largo, posiblemente un lugar |
 | **NDCE** | 9x | "HEHL DIE NDCE FACH" | Un objeto o lugar oculto ("FACH" = compartimento) |
-| **HISDIZA** | 2x | "NUN AM HISDIZA RUNE" | Lugar donde hay runas |
+| **HISDIZA** | 2x | "NUN AM HISDIZA RUNE" | Probable nombre de runa ficticio (intraducible a propósito) |
 | **IGAA** | 4x | "TUT IGAA ER GIGE" | Posible verbo o nombre MHG |
 | **OWI** | 4x | "GODES DA SIE OWI RUNE" | Conectado a Dios y runas |
 | **CHN** | 7x | "IN CHN SER ER SCE AUS" | Posible abreviatura o nombre truncado |
@@ -93,7 +93,7 @@ El texto descifrado revela nombres propios, lugares y conceptos que deben verifi
 ### PRIORIDAD ALTA
 
 #### D. Isle of Kings
-- [ ] **Libro identico**: Confirmar que la biblioteca tiene un libro identico a Hellgate Book 35. Documentar ubicacion exacta
+- [x] **Libro identico** (RESUELTO): El libro `6512889672` (estanteria 39) es duplicado exacto byte-a-byte del libro en `books.json` indice `22` (Book 22, 0-indexed) — NO Book 35 como se creia. Verificado contra TibiaWiki y `books.json`.
 - [ ] **Otros textos 469**: Buscar mas libros numericos en la isla
 
 #### E. Ab'Dendriel (sobre Hellgate)
@@ -102,8 +102,7 @@ El texto descifrado revela nombres propios, lugares y conceptos que deben verifi
 - [ ] **Buscar referencias a "las criaturas de abajo"** en dialogos elficos
 
 #### F. Ferumbras Citadel / Kharos
-- [ ] **Texto 469**: Confirmar existencia de texto 469 con promedio numerico coincidente
-- [ ] **Documentar el texto completo** y comparar con los libros de Hellgate
+- [x] **Texto 469** (RESUELTO): Libro `5159564611` (137 digitos). NO es duplicado exacto ni substring del corpus — es un **reordenamiento/recombinacion** de bloques ya presentes en los 70 libros (71er texto unico en `s2ward/469`). Decodifica al mismo vocabulario MHG pero no como libro limpio (~62% con 1 insercion vs 90-100% de los libros genuinos). Aporta cero codigos nuevos; excluido de la optimizacion del mapeo. Ver `findings.md` §19.
 
 ### PRIORIDAD MEDIA
 
@@ -148,6 +147,13 @@ El texto descifrado revela nombres propios, lugares y conceptos que deben verifi
 
 Keywords ya probados y documentados:
 `hi, job, librarian, library, books, 469, language, numbers, mathemagic, name, bonelord, old, race, eyes, city, wars, god, 0, death, ab'dendriel, tibia, minotaurs, cyclops, humans, elves, orcs, excalibug, bye`
+
+> **⚠️ PRECONDICION A PROBAR PRIMERO (Discussion #2, @mazzucoe) — PENDIENTE:** Todos los tests previos de keywords (SALZBERG, RUNE, STEIN, LEICH, GOTTDIENER, SCHARDT) dieron **CERO reaccion**. Hipotesis: el trigger esta bloqueado por una **precondicion**, no por keywords erroneas.
+> - [ ] **Equipar el set de Bonelord** (Bonelord Helmet + Bonelord Shield; probar tambien con **Opticording Sphere**) ANTES de re-probar las keywords de abajo. CipSoft tiene patron de activar lore antiguo detras de items tematicos.
+> - [ ] Alternativa: escribir la keyword **re-codificada a 469** (pares de digitos) en vez de texto alfabetico.
+> - [ ] Alternativa: probar el trigger con **Avar Tar** (Edron) en vez del Wrinkled Bonelord.
+>
+> Este es el **bloqueo actual** para verificacion de campo. Ver `npc-research.md` → "Equipment / prerequisite hypothesis".
 
 **Keywords nuevos a probar (de texto descifrado):**
 
@@ -224,8 +230,8 @@ Se sabe que existen textos 469 fuera de Hellgate:
 
 | Locacion | Que buscar |
 |----------|-----------|
-| Isle of Kings | Libro identico a Book 35 |
-| Ferumbras Citadel / Kharos | Texto 469 con mismo promedio numerico |
+| Isle of Kings | Libro `6512889672` = duplicado exacto de `books.json` indice 22 (Book 22) — NO Book 35 (RESUELTO) |
+| Ferumbras Citadel / Kharos | Libro `5159564611` = reordenamiento/recombinacion de bloques del corpus, NO duplicado exacto; 71er texto unico en s2ward, no aporta codigos nuevos (RESUELTO) |
 | Demona | Formula de Honeminas (contiene 3478) |
 | Paradox Tower sala espejo | Libros potencialmente en 469 |
 | Bonelord spawns | Criatura speech: "653768764!", "659978 54764!" |
