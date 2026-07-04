@@ -357,7 +357,9 @@ While Hellgate is under Ab'Dendriel (not Kazordoon), Kazordoon NPCs may still ha
 6. **Spaces**: Written 469 in books has no spaces. Spoken 469 (NPCs) has spaces between sequences.
 7. **4378 vs 3478**: Avar Tar's poem contains 4378 (reversed from the standard 3478) — possibly deliberate deception or a cipher variant.
 8. **Hellgate books average**: All 71 Hellgate books yield numerical averages beginning with "4.something" — suggesting deliberate encoding structure.
-9. **Identical books**: Isle of Kings library has a book identical to Hellgate Book 35. Ferumbras Citadel/Kharos also contains a 469 text with matching average.
+9. **External 469 books** (verified against `data/books.json`, TibiaWiki, and `s2ward/469`):
+   - **Isle of the Kings** (39th bookcase, TibiaWiki book `6512889672`) is a **byte-for-byte exact duplicate** of the Hellgate book at **index `22` in `books.json`** (the decoder's *Book 22*, 0-indexed; the 23rd book) — *not* Book 35 as previously stated. TibiaWiki files it under `location = Hellgate Library, Isle of the Kings`.
+   - **Ferumbras Citadel / Kharos** (TibiaWiki book `5159564611`) is **NOT** an exact duplicate. It is not a substring of any single book nor of the concatenated corpus; it is a **recombination** of blocks already present across the 70 books (reconstructible from ~13 known corpus fragments). It is the extra 71st entry in `s2ward/469`'s `books_sorted_unique_with_kharos.json` (71 books vs our 70). Decoded with the standard pipeline it yields the same MHG vocabulary (TRAUT, LEICH, TOT, RUIN, SEI) but does *not* decode as a clean book (peaks ~62% word-coverage with one digit insertion, ~79% with four, vs 90–100% for genuine books) — i.e. a derivative atmospheric rearrangement, not a primary source. Adds zero new codes; excluded from the mapping optimization.
 10. **Paradox Tower connection**: The Mad Mage's mirrored room has books potentially relevant to the cipher; direct teleport to Hellgate exists from the tower.
 
 ---
@@ -365,6 +367,16 @@ While Hellgate is under Ab'Dendriel (not Kazordoon), Kazordoon NPCs may still ha
 ## UNTESTED HYPOTHESES FOR IN-GAME NPC TESTING
 
 Based on decoded text (King SALZBERG, place HEIME, place SCHARDT, place ORANGENSTRASSE, entity SCHRAT, GOTTDIENER, EIGENTUM, STEINEN, RUNEN, LEICH, THENAEUT, URALTE):
+
+### ⚠️ Equipment / prerequisite hypothesis (from Discussion #2, @mazzucoe) — HIGH PRIORITY, UNTESTED
+
+Prior keyword tests (SALZBERG, RUNE, STEIN, LEICH, GOTTDIENER, SCHARDT) with A Wrinkled Bonelord returned **no reaction whatsoever** (see disclaimer in README). A strong hypothesis for *why* is that the trigger is gated behind a **precondition we weren't meeting**, not that the words are wrong. Candidate preconditions to test:
+
+1. **Equip thematic Bonelord items before speaking the keywords.** Candidate items (all real in-game): **Bonelord Helmet**, **Bonelord Shield**, and possibly the **Opticording Sphere** (eye/optics-themed, fits the bonelord eye-blink motif). CipSoft has a documented pattern of gating old lore behind items / silently "activating" dormant mysteries into mechanics (Opticording Sphere, Secret Library). **The keyword tests should be re-run while wearing the full Bonelord set.**
+2. **Re-encode the keyword back into 469 before typing it.** Bonelords "speak" in numbers/eye-blinks, so raw alphabetic input (`SALZBERG`) may be rejected by their syntax; the trigger might require the 469 encoding of the word (two-digit pairs, or variable-length NPC-style groups).
+3. **Wrong NPC.** The trigger may live with a different NPC (e.g. Avar Tar in Edron, who actively recites 469) rather than the Wrinkled Bonelord.
+
+**Status: none of these have been tested in-game yet — this is the current blocker for field verification.** Testing #1 (equip the Bonelord set) is the cheapest and highest-value next step.
 
 ### Priority keyword tests with A Wrinkled Bonelord:
 - `stones` / `steinen` / `ancient stones`
